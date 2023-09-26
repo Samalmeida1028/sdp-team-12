@@ -1,7 +1,7 @@
 # Senior Design Project 2023
 This is the repository for Team 12's Senior Design Project (SDP)
 
-# ArUco Marker Detection
+# ArUco Marker Detection using OpenCV-Python and MATLAB
 We use the OpenCV-Python library to detect a commonly used fiducial marker called ArUco. We perform pose estimation to determine the rotational and translation vectors containing all information necessary for our robot to localize to the marker's center. To do this, we need to first calibrate the camera that is being used to detect the markers. 
 
 Necessary installs (if you do not have them already):
@@ -11,6 +11,8 @@ Necessary installs (if you do not have them already):
 ```pip install opencv-python```
 
 ```pip install scipy```
+
+Also download MATLAB with the Image Processing and Computer Vision toolboxes.
 
 # Camera Calibration
 The camera_calibrator_script.m file contains all necessary information to calibrate the camera. It uses a checkerboard to identify corners and calculate the parameters necessary for the camera. All it needs is a set of 10 images taken of the checkerboard. If you choose to take images with different distances and orientations, it will help tune the camera better. Consult some of the images already taken to get a better idea. 
@@ -27,7 +29,7 @@ Finally, using scipy in Python again, we can read the .mat file as a dictionary 
 
 ![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/df2135d5-0b9f-46c6-9725-83a48b3d3097)
 
-# ArUco Detection
+# Detection
 Once the camera is calibrated and you have the necessary parameters, you can start detecting markers! The code starts reading frames from the camera chosen, and once it sees an ArUco marker, it will draw an outline on it, tell you its ID in the center of the marker, and also give you its distance from the camera in millimeters. The rotational and translational vectors are calculated with pose estimation using the camera calibration parameters. 
 
 ![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/a37714aa-beba-4843-b19a-d2f58ae1bedc)
