@@ -21,16 +21,22 @@ First, in Python, to take the images, run ```python aruco_video_detection.py``` 
 
 Next, in MATLAB, open ```camera_calibration_scipt.m``` and change the path to the images as needed and update the checkerboard square sizes to start calibrating. Once the two parameters are set, run the MATLAB script and it will save the camera matrix and distortion coefficients into a .mat file. 
 
-![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/5962001a-e598-4c7f-a11d-c134539d1f9d)
+![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/15d424e7-c5fc-405c-a26d-14e156cb16b4)
 
-![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/647a365b-7304-4fe4-8d23-6d044d540be3)
+![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/c30dc184-e6a8-40e2-a696-bd9ce9b92f17)
 
 Finally, using scipy in Python again, we can read the .mat file as a dictionary object. The code shown below shows how you can extract the camera matrix and distortion coefficients calculated in the MATLAB script. 
 
-![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/df2135d5-0b9f-46c6-9725-83a48b3d3097)
+![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/c902bcac-6ff8-4233-abae-ef209fdbe72e)
 
 # Detection
-Once the camera is calibrated and you have the necessary parameters, you can start detecting markers! The code starts reading frames from the camera chosen, and once it sees an ArUco marker, it will draw an outline on it, tell you its ID in the center of the marker, and also give you its distance from the camera in millimeters. The rotational and translational vectors are calculated with pose estimation using the camera calibration parameters. 
+Once the camera is calibrated and you have the necessary parameters, you can start detecting markers! 
+
+Next, to make the window size equal to the resolution, and have more pixels in the read image, we resize the window, and set the camera resolution as it reads. The default value will be 640x480. 
+
+![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/25f709f4-1437-4ea6-bff9-0f79f5d08a6d)
+
+The code starts reading frames from the camera chosen, and once it sees an ArUco marker, it will draw an outline on it, tell you its ID in the center of the marker, and also give you its distance from the camera in millimeters. The rotational and translational vectors are calculated with pose estimation using the camera calibration parameters. 
 
 ![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/a37714aa-beba-4843-b19a-d2f58ae1bedc)
 
