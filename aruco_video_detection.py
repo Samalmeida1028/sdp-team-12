@@ -10,10 +10,12 @@ import cv2
 import scipy.io as sio
 
 # Load camera parameters from MATLAB
-camParams = sio.loadmat("camParams.mat")
+# camParams = sio.loadmat("arjunPC_camParams.mat")
+camParams = sio.loadmat("arjunLaptop_camParams.mat")
 cameraMatrix = camParams['cameraMatrix']
 distCoeffs = camParams['distortionCoefficients']
 
+cv2.namedWindow("ArUco Detection", cv2.WINDOW_NORMAL)
 camera = cv2.VideoCapture(0)
 success = 1
 
