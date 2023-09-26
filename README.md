@@ -21,20 +21,20 @@ First, in Python, to take the images, run ```python aruco_video_detection.py``` 
 
 Next, in MATLAB, open ```camera_calibration_scipt.m``` and change the path to the images as needed and update the checkerboard square sizes to start calibrating. Once the two parameters are set, run the MATLAB script and it will save the camera matrix and distortion coefficients into a .mat file. 
 
-![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/15d424e7-c5fc-405c-a26d-14e156cb16b4)
+![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/e8710eee-aa31-4bf5-942c-b25e184909ae)
 
-![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/c30dc184-e6a8-40e2-a696-bd9ce9b92f17)
+![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/31cd0755-1891-4209-80e1-8882ec8a0141)
 
 Finally, using scipy in Python again, we can read the .mat file as a dictionary object. The code shown below shows how you can extract the camera matrix and distortion coefficients calculated in the MATLAB script. 
 
-![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/c902bcac-6ff8-4233-abae-ef209fdbe72e)
+![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/30e5c43d-8466-49cd-bc4b-374deefec767)
 
 # Detection
 Once the camera is calibrated and you have the necessary parameters, you can start detecting markers! 
 
 Next, to make the window size equal to the resolution, and have more pixels in the read image, we resize the window, and set the camera resolution as it reads. The default value will be 640x480. 
 
-![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/25f709f4-1437-4ea6-bff9-0f79f5d08a6d)
+![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/baec31e8-b467-4534-87b8-2c8ac3404547)
 
 The code starts reading frames from the camera chosen, and once it sees an ArUco marker, it will draw an outline on it, tell you its ID in the center of the marker, and also give you its distance from the camera in millimeters. The rotational and translational vectors are calculated with pose estimation using the camera calibration parameters. 
 
