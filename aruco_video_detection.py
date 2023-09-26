@@ -2,7 +2,7 @@
 Author: Arjun Viswanathan
 SDP Team 12 ArUco Detection Script
 Date created: 9/25/23
-Date last modified: 9/25/23
+Date last modified: 9/26/23
 Description: base code for detecting ArUco markers off a live camera feed
 '''
 
@@ -15,8 +15,13 @@ camParams = sio.loadmat("arjunLaptop_camParams.mat")
 cameraMatrix = camParams['cameraMatrix']
 distCoeffs = camParams['distortionCoefficients']
 
+# Set resolution and frame size when displaying
 cv2.namedWindow("ArUco Detection", cv2.WINDOW_NORMAL)
+cv2.resizeWindow("ArUco Detection", 1920, 1080)
 camera = cv2.VideoCapture(0)
+camera.set(3, 1920)
+camera.set(4, 1080)
+
 success = 1
 
 # Set up the ArUco dictionary and detector object
@@ -62,7 +67,7 @@ while success:
             cv2.imwrite("Images/aruco_image_{}.png".format(j), image)
             j += 1
 
-    cv2.imshow("ArUCO Detection", image)
+    cv2.imshow("ArUco Detection", image)
 
     # Press 'a' key to save image for calibration
     if cv2.waitKey(33) == ord('a'):
