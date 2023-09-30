@@ -1,13 +1,15 @@
 '''
 Author: Arjun Viswanathan
 Date created: 9/29/23
-Date last modified: 9/29/23
+Date last modified: 9/30/23
 Description: sample script to read RGB and depth images from Intel RealSense d435i camera at 30 FPS
 '''
 
 import pyrealsense2 as rs
 import numpy as np
 import cv2
+
+path = "E:/UMass_Amherst/SDP/sdp-team-12/"
 
 pipe = rs.pipeline()
 cfg = rs.config()
@@ -17,6 +19,8 @@ h = 480
 
 cfg.enable_stream(rs.stream.color, w, h, rs.format.bgr8, 30)
 cfg.enable_stream(rs.stream.depth, w, h, rs.format.z16, 30)
+
+i = 0
 
 pipe.start(cfg)
 
@@ -31,6 +35,12 @@ while True:
     
     cv2.imshow('rgb', color_frame)
     cv2.imshow('depth', depth_cm)
+
+    # Press 'a' key to save image for calibration
+    if cv2.waitKey(33) == ord('a'):
+        print("Taking pic {}...".format(i))
+        cv2.imwrite(path + "Images/image_{}.png".format(i), color_img)
+        i += 1
 
     if cv2.waitKey(1) == 27:
         break

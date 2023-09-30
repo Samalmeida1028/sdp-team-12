@@ -2,16 +2,18 @@
 Author: Arjun Viswanathan
 SDP Team 12 ArUco Detection Script
 Date created: 9/25/23
-Date last modified: 9/26/23
+Date last modified: 9/30/23
 Description: base code for detecting ArUco markers off a live camera feed
 '''
 
 import cv2
 import scipy.io as sio
 
+path = "E:/UMass_Amherst/SDP/sdp-team-12/"
+
 # Load camera parameters from MATLAB
-# camParams = sio.loadmat("arjunPC_camParams.mat")
-camParams = sio.loadmat("arjunLaptop_camParams.mat")
+# camParams = sio.loadmat(path + "calibration/arjunPC_camParams.mat")
+camParams = sio.loadmat(path + "calibration/arjunLaptop_camParams.mat")
 cameraMatrix = camParams['cameraMatrix']
 distCoeffs = camParams['distortionCoefficients']
 
@@ -31,7 +33,6 @@ markerLength = 142 # mm
 print("Reading from camera...\n")
 
 # To keep track of saved images
-i = 0
 j = 0
 
 while success:
@@ -60,18 +61,12 @@ while success:
             print("Marker detected! ID: {}, RVEC: {}, TVEC: {}".format(str(markerID), rvec, tvec))
 
         # Press 's' key when detecting marker to save image. Only available when marker is detected
-        if cv2.waitKey(33) == ord('s'):
+        if cv2.waitKey(33) == ord('a'):
             print("Taking ArUco pic {}...".format(j))
-            cv2.imwrite("Images/aruco_image_{}.png".format(j), image)
+            cv2.imwrite(path + "Images/aruco_image_{}.png".format(j), image)
             j += 1
 
     cv2.imshow("ArUco Detection", image)
-
-    # Press 'a' key to save image for calibration
-    if cv2.waitKey(33) == ord('a'):
-        print("Taking pic {}...".format(i))
-        cv2.imwrite("Images/image_{}.png".format(i), image)
-        i += 1
 
     if cv2.waitKey(1) == 27: # ESC key to exit
         break

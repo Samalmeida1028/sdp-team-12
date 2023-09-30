@@ -17,15 +17,15 @@ Also download MATLAB with the Image Processing and Computer Vision toolboxes.
 # Camera Calibration
 The camera_calibrator_script.m file contains all necessary information to calibrate the camera. It uses a checkerboard to identify corners and calculate the parameters necessary for the camera. All it needs is a set of 10 images taken of the checkerboard. If you choose to take images with different distances and orientations, it will help tune the camera better. Consult some of the images already taken to get a better idea. 
 
-First, in Python, to take the images, run ```python aruco_video_detection.py``` in your terminal and press the ```a``` key on the keyboard once it starts up. It will tell you if it registered the key and took a picture, and you will be able to see the image in the directory. 
+First, in Python, to take the images, run ```python camera.py``` if you have a regular webcam or ```python realsense_camera.py``` if you have the Intel RealSense camera (from cameras folder) in your terminal and press the ```a``` key on the keyboard once it starts up. It will tell you if it registered the key and took a picture, and you will be able to see the image in the Images directory. 
 
-Next, in MATLAB, open ```camera_calibration_scipt.m``` and change the path to the images as needed and update the checkerboard square sizes to start calibrating. Once the two parameters are set, run the MATLAB script and it will save the camera matrix and distortion coefficients into a .mat file. 
+Next, in MATLAB, open ```camera_calibration_scipt.m``` from the calibration folder and change the path to the images as needed and update the checkerboard square sizes to start calibrating. Once the two parameters are set, run the MATLAB script and it will save the camera matrix and distortion coefficients into a .mat file. 
 
 ![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/e8710eee-aa31-4bf5-942c-b25e184909ae)
 
 ![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/31cd0755-1891-4209-80e1-8882ec8a0141)
 
-Finally, using scipy in Python again, we can read the .mat file as a dictionary object. The code shown below shows how you can extract the camera matrix and distortion coefficients calculated in the MATLAB script. 
+Finally, using scipy in Python again in the ```python aruco_video_detection.py``` file, we can read the .mat file as a dictionary object. The code shown below shows how you can extract the camera matrix and distortion coefficients calculated in the MATLAB script. 
 
 ![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/30e5c43d-8466-49cd-bc4b-374deefec767)
 
