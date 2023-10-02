@@ -14,7 +14,7 @@ import numpy as np
 camtype = 'realsense'
 
 # Load camera parameters from MATLAB
-path = "E:/Research/UMass_MRRL/MRRL_StretchRE1_Workspace/src/image_capture/src/calibration/"
+path = "E:/UMass_Amherst/SDP/sdp-team-12/calibration/"
 
 # camParams = sio.loadmat(path + "arjunPC_camParams.mat")
 # camParams = sio.loadmat(path + "arjunLaptop_camParams.mat")
@@ -85,6 +85,7 @@ while True:
             # Printing distance on the image
             cv2.putText(image, str(round(tvec[2], 2)), (topLeft[0], topLeft[1] - 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
             print("Marker detected! ID: {}, RVEC: {}, TVEC: {}".format(str(markerID), rvec, tvec))
+            print("Rejected: {}".format(rejected))
 
         # Press 'a' key when detecting marker to save image. Only available when marker is detected
         if cv2.waitKey(33) == ord('a'):
