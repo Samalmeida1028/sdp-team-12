@@ -56,14 +56,15 @@ while True:
         success, image = camera.read()
     elif camtype == 'realsense':
         frame = pipe.wait_for_frames()
-        # depth_frame = frame.get_depth_frame()
+        depth_frame = frame.get_depth_frame()
         color_frame = frame.get_color_frame()
 
-        # depth_img = np.asanyarray(depth_frame.get_data())
+        depth_img = np.asanyarray(depth_frame.get_data())
         image = np.asanyarray(color_frame.get_data())
-        # depth_cm = cv2.applyColorMap(cv2.convertScaleAbs(depth_img, alpha=0.5), cv2.COLORMAP_JET)
+        depth_cm = cv2.applyColorMap(cv2.convertScaleAbs(depth_img, alpha=0.5), cv2.COLORMAP_JET)
 
     s = image.shape
+    mp = [0, 0]
 
     # First we detect all markers in the frame
     (corners, ids, rejected) = detector.detectMarkers(image)
@@ -76,16 +77,22 @@ while True:
         for (markerCorner, markerID) in zip(corners, ids):
             reshapedCorners = markerCorner.reshape((4, 2))
             (tL, tR, bR, bL) = reshapedCorners
-            topLeft = [int(tL[0]), int(tL[1])]
+            tL = [int(tL[0]), int(tL[1])]
+            tR = [int(tR[0]), int(tR[1])]
+            bR = [int(bR[0]), int(bR[1])]
+            bL = [int(bL[0]), int(bL[1])]
+
+            mp[0] = int((tL[0] + bR[0]) / 2)
+            mp[1] = int((tL[1] + bR[1]) / 2)
             
             rvec, tvec, _ = cv2.aruco.estimatePoseSingleMarkers(markerCorner, markerLength, cameraMatrix, distCoeffs)
             rvec = rvec[0][0]
             tvec = tvec[0][0]
 
             # Printing distance on the image
-            cv2.putText(image, str(round(tvec[2], 2)), (topLeft[0], topLeft[1] - 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-            print("Marker detected! ID: {}, RVEC: {}, TVEC: {}".format(str(markerID), rvec, tvec))
-            print("Rejected: {}".format(rejected))
+            cv2.putText(image, str(round(tvec[2], 2)), (tL[0], tL[1] - 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+            print("Marker detected! ID: {}, Midpoint: {}, RVEC: {}, TVEC: {}".format(str(markerID), mp, rvec, tvec))
+            # print("Rejected: {}".format(rejected))
 
         # Press 'a' key when detecting marker to save image. Only available when marker is detected
         if cv2.waitKey(33) == ord('a'):
