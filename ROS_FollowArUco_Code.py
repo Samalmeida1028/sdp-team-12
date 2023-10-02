@@ -1,6 +1,6 @@
 # SDP Team 12 ArUco marker follow code
 # Date created: 9/30/23
-# Last modified date: 9/30/23
+# Last modified date: 10/2/23
 # Summary: follows a desired ArUco marker in front of it using computer vision
 
 # How to run from command line:
@@ -34,7 +34,7 @@ class FollowMarker:
         self.path = "..."
 
         # TODO: Decide which camera params to import
-        # camParams = sio.loadmat(self.path + "/d435i_camParams.mat")
+        # camParams = sio.loadmat(self.path + "/d455i_camParams.mat")
         # camParams = sio.loadmat(self.path + "/webcam_camParams.mat")
         self.cameraMatrix = camParams['cameraMatrix']
         self.distCoeffs = camParams['distortionCoefficients']
