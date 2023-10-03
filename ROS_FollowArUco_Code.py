@@ -15,15 +15,17 @@ import cv2
 import scipy.io as sio
 
 # Import ROS specific packages
-import rospy
+import rclpy
+from rclpy.node import Node
 from sensor_msgs.msg import Image
-import stretch_body.robot as sb
 from cv_bridge import CvBridge, CvBridgeError
 
-class FollowMarker:
+class FollowMarker(Node):
     def __init__(self, robot, timer=True):
+        super.__init__('follow_marker')
+        
         self.start_time = time.time()
-        print("Starting Follow ArUco Algorithm...")
+        print("Starting Follow ArUco Algorithm...")        
 
         # TODO: intialize robot if needed
         ...
@@ -34,7 +36,7 @@ class FollowMarker:
         self.path = "..."
 
         # TODO: Decide which camera params to import
-        # camParams = sio.loadmat(self.path + "/d455i_camParams.mat")
+        camParams = sio.loadmat(self.path + "/d455i_camParams.mat")
         # camParams = sio.loadmat(self.path + "/webcam_camParams.mat")
         self.cameraMatrix = camParams['cameraMatrix']
         self.distCoeffs = camParams['distortionCoefficients']
@@ -59,8 +61,8 @@ class FollowMarker:
         self.j = 0
 
         # TODO: figure out subscriber or whether we are using cv2.VideoCapture(0)
-        self.rgb_sub = rospy.Subscriber('/camera/color/image_raw', Image, self.takeAction)
-        rospy.spin()
+        self.rgb_sub = self.create_subscription(Image, '/camera/color/image_raw', self.takeAction)
+        rclpy.spin()
         # OR
         self.rgb_sub = cv2.VideoCapture(0)
 
@@ -68,7 +70,7 @@ class FollowMarker:
         if self.timer:
             if (time.time() - self.start_time) > 30:
                 self.robot.stop()
-                rospy.signal_shutdown("Ending autonomous mode...")
+                rclpy.shutdown("Ending autonomous mode...")
                 
         xm = 0
         xr = 0
@@ -152,7 +154,5 @@ if __name__ == "__main__":
     args, unknown = args.parse_known_args()
     timer = int(args.timer)
 
-    r = sb.Robot()
-    r.startup()
-    rospy.init_node('follow_marker')
-    FollowMarker(r, timer)
+    rclpy.init()
+    FollowMarker(timer)
