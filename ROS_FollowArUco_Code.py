@@ -23,7 +23,7 @@ from cv_bridge import CvBridge, CvBridgeError
 class FollowMarker(Node):
     def __init__(self, robot, timer=True):
         super.__init__('follow_marker')
-        
+
         self.start_time = time.time()
         print("Starting Follow ArUco Algorithm...")        
 
@@ -130,7 +130,7 @@ class FollowMarker(Node):
             else:
                 print("No marker detected :(")
         except CvBridgeError as e:
-            rospy.logwarn('CV Bridge Error: {0}'.format(e))
+            rclpy.logwarn('CV Bridge Error: {0}'.format(e))
 
         if xm != 0:
             self.move_base(xm)
