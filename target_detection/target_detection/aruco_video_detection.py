@@ -11,15 +11,15 @@ import scipy.io as sio
 import pyrealsense2 as rs
 import numpy as np
 
-camtype = 'realsense'
+camtype = 'cv2'
 
 # Load camera parameters from MATLAB
 path = "E:/UMass_Amherst/SDP/sdp-team-12/calibration/"
 
-# camParams = sio.loadmat(path + "arjunPC_camParams.mat")
+camParams = sio.loadmat(path + "arjunPC_camParams.mat")
 # camParams = sio.loadmat(path + "arjunLaptop_camParams.mat")
 # camParams = sio.loadmat(path + "d435i_camParams.mat")
-camParams = sio.loadmat(path + "d455i_camParams.mat")
+# camParams = sio.loadmat(path + "d455i_camParams.mat")
 cameraMatrix = camParams['cameraMatrix']
 distCoeffs = camParams['distortionCoefficients']
 
