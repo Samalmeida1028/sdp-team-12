@@ -1,0 +1,8 @@
+source;share/marker_detection/hook/cmake_prefix_path.ps1
+source;share/marker_detection/hook/cmake_prefix_path.dsv
+source;share/marker_detection/hook/cmake_prefix_path.sh
+source;share/marker_detection/local_setup.bash
+source;share/marker_detection/local_setup.dsv
+source;share/marker_detection/local_setup.ps1
+source;share/marker_detection/local_setup.sh
+source;share/marker_detection/local_setup.zsh

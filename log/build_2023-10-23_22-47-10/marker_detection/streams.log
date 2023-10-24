@@ -1,0 +1,48 @@
+[0.262s] Invoking command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /mnt/e/UMass_Amherst/SDP/sdp-team-12/marker_detection -DCMAKE_INSTALL_PREFIX=/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection
+[2.594s] -- The C compiler identification is GNU 11.4.0
+[5.148s] -- The CXX compiler identification is GNU 11.4.0
+[6.589s] -- Detecting C compiler ABI info
+[9.217s] -- Detecting C compiler ABI info - done
+[9.317s] -- Check for working C compiler: /usr/bin/cc - skipped
+[9.319s] -- Detecting C compile features
+[9.321s] -- Detecting C compile features - done
+[9.486s] -- Detecting CXX compiler ABI info
+[11.945s] -- Detecting CXX compiler ABI info - done
+[12.020s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[12.022s] -- Detecting CXX compile features
+[12.024s] -- Detecting CXX compile features - done
+[12.198s] -- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)
+[12.518s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[13.219s] -- Found ament_lint_auto: 0.12.8 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[17.738s] -- Added test 'flake8' to check Python code syntax and style conventions
+[18.564s] -- Added test 'lint_cmake' to check CMake code style
+[18.944s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[22.243s] -- Added test 'xmllint' to check XML markup files
+[22.640s] -- Configuring done
+[23.910s] -- Generating done
+[24.170s] -- Build files have been written to: /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection
+[24.178s] Invoked command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /mnt/e/UMass_Amherst/SDP/sdp-team-12/marker_detection -DCMAKE_INSTALL_PREFIX=/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection
+[24.206s] Invoking command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection -- -j12 -l12
+[24.238s] gmake: Warning: File 'Makefile' has modification time 0.19 s in the future
+[24.416s] gmake[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 0.014 s in the future
+[24.418s] gmake[1]: warning:  Clock skew detected.  Your build may be incomplete.
+[24.429s] gmake: warning:  Clock skew detected.  Your build may be incomplete.
+[24.432s] Invoked command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection -- -j12 -l12
+[24.521s] Invoking command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection
+[24.538s] -- Install configuration: ""
+[24.891s] -- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/ament_index/resource_index/package_run_dependencies/marker_detection
+[25.254s] -- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/ament_index/resource_index/parent_prefix_path/marker_detection
+[25.569s] -- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/environment/ament_prefix_path.sh
+[25.763s] -- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/environment/ament_prefix_path.dsv
+[25.953s] -- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/environment/path.sh
+[26.139s] -- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/environment/path.dsv
+[26.334s] -- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/local_setup.bash
+[26.509s] -- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/local_setup.sh
+[26.737s] -- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/local_setup.zsh
+[26.909s] -- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/local_setup.dsv
+[27.086s] -- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/package.dsv
+[27.374s] -- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/ament_index/resource_index/packages/marker_detection
+[27.831s] -- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/cmake/marker_detectionConfig.cmake
+[28.024s] -- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/cmake/marker_detectionConfig-version.cmake
+[28.247s] -- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/package.xml
+[28.415s] Invoked command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection

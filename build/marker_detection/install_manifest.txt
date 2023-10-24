@@ -1,0 +1,15 @@
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/ament_index/resource_index/package_run_dependencies/marker_detection
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/ament_index/resource_index/parent_prefix_path/marker_detection
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/environment/ament_prefix_path.sh
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/environment/ament_prefix_path.dsv
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/environment/path.sh
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/environment/path.dsv
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/local_setup.bash
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/local_setup.sh
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/local_setup.zsh
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/local_setup.dsv
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/package.dsv
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/ament_index/resource_index/packages/marker_detection
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/cmake/marker_detectionConfig.cmake
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/cmake/marker_detectionConfig-version.cmake
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/package.xml
