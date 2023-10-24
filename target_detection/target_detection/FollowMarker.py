@@ -19,7 +19,6 @@ import numpy as np
 # Import ROS specific packages
 import rclpy
 from rclpy.node import Node
-import sensor_msgs.msg as sens_m
 import std_msgs.msg as std_m
 
 class FollowMarker(Node):
@@ -121,7 +120,7 @@ class FollowMarker(Node):
                     print("Taking ArUco pic {}...".format(j))
                     cv2.imwrite(self.path + "Images/aruco_image_{}.png".format(self.j), rgb_img)
                     self.j += 1
-                    
+
                 coords = std_m.Float64MultiArray()
                 coords.data = [mp[0], mp[1], depth]
                 self.coord_pub.publish(coords)
