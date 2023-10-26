@@ -1,12 +1,15 @@
-# SDP Team 12 ArUco marker follow code
-# Date created: 9/30/23
-# Last modified date: 10/2/23
-# Summary: follows a desired ArUco marker in front of it using computer vision
+# SDP Team 12 ArUco marker detection code
+# Date created: 10/25/23
+# Last modified date: 10/25/23
+# Summary: obtains a target and publishes [X, Y, d] information
 
 # How to run from command line:
-# rosrun PKGNAME ROS_FollowArUco_Code.py
-# rosrun PKGNAME ROS_FollowArUco_Code.py --timer=<TIME>
-# For integration with keyboard_teleop, nothing to be done
+# rosrun marker_detection MarkerDetection.py --camtype="webcam"
+
+# TODO: test everything out and bug fixes. 
+# TODO: make a launch file :)
+# TODO: make a main script to publish targets for this script to use and test
+# TODO: decide topic names for subscriber and publisher
 
 # Import system packages
 import time
@@ -21,18 +24,18 @@ import rclpy
 from rclpy.node import Node
 import std_msgs.msg as std_m
 
-class FollowMarker(Node):
+class MarkerDetection(Node):
     def __init__(self, camType='webcam'):
-        super.__init__('follow_marker')
+        super.__init__('detect_marker')
 
         self.camType = camType
 
         self.start_time = time.time()
-        print("Starting Follow ArUco Algorithm...")        
+        print("Starting ArUco Detection Algorithm...")        
 
         # Load camera parameters from MATLAB
         # TODO: Update path to camera params
-        self.path = "..."
+        self.path = "YOURSYSTEMPATHTOREPO/sdp-team-12/marker_detection/src/calibration"
 
         if camType == 'webcam':
             camParams = sio.loadmat(self.path + "/webcam_camParams.mat")
@@ -51,15 +54,18 @@ class FollowMarker(Node):
         self.cameraMatrix = camParams['cameraMatrix']
         self.distCoeffs = camParams['distortionCoefficients']
 
+        # Initialize ArUco disctionary and detector
         self.aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_5X5_1000)
         self.aruco_params = cv2.aruco.DetectorParameters()
         self.detector = cv2.aruco.ArucoDetector(self.aruco_dict, self.aruco_params)
 
         # TODO: decide marker length
-        self.markerLength = ... # mm
+        self.markerLength = 100 # mm
 
         self.j = 0
 
+        # Obtains info from a topic and calls takeAction
+        # Publishes [X, Y, d] to another topic once PoseEstimation is done
         self.target_sub = self.create_subscription(std_m.String, '/target', self.takeAction)
         self.coord_pub = self.create_publisher(std_m.Float64MultiArray, '/coords', 10)
         rclpy.spin()
@@ -67,8 +73,6 @@ class FollowMarker(Node):
     def takeAction(self, msg):   
         target_marker = int(msg.data) 
 
-        xm = 0
-        xr = 0
         mp = [0, 0]
         depth = 0
 
@@ -89,7 +93,7 @@ class FollowMarker(Node):
 
                 # For every detected marker, we do pose estimation using its corners and find the rotational and translational vectors
                 for (markerCorner, markerID) in zip(corners, ids):
-                    if markerID == target_marker:
+                    if markerID == target_marker: # only execute if we have target marker
                         reshapedCorners = markerCorner.reshape((4, 2))
                         (tL, tR, bR, bL) = reshapedCorners
                         tL = [int(tL[0]), int(tL[1])]
@@ -121,6 +125,7 @@ class FollowMarker(Node):
                     cv2.imwrite(self.path + "Images/aruco_image_{}.png".format(self.j), rgb_img)
                     self.j += 1
 
+                # Create an array of translational vector data
                 coords = std_m.Float64MultiArray()
                 coords.data = [mp[0], mp[1], depth]
                 self.coord_pub.publish(coords)
@@ -131,9 +136,9 @@ class FollowMarker(Node):
 
 if __name__ == "__main__":
     args = argparse.ArgumentParser()
-    args.add_argument('--timer', default=False, type=str, help='what avoidance algorithm to run')
+    args.add_argument('--camtype', default="webcam", type=str, help='what kind of camera?')
     args, unknown = args.parse_known_args()
-    timer = int(args.timer)
+    camtype = int(args.camtype)
 
     rclpy.init()
-    FollowMarker(timer)
+    MarkerDetection(camtype)
