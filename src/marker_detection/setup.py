@@ -20,8 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'detector = marker_detection.MarkerDetection:main'
-            'tester = marker_detection.TargetPublisher:main'
+            'detector = marker_detection.MarkerDetection:main',
+            'tester = marker_detection.TargetPublisher:main',
         ],
     },
 )

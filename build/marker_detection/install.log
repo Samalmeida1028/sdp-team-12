@@ -7,4 +7,5 @@
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info/requires.txt
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info/top_level.txt
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info/SOURCES.txt
-/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/marker_detection/detector = marker_detection.MarkerDetection:maintester
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/marker_detection/detector
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/marker_detection/tester
