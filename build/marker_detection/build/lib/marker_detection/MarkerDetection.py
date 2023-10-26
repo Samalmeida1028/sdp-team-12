@@ -26,7 +26,7 @@ import std_msgs.msg as std_m
 
 class MarkerDetection(Node):
     def __init__(self, camType='webcam'):
-        super.__init__('marker_detection')
+        super(Node).__init__('marker_detection')
 
         self.camType = camType
 
