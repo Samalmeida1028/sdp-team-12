@@ -1,0 +1,38 @@
+running egg_info
+writing ../../build/marker_detection/marker_detection.egg-info/PKG-INFO
+writing dependency_links to ../../build/marker_detection/marker_detection.egg-info/dependency_links.txt
+writing entry points to ../../build/marker_detection/marker_detection.egg-info/entry_points.txt
+writing requirements to ../../build/marker_detection/marker_detection.egg-info/requires.txt
+writing top-level names to ../../build/marker_detection/marker_detection.egg-info/top_level.txt
+reading manifest file '../../build/marker_detection/marker_detection.egg-info/SOURCES.txt'
+writing manifest file '../../build/marker_detection/marker_detection.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build
+creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build/lib
+creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build/lib/marker_detection
+copying marker_detection/aruco_video_detection.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build/lib/marker_detection
+copying marker_detection/MarkerDetection.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build/lib/marker_detection
+copying marker_detection/TargetPublisher.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build/lib/marker_detection
+copying marker_detection/__init__.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build/lib/marker_detection
+running install
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+running install_lib
+creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection
+copying /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build/lib/marker_detection/aruco_video_detection.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection
+copying /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build/lib/marker_detection/MarkerDetection.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection
+copying /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build/lib/marker_detection/TargetPublisher.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection
+copying /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build/lib/marker_detection/__init__.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection
+byte-compiling /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection/aruco_video_detection.py to aruco_video_detection.cpython-310.pyc
+byte-compiling /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection/MarkerDetection.py to MarkerDetection.cpython-310.pyc
+byte-compiling /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection/TargetPublisher.py to TargetPublisher.cpython-310.pyc
+byte-compiling /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection/__init__.py to __init__.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/marker_detection/marker_detection.egg-info to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info
+running install_scripts
+Installing detector script to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/marker_detection
+Installing tester script to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/marker_detection
+writing list of installed files to '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/install.log'
