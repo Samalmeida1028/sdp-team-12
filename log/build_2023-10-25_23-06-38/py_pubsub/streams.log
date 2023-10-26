@@ -1,0 +1,43 @@
+[5.719s] Invoking command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/src/py_pubsub': PYTHONPATH=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/py_pubsub build --build-base /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/build install --record /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/install.log --single-version-externally-managed
+[8.379s] running egg_info
+[8.393s] creating ../../build/py_pubsub/py_pubsub.egg-info
+[8.526s] writing ../../build/py_pubsub/py_pubsub.egg-info/PKG-INFO
+[8.608s] writing dependency_links to ../../build/py_pubsub/py_pubsub.egg-info/dependency_links.txt
+[8.668s] writing entry points to ../../build/py_pubsub/py_pubsub.egg-info/entry_points.txt
+[8.720s] writing requirements to ../../build/py_pubsub/py_pubsub.egg-info/requires.txt
+[8.770s] writing top-level names to ../../build/py_pubsub/py_pubsub.egg-info/top_level.txt
+[8.838s] writing manifest file '../../build/py_pubsub/py_pubsub.egg-info/SOURCES.txt'
+[8.955s] reading manifest file '../../build/py_pubsub/py_pubsub.egg-info/SOURCES.txt'
+[9.152s] writing manifest file '../../build/py_pubsub/py_pubsub.egg-info/SOURCES.txt'
+[9.166s] running build
+[9.168s] running build_py
+[9.184s] creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/build
+[9.276s] creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/build/lib
+[9.296s] creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/build/lib/py_pubsub
+[9.375s] copying py_pubsub/__init__.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/build/lib/py_pubsub
+[9.488s] copying py_pubsub/publisher_member_function.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/build/lib/py_pubsub
+[9.558s] copying py_pubsub/subscriber_member_function.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/build/lib/py_pubsub
+[9.633s] running install
+[9.636s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[9.639s]   warnings.warn(
+[9.642s] running install_lib
+[9.713s] creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/python3.10/site-packages/py_pubsub
+[9.808s] copying /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/build/lib/py_pubsub/__init__.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/python3.10/site-packages/py_pubsub
+[9.920s] copying /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/build/lib/py_pubsub/publisher_member_function.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/python3.10/site-packages/py_pubsub
+[10.018s] copying /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/build/lib/py_pubsub/subscriber_member_function.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/python3.10/site-packages/py_pubsub
+[10.116s] byte-compiling /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/python3.10/site-packages/py_pubsub/__init__.py to __init__.cpython-310.pyc
+[10.259s] byte-compiling /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/python3.10/site-packages/py_pubsub/publisher_member_function.py to publisher_member_function.cpython-310.pyc
+[10.394s] byte-compiling /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/python3.10/site-packages/py_pubsub/subscriber_member_function.py to subscriber_member_function.cpython-310.pyc
+[10.510s] running install_data
+[10.535s] creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/ament_index
+[10.591s] creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/ament_index/resource_index
+[10.620s] creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/ament_index/resource_index/packages
+[10.681s] copying resource/py_pubsub -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/ament_index/resource_index/packages
+[10.766s] copying package.xml -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/py_pubsub
+[10.809s] running install_egg_info
+[10.865s] Copying ../../build/py_pubsub/py_pubsub.egg-info to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/python3.10/site-packages/py_pubsub-0.0.0-py3.10.egg-info
+[11.604s] running install_scripts
+[11.841s] Installing listener script to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/py_pubsub
+[12.019s] Installing talker script to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/py_pubsub
+[12.068s] writing list of installed files to '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/install.log'
+[12.131s] Invoked command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/src/py_pubsub' returned '0': PYTHONPATH=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/py_pubsub build --build-base /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/build install --record /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/install.log --single-version-externally-managed
