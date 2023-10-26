@@ -1,9 +1,0 @@
-/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/CMakeFiles/uninstall.dir
-/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/CMakeFiles/marker_detection_uninstall.dir
-/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/CMakeFiles/test.dir
-/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/CMakeFiles/edit_cache.dir
-/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/CMakeFiles/rebuild_cache.dir
-/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/CMakeFiles/list_install_components.dir
-/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/CMakeFiles/install.dir
-/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/CMakeFiles/install/local.dir
-/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/CMakeFiles/install/strip.dir
