@@ -1,0 +1,10 @@
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/ament_index/resource_index/packages/marker_detection
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/package.xml
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info/PKG-INFO
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info/zip-safe
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info/dependency_links.txt
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info/entry_points.txt
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info/requires.txt
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info/top_level.txt
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info/SOURCES.txt
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/marker_detection/detector = marker_detection.MarkerDetection:maintester

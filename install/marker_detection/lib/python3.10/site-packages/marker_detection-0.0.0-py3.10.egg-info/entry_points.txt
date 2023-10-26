@@ -1,0 +1,3 @@
+[console_scripts]
+detector = marker_detection.MarkerDetection:maintester = marker_detection.TargetPublisher:main
+

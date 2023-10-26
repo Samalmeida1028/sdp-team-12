@@ -1,0 +1,23 @@
+running egg_info
+creating ../build/marker_detection/marker_detection.egg-info
+writing ../build/marker_detection/marker_detection.egg-info/PKG-INFO
+writing dependency_links to ../build/marker_detection/marker_detection.egg-info/dependency_links.txt
+writing entry points to ../build/marker_detection/marker_detection.egg-info/entry_points.txt
+writing requirements to ../build/marker_detection/marker_detection.egg-info/requires.txt
+writing top-level names to ../build/marker_detection/marker_detection.egg-info/top_level.txt
+writing manifest file '../build/marker_detection/marker_detection.egg-info/SOURCES.txt'
+reading manifest file '../build/marker_detection/marker_detection.egg-info/SOURCES.txt'
+writing manifest file '../build/marker_detection/marker_detection.egg-info/SOURCES.txt'
+running build
+running install
+running install_data
+creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/ament_index
+creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/ament_index/resource_index
+creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/ament_index/resource_index/packages
+copying resource/marker_detection -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/ament_index/resource_index/packages
+copying package.xml -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection
+running install_egg_info
+Copying ../build/marker_detection/marker_detection.egg-info to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info
+running install_scripts
+Installing detector = marker_detection.MarkerDetection:maintester script to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/marker_detection
+writing list of installed files to '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/install.log'
