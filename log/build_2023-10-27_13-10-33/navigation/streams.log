@@ -1,0 +1,35 @@
+[4.277s] Invoking command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/navigation': PYTHONPATH=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/navigation build --build-base /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/build install --record /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/install.log --single-version-externally-managed
+[5.984s] running egg_info
+[5.996s] creating ../build/navigation/navigation.egg-info
+[6.133s] writing ../build/navigation/navigation.egg-info/PKG-INFO
+[6.198s] writing dependency_links to ../build/navigation/navigation.egg-info/dependency_links.txt
+[6.254s] writing entry points to ../build/navigation/navigation.egg-info/entry_points.txt
+[6.295s] writing requirements to ../build/navigation/navigation.egg-info/requires.txt
+[6.346s] writing top-level names to ../build/navigation/navigation.egg-info/top_level.txt
+[6.394s] writing manifest file '../build/navigation/navigation.egg-info/SOURCES.txt'
+[6.510s] reading manifest file '../build/navigation/navigation.egg-info/SOURCES.txt'
+[6.712s] writing manifest file '../build/navigation/navigation.egg-info/SOURCES.txt'
+[6.733s] running build
+[6.737s] running build_py
+[6.752s] creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/build
+[6.821s] creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/build/lib
+[6.872s] creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/build/lib/navigation
+[6.963s] copying navigation/__init__.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/build/lib/navigation
+[7.009s] running install
+[7.043s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[7.047s]   warnings.warn(
+[7.049s] running install_lib
+[7.123s] creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/lib/python3.10/site-packages/navigation
+[7.209s] copying /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/build/lib/navigation/__init__.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/lib/python3.10/site-packages/navigation
+[7.320s] byte-compiling /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/lib/python3.10/site-packages/navigation/__init__.py to __init__.cpython-310.pyc
+[7.455s] running install_data
+[7.476s] creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/share/ament_index
+[7.514s] creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/share/ament_index/resource_index
+[7.549s] creating /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/share/ament_index/resource_index/packages
+[7.622s] copying resource/navigation -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/share/ament_index/resource_index/packages
+[7.696s] copying package.xml -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/share/navigation
+[7.733s] running install_egg_info
+[7.781s] Copying ../build/navigation/navigation.egg-info to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/lib/python3.10/site-packages/navigation-0.0.0-py3.10.egg-info
+[8.663s] running install_scripts
+[8.850s] writing list of installed files to '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/install.log'
+[9.000s] Invoked command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/navigation' returned '0': PYTHONPATH=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/navigation build --build-base /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/build install --record /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/install.log --single-version-externally-managed
