@@ -1,0 +1,27 @@
+[4.560s] Invoking command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/src/marker_detection': PYTHONPATH=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/marker_detection build --build-base /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build install --record /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/install.log --single-version-externally-managed
+[6.356s] running egg_info
+[6.373s] writing ../../build/marker_detection/marker_detection.egg-info/PKG-INFO
+[6.395s] writing dependency_links to ../../build/marker_detection/marker_detection.egg-info/dependency_links.txt
+[6.504s] writing entry points to ../../build/marker_detection/marker_detection.egg-info/entry_points.txt
+[6.542s] writing requirements to ../../build/marker_detection/marker_detection.egg-info/requires.txt
+[6.586s] writing top-level names to ../../build/marker_detection/marker_detection.egg-info/top_level.txt
+[6.722s] reading manifest file '../../build/marker_detection/marker_detection.egg-info/SOURCES.txt'
+[6.954s] writing manifest file '../../build/marker_detection/marker_detection.egg-info/SOURCES.txt'
+[6.970s] running build
+[6.973s] running build_py
+[7.067s] copying marker_detection/MarkerDetection.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build/lib/marker_detection
+[7.216s] running install
+[7.218s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[7.220s]   warnings.warn(
+[7.222s] running install_lib
+[7.500s] copying /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build/lib/marker_detection/MarkerDetection.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection
+[7.745s] byte-compiling /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection/MarkerDetection.py to MarkerDetection.cpython-310.pyc
+[7.887s] running install_data
+[7.984s] running install_egg_info
+[8.014s] removing '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info' (and everything under it)
+[8.257s] Copying ../../build/marker_detection/marker_detection.egg-info to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info
+[9.123s] running install_scripts
+[9.283s] Installing detector script to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/marker_detection
+[9.312s] Installing tester script to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/marker_detection
+[9.347s] writing list of installed files to '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/install.log'
+[9.822s] Invoked command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/src/marker_detection' returned '0': PYTHONPATH=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/marker_detection build --build-base /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build install --record /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/install.log --single-version-externally-managed

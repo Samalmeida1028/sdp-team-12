@@ -1,0 +1,179 @@
+[4.876s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[4.878s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=12, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f60f8305720>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f60f87d7730>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f60f87d7730>>)
+[5.206s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[5.207s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[5.208s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[5.208s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[5.209s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[5.209s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[5.209s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/mnt/e/UMass_Amherst/SDP/sdp-team-12'
+[5.212s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[5.213s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[5.214s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[5.215s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[5.215s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[5.216s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[5.217s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[5.217s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[5.218s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[5.247s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[5.247s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[5.249s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[5.250s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[5.250s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[5.256s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[5.256s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[5.259s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[5.265s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[5.265s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[5.268s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[5.272s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[5.272s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[5.274s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[5.279s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[5.281s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[5.284s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[5.288s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[5.288s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[5.290s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[5.291s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[5.293s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[5.293s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[5.302s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[5.302s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[5.304s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[5.306s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[5.306s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[5.317s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extensions ['ignore', 'ignore_ament_install']
+[5.317s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extension 'ignore'
+[5.320s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extension 'ignore_ament_install'
+[5.327s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extensions ['colcon_pkg']
+[5.327s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extension 'colcon_pkg'
+[5.330s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extensions ['colcon_meta']
+[5.330s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extension 'colcon_meta'
+[5.335s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extensions ['ros']
+[5.335s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extension 'ros'
+[5.368s] DEBUG:colcon.colcon_core.package_identification:Package 'src/marker_detection' with type 'ros.ament_python' and name 'marker_detection'
+[5.378s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extensions ['ignore', 'ignore_ament_install']
+[5.378s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extension 'ignore'
+[5.381s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extension 'ignore_ament_install'
+[5.387s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extensions ['colcon_pkg']
+[5.387s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extension 'colcon_pkg'
+[5.392s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extensions ['colcon_meta']
+[5.392s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extension 'colcon_meta'
+[5.398s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extensions ['ros']
+[5.398s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extension 'ros'
+[5.441s] DEBUG:colcon.colcon_core.package_identification:Package 'src/py_pubsub' with type 'ros.ament_python' and name 'py_pubsub'
+[5.442s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[5.443s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[5.443s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[5.444s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[5.445s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[5.940s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[5.941s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[6.142s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 2 installed packages in /mnt/e/UMass_Amherst/SDP/sdp-team-12/install
+[6.197s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 270 installed packages in /opt/ros/humble
+[6.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[6.433s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'cmake_args' from command line to 'None'
+[6.434s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'cmake_target' from command line to 'None'
+[6.434s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[6.434s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'cmake_clean_cache' from command line to 'False'
+[6.435s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'cmake_clean_first' from command line to 'False'
+[6.435s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'cmake_force_configure' from command line to 'False'
+[6.436s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'ament_cmake_args' from command line to 'None'
+[6.436s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'catkin_cmake_args' from command line to 'None'
+[6.436s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'catkin_skip_building_tests' from command line to 'False'
+[6.437s] DEBUG:colcon.colcon_core.verb:Building package 'marker_detection' with the following arguments: {'ament_cmake_args': None, 'build_base': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection', 'merge_install': False, 'path': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/src/marker_detection', 'symlink_install': False, 'test_result_base': None}
+[6.488s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_args' from command line to 'None'
+[6.489s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_target' from command line to 'None'
+[6.489s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[6.490s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_clean_cache' from command line to 'False'
+[6.490s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_clean_first' from command line to 'False'
+[6.490s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_force_configure' from command line to 'False'
+[6.491s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'ament_cmake_args' from command line to 'None'
+[6.491s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'catkin_cmake_args' from command line to 'None'
+[6.492s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'catkin_skip_building_tests' from command line to 'False'
+[6.492s] DEBUG:colcon.colcon_core.verb:Building package 'py_pubsub' with the following arguments: {'ament_cmake_args': None, 'build_base': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub', 'merge_install': False, 'path': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/src/py_pubsub', 'symlink_install': False, 'test_result_base': None}
+[6.545s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[6.597s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[6.598s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/src/marker_detection' with build type 'ament_python'
+[6.599s] Level 1:colcon.colcon_core.shell:create_environment_hook('marker_detection', 'ament_prefix_path')
+[6.678s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[6.679s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/hook/ament_prefix_path.ps1'
+[6.716s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/hook/ament_prefix_path.dsv'
+[6.757s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/hook/ament_prefix_path.sh'
+[6.869s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[6.870s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[7.171s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/src/py_pubsub' with build type 'ament_python'
+[7.172s] Level 1:colcon.colcon_core.shell:create_environment_hook('py_pubsub', 'ament_prefix_path')
+[7.243s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/py_pubsub/hook/ament_prefix_path.ps1'
+[7.290s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/py_pubsub/hook/ament_prefix_path.dsv'
+[7.337s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/py_pubsub/hook/ament_prefix_path.sh'
+[7.449s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[7.451s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[9.787s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/src/marker_detection'
+[9.855s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[9.856s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[12.306s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/src/py_pubsub'
+[12.358s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[12.359s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[16.055s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/src/marker_detection': PYTHONPATH=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/marker_detection build --build-base /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build install --record /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/install.log --single-version-externally-managed
+[16.184s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/src/py_pubsub': PYTHONPATH=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/py_pubsub build --build-base /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/build install --record /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/install.log --single-version-externally-managed
+[21.623s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/src/py_pubsub' returned '0': PYTHONPATH=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/py_pubsub build --build-base /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/build install --record /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/install.log --single-version-externally-managed
+[21.720s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub' for CMake module files
+[21.863s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub' for CMake config files
+[22.093s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib'
+[22.104s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/bin'
+[22.108s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/pkgconfig/py_pubsub.pc'
+[22.112s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/python3.10/site-packages'
+[22.119s] Level 1:colcon.colcon_core.shell:create_environment_hook('py_pubsub', 'pythonpath')
+[22.174s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/py_pubsub/hook/pythonpath.ps1'
+[22.213s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/py_pubsub/hook/pythonpath.dsv'
+[22.330s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/py_pubsub/hook/pythonpath.sh'
+[22.368s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/bin'
+[22.372s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(py_pubsub)
+[22.432s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/py_pubsub/package.ps1'
+[22.472s] INFO:colcon.colcon_core.shell:Creating package descriptor '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/py_pubsub/package.dsv'
+[22.515s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/py_pubsub/package.sh'
+[22.558s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/py_pubsub/package.bash'
+[22.605s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/py_pubsub/package.zsh'
+[22.649s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/share/colcon-core/packages/py_pubsub)
+[22.715s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/src/marker_detection' returned '0': PYTHONPATH=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/marker_detection build --build-base /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build install --record /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/install.log --single-version-externally-managed
+[22.750s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection' for CMake module files
+[22.934s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection' for CMake config files
+[23.185s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib'
+[23.195s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/bin'
+[23.199s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/pkgconfig/marker_detection.pc'
+[23.204s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages'
+[23.210s] Level 1:colcon.colcon_core.shell:create_environment_hook('marker_detection', 'pythonpath')
+[23.265s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/hook/pythonpath.ps1'
+[23.308s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/hook/pythonpath.dsv'
+[23.437s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/hook/pythonpath.sh'
+[23.499s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/bin'
+[23.504s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(marker_detection)
+[23.584s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/package.ps1'
+[23.622s] INFO:colcon.colcon_core.shell:Creating package descriptor '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/package.dsv'
+[23.662s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/package.sh'
+[23.703s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/package.bash'
+[23.742s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/marker_detection/package.zsh'
+[23.782s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/share/colcon-core/packages/marker_detection)
+[23.811s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[23.812s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[23.813s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[23.813s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[24.122s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[24.123s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[24.124s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[24.124s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[24.125s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.FileNotFound: Failed to connect to socket /run/user/1000/bus: No such file or directory
+[24.126s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[24.182s] INFO:colcon.colcon_core.shell:Creating prefix script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/local_setup.ps1'
+[24.199s] INFO:colcon.colcon_core.shell:Creating prefix util module '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/_local_setup_util_ps1.py'
+[24.314s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/setup.ps1'
+[24.410s] INFO:colcon.colcon_core.shell:Creating prefix script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/local_setup.sh'
+[24.426s] INFO:colcon.colcon_core.shell:Creating prefix util module '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/_local_setup_util_sh.py'
+[24.442s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/setup.sh'
+[24.539s] INFO:colcon.colcon_core.shell:Creating prefix script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/local_setup.bash'
+[24.569s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/setup.bash'
+[24.676s] INFO:colcon.colcon_core.shell:Creating prefix script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/local_setup.zsh'
+[24.703s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/setup.zsh'

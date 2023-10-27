@@ -26,7 +26,7 @@ import std_msgs.msg as std_m
 
 class MarkerDetection(Node):
     def __init__(self, camType='webcam'):
-        super(Node).__init__('marker_detection')
+        super().__init__('marker_detection')
 
         self.camType = camType
 
@@ -34,11 +34,11 @@ class MarkerDetection(Node):
         print("Starting ArUco Detection Algorithm...")        
 
         # Load camera parameters from MATLAB
-        # TODO: Update path to camera params
-        self.path = "YOURSYSTEMPATHTOREPO/sdp-team-12/marker_detection/src/calibration"
+        # TODO: find out why this path isn't recognized
+        self.path = "mnt/e/UMass_Amherst/SDP/sdp-team-12/marker_detection/src/calibration"
 
         if camType == 'webcam':
-            camParams = sio.loadmat(self.path + "/webcam_camParams.mat")
+            camParams = sio.loadmat(self.path + "/arjunPC_camParams.mat")
             self.cam = cv2.VideoCapture(0)
         elif camType == 'realsense':
             camParams = sio.loadmat(self.path + "/d455i_camParams.mat")
@@ -141,10 +141,10 @@ def main(args=None):
     # camtype = int(args.camtype)
 
     rclpy.init(args=args)
-    md = MarkerDetection()
-    rclpy.spin(md)
+    marker_detection = MarkerDetection()
+    rclpy.spin(marker_detection)
 
-    md.destroy_node()
+    marker_detection.destroy_node()
     rclpy.shutdown()
 
 if __name__ == "__main__":

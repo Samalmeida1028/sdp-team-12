@@ -1,0 +1,165 @@
+[0.000000] (-) TimerEvent: {}
+[0.000739] (marker_detection) JobQueued: {'identifier': 'marker_detection', 'dependencies': OrderedDict()}
+[0.001350] (py_pubsub) JobQueued: {'identifier': 'py_pubsub', 'dependencies': OrderedDict()}
+[0.002109] (marker_detection) JobStarted: {'identifier': 'marker_detection'}
+[0.096574] (-) TimerEvent: {}
+[0.197391] (-) TimerEvent: {}
+[0.250241] (py_pubsub) JobStarted: {'identifier': 'py_pubsub'}
+[0.297542] (-) TimerEvent: {}
+[0.398638] (-) TimerEvent: {}
+[0.500436] (-) TimerEvent: {}
+[0.601271] (-) TimerEvent: {}
+[0.702130] (-) TimerEvent: {}
+[0.803049] (-) TimerEvent: {}
+[0.905484] (-) TimerEvent: {}
+[1.006288] (-) TimerEvent: {}
+[1.107193] (-) TimerEvent: {}
+[1.208151] (-) TimerEvent: {}
+[1.309047] (-) TimerEvent: {}
+[1.410014] (-) TimerEvent: {}
+[1.511121] (-) TimerEvent: {}
+[1.611917] (-) TimerEvent: {}
+[1.712724] (-) TimerEvent: {}
+[1.813600] (-) TimerEvent: {}
+[1.914866] (-) TimerEvent: {}
+[2.015815] (-) TimerEvent: {}
+[2.116745] (-) TimerEvent: {}
+[2.217703] (-) TimerEvent: {}
+[2.318590] (-) TimerEvent: {}
+[2.419540] (-) TimerEvent: {}
+[2.520433] (-) TimerEvent: {}
+[2.621395] (-) TimerEvent: {}
+[2.722403] (-) TimerEvent: {}
+[2.823340] (-) TimerEvent: {}
+[2.924280] (-) TimerEvent: {}
+[3.025222] (-) TimerEvent: {}
+[3.126161] (-) TimerEvent: {}
+[3.226918] (-) TimerEvent: {}
+[3.327767] (-) TimerEvent: {}
+[3.428669] (-) TimerEvent: {}
+[3.529840] (-) TimerEvent: {}
+[3.630876] (-) TimerEvent: {}
+[3.731865] (-) TimerEvent: {}
+[3.832766] (-) TimerEvent: {}
+[3.933612] (-) TimerEvent: {}
+[4.034570] (-) TimerEvent: {}
+[4.135601] (-) TimerEvent: {}
+[4.236467] (-) TimerEvent: {}
+[4.337374] (-) TimerEvent: {}
+[4.411996] (py_pubsub) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/py_pubsub', 'build', '--build-base', '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/build', 'install', '--record', '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/install.log', '--single-version-externally-managed'], 'cwd': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/src/py_pubsub', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'arjun', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'WT_PROFILE_ID': '{0caa0dad-35be-5f56-a8ff-afceeeaa6101}', 'HOME': '/home/arjun', 'OLDPWD': '/mnt/e/UMass_Amherst', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'WSL_DISTRO_NAME': 'Ubuntu-22.04', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'humble', 'LOGNAME': 'arjun', 'NAME': 'FreQuency2612', 'WSL_INTEROP': '/run/WSL/384_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/home/arjun/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/bin:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/libnvvp:/mnt/c/Program Files (x86)/Razer Chroma SDK/bin:/mnt/c/Program Files/Razer Chroma SDK/bin:/mnt/c/WinAVR-20100110/bin:/mnt/c/WinAVR-20100110/utils/bin:/mnt/c/Program Files (x86)/Razer/ChromaBroadcast/bin:/mnt/c/Program Files/Razer/ChromaBroadcast/bin:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Users/arjun/AppData/Local/Microsoft/WindowsApps:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/MATLAB/R2022a/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/dotnet/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/WINDOWS/system32/config/systemprofile/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/arjun/AppData/Local/Programs/Python/Python310/python.exe:/mnt/c/Program Files/NVIDIA Corporation/Nsight Compute 2023.2.2/:/mnt/c/Program Files/MATLAB/R2023b/bin:/mnt/c/Users/arjun/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/arjun/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/e/UMass Amherst/ECE 371/Quartus/modelsim_ase/win32aloem:/mnt/c/altera_lite/16.0/modelsim_ase/win32aloem:/mnt/c/Users/arjun/AppData/Local/GitHubDesktop/bin:/snap/bin', 'WT_SESSION': '600856b7-d717-46c4-b826-d8c6dbcef810', 'XDG_RUNTIME_DIR': '/run/user/1000/', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'PWD': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'WSLENV': 'WT_SESSION:WT_PROFILE_ID:'}, 'shell': False}
+[4.445803] (-) TimerEvent: {}
+[4.457935] (marker_detection) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/marker_detection', 'build', '--build-base', '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build', 'install', '--record', '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/install.log', '--single-version-externally-managed'], 'cwd': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/src/marker_detection', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'arjun', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'WT_PROFILE_ID': '{0caa0dad-35be-5f56-a8ff-afceeeaa6101}', 'HOME': '/home/arjun', 'OLDPWD': '/mnt/e/UMass_Amherst', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'WSL_DISTRO_NAME': 'Ubuntu-22.04', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'humble', 'LOGNAME': 'arjun', 'NAME': 'FreQuency2612', 'WSL_INTEROP': '/run/WSL/384_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/home/arjun/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/bin:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/libnvvp:/mnt/c/Program Files (x86)/Razer Chroma SDK/bin:/mnt/c/Program Files/Razer Chroma SDK/bin:/mnt/c/WinAVR-20100110/bin:/mnt/c/WinAVR-20100110/utils/bin:/mnt/c/Program Files (x86)/Razer/ChromaBroadcast/bin:/mnt/c/Program Files/Razer/ChromaBroadcast/bin:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Users/arjun/AppData/Local/Microsoft/WindowsApps:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/MATLAB/R2022a/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/dotnet/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/WINDOWS/system32/config/systemprofile/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/arjun/AppData/Local/Programs/Python/Python310/python.exe:/mnt/c/Program Files/NVIDIA Corporation/Nsight Compute 2023.2.2/:/mnt/c/Program Files/MATLAB/R2023b/bin:/mnt/c/Users/arjun/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/arjun/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/e/UMass Amherst/ECE 371/Quartus/modelsim_ase/win32aloem:/mnt/c/altera_lite/16.0/modelsim_ase/win32aloem:/mnt/c/Users/arjun/AppData/Local/GitHubDesktop/bin:/snap/bin', 'WT_SESSION': '600856b7-d717-46c4-b826-d8c6dbcef810', 'XDG_RUNTIME_DIR': '/run/user/1000/', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'PWD': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'WSLENV': 'WT_SESSION:WT_PROFILE_ID:'}, 'shell': False}
+[4.564488] (-) TimerEvent: {}
+[4.665556] (-) TimerEvent: {}
+[4.766470] (-) TimerEvent: {}
+[4.867424] (-) TimerEvent: {}
+[4.968454] (-) TimerEvent: {}
+[5.069499] (-) TimerEvent: {}
+[5.170469] (-) TimerEvent: {}
+[5.271442] (-) TimerEvent: {}
+[5.372488] (-) TimerEvent: {}
+[5.473408] (-) TimerEvent: {}
+[5.574484] (-) TimerEvent: {}
+[5.675383] (-) TimerEvent: {}
+[5.776443] (-) TimerEvent: {}
+[5.877399] (-) TimerEvent: {}
+[5.978432] (-) TimerEvent: {}
+[6.079451] (-) TimerEvent: {}
+[6.180398] (-) TimerEvent: {}
+[6.281506] (-) TimerEvent: {}
+[6.351035] (py_pubsub) StdoutLine: {'line': b'running egg_info\n'}
+[6.357598] (marker_detection) StdoutLine: {'line': b'running egg_info\n'}
+[6.367519] (py_pubsub) StdoutLine: {'line': b'writing ../../build/py_pubsub/py_pubsub.egg-info/PKG-INFO\n'}
+[6.373921] (marker_detection) StdoutLine: {'line': b'writing ../../build/marker_detection/marker_detection.egg-info/PKG-INFO\n'}
+[6.381681] (-) TimerEvent: {}
+[6.391554] (py_pubsub) StdoutLine: {'line': b'writing dependency_links to ../../build/py_pubsub/py_pubsub.egg-info/dependency_links.txt\n'}
+[6.396694] (marker_detection) StdoutLine: {'line': b'writing dependency_links to ../../build/marker_detection/marker_detection.egg-info/dependency_links.txt\n'}
+[6.481868] (-) TimerEvent: {}
+[6.504813] (marker_detection) StdoutLine: {'line': b'writing entry points to ../../build/marker_detection/marker_detection.egg-info/entry_points.txt\n'}
+[6.506768] (py_pubsub) StdoutLine: {'line': b'writing entry points to ../../build/py_pubsub/py_pubsub.egg-info/entry_points.txt\n'}
+[6.543065] (marker_detection) StdoutLine: {'line': b'writing requirements to ../../build/marker_detection/marker_detection.egg-info/requires.txt\n'}
+[6.545308] (py_pubsub) StdoutLine: {'line': b'writing requirements to ../../build/py_pubsub/py_pubsub.egg-info/requires.txt\n'}
+[6.582004] (-) TimerEvent: {}
+[6.585142] (py_pubsub) StdoutLine: {'line': b'writing top-level names to ../../build/py_pubsub/py_pubsub.egg-info/top_level.txt\n'}
+[6.587373] (marker_detection) StdoutLine: {'line': b'writing top-level names to ../../build/marker_detection/marker_detection.egg-info/top_level.txt\n'}
+[6.682141] (-) TimerEvent: {}
+[6.719228] (py_pubsub) StdoutLine: {'line': b"reading manifest file '../../build/py_pubsub/py_pubsub.egg-info/SOURCES.txt'\n"}
+[6.722917] (marker_detection) StdoutLine: {'line': b"reading manifest file '../../build/marker_detection/marker_detection.egg-info/SOURCES.txt'\n"}
+[6.782271] (-) TimerEvent: {}
+[6.883657] (-) TimerEvent: {}
+[6.932577] (py_pubsub) StdoutLine: {'line': b"writing manifest file '../../build/py_pubsub/py_pubsub.egg-info/SOURCES.txt'\n"}
+[6.955234] (marker_detection) StdoutLine: {'line': b"writing manifest file '../../build/marker_detection/marker_detection.egg-info/SOURCES.txt'\n"}
+[6.967178] (py_pubsub) StdoutLine: {'line': b'running build\n'}
+[6.968955] (py_pubsub) StdoutLine: {'line': b'running build_py\n'}
+[6.971417] (marker_detection) StdoutLine: {'line': b'running build\n'}
+[6.973574] (marker_detection) StdoutLine: {'line': b'running build_py\n'}
+[6.983827] (-) TimerEvent: {}
+[7.067987] (marker_detection) StdoutLine: {'line': b'copying marker_detection/MarkerDetection.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build/lib/marker_detection\n'}
+[7.083993] (-) TimerEvent: {}
+[7.137040] (py_pubsub) StdoutLine: {'line': b'running install\n'}
+[7.172478] (py_pubsub) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[7.174704] (py_pubsub) StderrLine: {'line': b'  warnings.warn(\n'}
+[7.176982] (py_pubsub) StdoutLine: {'line': b'running install_lib\n'}
+[7.184110] (-) TimerEvent: {}
+[7.217296] (marker_detection) StdoutLine: {'line': b'running install\n'}
+[7.219361] (marker_detection) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[7.221590] (marker_detection) StderrLine: {'line': b'  warnings.warn(\n'}
+[7.223597] (marker_detection) StdoutLine: {'line': b'running install_lib\n'}
+[7.284258] (-) TimerEvent: {}
+[7.385240] (-) TimerEvent: {}
+[7.486142] (-) TimerEvent: {}
+[7.500651] (marker_detection) StdoutLine: {'line': b'copying /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/build/lib/marker_detection/MarkerDetection.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection\n'}
+[7.529196] (py_pubsub) StdoutLine: {'line': b'running install_data\n'}
+[7.586296] (-) TimerEvent: {}
+[7.622095] (py_pubsub) StdoutLine: {'line': b'running install_egg_info\n'}
+[7.649576] (py_pubsub) StdoutLine: {'line': b"removing '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/python3.10/site-packages/py_pubsub-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[7.686453] (-) TimerEvent: {}
+[7.746567] (marker_detection) StdoutLine: {'line': b'byte-compiling /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection/MarkerDetection.py to MarkerDetection.cpython-310.pyc\n'}
+[7.786623] (-) TimerEvent: {}
+[7.811239] (py_pubsub) StdoutLine: {'line': b'Copying ../../build/py_pubsub/py_pubsub.egg-info to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/python3.10/site-packages/py_pubsub-0.0.0-py3.10.egg-info\n'}
+[7.886781] (-) TimerEvent: {}
+[7.888425] (marker_detection) StdoutLine: {'line': b'running install_data\n'}
+[7.984999] (marker_detection) StdoutLine: {'line': b'running install_egg_info\n'}
+[7.987302] (-) TimerEvent: {}
+[8.014981] (marker_detection) StdoutLine: {'line': b"removing '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[8.087467] (-) TimerEvent: {}
+[8.188463] (-) TimerEvent: {}
+[8.257714] (marker_detection) StdoutLine: {'line': b'Copying ../../build/marker_detection/marker_detection.egg-info to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info\n'}
+[8.288606] (-) TimerEvent: {}
+[8.389448] (-) TimerEvent: {}
+[8.491055] (-) TimerEvent: {}
+[8.591967] (-) TimerEvent: {}
+[8.692735] (-) TimerEvent: {}
+[8.735065] (py_pubsub) StdoutLine: {'line': b'running install_scripts\n'}
+[8.792897] (-) TimerEvent: {}
+[8.887968] (py_pubsub) StdoutLine: {'line': b'Installing listener script to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/py_pubsub\n'}
+[8.893017] (-) TimerEvent: {}
+[8.918245] (py_pubsub) StdoutLine: {'line': b'Installing talker script to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/py_pubsub/lib/py_pubsub\n'}
+[8.959113] (py_pubsub) StdoutLine: {'line': b"writing list of installed files to '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/py_pubsub/install.log'\n"}
+[8.993184] (-) TimerEvent: {}
+[9.003776] (py_pubsub) CommandEnded: {'returncode': 0}
+[9.093352] (-) TimerEvent: {}
+[9.123765] (marker_detection) StdoutLine: {'line': b'running install_scripts\n'}
+[9.193508] (-) TimerEvent: {}
+[9.283941] (marker_detection) StdoutLine: {'line': b'Installing detector script to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/marker_detection\n'}
+[9.293644] (-) TimerEvent: {}
+[9.312917] (marker_detection) StdoutLine: {'line': b'Installing tester script to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/marker_detection/lib/marker_detection\n'}
+[9.347845] (marker_detection) StdoutLine: {'line': b"writing list of installed files to '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/marker_detection/install.log'\n"}
+[9.393763] (-) TimerEvent: {}
+[9.494499] (-) TimerEvent: {}
+[9.595450] (-) TimerEvent: {}
+[9.696267] (-) TimerEvent: {}
+[9.787747] (py_pubsub) JobEnded: {'identifier': 'py_pubsub', 'rc': 0}
+[9.823392] (-) TimerEvent: {}
+[9.823985] (marker_detection) CommandEnded: {'returncode': 0}
+[9.923545] (-) TimerEvent: {}
+[10.024476] (-) TimerEvent: {}
+[10.125449] (-) TimerEvent: {}
+[10.226317] (-) TimerEvent: {}
+[10.327446] (-) TimerEvent: {}
+[10.428180] (-) TimerEvent: {}
+[10.529016] (-) TimerEvent: {}
+[10.629903] (-) TimerEvent: {}
+[10.709235] (marker_detection) JobEnded: {'identifier': 'marker_detection', 'rc': 0}
+[10.757710] (-) TimerEvent: {}
+[10.758461] (-) EventReactorShutdown: {}
