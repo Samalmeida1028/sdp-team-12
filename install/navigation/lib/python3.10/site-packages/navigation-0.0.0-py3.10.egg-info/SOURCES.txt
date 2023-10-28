@@ -8,8 +8,11 @@ setup.py
 ../build/navigation/navigation.egg-info/requires.txt
 ../build/navigation/navigation.egg-info/top_level.txt
 ../build/navigation/navigation.egg-info/zip-safe
+launch/display.launch.py
 navigation/__init__.py
+navigation/state_publisher.py
 resource/navigation
 test/test_copyright.py
 test/test_flake8.py
 test/test_pep257.py
+urdf/robot_description.urdf
