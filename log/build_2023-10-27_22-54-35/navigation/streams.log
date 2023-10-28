@@ -1,0 +1,24 @@
+[5.176s] Invoking command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/navigation': PYTHONPATH=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/navigation build --build-base /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/build install --record /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/install.log --single-version-externally-managed
+[7.133s] running egg_info
+[7.147s] writing ../build/navigation/navigation.egg-info/PKG-INFO
+[7.169s] writing dependency_links to ../build/navigation/navigation.egg-info/dependency_links.txt
+[7.188s] writing entry points to ../build/navigation/navigation.egg-info/entry_points.txt
+[7.204s] writing requirements to ../build/navigation/navigation.egg-info/requires.txt
+[7.216s] writing top-level names to ../build/navigation/navigation.egg-info/top_level.txt
+[7.315s] reading manifest file '../build/navigation/navigation.egg-info/SOURCES.txt'
+[7.517s] writing manifest file '../build/navigation/navigation.egg-info/SOURCES.txt'
+[7.529s] running build
+[7.531s] running build_py
+[7.614s] running install
+[7.617s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[7.619s]   warnings.warn(
+[7.621s] running install_lib
+[7.870s] running install_data
+[7.942s] copying package.xml -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/share/navigation
+[8.059s] running install_egg_info
+[8.089s] removing '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/lib/python3.10/site-packages/navigation-0.0.0-py3.10.egg-info' (and everything under it)
+[8.317s] Copying ../build/navigation/navigation.egg-info to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/lib/python3.10/site-packages/navigation-0.0.0-py3.10.egg-info
+[9.102s] running install_scripts
+[9.268s] Installing state_publisher script to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/lib/navigation
+[9.305s] writing list of installed files to '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/install.log'
+[9.345s] Invoked command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/navigation' returned '0': PYTHONPATH=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/navigation build --build-base /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/build install --record /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigation/install.log --single-version-externally-managed
