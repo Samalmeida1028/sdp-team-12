@@ -1,3 +1,0 @@
-[console_scripts]
-state_publisher = navigation.state_publisher:main
-
