@@ -7,3 +7,9 @@ This is the repository for Team 12's Senior Design Project (SDP)
 ```basic_mobile_bot_v4.launch.py``` : shows a smalltown.world simulation for the robot 
 
 Use ```rqt_robot_steering``` and change the topic to ```cmd_vel``` to use a GUI for moving the robot in Gazebo. 
+
+Things I did so far: 
+1. Set up a URDF and view it in RViz
+2. Set up a SDF for Gazebo to simulate the URDF with rqt_robot_steering
+3. Set up a smalltown.world to simulate the URDF in a world instead of bare Gazebo
+4. Set up a LiDAR on the URDF and simulated that in the smalltown.world
