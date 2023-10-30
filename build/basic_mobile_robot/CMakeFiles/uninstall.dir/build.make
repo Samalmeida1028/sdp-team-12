@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot
+CMAKE_SOURCE_DIR = /home/sdp12/sdp-team-12/basic_mobile_robot
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot
+CMAKE_BINARY_DIR = /home/sdp12/sdp-team-12/build/basic_mobile_robot
 
 # Utility rule file for uninstall.
 
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot /mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/sdp12/sdp-team-12/build/basic_mobile_robot && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sdp12/sdp-team-12/basic_mobile_robot /home/sdp12/sdp-team-12/basic_mobile_robot /home/sdp12/sdp-team-12/build/basic_mobile_robot /home/sdp12/sdp-team-12/build/basic_mobile_robot /home/sdp12/sdp-team-12/build/basic_mobile_robot/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 
