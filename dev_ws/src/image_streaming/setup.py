@@ -20,6 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-        ],
+      'img_publisher = image_streaming.image_pub:main',
+      'img_test_sub = image_streaming.image_test_sub:main',
+    ],
     },
 )
