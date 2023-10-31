@@ -1,8 +1,8 @@
-# Install script for directory: /home/sdp12/sdp-team-12/basic_mobile_robot
+# Install script for directory: /mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/sdp12/sdp-team-12/install/basic_mobile_robot")
+  set(CMAKE_INSTALL_PREFIX "/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,23 +44,24 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE DIRECTORY FILES
-    "/home/sdp12/sdp-team-12/basic_mobile_robot/config"
-    "/home/sdp12/sdp-team-12/basic_mobile_robot/launch"
-    "/home/sdp12/sdp-team-12/basic_mobile_robot/maps"
-    "/home/sdp12/sdp-team-12/basic_mobile_robot/models"
-    "/home/sdp12/sdp-team-12/basic_mobile_robot/params"
-    "/home/sdp12/sdp-team-12/basic_mobile_robot/rviz"
-    "/home/sdp12/sdp-team-12/basic_mobile_robot/src"
-    "/home/sdp12/sdp-team-12/basic_mobile_robot/worlds"
+    "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/config"
+    "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/launch"
+    "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/meshes"
+    "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/maps"
+    "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/models"
+    "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/params"
+    "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/rviz"
+    "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/src"
+    "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/worlds"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/sdp12/sdp-team-12/build/basic_mobile_robot/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/basic_mobile_robot")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/basic_mobile_robot")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/sdp12/sdp-team-12/build/basic_mobile_robot/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/basic_mobile_robot")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/basic_mobile_robot")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -68,7 +69,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot/environment" TYPE FILE FILES "/home/sdp12/sdp-team-12/build/basic_mobile_robot/ament_cmake_environment_hooks/ament_prefix_path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot/environment" TYPE FILE FILES "/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/ament_cmake_environment_hooks/ament_prefix_path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -76,42 +77,42 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot/environment" TYPE FILE FILES "/home/sdp12/sdp-team-12/build/basic_mobile_robot/ament_cmake_environment_hooks/path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot/environment" TYPE FILE FILES "/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/ament_cmake_environment_hooks/path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/sdp12/sdp-team-12/build/basic_mobile_robot/ament_cmake_environment_hooks/local_setup.bash")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/ament_cmake_environment_hooks/local_setup.bash")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/sdp12/sdp-team-12/build/basic_mobile_robot/ament_cmake_environment_hooks/local_setup.sh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/ament_cmake_environment_hooks/local_setup.sh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/sdp12/sdp-team-12/build/basic_mobile_robot/ament_cmake_environment_hooks/local_setup.zsh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/ament_cmake_environment_hooks/local_setup.zsh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/sdp12/sdp-team-12/build/basic_mobile_robot/ament_cmake_environment_hooks/local_setup.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/ament_cmake_environment_hooks/local_setup.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/sdp12/sdp-team-12/build/basic_mobile_robot/ament_cmake_environment_hooks/package.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/ament_cmake_environment_hooks/package.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/sdp12/sdp-team-12/build/basic_mobile_robot/ament_cmake_index/share/ament_index/resource_index/packages/basic_mobile_robot")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/ament_cmake_index/share/ament_index/resource_index/packages/basic_mobile_robot")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot/cmake" TYPE FILE FILES
-    "/home/sdp12/sdp-team-12/build/basic_mobile_robot/ament_cmake_core/basic_mobile_robotConfig.cmake"
-    "/home/sdp12/sdp-team-12/build/basic_mobile_robot/ament_cmake_core/basic_mobile_robotConfig-version.cmake"
+    "/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/ament_cmake_core/basic_mobile_robotConfig.cmake"
+    "/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/ament_cmake_core/basic_mobile_robotConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/sdp12/sdp-team-12/basic_mobile_robot/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/package.xml")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -122,5 +123,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/sdp12/sdp-team-12/build/basic_mobile_robot/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -1,0 +1,8 @@
+gmake[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 1.4 s in the future
+gmake[1]: warning:  Clock skew detected.  Your build may be incomplete.
+[31mCMake Error at cmake_install.cmake:46 (file):
+  file INSTALL cannot find
+  "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/src": No such file
+  or directory.
+
+[0m
