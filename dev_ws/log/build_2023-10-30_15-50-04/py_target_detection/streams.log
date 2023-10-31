@@ -1,0 +1,23 @@
+[9.778s] Invoking command in '/media/sf_sdp12_ws/dev_ws/src/py_target_detection': PYTHONPATH=/media/sf_sdp12_ws/dev_ws/build/py_target_detection/prefix_override:/media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/py_target_detection build --build-base /media/sf_sdp12_ws/dev_ws/build/py_target_detection/build install --record /media/sf_sdp12_ws/dev_ws/build/py_target_detection/install.log --single-version-externally-managed
+[10.862s] running egg_info
+[10.871s] writing ../../build/py_target_detection/py_target_detection.egg-info/PKG-INFO
+[10.888s] writing dependency_links to ../../build/py_target_detection/py_target_detection.egg-info/dependency_links.txt
+[10.919s] writing entry points to ../../build/py_target_detection/py_target_detection.egg-info/entry_points.txt
+[10.929s] writing requirements to ../../build/py_target_detection/py_target_detection.egg-info/requires.txt
+[10.936s] writing top-level names to ../../build/py_target_detection/py_target_detection.egg-info/top_level.txt
+[10.971s] reading manifest file '../../build/py_target_detection/py_target_detection.egg-info/SOURCES.txt'
+[11.009s] writing manifest file '../../build/py_target_detection/py_target_detection.egg-info/SOURCES.txt'
+[11.021s] running build
+[11.027s] running build_py
+[11.036s] running install
+[11.040s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[11.045s]   warnings.warn(
+[11.048s] running install_lib
+[11.073s] running install_data
+[11.074s] running install_egg_info
+[11.075s] removing '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/python3.10/site-packages/py_target_detection-0.0.0-py3.10.egg-info' (and everything under it)
+[11.188s] Copying ../../build/py_target_detection/py_target_detection.egg-info to /media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/python3.10/site-packages/py_target_detection-0.0.0-py3.10.egg-info
+[11.306s] running install_scripts
+[11.378s] Installing img script to /media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/py_target_detection
+[11.390s] writing list of installed files to '/media/sf_sdp12_ws/dev_ws/build/py_target_detection/install.log'
+[11.468s] Invoked command in '/media/sf_sdp12_ws/dev_ws/src/py_target_detection' returned '0': PYTHONPATH=/media/sf_sdp12_ws/dev_ws/build/py_target_detection/prefix_override:/media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/py_target_detection build --build-base /media/sf_sdp12_ws/dev_ws/build/py_target_detection/build install --record /media/sf_sdp12_ws/dev_ws/build/py_target_detection/install.log --single-version-externally-managed

@@ -1,0 +1,277 @@
+[5.579s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[5.580s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f2665f9bb80>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f26663d6440>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f26663d6440>>)
+[6.031s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[6.035s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[6.035s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[6.037s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[6.038s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[6.039s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[6.039s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/media/sf_sdp12_ws/dev_ws'
+[6.045s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[6.046s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[6.049s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[6.055s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[6.056s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[6.058s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[6.059s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[6.061s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[6.062s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[6.146s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[6.147s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[6.152s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[6.156s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[6.158s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[6.171s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[6.173s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[6.175s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[6.187s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[6.190s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[6.194s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[6.206s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[6.208s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[6.212s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[6.223s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[6.225s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[6.230s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[6.236s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[6.238s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[6.241s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[6.242s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[6.243s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[6.244s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[6.257s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[6.259s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[6.263s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[6.267s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[6.271s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[6.278s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_streaming) by extensions ['ignore', 'ignore_ament_install']
+[6.279s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_streaming) by extension 'ignore'
+[6.282s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_streaming) by extension 'ignore_ament_install'
+[6.286s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_streaming) by extensions ['colcon_pkg']
+[6.288s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_streaming) by extension 'colcon_pkg'
+[6.300s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_streaming) by extensions ['colcon_meta']
+[6.303s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_streaming) by extension 'colcon_meta'
+[6.306s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_streaming) by extensions ['ros']
+[6.307s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_streaming) by extension 'ros'
+[6.357s] DEBUG:colcon.colcon_core.package_identification:Package 'src/image_streaming' with type 'ros.ament_python' and name 'image_streaming'
+[6.366s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extensions ['ignore', 'ignore_ament_install']
+[6.367s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extension 'ignore'
+[6.374s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extension 'ignore_ament_install'
+[6.379s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extensions ['colcon_pkg']
+[6.381s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extension 'colcon_pkg'
+[6.384s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extensions ['colcon_meta']
+[6.385s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extension 'colcon_meta'
+[6.386s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extensions ['ros']
+[6.388s] Level 1:colcon.colcon_core.package_identification:_identify(src/marker_detection) by extension 'ros'
+[6.403s] DEBUG:colcon.colcon_core.package_identification:Package 'src/marker_detection' with type 'ros.ament_python' and name 'marker_detection'
+[6.411s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_img_stream) by extensions ['ignore', 'ignore_ament_install']
+[6.413s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_img_stream) by extension 'ignore'
+[6.418s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_img_stream) by extension 'ignore_ament_install'
+[6.423s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_img_stream) by extensions ['colcon_pkg']
+[6.424s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_img_stream) by extension 'colcon_pkg'
+[6.427s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_img_stream) by extensions ['colcon_meta']
+[6.430s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_img_stream) by extension 'colcon_meta'
+[6.434s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_img_stream) by extensions ['ros']
+[6.436s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_img_stream) by extension 'ros'
+[6.472s] DEBUG:colcon.colcon_core.package_identification:Package 'src/py_img_stream' with type 'ros.ament_python' and name 'py_img_stream'
+[6.482s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_target_detection) by extensions ['ignore', 'ignore_ament_install']
+[6.485s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_target_detection) by extension 'ignore'
+[6.491s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_target_detection) by extension 'ignore_ament_install'
+[6.495s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_target_detection) by extensions ['colcon_pkg']
+[6.498s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_target_detection) by extension 'colcon_pkg'
+[6.500s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_target_detection) by extensions ['colcon_meta']
+[6.505s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_target_detection) by extension 'colcon_meta'
+[6.507s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_target_detection) by extensions ['ros']
+[6.509s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_target_detection) by extension 'ros'
+[6.528s] DEBUG:colcon.colcon_core.package_identification:Package 'src/py_target_detection' with type 'ros.ament_python' and name 'py_target_detection'
+[6.530s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[6.531s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[6.532s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[6.534s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[6.535s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[7.213s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[7.215s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[7.568s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 5 installed packages in /media/sf_sdp12_ws/dev_ws/install
+[7.692s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 324 installed packages in /opt/ros/humble
+[7.699s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[8.372s] Level 5:colcon.colcon_core.verb:set package 'image_streaming' build argument 'cmake_args' from command line to 'None'
+[8.374s] Level 5:colcon.colcon_core.verb:set package 'image_streaming' build argument 'cmake_target' from command line to 'None'
+[8.376s] Level 5:colcon.colcon_core.verb:set package 'image_streaming' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[8.378s] Level 5:colcon.colcon_core.verb:set package 'image_streaming' build argument 'cmake_clean_cache' from command line to 'False'
+[8.379s] Level 5:colcon.colcon_core.verb:set package 'image_streaming' build argument 'cmake_clean_first' from command line to 'False'
+[8.380s] Level 5:colcon.colcon_core.verb:set package 'image_streaming' build argument 'cmake_force_configure' from command line to 'False'
+[8.381s] Level 5:colcon.colcon_core.verb:set package 'image_streaming' build argument 'ament_cmake_args' from command line to 'None'
+[8.383s] Level 5:colcon.colcon_core.verb:set package 'image_streaming' build argument 'catkin_cmake_args' from command line to 'None'
+[8.384s] Level 5:colcon.colcon_core.verb:set package 'image_streaming' build argument 'catkin_skip_building_tests' from command line to 'False'
+[8.389s] DEBUG:colcon.colcon_core.verb:Building package 'image_streaming' with the following arguments: {'ament_cmake_args': None, 'build_base': '/media/sf_sdp12_ws/dev_ws/build/image_streaming', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/media/sf_sdp12_ws/dev_ws/install/image_streaming', 'merge_install': False, 'path': '/media/sf_sdp12_ws/dev_ws/src/image_streaming', 'symlink_install': False, 'test_result_base': None}
+[8.540s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'cmake_args' from command line to 'None'
+[8.542s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'cmake_target' from command line to 'None'
+[8.543s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[8.543s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'cmake_clean_cache' from command line to 'False'
+[8.544s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'cmake_clean_first' from command line to 'False'
+[8.546s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'cmake_force_configure' from command line to 'False'
+[8.547s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'ament_cmake_args' from command line to 'None'
+[8.548s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'catkin_cmake_args' from command line to 'None'
+[8.550s] Level 5:colcon.colcon_core.verb:set package 'marker_detection' build argument 'catkin_skip_building_tests' from command line to 'False'
+[8.550s] DEBUG:colcon.colcon_core.verb:Building package 'marker_detection' with the following arguments: {'ament_cmake_args': None, 'build_base': '/media/sf_sdp12_ws/dev_ws/build/marker_detection', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/media/sf_sdp12_ws/dev_ws/install/marker_detection', 'merge_install': False, 'path': '/media/sf_sdp12_ws/dev_ws/src/marker_detection', 'symlink_install': False, 'test_result_base': None}
+[8.667s] Level 5:colcon.colcon_core.verb:set package 'py_img_stream' build argument 'cmake_args' from command line to 'None'
+[8.669s] Level 5:colcon.colcon_core.verb:set package 'py_img_stream' build argument 'cmake_target' from command line to 'None'
+[8.671s] Level 5:colcon.colcon_core.verb:set package 'py_img_stream' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[8.672s] Level 5:colcon.colcon_core.verb:set package 'py_img_stream' build argument 'cmake_clean_cache' from command line to 'False'
+[8.675s] Level 5:colcon.colcon_core.verb:set package 'py_img_stream' build argument 'cmake_clean_first' from command line to 'False'
+[8.677s] Level 5:colcon.colcon_core.verb:set package 'py_img_stream' build argument 'cmake_force_configure' from command line to 'False'
+[8.679s] Level 5:colcon.colcon_core.verb:set package 'py_img_stream' build argument 'ament_cmake_args' from command line to 'None'
+[8.680s] Level 5:colcon.colcon_core.verb:set package 'py_img_stream' build argument 'catkin_cmake_args' from command line to 'None'
+[8.683s] Level 5:colcon.colcon_core.verb:set package 'py_img_stream' build argument 'catkin_skip_building_tests' from command line to 'False'
+[8.685s] DEBUG:colcon.colcon_core.verb:Building package 'py_img_stream' with the following arguments: {'ament_cmake_args': None, 'build_base': '/media/sf_sdp12_ws/dev_ws/build/py_img_stream', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/media/sf_sdp12_ws/dev_ws/install/py_img_stream', 'merge_install': False, 'path': '/media/sf_sdp12_ws/dev_ws/src/py_img_stream', 'symlink_install': False, 'test_result_base': None}
+[8.810s] Level 5:colcon.colcon_core.verb:set package 'py_target_detection' build argument 'cmake_args' from command line to 'None'
+[8.812s] Level 5:colcon.colcon_core.verb:set package 'py_target_detection' build argument 'cmake_target' from command line to 'None'
+[8.814s] Level 5:colcon.colcon_core.verb:set package 'py_target_detection' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[8.814s] Level 5:colcon.colcon_core.verb:set package 'py_target_detection' build argument 'cmake_clean_cache' from command line to 'False'
+[8.816s] Level 5:colcon.colcon_core.verb:set package 'py_target_detection' build argument 'cmake_clean_first' from command line to 'False'
+[8.818s] Level 5:colcon.colcon_core.verb:set package 'py_target_detection' build argument 'cmake_force_configure' from command line to 'False'
+[8.819s] Level 5:colcon.colcon_core.verb:set package 'py_target_detection' build argument 'ament_cmake_args' from command line to 'None'
+[8.820s] Level 5:colcon.colcon_core.verb:set package 'py_target_detection' build argument 'catkin_cmake_args' from command line to 'None'
+[8.821s] Level 5:colcon.colcon_core.verb:set package 'py_target_detection' build argument 'catkin_skip_building_tests' from command line to 'False'
+[8.822s] DEBUG:colcon.colcon_core.verb:Building package 'py_target_detection' with the following arguments: {'ament_cmake_args': None, 'build_base': '/media/sf_sdp12_ws/dev_ws/build/py_target_detection', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/media/sf_sdp12_ws/dev_ws/install/py_target_detection', 'merge_install': False, 'path': '/media/sf_sdp12_ws/dev_ws/src/py_target_detection', 'symlink_install': False, 'test_result_base': None}
+[8.913s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[9.024s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[9.032s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/media/sf_sdp12_ws/dev_ws/src/image_streaming' with build type 'ament_python'
+[9.047s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_streaming', 'ament_prefix_path')
+[9.187s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[9.190s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_sdp12_ws/dev_ws/install/image_streaming/share/image_streaming/hook/ament_prefix_path.ps1'
+[9.207s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/media/sf_sdp12_ws/dev_ws/install/image_streaming/share/image_streaming/hook/ament_prefix_path.dsv'
+[9.219s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_sdp12_ws/dev_ws/install/image_streaming/share/image_streaming/hook/ament_prefix_path.sh'
+[9.372s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[9.374s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[9.848s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/media/sf_sdp12_ws/dev_ws/src/marker_detection' with build type 'ament_python'
+[9.859s] Level 1:colcon.colcon_core.shell:create_environment_hook('marker_detection', 'ament_prefix_path')
+[9.991s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_sdp12_ws/dev_ws/install/marker_detection/share/marker_detection/hook/ament_prefix_path.ps1'
+[10.006s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/media/sf_sdp12_ws/dev_ws/install/marker_detection/share/marker_detection/hook/ament_prefix_path.dsv'
+[10.015s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_sdp12_ws/dev_ws/install/marker_detection/share/marker_detection/hook/ament_prefix_path.sh'
+[10.133s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[10.133s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[10.675s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/media/sf_sdp12_ws/dev_ws/src/py_img_stream' with build type 'ament_python'
+[10.677s] Level 1:colcon.colcon_core.shell:create_environment_hook('py_img_stream', 'ament_prefix_path')
+[10.852s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/share/py_img_stream/hook/ament_prefix_path.ps1'
+[10.867s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/share/py_img_stream/hook/ament_prefix_path.dsv'
+[10.878s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/share/py_img_stream/hook/ament_prefix_path.sh'
+[11.047s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[11.050s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[11.631s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/media/sf_sdp12_ws/dev_ws/src/py_target_detection' with build type 'ament_python'
+[11.641s] Level 1:colcon.colcon_core.shell:create_environment_hook('py_target_detection', 'ament_prefix_path')
+[11.826s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/share/py_target_detection/hook/ament_prefix_path.ps1'
+[11.856s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/share/py_target_detection/hook/ament_prefix_path.dsv'
+[11.874s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/share/py_target_detection/hook/ament_prefix_path.sh'
+[12.009s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[12.011s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[14.196s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/media/sf_sdp12_ws/dev_ws/src/image_streaming'
+[14.377s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[14.379s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[16.289s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/media/sf_sdp12_ws/dev_ws/src/marker_detection'
+[16.407s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[16.409s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[18.345s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/media/sf_sdp12_ws/dev_ws/src/py_img_stream'
+[18.516s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[18.519s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[19.612s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/media/sf_sdp12_ws/dev_ws/src/py_target_detection'
+[19.673s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[19.674s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[21.360s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/media/sf_sdp12_ws/dev_ws/src/marker_detection': PYTHONPATH=/media/sf_sdp12_ws/dev_ws/build/marker_detection/prefix_override:/media/sf_sdp12_ws/dev_ws/install/marker_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/marker_detection build --build-base /media/sf_sdp12_ws/dev_ws/build/marker_detection/build install --record /media/sf_sdp12_ws/dev_ws/build/marker_detection/install.log --single-version-externally-managed
+[21.547s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/media/sf_sdp12_ws/dev_ws/src/image_streaming': PYTHONPATH=/media/sf_sdp12_ws/dev_ws/build/image_streaming/prefix_override:/media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/image_streaming build --build-base /media/sf_sdp12_ws/dev_ws/build/image_streaming/build install --record /media/sf_sdp12_ws/dev_ws/build/image_streaming/install.log --single-version-externally-managed
+[21.590s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/media/sf_sdp12_ws/dev_ws/src/py_img_stream': PYTHONPATH=/media/sf_sdp12_ws/dev_ws/build/py_img_stream/prefix_override:/media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/py_img_stream build --build-base /media/sf_sdp12_ws/dev_ws/build/py_img_stream/build install --record /media/sf_sdp12_ws/dev_ws/build/py_img_stream/install.log --single-version-externally-managed
+[22.227s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/media/sf_sdp12_ws/dev_ws/src/py_target_detection': PYTHONPATH=/media/sf_sdp12_ws/dev_ws/build/py_target_detection/prefix_override:/media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/py_target_detection build --build-base /media/sf_sdp12_ws/dev_ws/build/py_target_detection/build install --record /media/sf_sdp12_ws/dev_ws/build/py_target_detection/install.log --single-version-externally-managed
+[23.046s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/media/sf_sdp12_ws/dev_ws/src/marker_detection' returned '0': PYTHONPATH=/media/sf_sdp12_ws/dev_ws/build/marker_detection/prefix_override:/media/sf_sdp12_ws/dev_ws/install/marker_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/marker_detection build --build-base /media/sf_sdp12_ws/dev_ws/build/marker_detection/build install --record /media/sf_sdp12_ws/dev_ws/build/marker_detection/install.log --single-version-externally-managed
+[23.139s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/marker_detection' for CMake module files
+[23.163s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/marker_detection' for CMake config files
+[23.221s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/marker_detection/lib'
+[23.225s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/marker_detection/bin'
+[23.227s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/marker_detection/lib/pkgconfig/marker_detection.pc'
+[23.229s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/marker_detection/lib/python3.10/site-packages'
+[23.230s] Level 1:colcon.colcon_core.shell:create_environment_hook('marker_detection', 'pythonpath')
+[23.323s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_sdp12_ws/dev_ws/install/marker_detection/share/marker_detection/hook/pythonpath.ps1'
+[23.336s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/media/sf_sdp12_ws/dev_ws/install/marker_detection/share/marker_detection/hook/pythonpath.dsv'
+[23.345s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_sdp12_ws/dev_ws/install/marker_detection/share/marker_detection/hook/pythonpath.sh'
+[23.353s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/marker_detection/bin'
+[23.356s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(marker_detection)
+[23.464s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_sdp12_ws/dev_ws/install/marker_detection/share/marker_detection/package.ps1'
+[23.486s] INFO:colcon.colcon_core.shell:Creating package descriptor '/media/sf_sdp12_ws/dev_ws/install/marker_detection/share/marker_detection/package.dsv'
+[23.494s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_sdp12_ws/dev_ws/install/marker_detection/share/marker_detection/package.sh'
+[23.503s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_sdp12_ws/dev_ws/install/marker_detection/share/marker_detection/package.bash'
+[23.514s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_sdp12_ws/dev_ws/install/marker_detection/share/marker_detection/package.zsh'
+[23.522s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/media/sf_sdp12_ws/dev_ws/install/marker_detection/share/colcon-core/packages/marker_detection)
+[23.567s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/media/sf_sdp12_ws/dev_ws/src/py_img_stream' returned '0': PYTHONPATH=/media/sf_sdp12_ws/dev_ws/build/py_img_stream/prefix_override:/media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/py_img_stream build --build-base /media/sf_sdp12_ws/dev_ws/build/py_img_stream/build install --record /media/sf_sdp12_ws/dev_ws/build/py_img_stream/install.log --single-version-externally-managed
+[23.602s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/py_img_stream' for CMake module files
+[23.638s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/py_img_stream' for CMake config files
+[23.719s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib'
+[23.723s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/bin'
+[23.727s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib/pkgconfig/py_img_stream.pc'
+[23.730s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib/python3.10/site-packages'
+[23.731s] Level 1:colcon.colcon_core.shell:create_environment_hook('py_img_stream', 'pythonpath')
+[23.821s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/share/py_img_stream/hook/pythonpath.ps1'
+[23.826s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/share/py_img_stream/hook/pythonpath.dsv'
+[23.830s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/share/py_img_stream/hook/pythonpath.sh'
+[23.838s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/bin'
+[23.840s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(py_img_stream)
+[23.915s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/share/py_img_stream/package.ps1'
+[23.927s] INFO:colcon.colcon_core.shell:Creating package descriptor '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/share/py_img_stream/package.dsv'
+[23.937s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/share/py_img_stream/package.sh'
+[23.945s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/share/py_img_stream/package.bash'
+[23.954s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/share/py_img_stream/package.zsh'
+[23.963s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/media/sf_sdp12_ws/dev_ws/install/py_img_stream/share/colcon-core/packages/py_img_stream)
+[23.991s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/media/sf_sdp12_ws/dev_ws/src/py_target_detection' returned '0': PYTHONPATH=/media/sf_sdp12_ws/dev_ws/build/py_target_detection/prefix_override:/media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/py_target_detection build --build-base /media/sf_sdp12_ws/dev_ws/build/py_target_detection/build install --record /media/sf_sdp12_ws/dev_ws/build/py_target_detection/install.log --single-version-externally-managed
+[24.048s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/py_target_detection' for CMake module files
+[24.076s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/py_target_detection' for CMake config files
+[24.140s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib'
+[24.144s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/bin'
+[24.146s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/pkgconfig/py_target_detection.pc'
+[24.151s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/python3.10/site-packages'
+[24.152s] Level 1:colcon.colcon_core.shell:create_environment_hook('py_target_detection', 'pythonpath')
+[24.213s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/share/py_target_detection/hook/pythonpath.ps1'
+[24.221s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/share/py_target_detection/hook/pythonpath.dsv'
+[24.228s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/share/py_target_detection/hook/pythonpath.sh'
+[24.236s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/bin'
+[24.238s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(py_target_detection)
+[24.310s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/share/py_target_detection/package.ps1'
+[24.320s] INFO:colcon.colcon_core.shell:Creating package descriptor '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/share/py_target_detection/package.dsv'
+[24.333s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/share/py_target_detection/package.sh'
+[24.348s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/share/py_target_detection/package.bash'
+[24.355s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/share/py_target_detection/package.zsh'
+[24.362s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/media/sf_sdp12_ws/dev_ws/install/py_target_detection/share/colcon-core/packages/py_target_detection)
+[25.213s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/media/sf_sdp12_ws/dev_ws/src/image_streaming' returned '0': PYTHONPATH=/media/sf_sdp12_ws/dev_ws/build/image_streaming/prefix_override:/media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/image_streaming build --build-base /media/sf_sdp12_ws/dev_ws/build/image_streaming/build install --record /media/sf_sdp12_ws/dev_ws/build/image_streaming/install.log --single-version-externally-managed
+[25.292s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/image_streaming' for CMake module files
+[25.319s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/image_streaming' for CMake config files
+[25.371s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/image_streaming/lib'
+[25.375s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/image_streaming/bin'
+[25.378s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/pkgconfig/image_streaming.pc'
+[25.380s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages'
+[25.382s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_streaming', 'pythonpath')
+[25.470s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_sdp12_ws/dev_ws/install/image_streaming/share/image_streaming/hook/pythonpath.ps1'
+[25.498s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/media/sf_sdp12_ws/dev_ws/install/image_streaming/share/image_streaming/hook/pythonpath.dsv'
+[25.511s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_sdp12_ws/dev_ws/install/image_streaming/share/image_streaming/hook/pythonpath.sh'
+[25.521s] Level 1:colcon.colcon_core.environment:checking '/media/sf_sdp12_ws/dev_ws/install/image_streaming/bin'
+[25.524s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(image_streaming)
+[25.600s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_sdp12_ws/dev_ws/install/image_streaming/share/image_streaming/package.ps1'
+[25.611s] INFO:colcon.colcon_core.shell:Creating package descriptor '/media/sf_sdp12_ws/dev_ws/install/image_streaming/share/image_streaming/package.dsv'
+[25.622s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_sdp12_ws/dev_ws/install/image_streaming/share/image_streaming/package.sh'
+[25.631s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_sdp12_ws/dev_ws/install/image_streaming/share/image_streaming/package.bash'
+[25.639s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_sdp12_ws/dev_ws/install/image_streaming/share/image_streaming/package.zsh'
+[25.651s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/media/sf_sdp12_ws/dev_ws/install/image_streaming/share/colcon-core/packages/image_streaming)
+[25.663s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[25.671s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[25.676s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[25.680s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[25.795s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[25.796s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[25.797s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[25.862s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[26.015s] INFO:colcon.colcon_core.shell:Creating prefix script '/media/sf_sdp12_ws/dev_ws/install/local_setup.ps1'
+[26.045s] INFO:colcon.colcon_core.shell:Creating prefix util module '/media/sf_sdp12_ws/dev_ws/install/_local_setup_util_ps1.py'
+[26.064s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/media/sf_sdp12_ws/dev_ws/install/setup.ps1'
+[26.231s] INFO:colcon.colcon_core.shell:Creating prefix script '/media/sf_sdp12_ws/dev_ws/install/local_setup.sh'
+[26.330s] INFO:colcon.colcon_core.shell:Creating prefix util module '/media/sf_sdp12_ws/dev_ws/install/_local_setup_util_sh.py'
+[26.335s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/media/sf_sdp12_ws/dev_ws/install/setup.sh'
+[26.487s] INFO:colcon.colcon_core.shell:Creating prefix script '/media/sf_sdp12_ws/dev_ws/install/local_setup.bash'
+[26.505s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/media/sf_sdp12_ws/dev_ws/install/setup.bash'
+[26.623s] INFO:colcon.colcon_core.shell:Creating prefix script '/media/sf_sdp12_ws/dev_ws/install/local_setup.zsh'
+[26.630s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/media/sf_sdp12_ws/dev_ws/install/setup.zsh'

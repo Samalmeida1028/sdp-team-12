@@ -1,0 +1,24 @@
+[3.166s] Invoking command in '/media/sf_sdp12_ws/dev_ws/src/image_streaming': PYTHONPATH=/media/sf_sdp12_ws/dev_ws/build/image_streaming/prefix_override:/media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/image_streaming build --build-base /media/sf_sdp12_ws/dev_ws/build/image_streaming/build install --record /media/sf_sdp12_ws/dev_ws/build/image_streaming/install.log --single-version-externally-managed
+[3.665s] running egg_info
+[3.671s] writing ../../build/image_streaming/image_streaming.egg-info/PKG-INFO
+[3.686s] writing dependency_links to ../../build/image_streaming/image_streaming.egg-info/dependency_links.txt
+[3.695s] writing entry points to ../../build/image_streaming/image_streaming.egg-info/entry_points.txt
+[3.710s] writing requirements to ../../build/image_streaming/image_streaming.egg-info/requires.txt
+[3.722s] writing top-level names to ../../build/image_streaming/image_streaming.egg-info/top_level.txt
+[3.785s] reading manifest file '../../build/image_streaming/image_streaming.egg-info/SOURCES.txt'
+[3.800s] writing manifest file '../../build/image_streaming/image_streaming.egg-info/SOURCES.txt'
+[3.803s] running build
+[3.805s] running build_py
+[3.817s] running install
+[3.821s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[3.824s]   warnings.warn(
+[3.826s] running install_lib
+[3.832s] running install_data
+[3.843s] running install_egg_info
+[3.846s] removing '/media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages/image_streaming-0.0.0-py3.10.egg-info' (and everything under it)
+[3.872s] Copying ../../build/image_streaming/image_streaming.egg-info to /media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages/image_streaming-0.0.0-py3.10.egg-info
+[3.908s] running install_scripts
+[3.927s] Installing img_publisher script to /media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/image_streaming
+[3.933s] Installing img_test_sub script to /media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/image_streaming
+[3.943s] writing list of installed files to '/media/sf_sdp12_ws/dev_ws/build/image_streaming/install.log'
+[4.519s] Invoked command in '/media/sf_sdp12_ws/dev_ws/src/image_streaming' returned '0': PYTHONPATH=/media/sf_sdp12_ws/dev_ws/build/image_streaming/prefix_override:/media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/image_streaming build --build-base /media/sf_sdp12_ws/dev_ws/build/image_streaming/build install --record /media/sf_sdp12_ws/dev_ws/build/image_streaming/install.log --single-version-externally-managed
