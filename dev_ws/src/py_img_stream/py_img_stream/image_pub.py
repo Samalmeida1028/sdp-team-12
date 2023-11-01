@@ -54,23 +54,22 @@ class ImagePublisher(Node):
     self.get_logger().info("here")
     if ids is not None and len(ids) > 0: 
       self.get_logger().info("now here")
-      marker_side = self.marker_side
 
       # if self.publish_image_feedback:
       #   self.aruco_display(corners, ids)
-      ids = Int32MultiArray()
+      ids_array = Int32MultiArray()
       translations = Float32MultiArray()
       rotations = Float32MultiArray()
       for (marker_corner, marker_id) in zip(corners, ids):
-        if(int(marker_id[0]) not in self.currently_seen_ids):
-          self.currently_seen_ids.add(int(marker_id[0]))
-          ids.data.append(int(marker_id[0]))
+        self.currently_seen_ids.add(int(marker_id[0]))
+        ids_array.data = self.currently_seen_ids
+        marker_side = self.marker_side
 
 
-          rvec, tvec, _ = aruco.estimatePoseSingleMarkers(marker_corner, marker_side, 
+        rvec, tvec, _ = aruco.estimatePoseSingleMarkers(marker_corner, marker_side, 
           self.cameraMatrix,self.distCoeffs)
-          translations.data = tvec
-          rotations.data = rvec
+        # translations.data = np.array(tvec[0][0]).astype(float)
+        # rotations.data = np.array(rvec[0][0]).astype(float)
         
 
 
