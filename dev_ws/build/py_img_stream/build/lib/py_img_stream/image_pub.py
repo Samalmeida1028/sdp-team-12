@@ -104,6 +104,8 @@ class ImagePublisher(Node):
     # This method returns True/False as well
     # as the video frame.
     ret, self.frame = self.cam.read()
+    # img = cv2.flip(img, -1)
+    # self.frame = cv2.flip(img, 1)
 
 
     # self.get_logger().info('Reading camera')
@@ -116,7 +118,7 @@ class ImagePublisher(Node):
       # test.data = pose
       # if(pose is not None):
       #   self.publisher.publish(test)
-      #   self.get_logger().info(test)
+      # self.get_logger().info(type(img))
       self.get_pose()
       cv2.imshow('camera', self.frame)
       cv2.waitKey(1)
