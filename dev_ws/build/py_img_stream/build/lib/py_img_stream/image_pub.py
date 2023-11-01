@@ -11,14 +11,17 @@ import rclpy
 from rclpy.node import Node
 import std_msgs.msg as std_m
 from std_msgs.msg import String
+from std_msgs.msg import Float32MultiArray
+from std_msgs.msg import Int32MultiArray
 
 
 class ImagePublisher(Node):
 
   def __init__(self):
     super().__init__('image_pub')
-    self.publisher = self.create_publisher(String, "video_frames", 1)
-    self.publisher_pose = self.create_publisher(String, "poses", 10)
+    self.translation_publisher = self.create_publisher(Float32MultiArray, "translation_list", 1)
+    self.rotation_publisher = self.create_publisher(Float32MultiArray, "rotation_list", 1)
+    self.publisher_ids = self.create_publisher(Int32MultiArray, "ids_list", 10)
     timer_period = .016
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
@@ -47,23 +50,34 @@ class ImagePublisher(Node):
 
     # self.get_logger().warn("ids: {0}".format(ids))
     self.currently_seen_ids = set()
+    
+    self.get_logger().info("here")
     if ids is not None and len(ids) > 0: 
+      self.get_logger().info("now here")
+      marker_side = self.marker_side
 
       # if self.publish_image_feedback:
       #   self.aruco_display(corners, ids)
-      
+      ids = Int32MultiArray()
+      translations = Float32MultiArray()
+      rotations = Float32MultiArray()
       for (marker_corner, marker_id) in zip(corners, ids):
-          
-        self.currently_seen_ids.add(int(marker_id[0]))
+        if(int(marker_id[0]) not in self.currently_seen_ids):
+          self.currently_seen_ids.add(int(marker_id[0]))
+          ids.data.append(int(marker_id[0]))
 
-        marker_side = self.marker_side
+
+          rvec, tvec, _ = aruco.estimatePoseSingleMarkers(marker_corner, marker_side, 
+          self.cameraMatrix,self.distCoeffs)
+          translations.data = tvec
+          rotations.data = rvec
+        
+
 
         # if self.use_custom_marker_side_dict and marker_id[0] in self.custom_marker_sides:
         #   marker_side = self.custom_marker_sides[marker_id[0]]
 
         # Pose estimation for each marker
-        rvec, tvec, _ = aruco.estimatePoseSingleMarkers(marker_corner, marker_side, 
-          self.cameraMatrix,self.distCoeffs)
 
         # if not self.search_for_grid or marker_id[0] not in self.grid_overall_ids:
         self.get_logger().warn("\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0]))
