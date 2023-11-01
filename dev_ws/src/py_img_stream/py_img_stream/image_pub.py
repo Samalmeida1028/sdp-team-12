@@ -11,7 +11,9 @@ import rclpy
 from rclpy.node import Node
 import std_msgs.msg as std_m
 from std_msgs.msg import String
-
+from std_msgs.msg import String
+from std_msgs.msg import Float32MultiArray
+from std_msgs.msg import Int32MultiArray
 
 class ImagePublisher(Node):
 
