@@ -1,8 +1,9 @@
 import time
 import argparse
 import cv2
+from cv2 import aruco
 import scipy.io as sio
-import pyrealsense2 as rs
+# import pyrealsense2 as rs
 import numpy as np
 
 # Import ROS specific packages
@@ -17,75 +18,81 @@ class ImagePublisher(Node):
   def __init__(self):
     super().__init__('image_pub')
     self.publisher = self.create_publisher(String, "video_frames", 1)
+    self.publisher_pose = self.create_publisher(String, "poses", 10)
     timer_period = .016
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
-    camParams = sio.loadmat("./calibration/arjunPC_camParams.mat")
-    cameraMatrix = camParams['cameraMatrix']
-    distCoeffs = camParams['distortionCoefficients']
+    self.camParams = sio.loadmat("./calibration/sam_laptop.mat")
+    self.cameraMatrix = self.camParams['cameraMatrix']
+    self.distCoeffs = self.camParams['distortionCoefficients']
 
     self.aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_5X5_1000)
-    self.aruco_params = cv2.aruco.DetectorParameters()
-    self.detector = cv2.aruco.ArucoDetector(self.aruco_dict, self.aruco_params)
-    self.markerLength = 100 # mm
-
-    self.get_logger().info('Starting capture')
+    self.aruco_params = aruco.DetectorParameters_create()
+    # self.aruco_params = cv2.aruco.DetectorParameters()
+    # self.detector = cv2.aruco.ArucoDetector(self.aruco_dict, self.aruco_params)
+    self.markerLength = 51 # mm
+    self.marker_side = self.markerLength
+    if self.cameraMatrix is not None:
+      self.get_logger().info('Starting capture')
     self.cam = cv2.VideoCapture(0) 
+    self.frame = []
+    self.marker_ids_seen = set()
+    self.custom_marker_sides = dict()
+    self.marker_pose = []
     # self.br = CvBridge()
 
   def get_pose(self):
     target_marker = 1 
+    corners, ids, rejected = aruco.detectMarkers(self.frame, self.aruco_dict, parameters = self.aruco_params)
 
-    mp = [0, 0]
-    depth = 0
+    # self.get_logger().warn("ids: {0}".format(ids))
+    self.currently_seen_ids = set()
+    if ids is not None and len(ids) > 0: 
 
-    s = rgb_img.shape # (height, width, channels)
-
-    (corners, ids, rejected) = self.detector.detectMarkers(rgb_img)
-
-    if len(corners) > 0:
-      ids = ids.flatten()
-
-      # For every detected marker, we do pose estimation using its corners and find the rotational and translational vectors
-      for (markerCorner, markerID) in zip(corners, ids):
-        if markerID == target_marker: # only execute if we have target marker
-          reshapedCorners = markerCorner.reshape((4, 2))
-          (tL, tR, bR, bL) = reshapedCorners
-          tL = [int(tL[0]), int(tL[1])]
-          tR = [int(tR[0]), int(tR[1])]
-          bR = [int(bR[0]), int(bR[1])]
-          bL = [int(bL[0]), int(bL[1])]
-
-          # mp[0] = int((tL[0] + bR[0]) / 2)
-          # mp[1] = int((tL[1] + bR[1]) / 2)
+      # if self.publish_image_feedback:
+      #   self.aruco_display(corners, ids)
+      
+      for (marker_corner, marker_id) in zip(corners, ids):
           
-          rvec, tvec, _ = cv2.aruco.estimatePoseSingleMarkers(markerCorner, self.markerLength, self.cameraMatrix, self.distCoeffs)
-          rvec = rvec[0][0]
-          tvec = tvec[0][0]
+        self.currently_seen_ids.add(int(marker_id[0]))
 
-          mp[0] = tvec[0]
-          mp[1] = tvec[1]
+        marker_side = self.marker_side
 
-          depth = round(tvec[2], 2) # mm
+        # if self.use_custom_marker_side_dict and marker_id[0] in self.custom_marker_sides:
+        #   marker_side = self.custom_marker_sides[marker_id[0]]
 
-          # Printing distance on the image
-          cv2.putText(rgb_img, str(depth), (tL[0], tL[1] - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-          print("Marker {} detected! X: {}, Y: {}, Distance (mm): {}".format(str(markerID), mp[0], mp[1], depth))
-        else:
-            print("Marker {} detected!".format(str(markerID)))
+        # Pose estimation for each marker
+        rvec, tvec, _ = aruco.estimatePoseSingleMarkers(marker_corner, marker_side, 
+          self.cameraMatrix,self.distCoeffs)
 
-      # Press 's' key when detecting marker to save image. Only available when marker is detected
-      if cv2.waitKey(33) == ord('s'):
-          print("Taking ArUco pic {}...".format(j))
-          cv2.imwrite(self.path + "Images/aruco_image_{}.png".format(self.j), rgb_img)
-          self.j += 1
+        # if not self.search_for_grid or marker_id[0] not in self.grid_overall_ids:
+        self.get_logger().warn("\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0]))
 
-      # Create an array of translational vector data
-      coords = std_m.Float64MultiArray()
-      coords.data = [mp[0], mp[1], depth]
-      self.coord_pub.publish(coords)
-    else:
-      print("No marker detected :(")
+        #   pass
+
+              
+      
+      # if self.search_for_grid:
+
+      #   for i in range (0, self.grid_number):
+      #     retval, rvec2, tvec2 = aruco.estimatePoseBoard(corners, ids, self.boards[i], self.cam_params["mtx"], self.cam_params["dist"], rvec, tvec)
+
+      #     self.get_logger().info("[Aruco Pose Estimator] retval: {0}".format(retval))
+      #     if retval > 5:
+      #       self.currently_seen_ids.add(self.grid_output_ids[i])
+            
+      #       if tvec2.shape[0] == 3:
+      #         tvec2_ = [tvec2[0][0], tvec2[1][0], tvec2[2][0]]
+      #         rvec2_ = [rvec2[0][0], rvec2[1][0], rvec2[2][0]]
+            #   self.publish_pose(self.grid_output_ids[i], tvec2_, rvec2_)
+            # else:
+            #   self.publish_pose(self.grid_output_ids[i], tvec2[0][0], rvec2[0][0])
+
+
+    for marker_not_seen in self.marker_ids_seen.difference(self.currently_seen_ids):
+      presence_msg = Bool()
+      presence_msg.data = False
+      # self.presence_pub[marker_not_seen].publish(presence_msg)
 
    
   def timer_callback(self):
@@ -96,7 +103,7 @@ class ImagePublisher(Node):
     # Capture frame-by-frame
     # This method returns True/False as well
     # as the video frame.
-    ret, frame = self.cam.read()
+    ret, self.frame = self.cam.read()
 
 
     # self.get_logger().info('Reading camera')
@@ -104,11 +111,14 @@ class ImagePublisher(Node):
     #   # Publish the image.
     #   # The 'cv2_to_imgmsg' method converts an OpenCV
     #   # image to a ROS 2 image message
-      coords = get_pose();
-      test = String()
-      test.data = "FPSTEST"
-      self.publisher.publish(test)
-      cv2.imshow('camera', frame)
+      # pose = str(self.get_pose())
+      # test = String()
+      # test.data = pose
+      # if(pose is not None):
+      #   self.publisher.publish(test)
+      #   self.get_logger().info(test)
+      self.get_pose()
+      cv2.imshow('camera', self.frame)
       cv2.waitKey(1)
 
     # Display the message on the console
