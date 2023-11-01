@@ -19,8 +19,9 @@ class ImagePublisher(Node):
 
   def __init__(self):
     super().__init__('image_pub')
-    self.publisher = self.create_publisher(String, "video_frames", 1)
-    self.publisher_pose = self.create_publisher(String, "poses", 10)
+    self.translation_publisher = self.create_publisher(Float32MultiArray, "translation_list", 1)
+    self.rotation_publisher = self.create_publisher(Float32MultiArray, "rotation_list", 1)
+    self.publisher_ids = self.create_publisher(Int32MultiArray, "ids_list", 10)
     timer_period = .016
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
