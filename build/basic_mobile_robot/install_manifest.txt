@@ -1,4 +1,5 @@
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf.yaml
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf2.yaml
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v1.launch.py
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v2.launch.py
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v3.launch.py
@@ -12,6 +13,8 @@
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/wrist.stl
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.pgm
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.yaml
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/generated_map.pgm
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/generated_map.yaml
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/arm_base.stl
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/bicep.stl
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/elbow.stl

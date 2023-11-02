@@ -1,0 +1,137 @@
+[0.000000] (-) TimerEvent: {}
+[0.000736] (basic_mobile_robot) JobQueued: {'identifier': 'basic_mobile_robot', 'dependencies': OrderedDict()}
+[0.001355] (basic_mobile_robot) JobStarted: {'identifier': 'basic_mobile_robot'}
+[0.096261] (-) TimerEvent: {}
+[0.197407] (-) TimerEvent: {}
+[0.265712] (basic_mobile_robot) JobProgress: {'identifier': 'basic_mobile_robot', 'progress': 'cmake'}
+[0.297580] (-) TimerEvent: {}
+[0.328289] (basic_mobile_robot) JobProgress: {'identifier': 'basic_mobile_robot', 'progress': 'build'}
+[0.340030] (basic_mobile_robot) Command: {'cmd': ['/usr/bin/cmake', '--build', '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot', '--', '-j12', '-l12'], 'cwd': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'arjun'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('WT_PROFILE_ID', '{0caa0dad-35be-5f56-a8ff-afceeeaa6101}'), ('HOME', '/home/arjun'), ('OLDPWD', '/mnt/e/UMass_Amherst'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'arjun'), ('NAME', 'FreQuency2612'), ('WSL_INTEROP', '/run/WSL/548_interop'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/models/'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/arjun/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/bin:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/libnvvp:/mnt/c/Program Files (x86)/Razer Chroma SDK/bin:/mnt/c/Program Files/Razer Chroma SDK/bin:/mnt/c/WinAVR-20100110/bin:/mnt/c/WinAVR-20100110/utils/bin:/mnt/c/Program Files (x86)/Razer/ChromaBroadcast/bin:/mnt/c/Program Files/Razer/ChromaBroadcast/bin:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Users/arjun/AppData/Local/Microsoft/WindowsApps:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/MATLAB/R2022a/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/dotnet/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/WINDOWS/system32/config/systemprofile/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/arjun/AppData/Local/Programs/Python/Python310/python.exe:/mnt/c/Program Files/NVIDIA Corporation/Nsight Compute 2023.2.2/:/mnt/c/Program Files/MATLAB/R2023b/bin:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/arjun/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/arjun/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/e/UMass Amherst/ECE 371/Quartus/modelsim_ase/win32aloem:/mnt/c/Users/arjun/AppData/Local/GitHubDesktop/bin:/snap/bin'), ('WT_SESSION', 'b01018e9-ff06-4695-8114-b487601a4791'), ('XDG_RUNTIME_DIR', '/run/user/1000/'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('CMAKE_PREFIX_PATH', '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot:/opt/ros/humble'), ('WSLENV', 'WT_SESSION:WT_PROFILE_ID:')]), 'shell': False}
+[0.397674] (-) TimerEvent: {}
+[0.498451] (-) TimerEvent: {}
+[0.554690] (basic_mobile_robot) CommandEnded: {'returncode': 0}
+[0.598564] (-) TimerEvent: {}
+[0.614324] (basic_mobile_robot) JobProgress: {'identifier': 'basic_mobile_robot', 'progress': 'install'}
+[0.632019] (basic_mobile_robot) Command: {'cmd': ['/usr/bin/cmake', '--install', '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot'], 'cwd': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'arjun'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('WT_PROFILE_ID', '{0caa0dad-35be-5f56-a8ff-afceeeaa6101}'), ('HOME', '/home/arjun'), ('OLDPWD', '/mnt/e/UMass_Amherst'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'arjun'), ('NAME', 'FreQuency2612'), ('WSL_INTEROP', '/run/WSL/548_interop'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/models/'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/arjun/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/bin:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/libnvvp:/mnt/c/Program Files (x86)/Razer Chroma SDK/bin:/mnt/c/Program Files/Razer Chroma SDK/bin:/mnt/c/WinAVR-20100110/bin:/mnt/c/WinAVR-20100110/utils/bin:/mnt/c/Program Files (x86)/Razer/ChromaBroadcast/bin:/mnt/c/Program Files/Razer/ChromaBroadcast/bin:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Users/arjun/AppData/Local/Microsoft/WindowsApps:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/MATLAB/R2022a/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/dotnet/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/WINDOWS/system32/config/systemprofile/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/arjun/AppData/Local/Programs/Python/Python310/python.exe:/mnt/c/Program Files/NVIDIA Corporation/Nsight Compute 2023.2.2/:/mnt/c/Program Files/MATLAB/R2023b/bin:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/arjun/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/arjun/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/e/UMass Amherst/ECE 371/Quartus/modelsim_ase/win32aloem:/mnt/c/Users/arjun/AppData/Local/GitHubDesktop/bin:/snap/bin'), ('WT_SESSION', 'b01018e9-ff06-4695-8114-b487601a4791'), ('XDG_RUNTIME_DIR', '/run/user/1000/'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('CMAKE_PREFIX_PATH', '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot:/opt/ros/humble'), ('WSLENV', 'WT_SESSION:WT_PROFILE_ID:')]), 'shell': False}
+[0.649588] (basic_mobile_robot) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.669761] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config\n'}
+[0.698755] (-) TimerEvent: {}
+[0.732084] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf.yaml\n'}
+[0.798904] (-) TimerEvent: {}
+[0.899660] (-) TimerEvent: {}
+[1.000522] (-) TimerEvent: {}
+[1.028295] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf2.yaml\n'}
+[1.100720] (-) TimerEvent: {}
+[1.201520] (-) TimerEvent: {}
+[1.207900] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch\n'}
+[1.269260] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v1.launch.py\n'}
+[1.301709] (-) TimerEvent: {}
+[1.316666] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v2.launch.py\n'}
+[1.367843] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v3.launch.py\n'}
+[1.401888] (-) TimerEvent: {}
+[1.421423] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v4.launch.py\n'}
+[1.471702] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v5.launch.py\n'}
+[1.502085] (-) TimerEvent: {}
+[1.602923] (-) TimerEvent: {}
+[1.667558] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes\n'}
+[1.703078] (-) TimerEvent: {}
+[1.734483] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/arm_base.stl\n'}
+[1.785965] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/bicep.stl\n'}
+[1.803265] (-) TimerEvent: {}
+[1.837393] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/elbow.stl\n'}
+[1.900172] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/robot_base.stl\n'}
+[1.903375] (-) TimerEvent: {}
+[1.953173] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/wheel.stl\n'}
+[2.003567] (-) TimerEvent: {}
+[2.005542] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/wrist.stl\n'}
+[2.043836] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps\n'}
+[2.103734] (-) TimerEvent: {}
+[2.122781] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.pgm\n'}
+[2.171907] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.yaml\n'}
+[2.203918] (-) TimerEvent: {}
+[2.205432] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models\n'}
+[2.259497] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description\n'}
+[2.304123] (-) TimerEvent: {}
+[2.327443] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes\n'}
+[2.404291] (-) TimerEvent: {}
+[2.425614] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/arm_base.stl\n'}
+[2.504484] (-) TimerEvent: {}
+[2.510148] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/bicep.stl\n'}
+[2.586815] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/elbow.stl\n'}
+[2.604598] (-) TimerEvent: {}
+[2.655232] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/robot_base.stl\n'}
+[2.704755] (-) TimerEvent: {}
+[2.724280] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/wheel.stl\n'}
+[2.794604] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/wrist.stl\n'}
+[2.804921] (-) TimerEvent: {}
+[2.858220] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/model.config\n'}
+[2.905064] (-) TimerEvent: {}
+[2.921577] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/model.sdf\n'}
+[2.975976] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_v1.urdf\n'}
+[3.005208] (-) TimerEvent: {}
+[3.026776] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_v2.urdf\n'}
+[3.071586] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/params\n'}
+[3.105389] (-) TimerEvent: {}
+[3.143677] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/params/nav2_params.yaml\n'}
+[3.180229] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz\n'}
+[3.205540] (-) TimerEvent: {}
+[3.240578] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/nav2_config.rviz\n'}
+[3.286628] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/urdf_config.rviz\n'}
+[3.305697] (-) TimerEvent: {}
+[3.321049] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/src\n'}
+[3.369285] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds\n'}
+[3.405898] (-) TimerEvent: {}
+[3.423213] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world\n'}
+[3.498350] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world/smalltown.world\n'}
+[3.506013] (-) TimerEvent: {}
+[3.584565] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/package_run_dependencies/basic_mobile_robot\n'}
+[3.606186] (-) TimerEvent: {}
+[3.683808] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/parent_prefix_path/basic_mobile_robot\n'}
+[3.706387] (-) TimerEvent: {}
+[3.732314] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/ament_prefix_path.sh\n'}
+[3.790687] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/ament_prefix_path.dsv\n'}
+[3.806559] (-) TimerEvent: {}
+[3.834210] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/path.sh\n'}
+[3.892759] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/path.dsv\n'}
+[3.906689] (-) TimerEvent: {}
+[3.945088] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.bash\n'}
+[3.995654] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.sh\n'}
+[4.006866] (-) TimerEvent: {}
+[4.056534] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.zsh\n'}
+[4.107091] (-) TimerEvent: {}
+[4.124945] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.dsv\n'}
+[4.174510] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.dsv\n'}
+[4.207286] (-) TimerEvent: {}
+[4.308068] (-) TimerEvent: {}
+[4.408808] (-) TimerEvent: {}
+[4.458937] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/packages/basic_mobile_robot\n'}
+[4.508957] (-) TimerEvent: {}
+[4.514883] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/cmake/basic_mobile_robotConfig.cmake\n'}
+[4.557536] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/cmake/basic_mobile_robotConfig-version.cmake\n'}
+[4.606281] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.xml\n'}
+[4.609072] (-) TimerEvent: {}
+[4.681475] (basic_mobile_robot) CommandEnded: {'returncode': 0}
+[4.709209] (-) TimerEvent: {}
+[4.810068] (-) TimerEvent: {}
+[4.910962] (-) TimerEvent: {}
+[5.011755] (-) TimerEvent: {}
+[5.112587] (-) TimerEvent: {}
+[5.213616] (-) TimerEvent: {}
+[5.314561] (-) TimerEvent: {}
+[5.415348] (-) TimerEvent: {}
+[5.516191] (-) TimerEvent: {}
+[5.617071] (-) TimerEvent: {}
+[5.717831] (-) TimerEvent: {}
+[5.818832] (-) TimerEvent: {}
+[5.919770] (-) TimerEvent: {}
+[6.020619] (-) TimerEvent: {}
+[6.122154] (-) TimerEvent: {}
+[6.223367] (-) TimerEvent: {}
+[6.324310] (-) TimerEvent: {}
+[6.425178] (-) TimerEvent: {}
+[6.526662] (-) TimerEvent: {}
+[6.627548] (-) TimerEvent: {}
+[6.728668] (-) TimerEvent: {}
+[6.829593] (-) TimerEvent: {}
+[6.847500] (basic_mobile_robot) JobEnded: {'identifier': 'basic_mobile_robot', 'rc': 0}
+[6.882589] (-) EventReactorShutdown: {}
