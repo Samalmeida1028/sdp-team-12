@@ -20,8 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'keyboard = navigator.keyboard_teleop:main'
-            'nav2pose = navigator.nav2pose:main'
+            'keyboard = navigator.keyboard_teleop:main',
+            'nav2pose = navigator.nav2pose:main',
         ],
     },
 )

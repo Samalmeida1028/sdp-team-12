@@ -28,7 +28,7 @@ find_package(action_msgs REQUIRED)
 # find_package(<dependency> REQUIRED)
 
 install(
-  DIRECTORY config launch meshes maps models params rviz src worlds basic_mobile_robot
+  DIRECTORY config launch meshes maps models params rviz src worlds
   DESTINATION share/${PROJECT_NAME}
 )
 

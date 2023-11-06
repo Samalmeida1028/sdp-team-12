@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 11/5/23
-# Date last modified: 11/5/23
+# Date last modified: 11/6/23
 # Description: a keyboard teleop node that publisher twist messages to cmd_vel topic
 
 import rclpy
-import rclpy.Node as Node
+from rclpy.node import Node
 from geometry_msgs.msg import Twist
-import pygame
+import keyboard as kb
 
 class KeyboardTeleop(Node):
     def __init__(self):
@@ -19,37 +19,36 @@ class KeyboardTeleop(Node):
         print("Initialized")
 
     def publisher_callback(self):
-        keys = pygame.key.get_pressed()
         command = Twist()
 
-        if keys[pygame.K_w]:
-            if keys[pygame.K_a]:
+        if kb.is_pressed('w'):
+            if kb.is_pressed('a'):
                 print("Curving left...")
                 command.linear.x = 0.25
                 command.angular.z = 0.25
-            elif keys[pygame.K_d]:
+            elif kb.is_pressed('d'):
                 print("Curving right...")
                 command.linear.x = 0.25
                 command.angular.z = -0.25
             else:
                 print("Moving forward...")
                 command.linear.x = 0.25
-        elif keys[pygame.K_s]:
-            if keys[pygame.K_a]:
+        elif kb.is_pressed('s'):
+            if kb.is_pressed('a'):
                 print("Curving right...")
                 command.linear.x = -0.25
                 command.angular.z = 0.25
-            elif keys[pygame.K_d]:
+            elif kb.is_pressed('d'):
                 print("Curving left...")
                 command.linear.x = -0.25
                 command.angular.z = -0.25
             else:
                 print("Moving back...")
                 command.linear.x = -0.25
-        elif keys[pygame.K_a]:
+        elif kb.is_pressed('a'):
             print("Rotating left...")
             command.angular.z = 0.25
-        elif keys[pygame.K_d]:
+        elif kb.is_pressed('d'):
             print("Rotating right...")
             command.angular.z = -0.25
 

@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot
+CMAKE_SOURCE_DIR = /media/sf_SDP/sdp-team-12/basic_mobile_robot
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot
+CMAKE_BINARY_DIR = /media/sf_SDP/sdp-team-12/build/basic_mobile_robot
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /media/sf_SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles /media/sf_SDP/sdp-team-12/build/basic_mobile_robot//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /media/sf_SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -197,32 +197,6 @@ basic_mobile_robot_uninstall/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_mobile_robot_uninstall.dir/build.make CMakeFiles/basic_mobile_robot_uninstall.dir/build
 .PHONY : basic_mobile_robot_uninstall/fast
 
-#=============================================================================
-# Target rules for targets named ament_cmake_python_copy_basic_mobile_robot
-
-# Build rule for target.
-ament_cmake_python_copy_basic_mobile_robot: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ament_cmake_python_copy_basic_mobile_robot
-.PHONY : ament_cmake_python_copy_basic_mobile_robot
-
-# fast build rule for target.
-ament_cmake_python_copy_basic_mobile_robot/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/build.make CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/build
-.PHONY : ament_cmake_python_copy_basic_mobile_robot/fast
-
-#=============================================================================
-# Target rules for targets named ament_cmake_python_build_basic_mobile_robot_egg
-
-# Build rule for target.
-ament_cmake_python_build_basic_mobile_robot_egg: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ament_cmake_python_build_basic_mobile_robot_egg
-.PHONY : ament_cmake_python_build_basic_mobile_robot_egg
-
-# fast build rule for target.
-ament_cmake_python_build_basic_mobile_robot_egg/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/build.make CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/build
-.PHONY : ament_cmake_python_build_basic_mobile_robot_egg/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -236,8 +210,6 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... ament_cmake_python_build_basic_mobile_robot_egg"
-	@echo "... ament_cmake_python_copy_basic_mobile_robot"
 	@echo "... basic_mobile_robot_uninstall"
 	@echo "... uninstall"
 .PHONY : help

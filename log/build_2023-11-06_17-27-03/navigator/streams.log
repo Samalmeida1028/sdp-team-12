@@ -1,0 +1,27 @@
+[5.220s] Invoking command in '/media/sf_SDP/sdp-team-12/navigator': PYTHONPATH=/media/sf_SDP/sdp-team-12/build/navigator/prefix_override:/media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/navigator build --build-base /media/sf_SDP/sdp-team-12/build/navigator/build install --record /media/sf_SDP/sdp-team-12/build/navigator/install.log --single-version-externally-managed
+[5.780s] running egg_info
+[5.821s] writing ../build/navigator/navigator.egg-info/PKG-INFO
+[5.867s] writing dependency_links to ../build/navigator/navigator.egg-info/dependency_links.txt
+[5.911s] writing entry points to ../build/navigator/navigator.egg-info/entry_points.txt
+[5.983s] writing requirements to ../build/navigator/navigator.egg-info/requires.txt
+[6.052s] writing top-level names to ../build/navigator/navigator.egg-info/top_level.txt
+[6.171s] reading manifest file '../build/navigator/navigator.egg-info/SOURCES.txt'
+[6.198s] writing manifest file '../build/navigator/navigator.egg-info/SOURCES.txt'
+[6.232s] running build
+[6.235s] running build_py
+[6.297s] copying navigator/keyboard_teleop.py -> /media/sf_SDP/sdp-team-12/build/navigator/build/lib/navigator
+[6.352s] running install
+[6.355s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[6.358s]   warnings.warn(
+[6.360s] running install_lib
+[6.370s] copying /media/sf_SDP/sdp-team-12/build/navigator/build/lib/navigator/keyboard_teleop.py -> /media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator
+[6.478s] byte-compiling /media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/keyboard_teleop.py to keyboard_teleop.cpython-310.pyc
+[6.572s] running install_data
+[6.584s] running install_egg_info
+[6.591s] removing '/media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator-0.0.0-py3.10.egg-info' (and everything under it)
+[6.796s] Copying ../build/navigator/navigator.egg-info to /media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator-0.0.0-py3.10.egg-info
+[7.481s] running install_scripts
+[7.556s] Installing keyboard script to /media/sf_SDP/sdp-team-12/install/navigator/lib/navigator
+[7.642s] Installing nav2pose script to /media/sf_SDP/sdp-team-12/install/navigator/lib/navigator
+[7.716s] writing list of installed files to '/media/sf_SDP/sdp-team-12/build/navigator/install.log'
+[7.788s] Invoked command in '/media/sf_SDP/sdp-team-12/navigator' returned '0': PYTHONPATH=/media/sf_SDP/sdp-team-12/build/navigator/prefix_override:/media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/navigator build --build-base /media/sf_SDP/sdp-team-12/build/navigator/build install --record /media/sf_SDP/sdp-team-12/build/navigator/install.log --single-version-externally-managed

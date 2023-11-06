@@ -1,0 +1,177 @@
+[0.000000] (-) TimerEvent: {}
+[0.002155] (basic_mobile_robot) JobQueued: {'identifier': 'basic_mobile_robot', 'dependencies': OrderedDict()}
+[0.003149] (navigator) JobQueued: {'identifier': 'navigator', 'dependencies': OrderedDict()}
+[0.004152] (basic_mobile_robot) JobStarted: {'identifier': 'basic_mobile_robot'}
+[0.091937] (-) TimerEvent: {}
+[0.195082] (-) TimerEvent: {}
+[0.297171] (-) TimerEvent: {}
+[0.388769] (navigator) JobStarted: {'identifier': 'navigator'}
+[0.400987] (-) TimerEvent: {}
+[0.511107] (-) TimerEvent: {}
+[0.647791] (-) TimerEvent: {}
+[0.752891] (-) TimerEvent: {}
+[0.864783] (-) TimerEvent: {}
+[0.969595] (-) TimerEvent: {}
+[1.049995] (basic_mobile_robot) JobProgress: {'identifier': 'basic_mobile_robot', 'progress': 'cmake'}
+[1.073662] (-) TimerEvent: {}
+[1.167078] (basic_mobile_robot) JobProgress: {'identifier': 'basic_mobile_robot', 'progress': 'build'}
+[1.170983] (basic_mobile_robot) Command: {'cmd': ['/usr/bin/cmake', '--build', '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot', '--', '-j4', '-l4'], 'cwd': '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'sdp12'), ('SSH_CLIENT', '10.0.2.2 50178 22'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/sdp12'), ('OLDPWD', '/media/sf_SDP/sdp-team-12/navigator'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/media/sf_SDP/sdp-team-12/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'sdp12'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '3'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/sdp12/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/media/sf_SDP/sdp-team-12/install/navigator:/media/sf_SDP/sdp-team-12/install/basic_mobile_robot:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.0.2.2 50178 10.0.2.15 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share/:/usr/share/'), ('PYTHONPATH', '/media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot:/media/sf_SDP/sdp-team-12/install/navigator:/opt/ros/humble')]), 'shell': False}
+[1.392662] (-) TimerEvent: {}
+[1.494950] (-) TimerEvent: {}
+[1.642641] (-) TimerEvent: {}
+[1.746411] (-) TimerEvent: {}
+[1.848607] (-) TimerEvent: {}
+[2.001050] (-) TimerEvent: {}
+[2.111616] (-) TimerEvent: {}
+[2.264650] (-) TimerEvent: {}
+[2.373616] (-) TimerEvent: {}
+[2.482149] (-) TimerEvent: {}
+[2.570905] (basic_mobile_robot) CommandEnded: {'returncode': 0}
+[2.583615] (-) TimerEvent: {}
+[2.684915] (-) TimerEvent: {}
+[2.764440] (basic_mobile_robot) JobProgress: {'identifier': 'basic_mobile_robot', 'progress': 'install'}
+[2.807461] (-) TimerEvent: {}
+[2.814173] (basic_mobile_robot) Command: {'cmd': ['/usr/bin/cmake', '--install', '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot'], 'cwd': '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'sdp12'), ('SSH_CLIENT', '10.0.2.2 50178 22'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/sdp12'), ('OLDPWD', '/media/sf_SDP/sdp-team-12/navigator'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/media/sf_SDP/sdp-team-12/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'sdp12'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '3'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/sdp12/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/media/sf_SDP/sdp-team-12/install/navigator:/media/sf_SDP/sdp-team-12/install/basic_mobile_robot:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.0.2.2 50178 10.0.2.15 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share/:/usr/share/'), ('PYTHONPATH', '/media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot:/media/sf_SDP/sdp-team-12/install/navigator:/opt/ros/humble')]), 'shell': False}
+[2.917239] (-) TimerEvent: {}
+[2.919733] (basic_mobile_robot) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[2.926025] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config\n'}
+[2.934294] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf.yaml\n'}
+[2.938754] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf2.yaml\n'}
+[2.941662] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch\n'}
+[2.949287] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v1.launch.py\n'}
+[2.953321] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v2.launch.py\n'}
+[2.956883] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v3.launch.py\n'}
+[2.960975] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v4.launch.py\n'}
+[2.965974] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v5.launch.py\n'}
+[2.969899] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes\n'}
+[2.976719] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/arm_base.stl\n'}
+[2.981273] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/bicep.stl\n'}
+[2.985254] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/elbow.stl\n'}
+[2.988929] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/robot_base.stl\n'}
+[2.993454] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/wheel.stl\n'}
+[2.996935] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/wrist.stl\n'}
+[3.001386] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps\n'}
+[3.007643] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.pgm\n'}
+[3.011121] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.yaml\n'}
+[3.015211] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/generated_map.pgm\n'}
+[3.017762] (-) TimerEvent: {}
+[3.020168] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/generated_map.yaml\n'}
+[3.028078] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models\n'}
+[3.034583] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description\n'}
+[3.042100] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes\n'}
+[3.049568] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/arm_base.stl\n'}
+[3.054118] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/bicep.stl\n'}
+[3.057070] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/elbow.stl\n'}
+[3.061260] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/robot_base.stl\n'}
+[3.064732] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/wheel.stl\n'}
+[3.069217] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/wrist.stl\n'}
+[3.073372] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/model.config\n'}
+[3.077933] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/model.sdf\n'}
+[3.081906] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_v1.urdf\n'}
+[3.087278] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_v2.urdf\n'}
+[3.090864] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/params\n'}
+[3.105736] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/params/nav2_params.yaml\n'}
+[3.108358] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz\n'}
+[3.125583] (-) TimerEvent: {}
+[3.127052] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/nav2_config.rviz\n'}
+[3.131431] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/urdf_config.rviz\n'}
+[3.134689] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/src\n'}
+[3.136142] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds\n'}
+[3.141144] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world\n'}
+[3.148015] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world/smalltown.world\n'}
+[3.159010] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/package_run_dependencies/basic_mobile_robot\n'}
+[3.165922] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/parent_prefix_path/basic_mobile_robot\n'}
+[3.169991] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/ament_prefix_path.sh\n'}
+[3.175415] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/ament_prefix_path.dsv\n'}
+[3.181223] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/path.sh\n'}
+[3.186813] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/path.dsv\n'}
+[3.193083] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.bash\n'}
+[3.197661] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.sh\n'}
+[3.202417] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.zsh\n'}
+[3.208451] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.dsv\n'}
+[3.217129] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.dsv\n'}
+[3.261641] (-) TimerEvent: {}
+[3.365448] (-) TimerEvent: {}
+[3.396117] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/packages/basic_mobile_robot\n'}
+[3.402255] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/cmake/basic_mobile_robotConfig.cmake\n'}
+[3.406592] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/cmake/basic_mobile_robotConfig-version.cmake\n'}
+[3.414920] (basic_mobile_robot) StdoutLine: {'line': b'-- Up-to-date: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.xml\n'}
+[3.454256] (basic_mobile_robot) CommandEnded: {'returncode': 0}
+[3.465895] (-) TimerEvent: {}
+[3.572885] (-) TimerEvent: {}
+[3.692860] (-) TimerEvent: {}
+[3.832114] (-) TimerEvent: {}
+[3.982188] (-) TimerEvent: {}
+[4.113273] (-) TimerEvent: {}
+[4.233762] (-) TimerEvent: {}
+[4.369069] (-) TimerEvent: {}
+[4.488261] (-) TimerEvent: {}
+[4.589775] (-) TimerEvent: {}
+[4.693029] (-) TimerEvent: {}
+[4.865532] (-) TimerEvent: {}
+[4.968354] (-) TimerEvent: {}
+[5.088294] (-) TimerEvent: {}
+[5.204718] (-) TimerEvent: {}
+[5.269358] (basic_mobile_robot) JobEnded: {'identifier': 'basic_mobile_robot', 'rc': 0}
+[5.468813] (-) TimerEvent: {}
+[5.470204] (navigator) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../build/navigator', 'build', '--build-base', '/media/sf_SDP/sdp-team-12/build/navigator/build', 'install', '--record', '/media/sf_SDP/sdp-team-12/build/navigator/install.log', '--single-version-externally-managed'], 'cwd': '/media/sf_SDP/sdp-team-12/navigator', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'sdp12', 'SSH_CLIENT': '10.0.2.2 50178 22', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'MOTD_SHOWN': 'pam', 'HOME': '/home/sdp12', 'OLDPWD': '/media/sf_SDP/sdp-team-12/navigator', 'SSH_TTY': '/dev/pts/0', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLCON_PREFIX_PATH': '/media/sf_SDP/sdp-team-12/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'sdp12', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/home/sdp12/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/media/sf_SDP/sdp-team-12/install/navigator:/media/sf_SDP/sdp-team-12/install/basic_mobile_robot:/opt/ros/humble', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'PWD': '/media/sf_SDP/sdp-team-12/build/navigator', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '10.0.2.2 50178 10.0.2.15 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share/:/usr/share/', 'PYTHONPATH': '/media/sf_SDP/sdp-team-12/build/navigator/prefix_override:/media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages:/media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot'}, 'shell': False}
+[5.612596] (-) TimerEvent: {}
+[5.715653] (-) TimerEvent: {}
+[5.817713] (-) TimerEvent: {}
+[5.920912] (-) TimerEvent: {}
+[6.035356] (-) TimerEvent: {}
+[6.139861] (-) TimerEvent: {}
+[6.167601] (navigator) StdoutLine: {'line': b'running egg_info\n'}
+[6.197349] (navigator) StdoutLine: {'line': b'writing ../build/navigator/navigator.egg-info/PKG-INFO\n'}
+[6.240750] (-) TimerEvent: {}
+[6.242876] (navigator) StdoutLine: {'line': b'writing dependency_links to ../build/navigator/navigator.egg-info/dependency_links.txt\n'}
+[6.285856] (navigator) StdoutLine: {'line': b'writing entry points to ../build/navigator/navigator.egg-info/entry_points.txt\n'}
+[6.337229] (navigator) StdoutLine: {'line': b'writing requirements to ../build/navigator/navigator.egg-info/requires.txt\n'}
+[6.372765] (-) TimerEvent: {}
+[6.427271] (navigator) StdoutLine: {'line': b'writing top-level names to ../build/navigator/navigator.egg-info/top_level.txt\n'}
+[6.476206] (-) TimerEvent: {}
+[6.517518] (navigator) StdoutLine: {'line': b"reading manifest file '../build/navigator/navigator.egg-info/SOURCES.txt'\n"}
+[6.575321] (navigator) StdoutLine: {'line': b"writing manifest file '../build/navigator/navigator.egg-info/SOURCES.txt'\n"}
+[6.589912] (-) TimerEvent: {}
+[6.620022] (navigator) StdoutLine: {'line': b'running build\n'}
+[6.622361] (navigator) StdoutLine: {'line': b'running build_py\n'}
+[6.627383] (navigator) StdoutLine: {'line': b'copying navigator/keyboard_teleop.py -> /media/sf_SDP/sdp-team-12/build/navigator/build/lib/navigator\n'}
+[6.690179] (-) TimerEvent: {}
+[6.739326] (navigator) StdoutLine: {'line': b'running install\n'}
+[6.742728] (navigator) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[6.745654] (navigator) StderrLine: {'line': b'  warnings.warn(\n'}
+[6.747873] (navigator) StdoutLine: {'line': b'running install_lib\n'}
+[6.759523] (navigator) StdoutLine: {'line': b'copying /media/sf_SDP/sdp-team-12/build/navigator/build/lib/navigator/keyboard_teleop.py -> /media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator\n'}
+[6.795312] (-) TimerEvent: {}
+[6.866297] (navigator) StdoutLine: {'line': b'byte-compiling /media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/keyboard_teleop.py to keyboard_teleop.cpython-310.pyc\n'}
+[6.901191] (-) TimerEvent: {}
+[6.959432] (navigator) StdoutLine: {'line': b'running install_data\n'}
+[6.971730] (navigator) StdoutLine: {'line': b'running install_egg_info\n'}
+[6.978736] (navigator) StdoutLine: {'line': b"removing '/media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[7.002042] (-) TimerEvent: {}
+[7.117079] (-) TimerEvent: {}
+[7.182860] (navigator) StdoutLine: {'line': b'Copying ../build/navigator/navigator.egg-info to /media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator-0.0.0-py3.10.egg-info\n'}
+[7.231109] (-) TimerEvent: {}
+[7.344520] (-) TimerEvent: {}
+[7.446231] (-) TimerEvent: {}
+[7.558470] (-) TimerEvent: {}
+[7.660926] (-) TimerEvent: {}
+[7.769622] (-) TimerEvent: {}
+[7.867831] (navigator) StdoutLine: {'line': b'running install_scripts\n'}
+[7.871214] (-) TimerEvent: {}
+[7.944153] (navigator) StdoutLine: {'line': b'Installing keyboard script to /media/sf_SDP/sdp-team-12/install/navigator/lib/navigator\n'}
+[7.972167] (-) TimerEvent: {}
+[8.009130] (navigator) StdoutLine: {'line': b'Installing nav2pose script to /media/sf_SDP/sdp-team-12/install/navigator/lib/navigator\n'}
+[8.076857] (-) TimerEvent: {}
+[8.079674] (navigator) StdoutLine: {'line': b"writing list of installed files to '/media/sf_SDP/sdp-team-12/build/navigator/install.log'\n"}
+[8.174545] (navigator) CommandEnded: {'returncode': 0}
+[8.178988] (-) TimerEvent: {}
+[8.289447] (-) TimerEvent: {}
+[8.394112] (-) TimerEvent: {}
+[8.528423] (-) TimerEvent: {}
+[8.676492] (-) TimerEvent: {}
+[8.780442] (-) TimerEvent: {}
+[8.882913] (-) TimerEvent: {}
+[8.925728] (navigator) JobEnded: {'identifier': 'navigator', 'rc': 0}
+[9.107768] (-) TimerEvent: {}
+[9.108927] (-) EventReactorShutdown: {}
