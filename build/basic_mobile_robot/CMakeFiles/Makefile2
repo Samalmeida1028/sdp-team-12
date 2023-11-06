@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all:
+all: CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -73,6 +73,8 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/uninstall.dir/clean
 clean: CMakeFiles/basic_mobile_robot_uninstall.dir/clean
+clean: CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/clean
+clean: CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -126,6 +128,58 @@ basic_mobile_robot_uninstall: CMakeFiles/basic_mobile_robot_uninstall.dir/rule
 CMakeFiles/basic_mobile_robot_uninstall.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_mobile_robot_uninstall.dir/build.make CMakeFiles/basic_mobile_robot_uninstall.dir/clean
 .PHONY : CMakeFiles/basic_mobile_robot_uninstall.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir
+
+# All Build rule for target.
+CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/build.make CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/build.make CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles --progress-num= "Built target ament_cmake_python_copy_basic_mobile_robot"
+.PHONY : CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles 0
+.PHONY : CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/rule
+
+# Convenience name for target.
+ament_cmake_python_copy_basic_mobile_robot: CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/rule
+.PHONY : ament_cmake_python_copy_basic_mobile_robot
+
+# clean rule for target.
+CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/build.make CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/clean
+.PHONY : CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir
+
+# All Build rule for target.
+CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/all: CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/build.make CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/build.make CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles --progress-num= "Built target ament_cmake_python_build_basic_mobile_robot_egg"
+.PHONY : CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles 0
+.PHONY : CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/rule
+
+# Convenience name for target.
+ament_cmake_python_build_basic_mobile_robot_egg: CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/rule
+.PHONY : ament_cmake_python_build_basic_mobile_robot_egg
+
+# clean rule for target.
+CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/build.make CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/clean
+.PHONY : CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -1,3 +1,10 @@
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/pythonpath.sh
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/pythonpath.dsv
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/local/lib/python3.10/dist-packages/basic_mobile_robot-0.0.0-py3.10.egg-info/PKG-INFO
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/local/lib/python3.10/dist-packages/basic_mobile_robot-0.0.0-py3.10.egg-info/dependency_links.txt
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/local/lib/python3.10/dist-packages/basic_mobile_robot-0.0.0-py3.10.egg-info/top_level.txt
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/local/lib/python3.10/dist-packages/basic_mobile_robot-0.0.0-py3.10.egg-info/SOURCES.txt
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/local/lib/python3.10/dist-packages/basic_mobile_robot/__init__.py
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf.yaml
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf2.yaml
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v1.launch.py
@@ -29,6 +36,9 @@
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/nav2_config.rviz
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/urdf_config.rviz
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world/smalltown.world
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/basic_mobile_robot/__init__.py
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/lib/basic_mobile_robot/keyboard_teleop.py
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/lib/basic_mobile_robot/nav2pose.py
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/package_run_dependencies/basic_mobile_robot
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/parent_prefix_path/basic_mobile_robot
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/ament_prefix_path.sh

@@ -43,6 +43,30 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot/environment" TYPE FILE FILES "/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/ament_cmake_environment_hooks/pythonpath.sh")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot/environment" TYPE FILE FILES "/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/ament_cmake_environment_hooks/pythonpath.dsv")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/local/lib/python3.10/dist-packages/basic_mobile_robot-0.0.0-py3.10.egg-info" TYPE DIRECTORY FILES "/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/ament_cmake_python/basic_mobile_robot/basic_mobile_robot.egg-info/")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/local/lib/python3.10/dist-packages/basic_mobile_robot" TYPE DIRECTORY FILES "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/basic_mobile_robot/" REGEX "/[^/]*\\.pyc$" EXCLUDE REGEX "/\\_\\_pycache\\_\\_$" EXCLUDE)
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  execute_process(
+        COMMAND
+        "/usr/bin/python3.10" "-m" "compileall"
+        "/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/local/lib/python3.10/dist-packages/basic_mobile_robot"
+      )
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE DIRECTORY FILES
     "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/config"
     "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/launch"
@@ -53,6 +77,14 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/rviz"
     "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/src"
     "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/worlds"
+    "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/basic_mobile_robot"
+    )
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/basic_mobile_robot" TYPE PROGRAM FILES
+    "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/scripts/keyboard_teleop.py"
+    "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/scripts/nav2pose.py"
     )
 endif()
 

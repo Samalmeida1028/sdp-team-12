@@ -1,5 +1,7 @@
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles/uninstall.dir
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles/basic_mobile_robot_uninstall.dir
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles/ament_cmake_python_copy_basic_mobile_robot.dir
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles/ament_cmake_python_build_basic_mobile_robot_egg.dir
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles/test.dir
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles/edit_cache.dir
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles/rebuild_cache.dir
