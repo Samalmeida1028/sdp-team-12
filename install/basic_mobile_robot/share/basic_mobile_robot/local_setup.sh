@@ -2,7 +2,7 @@
 
 # since this file is sourced use either the provided AMENT_CURRENT_PREFIX
 # or fall back to the destination set at configure time
-: ${AMENT_CURRENT_PREFIX:="/media/sf_SDP/sdp-team-12/install/basic_mobile_robot"}
+: ${AMENT_CURRENT_PREFIX:="/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot"}
 if [ ! -d "$AMENT_CURRENT_PREFIX" ]; then
   if [ -z "$COLCON_CURRENT_PREFIX" ]; then
     echo "The compile time prefix path '$AMENT_CURRENT_PREFIX' doesn't " \

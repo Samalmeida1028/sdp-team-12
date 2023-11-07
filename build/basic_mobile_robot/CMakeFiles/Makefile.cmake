@@ -7,8 +7,8 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/media/sf_SDP/sdp-team-12/basic_mobile_robot/CMakeLists.txt"
-  "/media/sf_SDP/sdp-team-12/basic_mobile_robot/package.xml"
+  "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/CMakeLists.txt"
+  "/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/package.xml"
   "CMakeFiles/3.22.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeSystem.cmake"
