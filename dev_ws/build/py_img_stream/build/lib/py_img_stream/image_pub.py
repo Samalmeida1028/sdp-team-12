@@ -22,10 +22,11 @@ class ImagePublisher(Node):
     self.translation_publisher = self.create_publisher(Float32MultiArray, "translation_list", 1)
     self.rotation_publisher = self.create_publisher(Float32MultiArray, "rotation_list", 1)
     self.publisher_ids = self.create_publisher(Int32MultiArray, "ids_list", 10)
+    self.publisher = self.create_publisher(String, "test", 10)
     timer_period = .016
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
-    self.camParams = sio.loadmat("./calibration/sam_laptop.mat")
+    self.camParams = sio.loadmat("./calibration/sam_camParams.mat")
     self.cameraMatrix = self.camParams['cameraMatrix']
     self.distCoeffs = self.camParams['distortionCoefficients']
 
@@ -38,6 +39,10 @@ class ImagePublisher(Node):
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')
     self.cam = cv2.VideoCapture(0) 
+    # self.cam.set(cv2.CAP_PROP_MODE, 0)
+    self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 352)
+    self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 288)
+    self.cam.set(cv2.CAP_PROP_FPS,60)
     self.frame = []
     self.marker_ids_seen = set()
     self.custom_marker_sides = dict()
@@ -51,9 +56,10 @@ class ImagePublisher(Node):
     # self.get_logger().warn("ids: {0}".format(ids))
     self.currently_seen_ids = set()
     
-    self.get_logger().info("here")
+    # self.get_logger().info("here")
     if ids is not None and len(ids) > 0: 
-      self.get_logger().info("now here")
+      # self.aruco_display(corners,ids)
+      # self.get_logger().info("now here")
 
       # if self.publish_image_feedback:
       #   self.aruco_display(corners, ids)
@@ -80,6 +86,9 @@ class ImagePublisher(Node):
 
         # if not self.search_for_grid or marker_id[0] not in self.grid_overall_ids:
         self.get_logger().warn("\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0]))
+        stri = String()
+        stri.data = "\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0])
+        self.publisher.publish(stri)
 
         #   pass
 
@@ -100,12 +109,43 @@ class ImagePublisher(Node):
             #   self.publish_pose(self.grid_output_ids[i], tvec2_, rvec2_)
             # else:
             #   self.publish_pose(self.grid_output_ids[i], tvec2[0][0], rvec2[0][0])
-
-
-    for marker_not_seen in self.marker_ids_seen.difference(self.currently_seen_ids):
-      presence_msg = Bool()
-      presence_msg.data = False
       # self.presence_pub[marker_not_seen].publish(presence_msg)
+
+  def aruco_display(self, corners, ids):
+    if len(corners) > 0:
+        # flatten the ArUco IDs list
+      ids = ids.flatten()
+      self.frame_color = cv2.cvtColor(self.frame, cv2.COLOR_GRAY2BGR)
+      # loop over the detected ArUCo corners
+      for (markerCorner, markerID) in zip(corners, ids):
+
+        rvec, tvec, _ = aruco.estimatePoseSingleMarkers(markerCorner, self.marker_side, 
+            self.cameraMatrix, self.distCoeffs)
+        # Draw the axis on the aruco markers
+        aruco.drawAxis(self.frame_color, self.cameraMatrix, self.distCoeffs, rvec, tvec, 0.1)
+
+        # extract the marker corners (which are always returned in
+        # top-left, top-right, bottom-right, and bottom-left order)
+        corners = markerCorner.reshape((4, 2))
+        (topLeft, topRight, bottomRight, bottomLeft) = corners
+        # convert each of the (x, y)-coordinate pairs to integers
+        topRight = (int(topRight[0]), int(topRight[1]))
+        bottomRight = (int(bottomRight[0]), int(bottomRight[1]))
+        bottomLeft = (int(bottomLeft[0]), int(bottomLeft[1]))
+        topLeft = (int(topLeft[0]), int(topLeft[1]))
+
+        cv2.line(self.frame_color, topLeft, topRight, (0, 255, 0), 2)
+        cv2.line(self.frame_color, topRight, bottomRight, (0, 255, 0), 2)
+        cv2.line(self.frame_color, bottomRight, bottomLeft, (0, 255, 0), 2)
+        cv2.line(self.frame_color, bottomLeft, topLeft, (0, 255, 0), 2)
+        # compute and draw the center (x, y)-coordinates of the ArUco
+        # marker
+        cX = int((topLeft[0] + bottomRight[0]) / 2.0)
+        cY = int((topLeft[1] + bottomRight[1]) / 2.0)
+        cv2.circle(self.frame_color, (cX, cY), 4, (0, 0, 255), -1)
+        # draw the ArUco marker ID on the image
+        cv2.putText(self.frame_color, str(markerID),(topLeft[0], topLeft[1] - 10), cv2.FONT_HERSHEY_SIMPLEX,
+            0.5, (0, 255, 0), 2)
 
    
   def timer_callback(self):
