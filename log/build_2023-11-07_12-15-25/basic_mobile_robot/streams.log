@@ -1,0 +1,99 @@
+[2.230s] Invoking command in '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /media/sf_SDP/sdp-team-12/basic_mobile_robot -DCMAKE_INSTALL_PREFIX=/media/sf_SDP/sdp-team-12/install/basic_mobile_robot
+[8.719s] -- The C compiler identification is GNU 11.4.0
+[12.703s] -- The CXX compiler identification is GNU 11.4.0
+[14.128s] -- Detecting C compiler ABI info
+[18.825s] -- Detecting C compiler ABI info - done
+[19.004s] -- Check for working C compiler: /usr/bin/cc - skipped
+[19.026s] -- Detecting C compile features
+[19.090s] -- Detecting C compile features - done
+[19.523s] -- Detecting CXX compiler ABI info
+[23.322s] -- Detecting CXX compiler ABI info - done
+[23.517s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[23.590s] -- Detecting CXX compile features
+[23.615s] -- Detecting CXX compile features - done
+[24.080s] -- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)
+[25.194s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[29.153s] -- Found rclpy: 3.3.10 (/opt/ros/humble/share/rclpy/cmake)
+[29.210s] -- Found geometry_msgs: 4.2.3 (/opt/ros/humble/share/geometry_msgs/cmake)
+[31.066s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[31.401s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[31.827s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[32.496s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[33.197s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[34.928s] -- Found nav_msgs: 4.2.3 (/opt/ros/humble/share/nav_msgs/cmake)
+[35.659s] -- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)
+[36.385s] -- Found action_msgs: 1.2.1 (/opt/ros/humble/share/action_msgs/cmake)
+[37.584s] -- Found ament_lint_auto: 0.12.8 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[41.118s] -- Added test 'flake8' to check Python code syntax and style conventions
+[41.394s] -- Added test 'lint_cmake' to check CMake code style
+[41.491s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[42.028s] -- Added test 'xmllint' to check XML markup files
+[42.999s] -- Configuring done
+[45.637s] -- Generating done
+[46.307s] -- Build files have been written to: /media/sf_SDP/sdp-team-12/build/basic_mobile_robot
+[46.367s] Invoked command in '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /media/sf_SDP/sdp-team-12/basic_mobile_robot -DCMAKE_INSTALL_PREFIX=/media/sf_SDP/sdp-team-12/install/basic_mobile_robot
+[46.404s] Invoking command in '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /media/sf_SDP/sdp-team-12/build/basic_mobile_robot -- -j4 -l4
+[46.583s] gmake[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 0.43 s in the future
+[46.586s] gmake[1]: warning:  Clock skew detected.  Your build may be incomplete.
+[46.617s] Invoked command in '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /media/sf_SDP/sdp-team-12/build/basic_mobile_robot -- -j4 -l4
+[46.769s] Invoking command in '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /media/sf_SDP/sdp-team-12/build/basic_mobile_robot
+[46.786s] -- Install configuration: ""
+[46.909s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config
+[47.095s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf.yaml
+[47.382s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf2.yaml
+[47.619s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch
+[47.660s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v1.launch.py
+[47.821s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v2.launch.py
+[48.097s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v3.launch.py
+[48.315s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v4.launch.py
+[48.605s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v5.launch.py
+[48.892s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes
+[48.972s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/arm_base.stl
+[49.372s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/bicep.stl
+[50.025s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/elbow.stl
+[50.282s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/robot_base.stl
+[50.469s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/wheel.stl
+[50.670s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/wrist.stl
+[50.941s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps
+[51.073s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.pgm
+[52.502s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.yaml
+[52.755s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/generated_map.pgm
+[53.106s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/generated_map.yaml
+[53.353s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models
+[53.467s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description
+[53.550s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes
+[53.670s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/arm_base.stl
+[54.113s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/bicep.stl
+[54.631s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/elbow.stl
+[54.904s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/robot_base.stl
+[55.166s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/wheel.stl
+[55.486s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/wrist.stl
+[56.010s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/model.config
+[56.272s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/model.sdf
+[56.525s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_v1.urdf
+[56.891s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_v2.urdf
+[57.139s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/params
+[57.314s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/params/nav2_params.yaml
+[57.731s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz
+[57.798s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/nav2_config.rviz
+[57.987s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/urdf_config.rviz
+[58.290s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/src
+[58.386s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds
+[58.482s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world
+[58.859s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world/smalltown.world
+[59.478s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/package_run_dependencies/basic_mobile_robot
+[59.759s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/parent_prefix_path/basic_mobile_robot
+[59.929s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/ament_prefix_path.sh
+[60.101s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/ament_prefix_path.dsv
+[60.273s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/path.sh
+[60.463s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/path.dsv
+[60.610s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.bash
+[60.806s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.sh
+[60.949s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.zsh
+[61.116s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.dsv
+[61.279s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.dsv
+[61.590s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/packages/basic_mobile_robot
+[61.757s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/cmake/basic_mobile_robotConfig.cmake
+[61.955s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/cmake/basic_mobile_robotConfig-version.cmake
+[62.140s] -- Installing: /media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.xml
+[62.416s] Invoked command in '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /media/sf_SDP/sdp-team-12/build/basic_mobile_robot

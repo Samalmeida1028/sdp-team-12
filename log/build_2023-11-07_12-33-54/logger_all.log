@@ -1,0 +1,176 @@
+[3.925s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[3.928s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7fc0f54a6b30>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7fc0f58dfe50>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7fc0f58dfe50>>)
+[4.258s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[4.260s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[4.261s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[4.262s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[4.263s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[4.264s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[4.265s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/media/sf_SDP/sdp-team-12'
+[4.269s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[4.270s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[4.272s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[4.274s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[4.275s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[4.276s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[4.277s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[4.278s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[4.279s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[4.314s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[4.316s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[4.317s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[4.320s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[4.320s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[4.325s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extensions ['ignore', 'ignore_ament_install']
+[4.326s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extension 'ignore'
+[4.327s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extension 'ignore_ament_install'
+[4.330s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extensions ['colcon_pkg']
+[4.330s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extension 'colcon_pkg'
+[4.332s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extensions ['colcon_meta']
+[4.333s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extension 'colcon_meta'
+[4.334s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extensions ['ros']
+[4.335s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extension 'ros'
+[4.466s] DEBUG:colcon.colcon_core.package_identification:Package 'basic_mobile_robot' with type 'ros.ament_cmake' and name 'basic_mobile_robot'
+[4.472s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[4.473s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[4.476s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[4.480s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[4.481s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[4.483s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[4.487s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[4.488s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[4.490s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[4.494s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extensions ['ignore', 'ignore_ament_install']
+[4.496s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extension 'ignore'
+[4.497s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extension 'ignore_ament_install'
+[4.500s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extensions ['colcon_pkg']
+[4.501s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extension 'colcon_pkg'
+[4.503s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extensions ['colcon_meta']
+[4.503s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extension 'colcon_meta'
+[4.504s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extensions ['ros']
+[4.505s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extension 'ros'
+[4.604s] DEBUG:colcon.colcon_core.package_identification:Package 'navigator' with type 'ros.ament_python' and name 'navigator'
+[4.605s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[4.606s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[4.607s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[4.608s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[4.609s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[5.165s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[5.171s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[5.323s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 2 installed packages in /media/sf_SDP/sdp-team-12/install
+[5.376s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 328 installed packages in /opt/ros/humble
+[5.381s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[5.742s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'cmake_args' from command line to 'None'
+[5.744s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'cmake_target' from command line to 'None'
+[5.746s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[5.748s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'cmake_clean_cache' from command line to 'False'
+[5.748s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'cmake_clean_first' from command line to 'False'
+[5.749s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'cmake_force_configure' from command line to 'False'
+[5.749s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'ament_cmake_args' from command line to 'None'
+[5.750s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'catkin_cmake_args' from command line to 'None'
+[5.750s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'catkin_skip_building_tests' from command line to 'False'
+[5.751s] DEBUG:colcon.colcon_core.verb:Building package 'basic_mobile_robot' with the following arguments: {'ament_cmake_args': None, 'build_base': '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot', 'merge_install': False, 'path': '/media/sf_SDP/sdp-team-12/basic_mobile_robot', 'symlink_install': False, 'test_result_base': None}
+[5.797s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'cmake_args' from command line to 'None'
+[5.800s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'cmake_target' from command line to 'None'
+[5.801s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[5.801s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'cmake_clean_cache' from command line to 'False'
+[5.803s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'cmake_clean_first' from command line to 'False'
+[5.804s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'cmake_force_configure' from command line to 'False'
+[5.805s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'ament_cmake_args' from command line to 'None'
+[5.805s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'catkin_cmake_args' from command line to 'None'
+[5.806s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'catkin_skip_building_tests' from command line to 'False'
+[5.807s] DEBUG:colcon.colcon_core.verb:Building package 'navigator' with the following arguments: {'ament_cmake_args': None, 'build_base': '/media/sf_SDP/sdp-team-12/build/navigator', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/media/sf_SDP/sdp-team-12/install/navigator', 'merge_install': False, 'path': '/media/sf_SDP/sdp-team-12/navigator', 'symlink_install': False, 'test_result_base': None}
+[5.856s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[5.912s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[5.926s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/media/sf_SDP/sdp-team-12/basic_mobile_robot' with build type 'ament_cmake'
+[5.928s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/media/sf_SDP/sdp-team-12/basic_mobile_robot'
+[5.981s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[5.984s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[5.985s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[6.230s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/media/sf_SDP/sdp-team-12/navigator' with build type 'ament_python'
+[6.232s] Level 1:colcon.colcon_core.shell:create_environment_hook('navigator', 'ament_prefix_path')
+[6.280s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_SDP/sdp-team-12/install/navigator/share/navigator/hook/ament_prefix_path.ps1'
+[6.332s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/media/sf_SDP/sdp-team-12/install/navigator/share/navigator/hook/ament_prefix_path.dsv'
+[6.413s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_SDP/sdp-team-12/install/navigator/share/navigator/hook/ament_prefix_path.sh'
+[6.614s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[6.622s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[7.428s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/media/sf_SDP/sdp-team-12/install/navigator:/opt/ros/humble /usr/bin/cmake --build /media/sf_SDP/sdp-team-12/build/basic_mobile_robot -- -j4 -l4
+[8.659s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/media/sf_SDP/sdp-team-12/navigator'
+[8.760s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[8.761s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[9.126s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/media/sf_SDP/sdp-team-12/install/navigator:/opt/ros/humble /usr/bin/cmake --build /media/sf_SDP/sdp-team-12/build/basic_mobile_robot -- -j4 -l4
+[9.451s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/media/sf_SDP/sdp-team-12/install/navigator:/opt/ros/humble /usr/bin/cmake --install /media/sf_SDP/sdp-team-12/build/basic_mobile_robot
+[10.180s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(basic_mobile_robot)
+[10.183s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/media/sf_SDP/sdp-team-12/build/basic_mobile_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/media/sf_SDP/sdp-team-12/install/navigator:/opt/ros/humble /usr/bin/cmake --install /media/sf_SDP/sdp-team-12/build/basic_mobile_robot
+[10.263s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot' for CMake module files
+[10.308s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot' for CMake config files
+[10.354s] Level 1:colcon.colcon_core.shell:create_environment_hook('basic_mobile_robot', 'cmake_prefix_path')
+[10.432s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/hook/cmake_prefix_path.ps1'
+[10.485s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/hook/cmake_prefix_path.dsv'
+[10.546s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/hook/cmake_prefix_path.sh'
+[10.675s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/bin'
+[10.682s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/lib/pkgconfig/basic_mobile_robot.pc'
+[10.687s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/lib/python3.10/site-packages'
+[10.699s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/bin'
+[10.792s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.ps1'
+[10.840s] INFO:colcon.colcon_core.shell:Creating package descriptor '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.dsv'
+[10.910s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.sh'
+[10.984s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.bash'
+[11.085s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.zsh'
+[11.172s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/colcon-core/packages/basic_mobile_robot)
+[11.466s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(basic_mobile_robot)
+[11.555s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot' for CMake module files
+[11.593s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot' for CMake config files
+[11.639s] Level 1:colcon.colcon_core.shell:create_environment_hook('basic_mobile_robot', 'cmake_prefix_path')
+[11.686s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/hook/cmake_prefix_path.ps1'
+[11.729s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/hook/cmake_prefix_path.dsv'
+[11.776s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/hook/cmake_prefix_path.sh'
+[11.856s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/bin'
+[11.861s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/lib/pkgconfig/basic_mobile_robot.pc'
+[11.869s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/lib/python3.10/site-packages'
+[11.877s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/bin'
+[12.037s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.ps1'
+[12.175s] INFO:colcon.colcon_core.shell:Creating package descriptor '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.dsv'
+[12.258s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.sh'
+[12.389s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.bash'
+[12.466s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.zsh'
+[12.552s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/media/sf_SDP/sdp-team-12/install/basic_mobile_robot/share/colcon-core/packages/basic_mobile_robot)
+[13.057s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/media/sf_SDP/sdp-team-12/navigator': PYTHONPATH=/media/sf_SDP/sdp-team-12/build/navigator/prefix_override:/media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/navigator build --build-base /media/sf_SDP/sdp-team-12/build/navigator/build install --record /media/sf_SDP/sdp-team-12/build/navigator/install.log --single-version-externally-managed
+[16.802s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/media/sf_SDP/sdp-team-12/navigator' returned '0': PYTHONPATH=/media/sf_SDP/sdp-team-12/build/navigator/prefix_override:/media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/navigator build --build-base /media/sf_SDP/sdp-team-12/build/navigator/build install --record /media/sf_SDP/sdp-team-12/build/navigator/install.log --single-version-externally-managed
+[16.858s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/navigator' for CMake module files
+[16.889s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/navigator' for CMake config files
+[16.929s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/navigator/lib'
+[16.932s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/navigator/bin'
+[16.934s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/navigator/lib/pkgconfig/navigator.pc'
+[16.935s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages'
+[16.936s] Level 1:colcon.colcon_core.shell:create_environment_hook('navigator', 'pythonpath')
+[16.984s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_SDP/sdp-team-12/install/navigator/share/navigator/hook/pythonpath.ps1'
+[17.071s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/media/sf_SDP/sdp-team-12/install/navigator/share/navigator/hook/pythonpath.dsv'
+[17.181s] INFO:colcon.colcon_core.shell:Creating environment hook '/media/sf_SDP/sdp-team-12/install/navigator/share/navigator/hook/pythonpath.sh'
+[17.258s] Level 1:colcon.colcon_core.environment:checking '/media/sf_SDP/sdp-team-12/install/navigator/bin'
+[17.265s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(navigator)
+[17.389s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_SDP/sdp-team-12/install/navigator/share/navigator/package.ps1'
+[17.451s] INFO:colcon.colcon_core.shell:Creating package descriptor '/media/sf_SDP/sdp-team-12/install/navigator/share/navigator/package.dsv'
+[17.529s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_SDP/sdp-team-12/install/navigator/share/navigator/package.sh'
+[17.611s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_SDP/sdp-team-12/install/navigator/share/navigator/package.bash'
+[17.705s] INFO:colcon.colcon_core.shell:Creating package script '/media/sf_SDP/sdp-team-12/install/navigator/share/navigator/package.zsh'
+[17.771s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/media/sf_SDP/sdp-team-12/install/navigator/share/colcon-core/packages/navigator)
+[17.837s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[17.840s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[17.842s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[17.843s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[18.359s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[18.361s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[18.363s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[18.371s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.NotSupported: Unable to autolaunch a dbus-daemon without a $DISPLAY for X11
+[18.373s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[18.420s] INFO:colcon.colcon_core.shell:Creating prefix script '/media/sf_SDP/sdp-team-12/install/local_setup.ps1'
+[18.583s] INFO:colcon.colcon_core.shell:Creating prefix util module '/media/sf_SDP/sdp-team-12/install/_local_setup_util_ps1.py'
+[18.698s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/media/sf_SDP/sdp-team-12/install/setup.ps1'
+[18.900s] INFO:colcon.colcon_core.shell:Creating prefix script '/media/sf_SDP/sdp-team-12/install/local_setup.sh'
+[18.970s] INFO:colcon.colcon_core.shell:Creating prefix util module '/media/sf_SDP/sdp-team-12/install/_local_setup_util_sh.py'
+[19.060s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/media/sf_SDP/sdp-team-12/install/setup.sh'
+[19.201s] INFO:colcon.colcon_core.shell:Creating prefix script '/media/sf_SDP/sdp-team-12/install/local_setup.bash'
+[19.279s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/media/sf_SDP/sdp-team-12/install/setup.bash'
+[19.571s] INFO:colcon.colcon_core.shell:Creating prefix script '/media/sf_SDP/sdp-team-12/install/local_setup.zsh'
+[19.633s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/media/sf_SDP/sdp-team-12/install/setup.zsh'
