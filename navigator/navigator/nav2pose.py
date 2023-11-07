@@ -14,14 +14,13 @@ class Nav2Pose(Node):
     def __init__(self):
         super().__init__('nav2pose')
         self.navigator = BasicNavigator()
+        # Wait for navigation to fully activate, since autostarting nav2
+        self.navigator.waitUntilNav2Active()
 
         self.initial_pose = PoseStamped()
         self.goal = PoseStamped()
 
-        self.init_navigator(3.45, 2.15, 1.0, 0.0)
-
-        # Wait for navigation to fully activate, since autostarting nav2
-        self.navigator.waitUntilNav2Active()
+        #self.init_navigator(3.45, 2.15, 1.0, 0.0)
 
         self.i = 0
 
