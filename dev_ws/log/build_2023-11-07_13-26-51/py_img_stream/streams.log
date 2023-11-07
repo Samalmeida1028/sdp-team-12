@@ -1,0 +1,27 @@
+[0.706s] Invoking command in '/home/adam/Desktop/sdp-team-12/dev_ws/src/py_img_stream': PYTHONPATH=/home/adam/Desktop/sdp-team-12/dev_ws/build/py_img_stream/prefix_override:/home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/py_img_stream build --build-base /home/adam/Desktop/sdp-team-12/dev_ws/build/py_img_stream/build install --record /home/adam/Desktop/sdp-team-12/dev_ws/build/py_img_stream/install.log --single-version-externally-managed
+[0.933s] running egg_info
+[0.933s] writing ../../build/py_img_stream/py_img_stream.egg-info/PKG-INFO
+[0.933s] writing dependency_links to ../../build/py_img_stream/py_img_stream.egg-info/dependency_links.txt
+[0.934s] writing entry points to ../../build/py_img_stream/py_img_stream.egg-info/entry_points.txt
+[0.934s] writing requirements to ../../build/py_img_stream/py_img_stream.egg-info/requires.txt
+[0.934s] writing top-level names to ../../build/py_img_stream/py_img_stream.egg-info/top_level.txt
+[0.935s] reading manifest file '../../build/py_img_stream/py_img_stream.egg-info/SOURCES.txt'
+[0.936s] writing manifest file '../../build/py_img_stream/py_img_stream.egg-info/SOURCES.txt'
+[0.936s] running build
+[0.936s] running build_py
+[0.937s] copying py_img_stream/image_test_sub.py -> /home/adam/Desktop/sdp-team-12/dev_ws/build/py_img_stream/build/lib/py_img_stream
+[0.937s] running install
+[0.937s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[0.937s]   warnings.warn(
+[0.937s] running install_lib
+[0.938s] copying /home/adam/Desktop/sdp-team-12/dev_ws/build/py_img_stream/build/lib/py_img_stream/image_test_sub.py -> /home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/python3.10/site-packages/py_img_stream
+[0.938s] byte-compiling /home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/python3.10/site-packages/py_img_stream/image_test_sub.py to image_test_sub.cpython-310.pyc
+[0.939s] running install_data
+[0.939s] running install_egg_info
+[0.941s] removing '/home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/python3.10/site-packages/py_img_stream-0.0.0-py3.10.egg-info' (and everything under it)
+[0.941s] Copying ../../build/py_img_stream/py_img_stream.egg-info to /home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/python3.10/site-packages/py_img_stream-0.0.0-py3.10.egg-info
+[0.942s] running install_scripts
+[0.962s] Installing pub script to /home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/py_img_stream
+[0.962s] Installing sub script to /home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/py_img_stream
+[0.962s] writing list of installed files to '/home/adam/Desktop/sdp-team-12/dev_ws/build/py_img_stream/install.log'
+[0.983s] Invoked command in '/home/adam/Desktop/sdp-team-12/dev_ws/src/py_img_stream' returned '0': PYTHONPATH=/home/adam/Desktop/sdp-team-12/dev_ws/build/py_img_stream/prefix_override:/home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/py_img_stream build --build-base /home/adam/Desktop/sdp-team-12/dev_ws/build/py_img_stream/build install --record /home/adam/Desktop/sdp-team-12/dev_ws/build/py_img_stream/install.log --single-version-externally-managed

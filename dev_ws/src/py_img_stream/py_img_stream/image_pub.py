@@ -21,7 +21,6 @@ class ImagePublisher(Node):
     super().__init__('image_pub')
     self.translation_publisher = self.create_publisher(Float32MultiArray, "translation_list", 1)
     self.rotation_publisher = self.create_publisher(Float32MultiArray, "rotation_list", 1)
-    self.publisher_ids = self.create_publisher(Int32MultiArray, "ids_list", 10)
     self.publisher = self.create_publisher(String, "test", 10)
     timer_period = .016
     self.timer = self.create_timer(timer_period, self.timer_callback)
@@ -32,17 +31,17 @@ class ImagePublisher(Node):
 
     self.aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_5X5_1000)
     self.aruco_params = aruco.DetectorParameters_create()
-    # self.aruco_params = cv2.aruco.DetectorParameters()
+    # self.aruco_params = cv2.arbytearray(datastring,encoding="utf-8")uco.DetectorParameters()
     # self.detector = cv2.aruco.ArucoDetector(self.aruco_dict, self.aruco_params)
     self.markerLength = 51 # mm
     self.marker_side = self.markerLength
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')
-    self.cam = cv2.VideoCapture(0) 
-    # self.cam.set(cv2.CAP_PROP_MODE, 0)
-    self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 352)
-    self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 288)
-    self.cam.set(cv2.CAP_PROP_FPS,60)
+    self.cam = cv2.VideoCapture(2) 
+    self.cam.set(cv2.CAP_PROP_MODE,0)
+    self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+    self.cam.set(cv2.CAP_PROP_FPS,30)
     self.frame = []
     self.marker_ids_seen = set()
     self.custom_marker_sides = dict()
@@ -88,10 +87,10 @@ class ImagePublisher(Node):
         self.get_logger().warn("\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0]))
         stri = String()
         stri.data = "\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0])
+        translation = Float32MultiArray()
+        translation.data = [float(tvec[0][0][0]),float(tvec[0][0][1]),float(tvec[0][0][2])]
         self.publisher.publish(stri)
-
-        #   pass
-
+        self.translation_publisher.publish(translation)
               
       
       # if self.search_for_grid:

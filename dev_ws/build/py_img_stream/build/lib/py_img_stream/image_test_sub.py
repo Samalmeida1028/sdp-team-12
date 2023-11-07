@@ -6,7 +6,8 @@ import cv2 # OpenCV library
 import std_msgs.msg
 import serial
 from std_msgs.msg import String
-
+from std_msgs.msg import Float32MultiArray
+import json
 
 
 class ImageSubscriber(Node):
@@ -22,14 +23,20 @@ class ImageSubscriber(Node):
       
     # Create the subscriber. This subscriber will receive an Image
     # from the video_frames topic. The queue size is 10 messages.
-    self.subscription = self.create_subscription(
-      String, 
-      'test', 
+    # self.subscription = self.create_subscription(
+    #   String,     wait_set.wait(timeout_nsec
+    #   'test', 
+    #   self.listener_callback, 
+    #   10)
+    # self.subscription # prevent unused variable warning
+    self.translation_subscription = self.create_subscription(
+      Float32MultiArray, 
+      'translation_list', 
       self.listener_callback, 
       10)
-    self.subscription # prevent unused variable warning
+    self.translation_subscription # prevent unused variable warning
     self.ser = serial.Serial(
-             '/dev/ttyS0',
+             '/dev/ttyACM1',
              baudrate=115200,
              timeout=0.01)
       
@@ -49,14 +56,15 @@ class ImageSubscriber(Node):
     
     # # Display image
     # cv2.imshow("camera", current_frame)
-    self.get_logger().info('I heard: "%s"' % dataa.data)
-    self.ser.write(dataa.data)
+    datastring = str(str(dataa.data[0]) + " " + str(dataa.data[1]))
+    self.get_logger().info("%s" % datastring)
+    self.ser.write(bytearray(json.dumps(list(dataa.data)) + "\n",encoding="utf-8"))
   
 def main(args=None):
   
   # Initialize the rclpy library
   rclpy.init(args=args)
-  
+  "\n"
   # Create the node
   image_subscriber = ImageSubscriber()
   
