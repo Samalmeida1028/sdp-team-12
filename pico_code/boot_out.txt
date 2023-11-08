@@ -1,0 +1,8 @@
+Adafruit CircuitPython 8.2.7 on 2023-10-19; Raspberry Pi Pico W with rp2040
+Board ID:raspberry_pi_pico_w
+UID:E66141040310392B
+MAC:28:CD:C1:05:69:28
+boot.py output:
+Traceback (most recent call last):
+  File "boot.py", line 4, in <module>
+AttributeError: can't set attribute 'autoreload'
