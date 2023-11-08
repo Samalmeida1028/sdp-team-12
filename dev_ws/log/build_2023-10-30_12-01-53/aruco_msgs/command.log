@@ -1,1 +1,0 @@
-Invoking command in '/media/sf_sdp12_ws/dev_ws/build/aruco_msgs': CMAKE_PREFIX_PATH=/media/sf_sdp12_ws/dev_ws/install/py_img_stream:/media/sf_sdp12_ws/dev_ws/install/image_streaming:/opt/ros/humble /usr/bin/cmake /media/sf_sdp12_ws/dev_ws/src/aruco_ros2/aruco_msgs -DCMAKE_INSTALL_PREFIX=/media/sf_sdp12_ws/dev_ws/install/aruco_msgs

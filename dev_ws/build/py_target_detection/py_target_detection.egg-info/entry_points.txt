@@ -1,3 +1,0 @@
-[console_scripts]
-img = py_target_detection.target_detection:main
-

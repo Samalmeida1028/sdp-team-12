@@ -1,4 +1,0 @@
-/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
-  warnings.warn(
-/home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/python3.10/site-packages/py_img_stream/image_pub.py:141: SyntaxWarning: 'tuple' object is not callable; perhaps you missed a comma?
-  cv2.line(self.frame, 0, (int(tvec[0][0][0]),int(tvec[0][0][0])) (0, 0, 255), 2)
