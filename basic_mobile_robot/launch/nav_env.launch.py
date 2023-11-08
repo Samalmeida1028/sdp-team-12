@@ -70,7 +70,7 @@ def generate_launch_description():
         
   declare_autostart_cmd = DeclareLaunchArgument(
     name='autostart', 
-    default_value='true',
+    default_value='True',
     description='Automatically startup the nav2 stack')
 
   declare_bt_xml_cmd = DeclareLaunchArgument(
@@ -120,12 +120,12 @@ def generate_launch_description():
     
   declare_use_sim_time_cmd = DeclareLaunchArgument(
     name='use_sim_time',
-    default_value='True',
+    default_value='False',
     description='Use simulation (Gazebo) clock if true')
 
   declare_use_simulator_cmd = DeclareLaunchArgument(
     name='use_simulator',
-    default_value='True',
+    default_value='False',
     description='Whether to start the simulator')
 
   declare_world_cmd = DeclareLaunchArgument(
@@ -188,11 +188,18 @@ def generate_launch_description():
                         'autostart': autostart}.items())
   
   static_transform_publisher_cmd = Node(
-      package='tf2_ros',
-      executable='static_transform_publisher',
-      name='link1_broadcaster',
-      arguments=['0', '0', '0', '0', '0', '0', '1', 'map', 'odom'],
-      output='screen',
+    package='tf2_ros',
+    executable='static_transform_publisher',
+    name='link1_broadcaster',
+    arguments=['0', '0', '0', '0', '0', '0', '1', 'map', 'odom'],
+    output='screen'
+  )
+
+  nav2pose_cmd = Node(
+    package='navigator',
+    executable='nav2pose',
+    name='nav2pose',
+    output='screen'
   )
 
   # Create the launch description and populate
@@ -223,5 +230,6 @@ def generate_launch_description():
   ld.add_action(start_rviz_cmd)
   ld.add_action(start_ros2_navigation_cmd)
   ld.add_action(static_transform_publisher_cmd)
+  ld.add_action(nav2pose_cmd)
 
   return ld

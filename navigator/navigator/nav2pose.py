@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 11/5/23
-# Date last modified: 11/7/23
+# Date last modified: 11/8/23
 # Description: Using Nav2 to navigate to a given pose
 
 from geometry_msgs.msg import PoseStamped
@@ -67,39 +67,40 @@ class Nav2Pose(Node):
         self.goal = goalmsg
 
     def nav2pose_callback(self):
-        # other way to do this
-        # path = self.navigator.getPath(self.initial_pose, self.goal)
-        # smooth_path = self.navigator.smoothPath(path)
-        # self.navigator.followPath(smooth_path)
+        if self.initial_pose != self.goal:
+            # other way to do this
+            # path = self.navigator.getPath(self.initial_pose, self.goal)
+            # smooth_path = self.navigator.smoothPath(path)
+            # self.navigator.followPath(smooth_path)
 
-        self.navigator.goToPose(self.goal)
+            self.navigator.goToPose(self.goal)
 
-        if not self.navigator.isTaskComplete():
-            ################################################
-            #
-            # Implement some code here for your application!
-            #
-            ################################################
+            if not self.navigator.isTaskComplete():
+                ################################################
+                #
+                # Implement some code here for your application!
+                #
+                ################################################
 
-            # Do something with the feedback
-            self.i = self.i + 1
-            feedback = self.navigator.getFeedback()
-            if feedback and self.i % 5 == 0:
-                print('Estimated time of arrival: ' + '{0:.0f}'.format(
-                    Duration.from_msg(feedback.estimated_time_remaining).nanoseconds / 1e9)
-                    + ' seconds.')
+                # Do something with the feedback
+                self.i = self.i + 1
+                feedback = self.navigator.getFeedback()
+                if feedback and self.i % 5 == 0:
+                    print('Estimated time of arrival: ' + '{0:.0f}'.format(
+                        Duration.from_msg(feedback.estimated_time_remaining).nanoseconds / 1e9)
+                        + ' seconds.')
 
-                # Some navigation timeout to cancellation
-                if Duration.from_msg(feedback.navigation_time) > Duration(seconds=600.0):
-                    self.navigator.cancelTask()
+                    # Some navigation timeout to cancellation
+                    if Duration.from_msg(feedback.navigation_time) > Duration(seconds=600.0):
+                        self.navigator.cancelTask()
 
-        result = self.navigator.getResult()
-        if result == TaskResult.SUCCEEDED:
-            print('Goal succeeded!')
-        elif result == TaskResult.CANCELED:
-            print('Goal was canceled!')
-        elif result == TaskResult.FAILED:
-            print('Goal failed!')
+            result = self.navigator.getResult()
+            if result == TaskResult.SUCCEEDED:
+                print('Goal succeeded!')
+            elif result == TaskResult.CANCELED:
+                print('Goal was canceled!')
+            elif result == TaskResult.FAILED:
+                print('Goal failed!')
 
 def main(args=None):
     rclpy.init(args=args)
