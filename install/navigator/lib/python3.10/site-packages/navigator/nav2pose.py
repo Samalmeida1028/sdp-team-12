@@ -1,4 +1,4 @@
-# #!/usr/bin/env python3
+#!/usr/bin/env python3
 # # Author: Arjun Viswanathan
 # # Date created: 11/5/23
 # # Date last modified: 11/5/23
@@ -15,7 +15,11 @@
 #         super().__init__('nav2pose')
 #         self.navigator = BasicNavigator()
 #         # Wait for navigation to fully activate, since autostarting nav2
+#         # self.navigator.lifecycleStartup()
 #         self.navigator.waitUntilNav2Active()
+#         print("Ready!")
+
+#         # self.navigator.changeMap('/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/maps/smalltown_world.yaml')
 
 #         self.initial_pose = PoseStamped()
 #         self.goal = PoseStamped()
@@ -59,6 +63,7 @@
 #         self.navigator.goToPose(goal_pose)
 
 #     def setgoal(self, goalmsg):
+#         print("Updated goal pose!")
 #         self.goal = goalmsg
 
 #     def nav2pose_callback(self):
@@ -109,21 +114,6 @@
 # if __name__ == '__main__':
 #     main()
 
-#! /usr/bin/env python3
-# Copyright 2021 Samsung Research America
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 from geometry_msgs.msg import PoseStamped
 from nav2_simple_commander.robot_navigator import BasicNavigator, TaskResult
 import rclpy
@@ -133,18 +123,14 @@ from rclpy.duration import Duration
 Basic navigation demo to go to pose.
 """
 
+
 def main():
     rclpy.init()
 
     navigator = BasicNavigator()
 
-    # Activate navigation, if not autostarted. This should be called after setInitialPose()
-    # or this will initialize at the origin of the map and update the costmap with bogus readings.
-    # If autostart, you should `waitUntilNav2Active()` instead.
-    # navigator.lifecycleStartup()
-
     # Wait for navigation to fully activate, since autostarting nav2
-    navigator.waitUntilNav2Active()
+    navigator.waitUntilNav2Active(localizer="bt_navigator")
 
     # If desired, you can change or load the map as well
     # navigator.changeMap('/path/to/map.yaml')

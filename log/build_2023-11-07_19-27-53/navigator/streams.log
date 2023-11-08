@@ -1,0 +1,27 @@
+[4.767s] Invoking command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/navigator': PYTHONPATH=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigator/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/navigator build --build-base /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigator/build install --record /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigator/install.log --single-version-externally-managed
+[6.588s] running egg_info
+[6.625s] writing ../build/navigator/navigator.egg-info/PKG-INFO
+[6.648s] writing dependency_links to ../build/navigator/navigator.egg-info/dependency_links.txt
+[6.673s] writing entry points to ../build/navigator/navigator.egg-info/entry_points.txt
+[6.711s] writing requirements to ../build/navigator/navigator.egg-info/requires.txt
+[6.723s] writing top-level names to ../build/navigator/navigator.egg-info/top_level.txt
+[6.828s] reading manifest file '../build/navigator/navigator.egg-info/SOURCES.txt'
+[7.002s] writing manifest file '../build/navigator/navigator.egg-info/SOURCES.txt'
+[7.018s] running build
+[7.022s] running build_py
+[7.143s] copying navigator/nav2pose.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigator/build/lib/navigator
+[7.236s] running install
+[7.238s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[7.241s]   warnings.warn(
+[7.243s] running install_lib
+[7.470s] copying /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigator/build/lib/navigator/nav2pose.py -> /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator
+[7.675s] byte-compiling /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/nav2pose.py to nav2pose.cpython-310.pyc
+[7.772s] running install_data
+[7.836s] running install_egg_info
+[7.860s] removing '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator-0.0.0-py3.10.egg-info' (and everything under it)
+[8.090s] Copying ../build/navigator/navigator.egg-info to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator-0.0.0-py3.10.egg-info
+[8.755s] running install_scripts
+[8.880s] Installing keyboard script to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/lib/navigator
+[8.907s] Installing nav2pose script to /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/lib/navigator
+[8.953s] writing list of installed files to '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigator/install.log'
+[8.992s] Invoked command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/navigator' returned '0': PYTHONPATH=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigator/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/navigator build --build-base /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigator/build install --record /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigator/install.log --single-version-externally-managed

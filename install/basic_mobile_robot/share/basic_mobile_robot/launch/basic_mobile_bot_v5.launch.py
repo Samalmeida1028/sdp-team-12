@@ -26,7 +26,7 @@ def generate_launch_description():
   world_path = os.path.join(pkg_share, 'worlds', world_file_name)
   nav2_dir = FindPackageShare(package='nav2_bringup').find('nav2_bringup') 
   nav2_launch_dir = os.path.join(nav2_dir, 'launch') 
-  static_map_path = os.path.join(pkg_share, 'maps/generated_map.yaml')
+  static_map_path = os.path.join(pkg_share, 'maps', 'smalltown_world.yaml')
   nav2_params_path = os.path.join(pkg_share, 'params', 'nav2_params.yaml')
   nav2_bt_path = FindPackageShare(package='nav2_bt_navigator').find('nav2_bt_navigator')
   behavior_tree_xml_path = os.path.join(nav2_bt_path, 'behavior_trees', 'navigate_w_replanning_and_recovery.xml')
@@ -186,6 +186,14 @@ def generate_launch_description():
                         'params_file': params_file,
                         'default_bt_xml_filename': default_bt_xml_filename,
                         'autostart': autostart}.items())
+  
+  static_transform_publisher_cmd = Node(
+      package='tf2_ros',
+      executable='static_transform_publisher',
+      name='link1_broadcaster',
+      arguments=['0', '0', '0', '0', '0', '0', '1', 'map', 'odom'],
+      output='screen',
+  )
 
   # Create the launch description and populate
   ld = LaunchDescription()
@@ -214,5 +222,6 @@ def generate_launch_description():
   ld.add_action(start_robot_state_publisher_cmd)
   ld.add_action(start_rviz_cmd)
   ld.add_action(start_ros2_navigation_cmd)
+  ld.add_action(static_transform_publisher_cmd)
 
   return ld
