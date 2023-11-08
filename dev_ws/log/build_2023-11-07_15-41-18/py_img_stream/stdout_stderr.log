@@ -1,0 +1,27 @@
+running egg_info
+writing ../../build/py_img_stream/py_img_stream.egg-info/PKG-INFO
+writing dependency_links to ../../build/py_img_stream/py_img_stream.egg-info/dependency_links.txt
+writing entry points to ../../build/py_img_stream/py_img_stream.egg-info/entry_points.txt
+writing requirements to ../../build/py_img_stream/py_img_stream.egg-info/requires.txt
+writing top-level names to ../../build/py_img_stream/py_img_stream.egg-info/top_level.txt
+reading manifest file '../../build/py_img_stream/py_img_stream.egg-info/SOURCES.txt'
+writing manifest file '../../build/py_img_stream/py_img_stream.egg-info/SOURCES.txt'
+running build
+running build_py
+copying py_img_stream/image_pub.py -> /home/adam/Desktop/sdp-team-12/dev_ws/build/py_img_stream/build/lib/py_img_stream
+running install
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+running install_lib
+copying /home/adam/Desktop/sdp-team-12/dev_ws/build/py_img_stream/build/lib/py_img_stream/image_pub.py -> /home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/python3.10/site-packages/py_img_stream
+byte-compiling /home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/python3.10/site-packages/py_img_stream/image_pub.py to image_pub.cpython-310.pyc
+/home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/python3.10/site-packages/py_img_stream/image_pub.py:141: SyntaxWarning: 'tuple' object is not callable; perhaps you missed a comma?
+  cv2.line(self.frame, 0, (int(tvec[0][0][0]),int(tvec[0][0][0])) (0, 0, 255), 2)
+running install_data
+running install_egg_info
+removing '/home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/python3.10/site-packages/py_img_stream-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/py_img_stream/py_img_stream.egg-info to /home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/python3.10/site-packages/py_img_stream-0.0.0-py3.10.egg-info
+running install_scripts
+Installing pub script to /home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/py_img_stream
+Installing sub script to /home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/py_img_stream
+writing list of installed files to '/home/adam/Desktop/sdp-team-12/dev_ws/build/py_img_stream/install.log'

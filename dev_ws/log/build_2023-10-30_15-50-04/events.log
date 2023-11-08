@@ -1,0 +1,260 @@
+[0.000000] (-) TimerEvent: {}
+[0.005010] (image_streaming) JobQueued: {'identifier': 'image_streaming', 'dependencies': OrderedDict()}
+[0.009271] (marker_detection) JobQueued: {'identifier': 'marker_detection', 'dependencies': OrderedDict()}
+[0.010699] (py_img_stream) JobQueued: {'identifier': 'py_img_stream', 'dependencies': OrderedDict()}
+[0.013510] (py_target_detection) JobQueued: {'identifier': 'py_target_detection', 'dependencies': OrderedDict()}
+[0.016044] (image_streaming) JobStarted: {'identifier': 'image_streaming'}
+[0.094402] (-) TimerEvent: {}
+[0.216942] (-) TimerEvent: {}
+[0.341594] (-) TimerEvent: {}
+[0.467333] (-) TimerEvent: {}
+[0.571260] (-) TimerEvent: {}
+[0.666413] (marker_detection) JobStarted: {'identifier': 'marker_detection'}
+[0.681487] (-) TimerEvent: {}
+[0.788982] (-) TimerEvent: {}
+[0.892533] (-) TimerEvent: {}
+[1.012682] (-) TimerEvent: {}
+[1.114692] (-) TimerEvent: {}
+[1.216538] (-) TimerEvent: {}
+[1.228785] (py_img_stream) JobStarted: {'identifier': 'py_img_stream'}
+[1.317766] (-) TimerEvent: {}
+[1.422990] (-) TimerEvent: {}
+[1.532548] (-) TimerEvent: {}
+[1.646664] (-) TimerEvent: {}
+[1.693497] (py_target_detection) JobStarted: {'identifier': 'py_target_detection'}
+[1.750388] (-) TimerEvent: {}
+[1.854789] (-) TimerEvent: {}
+[1.980356] (-) TimerEvent: {}
+[2.085176] (-) TimerEvent: {}
+[2.188116] (-) TimerEvent: {}
+[2.300587] (-) TimerEvent: {}
+[2.409378] (-) TimerEvent: {}
+[2.512090] (-) TimerEvent: {}
+[2.613873] (-) TimerEvent: {}
+[2.715598] (-) TimerEvent: {}
+[2.818300] (-) TimerEvent: {}
+[2.920936] (-) TimerEvent: {}
+[3.034192] (-) TimerEvent: {}
+[3.137310] (-) TimerEvent: {}
+[3.240795] (-) TimerEvent: {}
+[3.343926] (-) TimerEvent: {}
+[3.445877] (-) TimerEvent: {}
+[3.548519] (-) TimerEvent: {}
+[3.650491] (-) TimerEvent: {}
+[3.755043] (-) TimerEvent: {}
+[3.862674] (-) TimerEvent: {}
+[3.971107] (-) TimerEvent: {}
+[4.073053] (-) TimerEvent: {}
+[4.179039] (-) TimerEvent: {}
+[4.282199] (-) TimerEvent: {}
+[4.385616] (-) TimerEvent: {}
+[4.487695] (-) TimerEvent: {}
+[4.589696] (-) TimerEvent: {}
+[4.693303] (-) TimerEvent: {}
+[4.795692] (-) TimerEvent: {}
+[4.897902] (-) TimerEvent: {}
+[5.002399] (-) TimerEvent: {}
+[5.105379] (-) TimerEvent: {}
+[5.208179] (-) TimerEvent: {}
+[5.310704] (-) TimerEvent: {}
+[5.413368] (-) TimerEvent: {}
+[5.514970] (-) TimerEvent: {}
+[5.621435] (-) TimerEvent: {}
+[5.732785] (-) TimerEvent: {}
+[5.836299] (-) TimerEvent: {}
+[5.938194] (-) TimerEvent: {}
+[6.041263] (-) TimerEvent: {}
+[6.144260] (-) TimerEvent: {}
+[6.250189] (-) TimerEvent: {}
+[6.363210] (-) TimerEvent: {}
+[6.465551] (-) TimerEvent: {}
+[6.567714] (-) TimerEvent: {}
+[6.669869] (-) TimerEvent: {}
+[6.771984] (-) TimerEvent: {}
+[6.874346] (-) TimerEvent: {}
+[7.002829] (-) TimerEvent: {}
+[7.105262] (-) TimerEvent: {}
+[7.208828] (-) TimerEvent: {}
+[7.326087] (-) TimerEvent: {}
+[7.429354] (-) TimerEvent: {}
+[7.532345] (-) TimerEvent: {}
+[7.636123] (-) TimerEvent: {}
+[7.743061] (-) TimerEvent: {}
+[7.858830] (-) TimerEvent: {}
+[7.997364] (-) TimerEvent: {}
+[8.130128] (-) TimerEvent: {}
+[8.233134] (-) TimerEvent: {}
+[8.336490] (-) TimerEvent: {}
+[8.439369] (-) TimerEvent: {}
+[8.542116] (-) TimerEvent: {}
+[8.645886] (-) TimerEvent: {}
+[8.748042] (-) TimerEvent: {}
+[8.849757] (-) TimerEvent: {}
+[8.951856] (-) TimerEvent: {}
+[9.053706] (-) TimerEvent: {}
+[9.155653] (-) TimerEvent: {}
+[9.260182] (-) TimerEvent: {}
+[9.362495] (-) TimerEvent: {}
+[9.464575] (-) TimerEvent: {}
+[9.577165] (-) TimerEvent: {}
+[9.679397] (-) TimerEvent: {}
+[9.783891] (-) TimerEvent: {}
+[9.888319] (-) TimerEvent: {}
+[10.001982] (-) TimerEvent: {}
+[10.105698] (-) TimerEvent: {}
+[10.208714] (-) TimerEvent: {}
+[10.311807] (-) TimerEvent: {}
+[10.413754] (-) TimerEvent: {}
+[10.517386] (-) TimerEvent: {}
+[10.618829] (-) TimerEvent: {}
+[10.720974] (-) TimerEvent: {}
+[10.822778] (-) TimerEvent: {}
+[10.926248] (-) TimerEvent: {}
+[11.028074] (-) TimerEvent: {}
+[11.131262] (-) TimerEvent: {}
+[11.233130] (-) TimerEvent: {}
+[11.337007] (-) TimerEvent: {}
+[11.402368] (image_streaming) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/image_streaming', 'build', '--build-base', '/media/sf_sdp12_ws/dev_ws/build/image_streaming/build', 'install', '--record', '/media/sf_sdp12_ws/dev_ws/build/image_streaming/install.log', '--single-version-externally-managed'], 'cwd': '/media/sf_sdp12_ws/dev_ws/src/image_streaming', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'sdp12', 'SSH_CLIENT': '10.0.2.2 49820 22', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'MOTD_SHOWN': 'pam', 'HOME': '/home/sdp12', 'OLDPWD': '/media/sf_sdp12_ws/dev_ws/src', 'SSH_TTY': '/dev/pts/0', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLCON_PREFIX_PATH': '/media/sf_sdp12_ws/dev_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'sdp12', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/media/sf_sdp12_ws/dev_ws/install/py_target_detection:/media/sf_sdp12_ws/dev_ws/install/py_img_stream:/media/sf_sdp12_ws/dev_ws/install/marker_detection:/media/sf_sdp12_ws/dev_ws/install/image_streaming:/opt/ros/humble', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'PWD': '/media/sf_sdp12_ws/dev_ws/build/image_streaming', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '10.0.2.2 49820 10.0.2.15 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share/:/usr/share/', 'PYTHONPATH': '/media/sf_sdp12_ws/dev_ws/build/image_streaming/prefix_override:/media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages:/media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/python3.10/site-packages:/media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib/python3.10/site-packages:/media/sf_sdp12_ws/dev_ws/install/marker_detection/lib/python3.10/site-packages:/media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[11.442788] (-) TimerEvent: {}
+[11.445653] (py_target_detection) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/py_target_detection', 'build', '--build-base', '/media/sf_sdp12_ws/dev_ws/build/py_target_detection/build', 'install', '--record', '/media/sf_sdp12_ws/dev_ws/build/py_target_detection/install.log', '--single-version-externally-managed'], 'cwd': '/media/sf_sdp12_ws/dev_ws/src/py_target_detection', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'sdp12', 'SSH_CLIENT': '10.0.2.2 49820 22', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'MOTD_SHOWN': 'pam', 'HOME': '/home/sdp12', 'OLDPWD': '/media/sf_sdp12_ws/dev_ws/src', 'SSH_TTY': '/dev/pts/0', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLCON_PREFIX_PATH': '/media/sf_sdp12_ws/dev_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'sdp12', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/media/sf_sdp12_ws/dev_ws/install/py_target_detection:/media/sf_sdp12_ws/dev_ws/install/py_img_stream:/media/sf_sdp12_ws/dev_ws/install/marker_detection:/media/sf_sdp12_ws/dev_ws/install/image_streaming:/opt/ros/humble', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'PWD': '/media/sf_sdp12_ws/dev_ws/build/py_target_detection', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '10.0.2.2 49820 10.0.2.15 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share/:/usr/share/', 'PYTHONPATH': '/media/sf_sdp12_ws/dev_ws/build/py_target_detection/prefix_override:/media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/python3.10/site-packages:/media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/python3.10/site-packages:/media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib/python3.10/site-packages:/media/sf_sdp12_ws/dev_ws/install/marker_detection/lib/python3.10/site-packages:/media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[11.519204] (py_img_stream) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/py_img_stream', 'build', '--build-base', '/media/sf_sdp12_ws/dev_ws/build/py_img_stream/build', 'install', '--record', '/media/sf_sdp12_ws/dev_ws/build/py_img_stream/install.log', '--single-version-externally-managed'], 'cwd': '/media/sf_sdp12_ws/dev_ws/src/py_img_stream', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'sdp12', 'SSH_CLIENT': '10.0.2.2 49820 22', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'MOTD_SHOWN': 'pam', 'HOME': '/home/sdp12', 'OLDPWD': '/media/sf_sdp12_ws/dev_ws/src', 'SSH_TTY': '/dev/pts/0', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLCON_PREFIX_PATH': '/media/sf_sdp12_ws/dev_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'sdp12', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/media/sf_sdp12_ws/dev_ws/install/py_target_detection:/media/sf_sdp12_ws/dev_ws/install/py_img_stream:/media/sf_sdp12_ws/dev_ws/install/marker_detection:/media/sf_sdp12_ws/dev_ws/install/image_streaming:/opt/ros/humble', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'PWD': '/media/sf_sdp12_ws/dev_ws/build/py_img_stream', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '10.0.2.2 49820 10.0.2.15 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share/:/usr/share/', 'PYTHONPATH': '/media/sf_sdp12_ws/dev_ws/build/py_img_stream/prefix_override:/media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib/python3.10/site-packages:/media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/python3.10/site-packages:/media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib/python3.10/site-packages:/media/sf_sdp12_ws/dev_ws/install/marker_detection/lib/python3.10/site-packages:/media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[11.545818] (-) TimerEvent: {}
+[11.647610] (-) TimerEvent: {}
+[11.751738] (-) TimerEvent: {}
+[11.853671] (-) TimerEvent: {}
+[11.955886] (-) TimerEvent: {}
+[12.057611] (-) TimerEvent: {}
+[12.158927] (-) TimerEvent: {}
+[12.263333] (-) TimerEvent: {}
+[12.367386] (-) TimerEvent: {}
+[12.471938] (-) TimerEvent: {}
+[12.525780] (py_img_stream) StdoutLine: {'line': b'running egg_info\n'}
+[12.531046] (image_streaming) StdoutLine: {'line': b'running egg_info\n'}
+[12.541054] (py_img_stream) StdoutLine: {'line': b'writing ../../build/py_img_stream/py_img_stream.egg-info/PKG-INFO\n'}
+[12.547061] (image_streaming) StdoutLine: {'line': b'writing ../../build/image_streaming/image_streaming.egg-info/PKG-INFO\n'}
+[12.549867] (py_target_detection) StdoutLine: {'line': b'running egg_info\n'}
+[12.558269] (py_img_stream) StdoutLine: {'line': b'writing dependency_links to ../../build/py_img_stream/py_img_stream.egg-info/dependency_links.txt\n'}
+[12.562555] (py_target_detection) StdoutLine: {'line': b'writing ../../build/py_target_detection/py_target_detection.egg-info/PKG-INFO\n'}
+[12.567517] (image_streaming) StdoutLine: {'line': b'writing dependency_links to ../../build/image_streaming/image_streaming.egg-info/dependency_links.txt\n'}
+[12.572837] (-) TimerEvent: {}
+[12.575368] (py_img_stream) StdoutLine: {'line': b'writing entry points to ../../build/py_img_stream/py_img_stream.egg-info/entry_points.txt\n'}
+[12.581313] (py_target_detection) StdoutLine: {'line': b'writing dependency_links to ../../build/py_target_detection/py_target_detection.egg-info/dependency_links.txt\n'}
+[12.586065] (image_streaming) StdoutLine: {'line': b'writing entry points to ../../build/image_streaming/image_streaming.egg-info/entry_points.txt\n'}
+[12.601604] (py_img_stream) StdoutLine: {'line': b'writing requirements to ../../build/py_img_stream/py_img_stream.egg-info/requires.txt\n'}
+[12.604378] (py_img_stream) StdoutLine: {'line': b'writing top-level names to ../../build/py_img_stream/py_img_stream.egg-info/top_level.txt\n'}
+[12.605226] (py_target_detection) StdoutLine: {'line': b'writing entry points to ../../build/py_target_detection/py_target_detection.egg-info/entry_points.txt\n'}
+[12.615923] (image_streaming) StdoutLine: {'line': b'writing requirements to ../../build/image_streaming/image_streaming.egg-info/requires.txt\n'}
+[12.621556] (py_target_detection) StdoutLine: {'line': b'writing requirements to ../../build/py_target_detection/py_target_detection.egg-info/requires.txt\n'}
+[12.626888] (image_streaming) StdoutLine: {'line': b'writing top-level names to ../../build/image_streaming/image_streaming.egg-info/top_level.txt\n'}
+[12.631307] (py_target_detection) StdoutLine: {'line': b'writing top-level names to ../../build/py_target_detection/py_target_detection.egg-info/top_level.txt\n'}
+[12.651353] (py_img_stream) StdoutLine: {'line': b"reading manifest file '../../build/py_img_stream/py_img_stream.egg-info/SOURCES.txt'\n"}
+[12.665280] (py_target_detection) StdoutLine: {'line': b"reading manifest file '../../build/py_target_detection/py_target_detection.egg-info/SOURCES.txt'\n"}
+[12.670742] (py_img_stream) StdoutLine: {'line': b"writing manifest file '../../build/py_img_stream/py_img_stream.egg-info/SOURCES.txt'\n"}
+[12.673898] (-) TimerEvent: {}
+[12.675155] (py_img_stream) StdoutLine: {'line': b'running build\n'}
+[12.683176] (py_img_stream) StdoutLine: {'line': b'running build_py\n'}
+[12.694531] (image_streaming) StdoutLine: {'line': b"reading manifest file '../../build/image_streaming/image_streaming.egg-info/SOURCES.txt'\n"}
+[12.695382] (py_img_stream) StdoutLine: {'line': b'copying py_img_stream/image_pub.py -> /media/sf_sdp12_ws/dev_ws/build/py_img_stream/build/lib/py_img_stream\n'}
+[12.698472] (py_target_detection) StdoutLine: {'line': b"writing manifest file '../../build/py_target_detection/py_target_detection.egg-info/SOURCES.txt'\n"}
+[12.707224] (py_target_detection) StdoutLine: {'line': b'running build\n'}
+[12.718929] (py_target_detection) StdoutLine: {'line': b'running build_py\n'}
+[12.726685] (image_streaming) StdoutLine: {'line': b"writing manifest file '../../build/image_streaming/image_streaming.egg-info/SOURCES.txt'\n"}
+[12.729261] (py_target_detection) StdoutLine: {'line': b'running install\n'}
+[12.733504] (py_target_detection) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[12.737351] (py_target_detection) StderrLine: {'line': b'  warnings.warn(\n'}
+[12.742330] (py_target_detection) StdoutLine: {'line': b'running install_lib\n'}
+[12.744644] (py_img_stream) StdoutLine: {'line': b'running install\n'}
+[12.745305] (py_img_stream) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[12.749563] (py_img_stream) StderrLine: {'line': b'  warnings.warn(\n'}
+[12.752262] (image_streaming) StdoutLine: {'line': b'running build\n'}
+[12.754187] (image_streaming) StdoutLine: {'line': b'running build_py\n'}
+[12.758205] (py_img_stream) StdoutLine: {'line': b'running install_lib\n'}
+[12.763022] (py_img_stream) StdoutLine: {'line': b'copying /media/sf_sdp12_ws/dev_ws/build/py_img_stream/build/lib/py_img_stream/image_pub.py -> /media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib/python3.10/site-packages/py_img_stream\n'}
+[12.767208] (py_target_detection) StdoutLine: {'line': b'running install_data\n'}
+[12.769355] (py_target_detection) StdoutLine: {'line': b'running install_egg_info\n'}
+[12.770733] (py_target_detection) StdoutLine: {'line': b"removing '/media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/python3.10/site-packages/py_target_detection-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[12.781760] (image_streaming) StdoutLine: {'line': b'running install\n'}
+[12.810787] (-) TimerEvent: {}
+[12.842031] (image_streaming) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[12.861759] (image_streaming) StderrLine: {'line': b'  warnings.warn(\n'}
+[12.880934] (image_streaming) StdoutLine: {'line': b'running install_lib\n'}
+[12.883244] (py_target_detection) StdoutLine: {'line': b'Copying ../../build/py_target_detection/py_target_detection.egg-info to /media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/python3.10/site-packages/py_target_detection-0.0.0-py3.10.egg-info\n'}
+[12.884826] (py_img_stream) StdoutLine: {'line': b'byte-compiling /media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib/python3.10/site-packages/py_img_stream/image_pub.py to image_pub.cpython-310.pyc\n'}
+[12.888510] (py_img_stream) StdoutLine: {'line': b'running install_data\n'}
+[12.889661] (image_streaming) StdoutLine: {'line': b'running install_data\n'}
+[12.892876] (image_streaming) StdoutLine: {'line': b'running install_egg_info\n'}
+[12.893501] (image_streaming) StdoutLine: {'line': b"removing '/media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages/image_streaming-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[12.898161] (py_img_stream) StdoutLine: {'line': b'running install_egg_info\n'}
+[12.898821] (py_img_stream) StdoutLine: {'line': b"removing '/media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib/python3.10/site-packages/py_img_stream-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[12.908011] (image_streaming) StdoutLine: {'line': b'Copying ../../build/image_streaming/image_streaming.egg-info to /media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages/image_streaming-0.0.0-py3.10.egg-info\n'}
+[12.912626] (-) TimerEvent: {}
+[12.913805] (py_img_stream) StdoutLine: {'line': b'Copying ../../build/py_img_stream/py_img_stream.egg-info to /media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib/python3.10/site-packages/py_img_stream-0.0.0-py3.10.egg-info\n'}
+[12.962137] (py_target_detection) StdoutLine: {'line': b'running install_scripts\n'}
+[13.024116] (-) TimerEvent: {}
+[13.032579] (image_streaming) StdoutLine: {'line': b'running install_scripts\n'}
+[13.064591] (py_target_detection) StdoutLine: {'line': b'Installing img script to /media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/py_target_detection\n'}
+[13.082417] (py_target_detection) StdoutLine: {'line': b"writing list of installed files to '/media/sf_sdp12_ws/dev_ws/build/py_target_detection/install.log'\n"}
+[13.112060] (image_streaming) StdoutLine: {'line': b'Installing img_publisher script to /media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/image_streaming\n'}
+[13.124724] (-) TimerEvent: {}
+[13.126290] (image_streaming) StdoutLine: {'line': b'Installing img_test_sub script to /media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/image_streaming\n'}
+[13.143015] (image_streaming) StdoutLine: {'line': b"writing list of installed files to '/media/sf_sdp12_ws/dev_ws/build/image_streaming/install.log'\n"}
+[13.160488] (py_target_detection) CommandEnded: {'returncode': 0}
+[13.217066] (py_img_stream) StdoutLine: {'line': b'running install_scripts\n'}
+[13.232508] (-) TimerEvent: {}
+[13.337730] (-) TimerEvent: {}
+[13.442636] (-) TimerEvent: {}
+[13.466070] (py_img_stream) StdoutLine: {'line': b'Installing pub script to /media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib/py_img_stream\n'}
+[13.480810] (py_img_stream) StdoutLine: {'line': b'Installing sub script to /media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib/py_img_stream\n'}
+[13.495928] (py_img_stream) StdoutLine: {'line': b"writing list of installed files to '/media/sf_sdp12_ws/dev_ws/build/py_img_stream/install.log'\n"}
+[13.553000] (-) TimerEvent: {}
+[13.662427] (-) TimerEvent: {}
+[13.705942] (py_target_detection) JobEnded: {'identifier': 'py_target_detection', 'rc': 0}
+[13.756075] (marker_detection) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/marker_detection', 'build', '--build-base', '/media/sf_sdp12_ws/dev_ws/build/marker_detection/build', 'install', '--record', '/media/sf_sdp12_ws/dev_ws/build/marker_detection/install.log', '--single-version-externally-managed'], 'cwd': '/media/sf_sdp12_ws/dev_ws/src/marker_detection', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'sdp12', 'SSH_CLIENT': '10.0.2.2 49820 22', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'MOTD_SHOWN': 'pam', 'HOME': '/home/sdp12', 'OLDPWD': '/media/sf_sdp12_ws/dev_ws/src', 'SSH_TTY': '/dev/pts/0', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLCON_PREFIX_PATH': '/media/sf_sdp12_ws/dev_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'sdp12', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/media/sf_sdp12_ws/dev_ws/install/py_target_detection:/media/sf_sdp12_ws/dev_ws/install/py_img_stream:/media/sf_sdp12_ws/dev_ws/install/marker_detection:/media/sf_sdp12_ws/dev_ws/install/image_streaming:/opt/ros/humble', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'PWD': '/media/sf_sdp12_ws/dev_ws/build/marker_detection', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '10.0.2.2 49820 10.0.2.15 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share/:/usr/share/', 'PYTHONPATH': '/media/sf_sdp12_ws/dev_ws/build/marker_detection/prefix_override:/media/sf_sdp12_ws/dev_ws/install/marker_detection/lib/python3.10/site-packages:/media/sf_sdp12_ws/dev_ws/install/py_target_detection/lib/python3.10/site-packages:/media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib/python3.10/site-packages:/media/sf_sdp12_ws/dev_ws/install/marker_detection/lib/python3.10/site-packages:/media/sf_sdp12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[13.818736] (-) TimerEvent: {}
+[13.820604] (py_img_stream) CommandEnded: {'returncode': 0}
+[13.922930] (-) TimerEvent: {}
+[14.037921] (-) TimerEvent: {}
+[14.139897] (-) TimerEvent: {}
+[14.246561] (-) TimerEvent: {}
+[14.348419] (-) TimerEvent: {}
+[14.459300] (-) TimerEvent: {}
+[14.566734] (-) TimerEvent: {}
+[14.595023] (py_img_stream) JobEnded: {'identifier': 'py_img_stream', 'rc': 0}
+[14.613353] (image_streaming) CommandEnded: {'returncode': 0}
+[14.682524] (-) TimerEvent: {}
+[14.788136] (-) TimerEvent: {}
+[14.854093] (marker_detection) StdoutLine: {'line': b'running egg_info\n'}
+[14.865850] (marker_detection) StdoutLine: {'line': b'writing ../../build/marker_detection/marker_detection.egg-info/PKG-INFO\n'}
+[14.875032] (marker_detection) StdoutLine: {'line': b'writing dependency_links to ../../build/marker_detection/marker_detection.egg-info/dependency_links.txt\n'}
+[14.884855] (marker_detection) StdoutLine: {'line': b'writing entry points to ../../build/marker_detection/marker_detection.egg-info/entry_points.txt\n'}
+[14.894259] (-) TimerEvent: {}
+[14.898248] (marker_detection) StdoutLine: {'line': b'writing requirements to ../../build/marker_detection/marker_detection.egg-info/requires.txt\n'}
+[14.902142] (marker_detection) StdoutLine: {'line': b'writing top-level names to ../../build/marker_detection/marker_detection.egg-info/top_level.txt\n'}
+[14.933814] (marker_detection) StdoutLine: {'line': b"reading manifest file '../../build/marker_detection/marker_detection.egg-info/SOURCES.txt'\n"}
+[14.964517] (marker_detection) StdoutLine: {'line': b"writing manifest file '../../build/marker_detection/marker_detection.egg-info/SOURCES.txt'\n"}
+[14.971792] (marker_detection) StdoutLine: {'line': b'running build\n'}
+[14.983667] (marker_detection) StdoutLine: {'line': b'running build_py\n'}
+[14.998972] (-) TimerEvent: {}
+[15.020289] (marker_detection) StdoutLine: {'line': b'running install\n'}
+[15.028210] (marker_detection) StdoutLine: {'line': b'running install_lib\n'}
+[15.039103] (marker_detection) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[15.051409] (marker_detection) StderrLine: {'line': b'  warnings.warn(\n'}
+[15.053437] (marker_detection) StdoutLine: {'line': b'running install_data\n'}
+[15.079244] (marker_detection) StdoutLine: {'line': b'running install_egg_info\n'}
+[15.084476] (marker_detection) StdoutLine: {'line': b"removing '/media/sf_sdp12_ws/dev_ws/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[15.090987] (marker_detection) StdoutLine: {'line': b'Copying ../../build/marker_detection/marker_detection.egg-info to /media/sf_sdp12_ws/dev_ws/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info\n'}
+[15.119111] (-) TimerEvent: {}
+[15.214402] (marker_detection) StdoutLine: {'line': b'running install_scripts\n'}
+[15.220045] (-) TimerEvent: {}
+[15.311342] (marker_detection) StdoutLine: {'line': b"writing list of installed files to '/media/sf_sdp12_ws/dev_ws/build/marker_detection/install.log'\n"}
+[15.325432] (-) TimerEvent: {}
+[15.439131] (-) TimerEvent: {}
+[15.513181] (image_streaming) JobEnded: {'identifier': 'image_streaming', 'rc': 0}
+[15.533294] (marker_detection) CommandEnded: {'returncode': 0}
+[15.541447] (-) TimerEvent: {}
+[15.651724] (-) TimerEvent: {}
+[15.753051] (-) TimerEvent: {}
+[15.854118] (-) TimerEvent: {}
+[15.959821] (-) TimerEvent: {}
+[16.016392] (marker_detection) JobEnded: {'identifier': 'marker_detection', 'rc': 0}
+[16.033292] (-) EventReactorShutdown: {}

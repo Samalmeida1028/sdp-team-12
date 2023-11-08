@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>image_streaming</name>
+  <version>0.0.1</version>
+  <description>This is the image publishing node for our arUco detection library</description>
+  <maintainer email="salmeida@umass.edu">sdp12</maintainer>
+  <license>TODO: License declaration</license>
+  <!-- <export_depend>image_transport</export_depend> -->
+  <!-- <export_depend>sensor_msgs</export_depend>
+  <export_depend>std_msgs</export_depend>
+  <export_depend>opencv2</export_depend>
+  <export_depend>cv_bridge</export_depend> -->
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

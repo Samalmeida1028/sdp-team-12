@@ -1,0 +1,6 @@
+[0.000000] (-) TimerEvent: {}
+[0.001115] (-) JobUnselected: {'identifier': 'image_streaming'}
+[0.003105] (-) JobUnselected: {'identifier': 'marker_detection'}
+[0.003842] (-) JobUnselected: {'identifier': 'py_img_stream'}
+[0.004225] (-) JobUnselected: {'identifier': 'py_target_detection'}
+[0.004568] (-) EventReactorShutdown: {}

@@ -1,0 +1,22 @@
+[3.035s] Invoking command in '/media/sf_sdp12_ws/dev_ws/src/marker_detection': PYTHONPATH=/media/sf_sdp12_ws/dev_ws/build/marker_detection/prefix_override:/media/sf_sdp12_ws/dev_ws/install/marker_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/marker_detection build --build-base /media/sf_sdp12_ws/dev_ws/build/marker_detection/build install --record /media/sf_sdp12_ws/dev_ws/build/marker_detection/install.log --single-version-externally-managed
+[3.787s] running egg_info
+[3.793s] writing ../../build/marker_detection/marker_detection.egg-info/PKG-INFO
+[3.796s] writing dependency_links to ../../build/marker_detection/marker_detection.egg-info/dependency_links.txt
+[3.803s] writing entry points to ../../build/marker_detection/marker_detection.egg-info/entry_points.txt
+[3.806s] writing requirements to ../../build/marker_detection/marker_detection.egg-info/requires.txt
+[3.809s] writing top-level names to ../../build/marker_detection/marker_detection.egg-info/top_level.txt
+[3.828s] reading manifest file '../../build/marker_detection/marker_detection.egg-info/SOURCES.txt'
+[3.840s] writing manifest file '../../build/marker_detection/marker_detection.egg-info/SOURCES.txt'
+[3.844s] running build
+[3.846s] running build_py
+[3.850s] running install
+[3.852s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[3.854s]   warnings.warn(
+[3.867s] running install_lib
+[3.891s] running install_data
+[3.909s] running install_egg_info
+[3.916s] removing '/media/sf_sdp12_ws/dev_ws/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info' (and everything under it)
+[3.924s] Copying ../../build/marker_detection/marker_detection.egg-info to /media/sf_sdp12_ws/dev_ws/install/marker_detection/lib/python3.10/site-packages/marker_detection-0.0.0-py3.10.egg-info
+[3.977s] running install_scripts
+[4.011s] writing list of installed files to '/media/sf_sdp12_ws/dev_ws/build/marker_detection/install.log'
+[4.119s] Invoked command in '/media/sf_sdp12_ws/dev_ws/src/marker_detection' returned '0': PYTHONPATH=/media/sf_sdp12_ws/dev_ws/build/marker_detection/prefix_override:/media/sf_sdp12_ws/dev_ws/install/marker_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/marker_detection build --build-base /media/sf_sdp12_ws/dev_ws/build/marker_detection/build install --record /media/sf_sdp12_ws/dev_ws/build/marker_detection/install.log --single-version-externally-managed

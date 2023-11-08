@@ -1,0 +1,33 @@
+running egg_info
+writing ../../build/image_streaming/image_streaming.egg-info/PKG-INFO
+writing dependency_links to ../../build/image_streaming/image_streaming.egg-info/dependency_links.txt
+writing entry points to ../../build/image_streaming/image_streaming.egg-info/entry_points.txt
+writing requirements to ../../build/image_streaming/image_streaming.egg-info/requires.txt
+writing top-level names to ../../build/image_streaming/image_streaming.egg-info/top_level.txt
+reading manifest file '../../build/image_streaming/image_streaming.egg-info/SOURCES.txt'
+writing manifest file '../../build/image_streaming/image_streaming.egg-info/SOURCES.txt'
+running build
+running build_py
+copying image_streaming/image_pub.py -> /media/sf_sdp_12_ws/dev_ws/build/image_streaming/build/lib/image_streaming
+copying image_streaming/image_test_sub.py -> /media/sf_sdp_12_ws/dev_ws/build/image_streaming/build/lib/image_streaming
+copying image_streaming/__init__.py -> /media/sf_sdp_12_ws/dev_ws/build/image_streaming/build/lib/image_streaming
+running install
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+running install_lib
+copying /media/sf_sdp_12_ws/dev_ws/build/image_streaming/build/lib/image_streaming/image_pub.py -> /media/sf_sdp_12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages/image_streaming
+copying /media/sf_sdp_12_ws/dev_ws/build/image_streaming/build/lib/image_streaming/image_test_sub.py -> /media/sf_sdp_12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages/image_streaming
+copying /media/sf_sdp_12_ws/dev_ws/build/image_streaming/build/lib/image_streaming/__init__.py -> /media/sf_sdp_12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages/image_streaming
+byte-compiling /media/sf_sdp_12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages/image_streaming/image_pub.py to image_pub.cpython-310.pyc
+byte-compiling /media/sf_sdp_12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages/image_streaming/image_test_sub.py to image_test_sub.cpython-310.pyc
+byte-compiling /media/sf_sdp_12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages/image_streaming/__init__.py to __init__.cpython-310.pyc
+running install_data
+copying resource/image_streaming -> /media/sf_sdp_12_ws/dev_ws/install/image_streaming/share/ament_index/resource_index/packages
+copying package.xml -> /media/sf_sdp_12_ws/dev_ws/install/image_streaming/share/image_streaming
+running install_egg_info
+removing '/media/sf_sdp_12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages/image_streaming-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/image_streaming/image_streaming.egg-info to /media/sf_sdp_12_ws/dev_ws/install/image_streaming/lib/python3.10/site-packages/image_streaming-0.0.0-py3.10.egg-info
+running install_scripts
+Installing img_publisher script to /media/sf_sdp_12_ws/dev_ws/install/image_streaming/lib/image_streaming
+Installing img_test_sub script to /media/sf_sdp_12_ws/dev_ws/install/image_streaming/lib/image_streaming
+writing list of installed files to '/media/sf_sdp_12_ws/dev_ws/build/image_streaming/install.log'
