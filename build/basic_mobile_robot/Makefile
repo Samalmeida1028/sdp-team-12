@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot
+CMAKE_SOURCE_DIR = /home/adam/Desktop/sdp-team-12/basic_mobile_robot
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot
+CMAKE_BINARY_DIR = /home/adam/Desktop/sdp-team-12/build/basic_mobile_robot
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adam/Desktop/sdp-team-12/build/basic_mobile_robot/CMakeFiles /home/adam/Desktop/sdp-team-12/build/basic_mobile_robot//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adam/Desktop/sdp-team-12/build/basic_mobile_robot/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
