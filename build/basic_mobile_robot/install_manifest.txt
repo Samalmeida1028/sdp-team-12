@@ -1,10 +1,10 @@
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf.yaml
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf2.yaml
-/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v1.launch.py
-/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v2.launch.py
-/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v3.launch.py
-/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v4.launch.py
-/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/basic_mobile_bot_v5.launch.py
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/urdf_visualizer.launch.py
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/gazebo_simulator.launch.py
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/sensor_fusion_odom.launch.py
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/lidar_config.launch.py
+/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/nav_env.launch.py
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/arm_base.stl
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/bicep.stl
 /mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/elbow.stl

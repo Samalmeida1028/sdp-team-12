@@ -1,0 +1,182 @@
+[1.912s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[1.912s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=12, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f15b4078940>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f15b44ff250>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f15b44ff250>>)
+[2.141s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[2.142s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[2.142s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[2.142s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[2.143s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[2.143s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[2.143s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/mnt/e/UMass_Amherst/SDP/sdp-team-12'
+[2.146s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[2.146s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[2.147s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[2.149s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[2.149s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[2.150s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[2.151s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[2.172s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[2.173s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[2.174s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[2.174s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[2.175s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[2.179s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extensions ['ignore', 'ignore_ament_install']
+[2.180s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extension 'ignore'
+[2.182s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extension 'ignore_ament_install'
+[2.185s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extensions ['colcon_pkg']
+[2.185s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extension 'colcon_pkg'
+[2.187s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extensions ['colcon_meta']
+[2.187s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extension 'colcon_meta'
+[2.189s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extensions ['ros']
+[2.189s] Level 1:colcon.colcon_core.package_identification:_identify(basic_mobile_robot) by extension 'ros'
+[2.214s] DEBUG:colcon.colcon_core.package_identification:Package 'basic_mobile_robot' with type 'ros.ament_cmake' and name 'basic_mobile_robot'
+[2.218s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[2.219s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[2.221s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[2.226s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[2.226s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[2.228s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[2.231s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[2.231s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[2.233s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[2.237s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extensions ['ignore', 'ignore_ament_install']
+[2.237s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extension 'ignore'
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extension 'ignore_ament_install'
+[2.242s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extensions ['colcon_pkg']
+[2.242s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extension 'colcon_pkg'
+[2.244s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extensions ['colcon_meta']
+[2.244s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extension 'colcon_meta'
+[2.246s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extensions ['ros']
+[2.246s] Level 1:colcon.colcon_core.package_identification:_identify(navigator) by extension 'ros'
+[2.263s] DEBUG:colcon.colcon_core.package_identification:Package 'navigator' with type 'ros.ament_python' and name 'navigator'
+[2.263s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[2.264s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[2.264s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[2.264s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[2.264s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[2.443s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[2.445s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[2.504s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[2.508s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[2.510s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[2.573s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 0 installed packages in /mnt/e/UMass_Amherst/SDP/sdp-team-12/install
+[2.600s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 388 installed packages in /opt/ros/humble
+[2.603s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[2.786s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'cmake_args' from command line to 'None'
+[2.786s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'cmake_target' from command line to 'None'
+[2.786s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.787s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'cmake_clean_cache' from command line to 'False'
+[2.787s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'cmake_clean_first' from command line to 'False'
+[2.787s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'cmake_force_configure' from command line to 'False'
+[2.787s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'ament_cmake_args' from command line to 'None'
+[2.788s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'catkin_cmake_args' from command line to 'None'
+[2.788s] Level 5:colcon.colcon_core.verb:set package 'basic_mobile_robot' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.788s] DEBUG:colcon.colcon_core.verb:Building package 'basic_mobile_robot' with the following arguments: {'ament_cmake_args': None, 'build_base': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot', 'merge_install': False, 'path': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot', 'symlink_install': False, 'test_result_base': None}
+[2.812s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'cmake_args' from command line to 'None'
+[2.813s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'cmake_target' from command line to 'None'
+[2.813s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.813s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'cmake_clean_cache' from command line to 'False'
+[2.814s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'cmake_clean_first' from command line to 'False'
+[2.814s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'cmake_force_configure' from command line to 'False'
+[2.814s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'ament_cmake_args' from command line to 'None'
+[2.814s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'catkin_cmake_args' from command line to 'None'
+[2.815s] Level 5:colcon.colcon_core.verb:set package 'navigator' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.815s] DEBUG:colcon.colcon_core.verb:Building package 'navigator' with the following arguments: {'ament_cmake_args': None, 'build_base': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigator', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator', 'merge_install': False, 'path': '/mnt/e/UMass_Amherst/SDP/sdp-team-12/navigator', 'symlink_install': False, 'test_result_base': None}
+[2.838s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[2.863s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[2.864s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot' with build type 'ament_cmake'
+[2.864s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot'
+[2.911s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[2.912s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.912s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.067s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/navigator' with build type 'ament_python'
+[3.068s] Level 1:colcon.colcon_core.shell:create_environment_hook('navigator', 'ament_prefix_path')
+[3.094s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/share/navigator/hook/ament_prefix_path.ps1'
+[3.285s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/share/navigator/hook/ament_prefix_path.dsv'
+[3.313s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/share/navigator/hook/ament_prefix_path.sh'
+[3.380s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.380s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.665s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator:/opt/ros/humble /usr/bin/cmake /mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot -DCMAKE_INSTALL_PREFIX=/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot
+[4.314s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/navigator'
+[4.346s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.346s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[7.772s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/navigator': PYTHONPATH=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigator/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/navigator build --build-base /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigator/build install --record /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigator/install.log --single-version-externally-managed
+[14.184s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/navigator' returned '0': PYTHONPATH=/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigator/prefix_override:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/navigator build --build-base /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigator/build install --record /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/navigator/install.log --single-version-externally-managed
+[14.234s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator' for CMake module files
+[14.381s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator' for CMake config files
+[14.529s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/lib'
+[14.537s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/bin'
+[14.539s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/lib/pkgconfig/navigator.pc'
+[14.540s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/lib/python3.10/site-packages'
+[14.542s] Level 1:colcon.colcon_core.shell:create_environment_hook('navigator', 'pythonpath')
+[14.572s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/share/navigator/hook/pythonpath.ps1'
+[14.599s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/share/navigator/hook/pythonpath.dsv'
+[14.627s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/share/navigator/hook/pythonpath.sh'
+[14.694s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/bin'
+[14.695s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(navigator)
+[14.732s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/share/navigator/package.ps1'
+[14.756s] INFO:colcon.colcon_core.shell:Creating package descriptor '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/share/navigator/package.dsv'
+[14.809s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/share/navigator/package.sh'
+[14.841s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/share/navigator/package.bash'
+[14.882s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/share/navigator/package.zsh'
+[14.938s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator/share/colcon-core/packages/navigator)
+[33.250s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator:/opt/ros/humble /usr/bin/cmake /mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot -DCMAKE_INSTALL_PREFIX=/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot
+[33.271s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator:/opt/ros/humble /usr/bin/cmake --build /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot -- -j12 -l12
+[33.457s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator:/opt/ros/humble /usr/bin/cmake --build /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot -- -j12 -l12
+[33.530s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator:/opt/ros/humble /usr/bin/cmake --install /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot
+[43.136s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(basic_mobile_robot)
+[43.137s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/navigator:/opt/ros/humble /usr/bin/cmake --install /mnt/e/UMass_Amherst/SDP/sdp-team-12/build/basic_mobile_robot
+[43.171s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot' for CMake module files
+[43.341s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot' for CMake config files
+[43.522s] Level 1:colcon.colcon_core.shell:create_environment_hook('basic_mobile_robot', 'cmake_prefix_path')
+[43.559s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/hook/cmake_prefix_path.ps1'
+[43.616s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/hook/cmake_prefix_path.dsv'
+[43.655s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/hook/cmake_prefix_path.sh'
+[43.696s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/bin'
+[43.699s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/lib/pkgconfig/basic_mobile_robot.pc'
+[43.701s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/lib/python3.10/site-packages'
+[43.704s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/bin'
+[43.739s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.ps1'
+[43.762s] INFO:colcon.colcon_core.shell:Creating package descriptor '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.dsv'
+[43.862s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.sh'
+[43.886s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.bash'
+[43.916s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.zsh'
+[43.955s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/colcon-core/packages/basic_mobile_robot)
+[44.124s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(basic_mobile_robot)
+[44.159s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot' for CMake module files
+[44.446s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot' for CMake config files
+[44.619s] Level 1:colcon.colcon_core.shell:create_environment_hook('basic_mobile_robot', 'cmake_prefix_path')
+[44.654s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/hook/cmake_prefix_path.ps1'
+[44.685s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/hook/cmake_prefix_path.dsv'
+[44.728s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/hook/cmake_prefix_path.sh'
+[44.767s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/bin'
+[44.770s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/lib/pkgconfig/basic_mobile_robot.pc'
+[44.773s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/lib/python3.10/site-packages'
+[44.776s] Level 1:colcon.colcon_core.environment:checking '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/bin'
+[44.811s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.ps1'
+[44.838s] INFO:colcon.colcon_core.shell:Creating package descriptor '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.dsv'
+[44.872s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.sh'
+[44.906s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.bash'
+[44.939s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.zsh'
+[44.973s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/basic_mobile_robot/share/colcon-core/packages/basic_mobile_robot)
+[44.994s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[44.995s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[44.995s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[44.996s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[45.148s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[45.149s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[45.149s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[45.149s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[45.152s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.Notifications was not provided by any .service files
+[45.153s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[45.186s] INFO:colcon.colcon_core.shell:Creating prefix script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/local_setup.ps1'
+[45.197s] INFO:colcon.colcon_core.shell:Creating prefix util module '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/_local_setup_util_ps1.py'
+[45.238s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/setup.ps1'
+[45.311s] INFO:colcon.colcon_core.shell:Creating prefix script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/local_setup.sh'
+[45.323s] INFO:colcon.colcon_core.shell:Creating prefix util module '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/_local_setup_util_sh.py'
+[45.334s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/setup.sh'
+[45.406s] INFO:colcon.colcon_core.shell:Creating prefix script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/local_setup.bash'
+[45.424s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/setup.bash'
+[45.520s] INFO:colcon.colcon_core.shell:Creating prefix script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/local_setup.zsh'
+[45.579s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/mnt/e/UMass_Amherst/SDP/sdp-team-12/install/setup.zsh'
