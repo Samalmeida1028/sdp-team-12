@@ -31,7 +31,7 @@ class ImageSubscriber(Node):
     # self.subscription # prevent unused variable warning
     self.translation_subscription = self.create_subscription(
       Float32MultiArray, 
-      'translation_list', 
+      'xyPos', 
       self.listener_callback, 
       10)
     self.translation_subscription # prevent unused variable warning
@@ -57,7 +57,7 @@ class ImageSubscriber(Node):
     # # Display image
     # cv2.imshow("camera", current_frame)
     datastring = str(str(dataa.data[0]) + " " + str(dataa.data[1]))
-    self.get_logger().info("%s" % datastring)
+    # self.get_logger().info("%s" % datastring)
     self.ser.write(bytearray(json.dumps(list(dataa.data)) + "\n",encoding="utf-8"))
   
 def main(args=None):

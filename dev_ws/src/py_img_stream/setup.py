@@ -24,6 +24,8 @@ setup(
             'py_img_stream.image_pub:main',
             'sub = '
             'py_img_stream.image_test_sub:main',
+            'target_pub = '
+            'py_img_stream.target_pub:main'
         ],
     },
 )
