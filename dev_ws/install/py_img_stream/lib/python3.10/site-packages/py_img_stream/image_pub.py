@@ -33,7 +33,7 @@ class ImagePublisher(Node):
     self.aruco_params = aruco.DetectorParameters_create()
     # self.aruco_params = cv2.arbytearray(datastring,encoding="utf-8")uco.DetectorParameters()
     # self.detector = cv2.aruco.ArucoDetector(self.aruco_dict, self.aruco_params)
-    self.markerLength = 51 # mm
+    self.markerLength = 130 # mm
     self.marker_side = self.markerLength
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')
@@ -89,8 +89,29 @@ class ImagePublisher(Node):
         stri.data = "\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0])
         translation = Float32MultiArray()
         translation.data = [float(tvec[0][0][0]),float(tvec[0][0][1]),float(tvec[0][0][2])]
-        self.publisher.publish(stri)
-        self.translation_publisher.publish(translation)
+        # self.publisher.publish(stri)
+        # self.translation_publisher.publish(translation)
+    return (corners,ids)
+  
+
+
+
+  def get_pixel_pos(self,corners,ids):
+    marker_position = Float32MultiArray()
+    for (markerCorner, markerID) in zip(corners, ids):
+
+        # Draw the axis on the aruco markers        print(tvecoord)
+
+        # extract the marker corners (which are always returned in
+        # top-left, top-right, bottom-right, and bottom-left order)
+        corners = markerCorner.reshape((4, 2))
+        (topLeft, topRight, bottomRight, bottomLeft) = corners
+        cX = int((topLeft[0] + bottomRight[0]) / 2.0)
+        cY = int((topLeft[1] + bottomRight[1]) / 2.0)
+        marker_position.data = [float(cX-320),float(cY-240)]
+
+        self.translation_publisher.publish(marker_position)
+    return marker_position
               
       
       # if self.search_for_grid:
@@ -114,14 +135,14 @@ class ImagePublisher(Node):
     if len(corners) > 0:
         # flatten the ArUco IDs list
       ids = ids.flatten()
-      self.frame_color = cv2.cvtColor(self.frame, cv2.COLOR_GRAY2BGR)
+      # self.frame_color = cv2.cvtColor(self.frame, cv2.COLOR_GRAY2BGR)
       # loop over the detected ArUCo corners
       for (markerCorner, markerID) in zip(corners, ids):
 
         rvec, tvec, _ = aruco.estimatePoseSingleMarkers(markerCorner, self.marker_side, 
             self.cameraMatrix, self.distCoeffs)
         # Draw the axis on the aruco markers
-        aruco.drawAxis(self.frame_color, self.cameraMatrix, self.distCoeffs, rvec, tvec, 0.1)
+        aruco.drawAxis(self.frame, self.cameraMatrix, self.distCoeffs, rvec, tvec, 0.1)
 
         # extract the marker corners (which are always returned in
         # top-left, top-right, bottom-right, and bottom-left order)
@@ -132,18 +153,19 @@ class ImagePublisher(Node):
         bottomRight = (int(bottomRight[0]), int(bottomRight[1]))
         bottomLeft = (int(bottomLeft[0]), int(bottomLeft[1]))
         topLeft = (int(topLeft[0]), int(topLeft[1]))
+        tvecoord = (int(tvec[0][0][0]),int(tvec[0][0][1]))
+        cv2.line(self.frame, topLeft, topRight, (0, 255, 0), 2)
+        cv2.line(self.frame, topRight, bottomRight, (0, 255, 0), 2)
+        cv2.line(self.frame, bottomRight, bottomLeft, (0, 255, 0), 2)
+        cv2.line(self.frame, bottomLeft, topLeft, (0, 255, 0), 2)
 
-        cv2.line(self.frame_color, topLeft, topRight, (0, 255, 0), 2)
-        cv2.line(self.frame_color, topRight, bottomRight, (0, 255, 0), 2)
-        cv2.line(self.frame_color, bottomRight, bottomLeft, (0, 255, 0), 2)
-        cv2.line(self.frame_color, bottomLeft, topLeft, (0, 255, 0), 2)
         # compute and draw the center (x, y)-coordinates of the ArUco
         # marker
         cX = int((topLeft[0] + bottomRight[0]) / 2.0)
         cY = int((topLeft[1] + bottomRight[1]) / 2.0)
-        cv2.circle(self.frame_color, (cX, cY), 4, (0, 0, 255), -1)
+        cv2.circle(self.frame, (cX, cY), 4, (0, 0, 255), -1)
         # draw the ArUco marker ID on the image
-        cv2.putText(self.frame_color, str(markerID),(topLeft[0], topLeft[1] - 10), cv2.FONT_HERSHEY_SIMPLEX,
+        cv2.putText(self.frame, str(markerID),(topLeft[0], topLeft[1] - 10), cv2.FONT_HERSHEY_SIMPLEX,
             0.5, (0, 255, 0), 2)
 
    
@@ -167,12 +189,16 @@ class ImagePublisher(Node):
     #   # image to a ROS 2 image message
       # pose = str(self.get_pose())
       # test = String()
-      # test.data = pose
+      # test.data = poseframe_colo
       # if(pose is not None):
       #   self.publisher.publish(test)
       # self.get_logger().info(type(img))
-      self.get_pose()
-      cv2.imshow('camera', self.frame)
+      (corners,ids) = self.get_pose()
+      # cv2.imshow('camera', self.frame)
+      if(corners is not None and ids is not None):
+        self.get_pixel_pos(corners,ids)
+        self.aruco_display(corners,ids)
+      cv2.imshow('camera',self.frame)
       cv2.waitKey(1)
 
     # Display the message on the console

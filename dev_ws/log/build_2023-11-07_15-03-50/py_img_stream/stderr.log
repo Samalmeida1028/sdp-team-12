@@ -1,0 +1,7 @@
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+  File "/home/adam/Desktop/sdp-team-12/dev_ws/install/py_img_stream/lib/python3.10/site-packages/py_img_stream/image_pub.py", line 45
+    self.frame = []std_msgs.msg import Float32MultiArray
+                   ^^^^^^^^
+SyntaxError: invalid syntax
+
