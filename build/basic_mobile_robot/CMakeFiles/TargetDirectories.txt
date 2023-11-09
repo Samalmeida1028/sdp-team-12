@@ -1,9 +1,0 @@
-/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot/CMakeFiles/uninstall.dir
-/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot/CMakeFiles/basic_mobile_robot_uninstall.dir
-/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot/CMakeFiles/test.dir
-/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot/CMakeFiles/edit_cache.dir
-/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot/CMakeFiles/rebuild_cache.dir
-/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot/CMakeFiles/list_install_components.dir
-/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot/CMakeFiles/install.dir
-/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot/CMakeFiles/install/local.dir
-/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot/CMakeFiles/install/strip.dir

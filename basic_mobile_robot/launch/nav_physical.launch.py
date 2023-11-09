@@ -26,7 +26,7 @@ def generate_launch_description():
   #world_path = os.path.join(pkg_share, 'worlds', world_file_name)
   nav2_dir = FindPackageShare(package='nav2_bringup').find('nav2_bringup') 
   nav2_launch_dir = os.path.join(nav2_dir, 'launch') 
-  #static_map_path = os.path.join(pkg_share, 'maps', 'smalltown_world.yaml')
+  static_map_path = os.path.join(pkg_share, 'maps', 'smalltown_world.yaml')
   nav2_params_path = os.path.join(pkg_share, 'params', 'nav2_params.yaml')
   nav2_bt_path = FindPackageShare(package='nav2_bt_navigator').find('nav2_bt_navigator')
   behavior_tree_xml_path = os.path.join(nav2_bt_path, 'behavior_trees', 'navigate_w_replanning_and_recovery.xml')
@@ -35,8 +35,8 @@ def generate_launch_description():
   autostart = LaunchConfiguration('autostart')
   default_bt_xml_filename = LaunchConfiguration('default_bt_xml_filename')
   headless = LaunchConfiguration('headless')
-  #map_yaml_file = LaunchConfiguration('map')
-  #model = LaunchConfiguration('model')
+  map_yaml_file = LaunchConfiguration('map')
+  model = LaunchConfiguration('model')
   namespace = LaunchConfiguration('namespace')
   params_file = LaunchConfiguration('params_file')
   #rviz_config_file = LaunchConfiguration('rviz_config_file')
@@ -44,7 +44,7 @@ def generate_launch_description():
   use_namespace = LaunchConfiguration('use_namespace')
   use_robot_state_pub = LaunchConfiguration('use_robot_state_pub')
   #use_rviz = LaunchConfiguration('use_rviz')
-  #use_sim_time = LaunchConfiguration('use_sim_time')
+  use_sim_time = LaunchConfiguration('use_sim_time')
   #use_simulator = LaunchConfiguration('use_simulator')
   #world = LaunchConfiguration('world')
   
@@ -78,10 +78,10 @@ def generate_launch_description():
     default_value=behavior_tree_xml_path,
     description='Full path to the behavior tree xml file to use')
         
-  #declare_map_yaml_cmd = DeclareLaunchArgument(
-  #  name='map',
-  #  default_value=static_map_path,
-  #  description='Full path to map file to load')
+  declare_map_yaml_cmd = DeclareLaunchArgument(
+   name='map',
+   default_value=static_map_path,
+   description='Full path to map file to load')
         
   declare_model_path_cmd = DeclareLaunchArgument(
     name='model', 
@@ -118,10 +118,10 @@ def generate_launch_description():
   #  default_value='True',
   #  description='Whether to start RVIZ')
     
-  #declare_use_sim_time_cmd = DeclareLaunchArgument(
-  #  name='use_sim_time',
-  #  default_value='False',
-  #  description='Use simulation (Gazebo) clock if true')
+  declare_use_sim_time_cmd = DeclareLaunchArgument(
+   name='use_sim_time',
+   default_value='False',
+   description='Use simulation (Gazebo) clock if true')
 
   #declare_use_simulator_cmd = DeclareLaunchArgument(
   #  name='use_simulator',
@@ -181,8 +181,8 @@ def generate_launch_description():
     launch_arguments = {'namespace': namespace,
                         'use_namespace': use_namespace,
                         'slam': slam,
-                        #'map': map_yaml_file,
-                        #'use_sim_time': use_sim_time,
+                        'map': map_yaml_file,
+                        'use_sim_time': use_sim_time,
                         'params_file': params_file,
                         'default_bt_xml_filename': default_bt_xml_filename,
                         'autostart': autostart}.items())
@@ -203,15 +203,15 @@ def generate_launch_description():
   ld.add_action(declare_use_namespace_cmd)
   ld.add_action(declare_autostart_cmd)
   ld.add_action(declare_bt_xml_cmd)
-  #ld.add_action(declare_map_yaml_cmd)
-  #ld.add_action(declare_model_path_cmd)
+  ld.add_action(declare_map_yaml_cmd)
+  ld.add_action(declare_model_path_cmd)
   ld.add_action(declare_params_file_cmd)
   #ld.add_action(declare_rviz_config_file_cmd)
   #ld.add_action(declare_simulator_cmd)
   ld.add_action(declare_slam_cmd)
   ld.add_action(declare_use_robot_state_pub_cmd)  
   #ld.add_action(declare_use_rviz_cmd) 
-  #ld.add_action(declare_use_sim_time_cmd)
+  ld.add_action(declare_use_sim_time_cmd)
   #ld.add_action(declare_use_simulator_cmd)
   #ld.add_action(declare_world_cmd)
 

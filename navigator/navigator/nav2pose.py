@@ -15,8 +15,8 @@ class Nav2Pose(Node):
         super().__init__('nav2pose')
         self.navigator = BasicNavigator()
         # Wait for navigation to fully activate, since autostarting nav2
-        # self.navigator.lifecycleStartup()
-        self.navigator.waitUntilNav2Active(localizer="bt_navigator")
+        self.navigator.lifecycleStartup()
+        #self.navigator.waitUntilNav2Active(localizer="bt_navigator")
         print("Ready!")
 
         # self.navigator.changeMap('/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/maps/smalltown_world.yaml')
