@@ -9,8 +9,11 @@ setup.py
 ../build/navigator/navigator.egg-info/top_level.txt
 ../build/navigator/navigator.egg-info/zip-safe
 navigator/__init__.py
+navigator/cmd_vel_sub.py
+navigator/coord_pub_test.py
 navigator/keyboard_teleop.py
 navigator/nav2pose.py
+navigator/test_pynput.py
 resource/navigator
 test/test_copyright.py
 test/test_flake8.py

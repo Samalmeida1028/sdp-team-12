@@ -22,6 +22,8 @@ setup(
         'console_scripts': [
             'keyboard = navigator.keyboard_teleop:main',
             'nav2pose = navigator.nav2pose:main',
+            'cmdvelsub = navigator.cmd_vel_sub:main',
+            'coordpub = navigator.coord_pub_test:main',
         ],
     },
 )

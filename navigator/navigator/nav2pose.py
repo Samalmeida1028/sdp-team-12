@@ -1,37 +1,48 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 11/5/23
-# Date last modified: 11/8/23
+# Date last modified: 11/9/23
 # Description: Using Nav2 to navigate to a given pose
 
 from geometry_msgs.msg import PoseStamped
+from std_msgs.msg import Float32MultiArray
 from nav2_simple_commander.robot_navigator import BasicNavigator, TaskResult
 import rclpy
 from rclpy.node import Node
 from rclpy.duration import Duration
+import math
+from scipy.spatial.transform import Rotation
 
 class Nav2Pose(Node):
     def __init__(self):
         super().__init__('nav2pose')
+        print("Initializing Nav Simple Commander...")
+
         self.navigator = BasicNavigator()
+
+        print("Setting poses...")
+        self.initial_pose = PoseStamped()
+        self.prev_pose = PoseStamped()
+        self.goal = PoseStamped()
+
+        self.init_navigator(3.45, 2.15, 1.0, 0.0)
+
         # Wait for navigation to fully activate, since autostarting nav2
-        self.navigator.lifecycleStartup()
-        #self.navigator.waitUntilNav2Active(localizer="bt_navigator")
-        print("Ready!")
+        #self.navigator.lifecycleStartup()
+        self.navigator.waitUntilNav2Active(localizer="bt_navigator")
+
+        self.i = 0
+        self.startnav = False
 
         # self.navigator.changeMap('/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/maps/smalltown_world.yaml')
 
-        self.initial_pose = PoseStamped()
-        self.goal = PoseStamped()
-
-        #self.init_navigator(3.45, 2.15, 1.0, 0.0)
-
-        self.i = 0
-
-        self.poseSub = self.create_subscription(PoseStamped, '/goal_pose', self.setgoal, 10)
+        print("Creating subscribers and callbacks...")
+        self.coordsub = self.create_subscription(Float32MultiArray, '/coords', self.setgoal, 10)
         
         time_period = 0.5
         self.timer = self.create_timer(time_period, self.nav2pose_callback)
+
+        print("Ready!")
 
     def init_navigator(self, x, y, z, w):
         # Set our demo's initial pose
@@ -63,28 +74,43 @@ class Nav2Pose(Node):
         self.navigator.goToPose(goal_pose)
 
     def setgoal(self, goalmsg):
-        print("Updated goal pose!")
-        self.goal = goalmsg
+        # goalmsg = [cam_angle, d_target]
+        self.goal.header.frame_id = 'map'
+        self.goal.header.stamp = self.navigator.get_clock().now().to_msg()
+        
+        self.goal.pose.position.x = self.initial_pose.pose.position.x + (goalmsg.data[1]*math.sin(goalmsg.data[0])) # xf = xi + dsin(phi)
+        self.goal.pose.position.y = self.initial_pose.pose.position.y + (goalmsg.data[1]*math.cos(goalmsg.data[0])) # yf = yi + dcos(phi)
+        self.goal.pose.position.z = self.initial_pose.pose.position.z
+
+        rot = Rotation.from_euler('xyz', [0, 0, goalmsg.data[0]], degrees=True)
+        rot_quat = rot.as_quat() # convert angle to quaternion format
+
+        self.goal.pose.orientation.x = rot_quat[0] # set the orientation to be looking at the marker at the end of navigation
+        self.goal.pose.orientation.y = rot_quat[1]
+        self.goal.pose.orientation.z = rot_quat[2]
+        self.goal.pose.orientation.w = rot_quat[3]
+
+        self.startnav = True
+
+        if self.goal != self.prev_pose:
+            print("Updated goal pose!")
 
     def nav2pose_callback(self):
-        if self.initial_pose != self.goal:
+        if self.startnav:
             # other way to do this
             # path = self.navigator.getPath(self.initial_pose, self.goal)
             # smooth_path = self.navigator.smoothPath(path)
             # self.navigator.followPath(smooth_path)
 
-            self.navigator.goToPose(self.goal)
+            if self.goal != self.prev_pose:
+                self.navigator.goToPose(self.goal)
+                self.prev_pose = self.goal
 
             if not self.navigator.isTaskComplete():
-                ################################################
-                #
-                # Implement some code here for your application!
-                #
-                ################################################
-
                 # Do something with the feedback
                 self.i = self.i + 1
                 feedback = self.navigator.getFeedback()
+
                 if feedback and self.i % 5 == 0:
                     print('Estimated time of arrival: ' + '{0:.0f}'.format(
                         Duration.from_msg(feedback.estimated_time_remaining).nanoseconds / 1e9)
