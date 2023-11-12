@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 11/5/23
-# Date last modified: 11/9/23
+# Date last modified: 11/11/23
 # Description: Using Nav2 to navigate to a given pose
 
 from geometry_msgs.msg import PoseStamped
@@ -37,7 +37,7 @@ class Nav2Pose(Node):
         # self.navigator.changeMap('/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/maps/smalltown_world.yaml')
 
         print("Creating subscribers and callbacks...")
-        self.coordsub = self.create_subscription(Float32MultiArray, '/coords', self.setgoal, 10)
+        self.coordsub = self.create_subscription(Float32MultiArray, '/translation_list', self.setgoal, 10)
         
         time_period = 0.5
         self.timer = self.create_timer(time_period, self.nav2pose_callback)
@@ -74,15 +74,15 @@ class Nav2Pose(Node):
         self.navigator.goToPose(goal_pose)
 
     def setgoal(self, goalmsg):
-        # goalmsg = [cam_angle, d_target]
+        # goalmsg = [xpos, ypos, dist, angle]
         self.goal.header.frame_id = 'map'
         self.goal.header.stamp = self.navigator.get_clock().now().to_msg()
         
-        self.goal.pose.position.x = self.initial_pose.pose.position.x + (goalmsg.data[1]*math.sin(goalmsg.data[0])) # xf = xi + dsin(phi)
-        self.goal.pose.position.y = self.initial_pose.pose.position.y + (goalmsg.data[1]*math.cos(goalmsg.data[0])) # yf = yi + dcos(phi)
+        self.goal.pose.position.x = self.initial_pose.pose.position.x + (goalmsg.data[2]*math.sin(goalmsg.data[3]))/100 # xf = xi + dsin(phi)
+        self.goal.pose.position.y = self.initial_pose.pose.position.y + (goalmsg.data[2]*math.cos(goalmsg.data[3]))/100 # yf = yi + dcos(phi)
         self.goal.pose.position.z = self.initial_pose.pose.position.z
 
-        rot = Rotation.from_euler('xyz', [0, 0, goalmsg.data[0]], degrees=True)
+        rot = Rotation.from_euler('xyz', [0, 0, goalmsg.data[3]], degrees=True)
         rot_quat = rot.as_quat() # convert angle to quaternion format
 
         self.goal.pose.orientation.x = rot_quat[0] # set the orientation to be looking at the marker at the end of navigation

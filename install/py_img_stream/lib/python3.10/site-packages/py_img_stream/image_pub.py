@@ -14,12 +14,19 @@ from std_msgs.msg import String
 from std_msgs.msg import Int32
 from std_msgs.msg import Float32MultiArray
 from std_msgs.msg import Int32MultiArray
+import serial
+import json
 
 
 class ImagePublisher(Node):
 
   def __init__(self):
     super().__init__('image_pub')
+    self.ser = serial.Serial(
+             '/dev/ttyACM1',
+             baudrate=115200,
+             timeout=0.01)
+    
     self.translation_publisher = self.create_publisher(Float32MultiArray, "translation_list", 1)
     self.rotation_publisher = self.create_publisher(Float32MultiArray, "rotation_list", 1)
     self.position_publisher = self.create_publisher(Float32MultiArray, "xyPos", 1)
@@ -29,6 +36,7 @@ class ImagePublisher(Node):
     self.camParams = sio.loadmat("./calibration/logi_camParams.mat")
     self.cameraMatrix = self.camParams['cameraMatrix']
     self.distCoeffs = self.camParams['distortionCoefficients']
+    self.angle = 0
 
     self.target_subscription = self.create_subscription(
       Int32, 
@@ -47,7 +55,7 @@ class ImagePublisher(Node):
     self.marker_side = self.markerLength
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')
-    self.cam = cv2.VideoCapture(3,cv2.CAP_V4L2)
+    self.cam = cv2.VideoCapture(2,cv2.CAP_V4L2)
     self.cam.set(cv2.CAP_PROP_MODE,0)
     self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolutionX)
     self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolutionY)
@@ -103,8 +111,8 @@ class ImagePublisher(Node):
           stri = String()
           stri.data = "\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0])
           translation = Float32MultiArray()
-          translation.data = [float(tvec[0][0][0]),float(tvec[0][0][1]),float(tvec[0][0][2])]
-          # self.publisher.publish(stri)
+          translation.data = [float(tvec[0][0][0]),float(tvec[0][0][1]),float(tvec[0][0][2]), float(self.angle)]
+          self.get_logger().info("%s" % str(translation.data))
           self.translation_publisher.publish(translation)
     return (corners,ids)
   
@@ -125,7 +133,10 @@ class ImagePublisher(Node):
         cY = int((topLeft[1] + bottomRight[1]) / 2.0)
         marker_position.data = [float(cX-(self.resolutionX//2)),float(cY-(self.resolutionY/2))]
         if(markerID == int(self.target)):
-          self.position_publisher.publish(marker_position)
+          self.ser.write(bytearray(json.dumps(list(marker_position.data)) + "\n",encoding="utf-8"))
+          serial_in = self.ser.readline()
+          if serial_in:
+            self.angle = int(json.loads(serial_in.decode('utf-8')))
     return marker_position
               
 
@@ -162,7 +173,7 @@ class ImagePublisher(Node):
         cX = int((topLeft[0] + bottomRight[0]) / 2.0)
         cY = int((topLeft[1] + bottomRight[1]) / 2.0)
         cv2.circle(self.frame, (cX, cY), 4, (0, 0, 255), -1)
-        # draw the ArUco marker ID on the image
+        # draw the ArUco marker ID on the image          # self.publisher.publish(stri)
         cv2.putText(self.frame, str(markerID),(topLeft[0], topLeft[1] - 10), cv2.FONT_HERSHEY_SIMPLEX,
             0.5, (0, 255, 0), 2)
 
@@ -175,6 +186,7 @@ class ImagePublisher(Node):
     ret, self.frame = self.cam.read()
     if ret == True:
       (corners,ids) = self.get_pose()
+      # self.get_logger().info("getting stuff")
       # cv2.imshow('camera', self.frame)
       if(corners is not None and ids is not None):
         self.get_pixel_pos(corners,ids)

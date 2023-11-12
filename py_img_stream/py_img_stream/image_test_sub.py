@@ -37,7 +37,7 @@ class ImageSubscriber(Node):
       10)
     self.translation_subscription # prevent unused variable warning
     self.ser = serial.Serial(
-             '/dev/ttyACM2',
+             '/dev/ttyACM1',
              baudrate=115200,
              timeout=0.01)
     self.angle_publisher = self.create_publisher(Int32, "angle", 1)

@@ -37,7 +37,7 @@ class Nav2Pose(Node):
         # self.navigator.changeMap('/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/maps/smalltown_world.yaml')
 
         print("Creating subscribers and callbacks...")
-        self.coordsub = self.create_subscription(Float32MultiArray, '/topic', self.setgoal, 10)
+        self.coordsub = self.create_subscription(Float32MultiArray, '/translation_list', self.setgoal, 10)
         
         time_period = 0.5
         self.timer = self.create_timer(time_period, self.nav2pose_callback)
@@ -78,8 +78,8 @@ class Nav2Pose(Node):
         self.goal.header.frame_id = 'map'
         self.goal.header.stamp = self.navigator.get_clock().now().to_msg()
         
-        self.goal.pose.position.x = self.initial_pose.pose.position.x + (goalmsg.data[2]*math.sin(goalmsg.data[3])) # xf = xi + dsin(phi)
-        self.goal.pose.position.y = self.initial_pose.pose.position.y + (goalmsg.data[2]*math.cos(goalmsg.data[3])) # yf = yi + dcos(phi)
+        self.goal.pose.position.x = self.initial_pose.pose.position.x + (goalmsg.data[2]*math.sin(goalmsg.data[3]))/100 # xf = xi + dsin(phi)
+        self.goal.pose.position.y = self.initial_pose.pose.position.y + (goalmsg.data[2]*math.cos(goalmsg.data[3]))/100 # yf = yi + dcos(phi)
         self.goal.pose.position.z = self.initial_pose.pose.position.z
 
         rot = Rotation.from_euler('xyz', [0, 0, goalmsg.data[3]], degrees=True)
