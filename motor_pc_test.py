@@ -11,7 +11,7 @@ ser = serial.Serial(
       
     # Used to convert between ROS and OpenCV images
 
-
+#hello
 movement_vector = [0.0,0.0]
 
 # while(True):
