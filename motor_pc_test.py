@@ -32,9 +32,9 @@ def on_release(key):
 
 def check_key(key):
     if key is Key.up:
-      movement_vector=[0.5, 0.5]
+      movement_vector[0]+=.01
     if key is Key.down:
-      movement_vector=[-0.5, -0.5]
+      movement_vector[0]-=.01
     movement_vector[0]=min(max(-.9,movement_vector[0]),.9)
     ser.write(bytearray(json.dumps(movement_vector) +"\n",encoding="utf-8"))
          
