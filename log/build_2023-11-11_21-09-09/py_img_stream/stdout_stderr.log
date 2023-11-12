@@ -1,0 +1,45 @@
+running egg_info
+creating ../build/py_img_stream/py_img_stream.egg-info
+writing ../build/py_img_stream/py_img_stream.egg-info/PKG-INFO
+writing dependency_links to ../build/py_img_stream/py_img_stream.egg-info/dependency_links.txt
+writing entry points to ../build/py_img_stream/py_img_stream.egg-info/entry_points.txt
+writing requirements to ../build/py_img_stream/py_img_stream.egg-info/requires.txt
+writing top-level names to ../build/py_img_stream/py_img_stream.egg-info/top_level.txt
+writing manifest file '../build/py_img_stream/py_img_stream.egg-info/SOURCES.txt'
+reading manifest file '../build/py_img_stream/py_img_stream.egg-info/SOURCES.txt'
+writing manifest file '../build/py_img_stream/py_img_stream.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/adam/Desktop/sdp-team-12/build/py_img_stream/build
+creating /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib
+creating /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream
+copying py_img_stream/image_pub.py -> /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream
+copying py_img_stream/__init__.py -> /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream
+copying py_img_stream/image_test_sub.py -> /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream
+copying py_img_stream/target_pub.py -> /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream
+running install
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+running install_lib
+creating /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream
+copying /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream/image_pub.py -> /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream
+copying /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream/__init__.py -> /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream
+copying /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream/image_test_sub.py -> /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream
+copying /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream/target_pub.py -> /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream
+byte-compiling /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream/image_pub.py to image_pub.cpython-310.pyc
+byte-compiling /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream/image_test_sub.py to image_test_sub.cpython-310.pyc
+byte-compiling /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream/target_pub.py to target_pub.cpython-310.pyc
+running install_data
+creating /home/adam/Desktop/sdp-team-12/install/py_img_stream/share/ament_index
+creating /home/adam/Desktop/sdp-team-12/install/py_img_stream/share/ament_index/resource_index
+creating /home/adam/Desktop/sdp-team-12/install/py_img_stream/share/ament_index/resource_index/packages
+copying resource/py_img_stream -> /home/adam/Desktop/sdp-team-12/install/py_img_stream/share/ament_index/resource_index/packages
+copying package.xml -> /home/adam/Desktop/sdp-team-12/install/py_img_stream/share/py_img_stream
+running install_egg_info
+Copying ../build/py_img_stream/py_img_stream.egg-info to /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream-0.0.0-py3.10.egg-info
+running install_scripts
+Installing pub script to /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/py_img_stream
+Installing sub script to /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/py_img_stream
+Installing target_pub script to /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/py_img_stream
+writing list of installed files to '/home/adam/Desktop/sdp-team-12/build/py_img_stream/install.log'

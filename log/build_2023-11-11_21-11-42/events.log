@@ -1,0 +1,5 @@
+[0.000000] (-) TimerEvent: {}
+[0.000272] (-) JobUnselected: {'identifier': 'basic_mobile_robot'}
+[0.000360] (-) JobUnselected: {'identifier': 'navigator'}
+[0.000377] (-) JobUnselected: {'identifier': 'py_img_stream'}
+[0.000633] (-) EventReactorShutdown: {}
