@@ -5,7 +5,7 @@ import pynput
 from pynput.keyboard import Key, Listener
 
 ser = serial.Serial(
-             '/dev/ttyACM1',
+             '/dev/ttyACM2',
              baudrate=115200,
              timeout=0.01)
       
