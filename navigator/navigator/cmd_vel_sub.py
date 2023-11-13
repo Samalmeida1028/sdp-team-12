@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 11/9/23
-# Date last modified: 11/9/23
+# Date last modified: 11/13/23
 # Description: Send cmd vel values from the nav stack over serial to the pico
 
 from geometry_msgs.msg import Twist
@@ -22,14 +22,9 @@ class CmdVelSub(Node):
         tvel = msg.linear.x
         rvel = msg.angular.z
 
-        t_rvel = self.robot_radius * rvel
+        #t_rvel = self.robot_radius * rvel
 
-        #print("Linear Velocity: {}, Angular Velocity: {}".format(tvel, rvel))
-
-        left_speed = tvel - t_rvel
-        right_speed = tvel + t_rvel
-
-        print("Left motor speed: {}, Right motor speed: {}".format(left_speed, right_speed))
+        print("Linear Velocity: {}, Angular Velocity: {}".format(tvel, rvel))
 
         #self.s.write(bytes(str(tvel) + "," + str(rvel), 'ascii'))
 

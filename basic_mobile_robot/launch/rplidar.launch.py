@@ -3,18 +3,22 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 
 def generate_launch_description():
+    start_lidar_cmd = Node(
+        name='rplidar_composition',
+        package='rplidar_ros',
+        executable='rplidar_composition',
+        output='screen',
+        parameters=[{
+            'serial_port': '/dev/ttyUSB0',
+            'serial_baudrate': 115200,
+            'frame_id': 'lidar_link',
+            'angle_compensate': True,
+            'auto_standby': True,
+            'scan_mode': 'Standard'
+        }]
+    )
 
-    return LaunchDescription([
+    ld = LaunchDescription()
+    ld.add_action(start_lidar_cmd)
 
-        Node(
-            package='rplidar_ros',
-            executable='rplidar_node',
-            output='screen',
-            parameters=[{
-                'serial_port': '/dev/ttyUSB0',
-                'frame_id': 'laser',
-                'angle_compensate': True,
-                'scan_mode': 'Standard'
-            }]
-        )
-    ])
+    return ld
