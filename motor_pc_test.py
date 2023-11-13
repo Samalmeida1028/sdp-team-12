@@ -5,7 +5,7 @@ import pynput
 from pynput.keyboard import Key, Listener
 
 ser = serial.Serial(
-             'COM4',
+             '/dev/ttyACM1',
              baudrate=115200,
              timeout=0.01)
       
@@ -35,7 +35,12 @@ def check_key(key):
       movement_vector[0]+=.01
     if key is Key.down:
       movement_vector[0]-=.01
-    movement_vector[0]=min(max(-.9,movement_vector[0]),.9)
+    if key is Key.left:
+      movement_vector[1]+=.01
+    if key is Key.right:
+      movement_vector[1]-=.01
+    movement_vector[0]=min(max(-.99,movement_vector[0]),.99)
+    movement_vector[1]=min(max(-.99,movement_vector[1]),.99)
     ser.write(bytearray(json.dumps(movement_vector) +"\n",encoding="utf-8"))
          
       
