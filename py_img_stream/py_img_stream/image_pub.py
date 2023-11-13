@@ -23,7 +23,7 @@ class ImagePublisher(Node):
   def __init__(self):
     super().__init__('image_pub')
     self.ser = serial.Serial(
-             '/dev/ttyACM2',
+             '/dev/ttyACM1',
              baudrate=115200,
              timeout=0.01)
     
@@ -37,6 +37,8 @@ class ImagePublisher(Node):
     self.cameraMatrix = self.camParams['cameraMatrix']
     self.distCoeffs = self.camParams['distortionCoefficients']
     self.angle = 0
+    self.marker_position = Float32MultiArray()
+    self.translation = Float32MultiArray()
 
     self.target_subscription = self.create_subscription(
       Int32, 
@@ -51,11 +53,11 @@ class ImagePublisher(Node):
     self.target = 9999
     # self.aruco_params = cv2.arbytearray(datastring,encoding="utf-8")uco.DetectorParameters()
     # self.detector = cv2.aruco.ArucoDetector(self.aruco_dict, self.aruco_params)
-    self.markerLength = 130 # mm
+    self.markerLength = 60 # mm
     self.marker_side = self.markerLength
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')
-    self.cam = cv2.VideoCapture(0,cv2.CAP_V4L2)
+    self.cam = cv2.VideoCapture(2,cv2.CAP_V4L2)
     self.cam.set(cv2.CAP_PROP_MODE,0)
     self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolutionX)
     self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolutionY)
@@ -110,17 +112,15 @@ class ImagePublisher(Node):
           self.get_logger().warn("\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0]))
           stri = String()
           stri.data = "\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0])
-          translation = Float32MultiArray()
-          translation.data = [float(tvec[0][0][0]),float(tvec[0][0][1]),float(tvec[0][0][2]), float(self.angle)]
-          self.get_logger().info("%s" % str(translation.data))
-          self.translation_publisher.publish(translation)
+          self.translation.data = [float(tvec[0][0][0]),float(tvec[0][0][1]),float(tvec[0][0][2]), float(self.angle)]
+          self.get_logger().info("%s" % str(self.translation.data))
+          self.translation_publisher.publish(self.translation)
     return (corners,ids)
   
 
 
 
   def get_pixel_pos(self,corners,ids):
-    marker_position = Float32MultiArray()
     for (markerCorner, markerID) in zip(corners, ids):
 
         # Draw the axis on the aruco markers        print(tvecoord)
@@ -131,14 +131,9 @@ class ImagePublisher(Node):
         (topLeft, topRight, bottomRight, bottomLeft) = corners
         cX = int((topLeft[0] + bottomRight[0]) / 2.0)
         cY = int((topLeft[1] + bottomRight[1]) / 2.0)
-        marker_position.data = [float(cX-(self.resolutionX//2)),float(cY-(self.resolutionY/2))]
+        self.marker_position.data = [float(cX-(self.resolutionX//2)),float(cY-(self.resolutionY/2))]
         if(markerID == int(self.target)):
           self.get_logger().info("target stuff")
-          self.ser.write(bytearray(json.dumps(list(marker_position.data)) + "\n",encoding="utf-8"))
-          serial_in = self.ser.readline()
-          if serial_in:
-            self.angle = int(json.loads(serial_in.decode('utf-8')))
-    return marker_position
               
 
   def aruco_display(self, corners, ids):
@@ -195,6 +190,10 @@ class ImagePublisher(Node):
     # This method returns True/False as well
     # as the video frame.
         self.aruco_display(corners,ids)
+        self.ser.write(bytearray(json.dumps(list(self.marker_position.data) + [self.translation.data[2]]) + "\n",encoding="utf-8"))
+      serial_in = self.ser.readline()
+      if serial_in:
+        self.angle = int(json.loads(serial_in.decode('utf-8')))
       cv2.imshow('camera',self.frame)
       cv2.waitKey(16)
 
