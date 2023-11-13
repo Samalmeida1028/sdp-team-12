@@ -23,7 +23,7 @@ class ImagePublisher(Node):
   def __init__(self):
     super().__init__('image_pub')
     self.ser = serial.Serial(
-             '/dev/ttyACM1',
+             '/dev/ttyACM2',
              baudrate=115200,
              timeout=0.01)
     
@@ -55,7 +55,7 @@ class ImagePublisher(Node):
     self.marker_side = self.markerLength
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')
-    self.cam = cv2.VideoCapture(2,cv2.CAP_V4L2)
+    self.cam = cv2.VideoCapture(0,cv2.CAP_V4L2)
     self.cam.set(cv2.CAP_PROP_MODE,0)
     self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolutionX)
     self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolutionY)
@@ -133,6 +133,7 @@ class ImagePublisher(Node):
         cY = int((topLeft[1] + bottomRight[1]) / 2.0)
         marker_position.data = [float(cX-(self.resolutionX//2)),float(cY-(self.resolutionY/2))]
         if(markerID == int(self.target)):
+          self.get_logger().info("target stuff")
           self.ser.write(bytearray(json.dumps(list(marker_position.data)) + "\n",encoding="utf-8"))
           serial_in = self.ser.readline()
           if serial_in:
