@@ -19,6 +19,10 @@ import pwmio
 from adafruit_motor import servo
 import json
 
+p_gain = .12
+d_gain = 7.8
+i_gain = 1.9
+
 ################################################################
 # select the serial Data port
 ################################################################
@@ -57,74 +61,27 @@ while True:
         data_in = serial.readline()
         if(data_in):
             translation = json.loads(data_in.decode('utf-8'))
-            if my_servox.angle is not 180 and my_servox.angle is not 0:
-                integral_x += (my_servox.angle-tempx) * .01
-            if my_servoy.angle is not 180 and my_servoy is not 0:
-                integral_y += (my_servoy.angle - tempy) * .01
-            derivative_x = ((my_servox.angle-tempx)*3) 
-            derivative_y = ((my_servoy.angle-tempy)*3)
-            data_inx += ((translation[0] * (180/640))*.8) + derivative_x 
-            data_iny -= ((translation[1] * (180/480))*.08) + derivative_y
-            print(integral_x,integral_y,derivative_x,derivative_y)
+            # print(translation[0])
+            if(translation[0]**2 + translation[1]**2 > 10):
+                if my_servox.angle < 180 and my_servox.angle > 0:
+                    integral_x += (my_servox.angle-tempx)
+                if my_servoy.angle < 180 and my_servoy.angle > 0:
+                    integral_y += (my_servoy.angle - tempy)
+                derivative_x = ((my_servox.angle-tempx)) 
+                derivative_y = ((my_servoy.angle-tempy))
+                data_inx += (translation[0] * (180/1920))*p_gain + derivative_x*d_gain + integral_x*i_gain
+                data_iny -= (translation[1] * (180/1080))*p_gain*.5 - derivative_y*d_gain - integral_y*i_gain
 
 
-            my_servox.angle = min(180,max(0,data_inx))
-            my_servoy.angle = min(120,max(0,data_iny))
 
-            tempx = my_servox.angle
-            tempy = my_servoy.angle
+                my_servox.angle = min(180,max(0,data_inx))
+                my_servoy.angle = min(120,max(0,data_iny))
+
+                tempx = my_servox.angle
+                tempy = my_servoy.angle
         else:
             my_servox.angle = min(180,max(0,tempx))
             my_servoy.angle = min(120,max(0,tempy))
 
     int(data_inx),int(data_iny)
-        # if(data_in):  # Initialize the rclpy library
-
-        #     data_inx,data_iny = data_in.decode('utf-8').split(" ")
-        #     data_inx = float(data_inx.strip())*180
-        #     data_iny = float(data_iny.strip())*180
-        #     data_inx = max(min(int(data_inx), 180),0)
-        #     data_iny = max(min(int(data_iny),180),0)
-        #     print(data_inx,data_iny)
-        #     my_servo.angle = data_iny
-        #     my_servo2.angle = data_inx
-        #     tempy= int(data_iny)
-        #     tempx= int(data_inx)
-        # else:
-        #     my_servo.angle = tempy
-        #     my_servo2.angle = tempx
-        
-
-        # try to convert the data to a dict (with JSON)
-        # data = None
-        # if data_iny and data_inx and int(data_iny) < 100 and int(data_inx) < 100:
-        #     my_servo.angle = int(data_iny)
-        #     my_servo2.angle = int(data_inx)
-        #     tempy= int(data_iny)
-        #     tempx= int(data_inx)
-        #     print(data_inx,data_iny)
-        # else:
-        #     my_servo.angle = tempy
-        #     my_servo2.angle = tempx
-
-
-    # for angle in range(1, 100, 5):  # 0 - 180 degrees, 5 degrees at a time
-    #     my_servo.angle = 0
-    #     time.sleep(0.01)
-    # for angle in range(1, 100, 5):  # 0 - 180 degrees, 5 degrees at a time
-    #     my_servo2.angle = 0
-    #     time.sleep(0.01)
-    # for angle in range(100, 0, -5):  # 0 - 180 degrees, 5 degrees at a time
-    #     my_servo.angle = 0
-    #     time.sleep(0.01)
-    # for angle in range(100, 0, -5):  # 0 - 180 degrees, 5 degrees at a time
-    #     my_servo2.angle = 0
-    #     time.sleep(0.01)
-            
-                
-
-    # this is where the rest of your code goes
-    # if the code does a lot you don't need a call to sleep, but if possible
-    # it's good to have the microcontroller sleep from time to time so it's
-    # not constantly chugging
     time.sleep(0.01)
