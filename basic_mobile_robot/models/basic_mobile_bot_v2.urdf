@@ -63,6 +63,9 @@
   <link name="base_link">
     <visual>
       <origin xyz="0 0 -0.05" rpy="1.5707963267949 0 3.141592654"/>
+      <geometry>
+        <mesh filename="package://basic_mobile_robot/meshes/robot_base.stl" />
+      </geometry>
       <material name="Red">
         <color rgba="${255/255} ${0/255} ${0/255} 1.0"/>
       </material>
