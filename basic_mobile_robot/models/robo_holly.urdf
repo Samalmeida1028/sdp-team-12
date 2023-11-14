@@ -19,10 +19,10 @@
   <xacro:property name="wheel_zoff" value="0.05"/>
 
   <!-- Position the wheels along the x-axis -->
-  <xacro:property name="front_wheel_xoff" value="0.0508"/>
+  <xacro:property name="front_wheel_xoff" value="-0.1651"/>
 
   <!-- Position the caster wheel along the x-axis -->
-  <xacro:property name="back_wheel_xoff" value="0.381"/>
+  <xacro:property name="back_wheel_xoff" value="0.1651"/>
 
   <!-- Define intertial property macros  -->
   <xacro:macro name="box_inertia" params="m w h d">
@@ -62,9 +62,9 @@
   <!-- ********************** ROBOT BASE *********************************  -->
   <link name="base_link">
     <visual>
-      <origin xyz="0 0 -0.05" rpy="1.5707963267949 0 3.141592654"/>
+      <origin xyz="0 0 -0.05" rpy="0 0 3.141592654"/>
       <geometry>
-        <mesh filename="package://basic_mobile_robot/meshes/robot_base.stl" />
+        <box size="${base_length} ${base_width} ${base_height}"/>
       </geometry>
       <material name="Red">
         <color rgba="${255/255} ${0/255} ${0/255} 1.0"/>
@@ -172,7 +172,7 @@
   <joint name="imu_joint" type="fixed">
     <parent link="base_link"/>
     <child link="imu_link"/>
-    <origin xyz="-0.10 0 0.05" rpy="0 0 0"/>
+    <origin xyz="-0.10 0 0.0" rpy="0 0 0"/>
   </joint>
 
   <link name="imu_link"/>
@@ -181,7 +181,7 @@
   <joint name="gps_joint" type="fixed">
     <parent link="base_link"/>
     <child link="gps_link"/>
-    <origin xyz="0.10 0 0.05" rpy="0 0 0"/>
+    <origin xyz="0.10 0 0.0" rpy="0 0 0"/>
   </joint>
 
   <link name="gps_link"/>
@@ -190,7 +190,7 @@
   <joint name="lidar_joint" type="fixed">
     <parent link="base_link"/>
     <child link="lidar_link"/>
-    <origin xyz="0.215 0 0.13" rpy="0 0 0"/>
+    <origin xyz="0 0 0.05" rpy="0 0 0"/>
   </joint>
 
   <link name="lidar_link">
@@ -198,14 +198,14 @@
     <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-      <cylinder radius="0.0508" length="0.18"/>
+      <cylinder radius="0.0762" length="0.057"/>
      </geometry>
     </collision>
     
     <visual>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-      <cylinder radius="0.0508" length="0.18"/>
+      <cylinder radius="0.0762" length="0.057"/>
      </geometry>
      <material name="Black">
           <color rgba="${0/255} ${0/255} ${0/255} 1.0"/>
