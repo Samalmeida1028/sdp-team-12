@@ -147,7 +147,7 @@
   <!-- ****************************** LIDAR *****************************    -->
   <link name="lidar_link">    
     <inertial>
-      <pose>0.215 0 0.13 0 0 0</pose>
+      <pose>0 0 -0.01 0 0 0</pose>
       <inertia>
         <ixx>0.001</ixx>
         <ixy>0.000</ixy>
@@ -160,20 +160,20 @@
     </inertial>
 
     <collision name="lidar_collision">
-      <pose>0.215 0 0.13 0 0 0</pose>
+      <pose>0 0 0.01 0 0 0</pose>
       <geometry>
         <cylinder>
-          <radius>0.0762</radius>
+          <radius>0.0381</radius>
           <length>0.057</length>
         </cylinder>
       </geometry>
     </collision>
 
     <visual name="lidar_visual">
-      <pose>0.215 0 0.13 0 0 0</pose>
+      <pose>0 0 -0.01 0 0 0</pose>
       <geometry>
         <cylinder>
-          <radius>0.0762</radius>
+          <radius>0.0381</radius>
           <length>0.057</length>
         </cylinder>
       </geometry>
@@ -186,7 +186,7 @@
     </visual>
 
     <sensor name="lidar" type="ray">
-      <pose>0.215 0 0.215 0 0 0</pose>
+      <pose>0 0 -0.01 0 0 0</pose>
       <always_on>true</always_on>
       <visualize>true</visualize>
       <update_rate>5</update_rate>
@@ -222,7 +222,7 @@
   
   <!-- *********************** DRIVE WHEELS ******************************  -->
   <link name="drivewhl_lf_link">
-    <pose>-0.221 0.23 -0.05 0 1.570796 1.570796</pose>
+    <pose>-0.1651 0.194 -0.05 0 1.570796 1.570796</pose>
     
     <collision name="drivewhl_lf_collision">
       <geometry>
@@ -244,7 +244,7 @@
   </link>
 
   <link name="drivewhl_rf_link">
-    <pose>-0.221 -0.23 -0.05 0 1.570796 1.570796</pose>
+    <pose>-0.1651 -0.194 -0.05 0 1.570796 1.570796</pose>
     
     <collision name="drivewhl_rf_collision">
       <geometry>
@@ -266,7 +266,7 @@
   </link>
 
   <link name="drivewhl_lb_link">
-    <pose>-0.221 0.23 -0.05 0 1.570796 1.570796</pose>
+    <pose>0.1651 0.194 -0.05 0 1.570796 1.570796</pose>
     
     <collision name="drivewhl_lb_collision">
       <geometry>
@@ -288,7 +288,7 @@
   </link>
 
   <link name="drivewhl_rb_link">
-    <pose>-0.221 -0.23 -0.05 0 1.570796 1.570796</pose>
+    <pose>0.1651 -0.194 -0.05 0 1.570796 1.570796</pose>
     
     <collision name="drivewhl_rb_collision">
       <geometry>
@@ -330,7 +330,25 @@
 
   <joint name="drivewhl_rf_joint" type="revolute">
     <parent>base_link</parent>
-    <child>drivewhl_r_link</child>
+    <child>drivewhl_rf_link</child>
+    <pose>0 0 0 0 0 0</pose>
+    <axis>
+      <xyz>0 0 1</xyz>
+    </axis>
+  </joint>
+
+  <joint name="drivewhl_lb_joint" type="revolute">
+    <parent>base_link</parent>
+    <child>drivewhl_lb_link</child>
+    <pose>0 0 0 0 0 0</pose>
+    <axis>
+      <xyz>0 0 1</xyz>
+    </axis>
+  </joint>
+
+  <joint name="drivewhl_rb_joint" type="revolute">
+    <parent>base_link</parent>
+    <child>drivewhl_rb_link</child>
     <pose>0 0 0 0 0 0</pose>
     <axis>
       <xyz>0 0 1</xyz>
@@ -356,17 +374,21 @@
   </joint>
 
  <!-- *********************** WHEEL ODOMETRY ***************************    -->
-  <plugin name="basic_mobile_bot_diff_drive" filename="libgazebo_ros_diff_drive.so">
+  <plugin name="holly_diff_drive" filename="libgazebo_ros_diff_drive_mod.so">
 
     <update_rate>30</update_rate>
 
     <!-- wheels -->
-    <left_joint>drivewhl_l_joint</left_joint>
-    <right_joint>drivewhl_r_joint</right_joint>
+    <num_wheel_pairs>2</num_wheel_pairs>
+    <left_joint>drivewhl_lf_joint</left_joint>
+    <left_joint>drivewhl_lb_joint</left_joint>
+
+    <right_joint>drivewhl_rf_joint</right_joint>
+    <right_joint>drivewhl_rb_joint</right_joint>
 
     <!-- kinematics -->
-    <wheel_separation>0.52</wheel_separation>
-    <wheel_diameter>0.28</wheel_diameter>
+    <wheel_separation>0.3746</wheel_separation>
+    <wheel_diameter>0.1</wheel_diameter>
 
     <!-- limits -->
     <max_wheel_torque>20</max_wheel_torque>

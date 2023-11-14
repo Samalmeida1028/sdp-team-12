@@ -18,7 +18,7 @@ def generate_launch_description():
   pkg_share = FindPackageShare(package='basic_mobile_robot').find('basic_mobile_robot')
   default_model_path = os.path.join(pkg_share, 'models', 'robo_holly.urdf')
   default_rviz_config_path = os.path.join(pkg_share, 'rviz', 'urdf_config.rviz')
-  world_file_name = 'basic_mobile_bot_world/empty.world'
+  world_file_name = 'basic_mobile_bot_world/smalltown.world'
   world_path = os.path.join(pkg_share, 'worlds', world_file_name)
   
   # Launch configuration variables specific to simulation

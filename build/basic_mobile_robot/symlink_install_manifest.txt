@@ -19,6 +19,7 @@
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/generated_map.yaml
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.pgm
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.yaml
+/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/hollymodel.sdf
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/arm_base.stl
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/bicep.stl
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/elbow.stl
