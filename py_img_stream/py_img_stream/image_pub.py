@@ -57,7 +57,7 @@ class ImagePublisher(Node):
     self.marker_side = self.markerLength
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')
-    self.cam = cv2.VideoCapture(2,cv2.CAP_V4L2)
+    self.cam = cv2.VideoCapture(0,cv2.CAP_V4L2)
     self.cam.set(cv2.CAP_PROP_MODE,0)
     self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolutionX)
     self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolutionY)
@@ -113,7 +113,6 @@ class ImagePublisher(Node):
           stri = String()
           stri.data = "\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0])
           self.translation.data = [float(tvec[0][0][0]),float(tvec[0][0][1]),float(tvec[0][0][2]), float(self.angle)]
-          self.get_logger().info("%s" % str(self.translation.data))
           self.translation_publisher.publish(self.translation)
     return (corners,ids)
   
@@ -185,12 +184,12 @@ class ImagePublisher(Node):
       # self.get_logger().info("getting stuff")
       # cv2.imshow('camera', self.frame)
       if(corners is not None and ids is not None):
-        self.get_pixel_pos(corners,ids)
-    # Capture frame-by-frame
-    # This method returns True/False as well
-    # as the video frame.
         self.aruco_display(corners,ids)
-        self.ser.write(bytearray(json.dumps(list(self.marker_position.data) + [self.translation.data[2]]) + "\n",encoding="utf-8"))
+        self.get_pixel_pos(corners,ids)
+        for (markerCorner, markerID) in zip(corners, ids):
+          if(markerID == self.target):
+            self.get_logger().info("%s" % json.dumps(list(self.marker_position.data) + [self.translation.data[2]]))
+            self.ser.write(bytearray(json.dumps(list(self.marker_position.data) + [self.translation.data[2]]) + "\n",encoding="utf-8"))
       serial_in = self.ser.readline()
       if serial_in:
         self.angle = int(json.loads(serial_in.decode('utf-8')))
