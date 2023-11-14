@@ -12,7 +12,7 @@ import xacro
 def generate_launch_description():
     pkg_path = os.path.join(get_package_share_directory('basic_mobile_robot'))
 
-    xacro_file = os.path.join(pkg_path, 'models', 'basic_mobile_bot_v2.urdf')
+    xacro_file = os.path.join(pkg_path, 'models', 'robo_holly.urdf')
     default_rviz_config_path = os.path.join(pkg_path, 'rviz', 'main.rviz')
 
     robot_description_config = Command(['xacro ', xacro_file])

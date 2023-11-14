@@ -16,3 +16,5 @@ sudo apt install ros-humble-gazebo-ros-pkgs
 sudo apt-get install ros-humble-rqt-robot-steering
 
 sudo apt install ros-humble-robot-localization
+
+sudo apt install ros-humble-rplidar-ros
