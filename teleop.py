@@ -19,7 +19,7 @@ BUTTON_3 = 5
 BUTTON_4 = 6
 BUTTON_5 = 7
 
-sport = serial.Serial(port='COM6', baudrate=9600, write_timeout=1,parity=serial.PARITY_ODD,
+sport = serial.Serial(port='COM12', baudrate=9600, write_timeout=1,parity=serial.PARITY_ODD,
     stopbits=serial.STOPBITS_TWO,
     bytesize=serial.SEVENBITS)
 
@@ -37,9 +37,8 @@ def main():
     while(1):
         pygame.event.get()
         for stick in joysticks:
-                    sport.write(bytearray(str(stick.get_axis(1)) + "\n", encoding="utf-8"))
-                    if(stick.get_button(0) == 1):
-                        print("Triggered")
+                    sport.write(bytearray(json.dumps([stick.get_axis(0), stick.get_axis(1)]) + "\n", encoding="utf-8"))
+                    
 
 
 
