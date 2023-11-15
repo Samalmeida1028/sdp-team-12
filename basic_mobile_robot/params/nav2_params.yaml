@@ -234,7 +234,8 @@ global_costmap:
       use_sim_time: True
       robot_radius: 0.75
       resolution: 0.05
-      track_unknown_space: true
+      track_unknown_space: False
+      rolling_window: False
       plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
       obstacle_layer:
         plugin: "nav2_costmap_2d::ObstacleLayer"
