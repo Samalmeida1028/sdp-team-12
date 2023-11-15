@@ -47,9 +47,6 @@ class DFR0601:
         self.PWM2.duty_cycle =int(abs(duty_cycle))
         self.speed_vector = int(duty_cycle)
         
-
-
-
     def forward(self):
         self.INB1.value = True
         self.INB2.value = True

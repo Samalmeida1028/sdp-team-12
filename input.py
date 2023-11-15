@@ -3,7 +3,7 @@ import pynput
 from pynput import keyboard
 from pynput.keyboard import Key
 
-sport = serial.Serial(port='/dev/ttyACM1', baudrate=9600, write_timeout=1,parity=serial.PARITY_ODD,
+sport = serial.Serial(port='/dev/ttyACM1', baudrate=9600,parity=serial.PARITY_ODD,
     stopbits=serial.STOPBITS_TWO,
     bytesize=serial.SEVENBITS)
 # sport.open()
