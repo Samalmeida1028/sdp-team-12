@@ -18,19 +18,54 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclpy REQUIRED)
+find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav2_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(action_msgs REQUIRED)
+find_package(PCL REQUIRED)
+find_package(Eigen3 REQUIRED)
+find_package(laser_geometry REQUIRED)
+find_package(pcl_conversions REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_eigen REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
+include_directories(${PCL_INCLUDE_DIRS} include)
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+
 install(
-  DIRECTORY config launch meshes maps models params rviz worlds
+  DIRECTORY config launch meshes maps models params rviz worlds src
   DESTINATION share/${PROJECT_NAME}
 )
+
+add_executable(lidar_odometry_node src/lidar_odometry_node.cpp src/lidar_odometry.cpp)
+ament_target_dependencies(lidar_odometry_node
+  rclcpp
+  sensor_msgs
+  geometry_msgs
+  nav_msgs
+  laser_geometry
+  pcl_conversions
+  tf2
+  tf2_eigen
+)
+
+target_include_directories(lidar_odometry_node PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+
+target_link_libraries(lidar_odometry_node
+  ${PCL_LIBRARIES}
+)
+
+install(TARGETS lidar_odometry_node
+  DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

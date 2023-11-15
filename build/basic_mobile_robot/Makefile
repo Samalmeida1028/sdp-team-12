@@ -197,6 +197,67 @@ basic_mobile_robot_uninstall/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_mobile_robot_uninstall.dir/build.make CMakeFiles/basic_mobile_robot_uninstall.dir/build
 .PHONY : basic_mobile_robot_uninstall/fast
 
+#=============================================================================
+# Target rules for targets named lidar_odometry_node
+
+# Build rule for target.
+lidar_odometry_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lidar_odometry_node
+.PHONY : lidar_odometry_node
+
+# fast build rule for target.
+lidar_odometry_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_odometry_node.dir/build.make CMakeFiles/lidar_odometry_node.dir/build
+.PHONY : lidar_odometry_node/fast
+
+src/lidar_odometry.o: src/lidar_odometry.cpp.o
+.PHONY : src/lidar_odometry.o
+
+# target to build an object file
+src/lidar_odometry.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_odometry_node.dir/build.make CMakeFiles/lidar_odometry_node.dir/src/lidar_odometry.cpp.o
+.PHONY : src/lidar_odometry.cpp.o
+
+src/lidar_odometry.i: src/lidar_odometry.cpp.i
+.PHONY : src/lidar_odometry.i
+
+# target to preprocess a source file
+src/lidar_odometry.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_odometry_node.dir/build.make CMakeFiles/lidar_odometry_node.dir/src/lidar_odometry.cpp.i
+.PHONY : src/lidar_odometry.cpp.i
+
+src/lidar_odometry.s: src/lidar_odometry.cpp.s
+.PHONY : src/lidar_odometry.s
+
+# target to generate assembly for a file
+src/lidar_odometry.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_odometry_node.dir/build.make CMakeFiles/lidar_odometry_node.dir/src/lidar_odometry.cpp.s
+.PHONY : src/lidar_odometry.cpp.s
+
+src/lidar_odometry_node.o: src/lidar_odometry_node.cpp.o
+.PHONY : src/lidar_odometry_node.o
+
+# target to build an object file
+src/lidar_odometry_node.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_odometry_node.dir/build.make CMakeFiles/lidar_odometry_node.dir/src/lidar_odometry_node.cpp.o
+.PHONY : src/lidar_odometry_node.cpp.o
+
+src/lidar_odometry_node.i: src/lidar_odometry_node.cpp.i
+.PHONY : src/lidar_odometry_node.i
+
+# target to preprocess a source file
+src/lidar_odometry_node.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_odometry_node.dir/build.make CMakeFiles/lidar_odometry_node.dir/src/lidar_odometry_node.cpp.i
+.PHONY : src/lidar_odometry_node.cpp.i
+
+src/lidar_odometry_node.s: src/lidar_odometry_node.cpp.s
+.PHONY : src/lidar_odometry_node.s
+
+# target to generate assembly for a file
+src/lidar_odometry_node.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_odometry_node.dir/build.make CMakeFiles/lidar_odometry_node.dir/src/lidar_odometry_node.cpp.s
+.PHONY : src/lidar_odometry_node.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -212,6 +273,13 @@ help:
 	@echo "... test"
 	@echo "... basic_mobile_robot_uninstall"
 	@echo "... uninstall"
+	@echo "... lidar_odometry_node"
+	@echo "... src/lidar_odometry.o"
+	@echo "... src/lidar_odometry.i"
+	@echo "... src/lidar_odometry.s"
+	@echo "... src/lidar_odometry_node.o"
+	@echo "... src/lidar_odometry_node.i"
+	@echo "... src/lidar_odometry_node.s"
 .PHONY : help
 
 

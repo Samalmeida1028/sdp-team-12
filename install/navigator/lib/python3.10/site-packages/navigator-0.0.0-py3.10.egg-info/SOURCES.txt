@@ -13,6 +13,7 @@ navigator/cmd_vel_sub.py
 navigator/coord_pub_test.py
 navigator/keyboard_teleop.py
 navigator/nav2pose.py
+navigator/odom_pub.py
 navigator/test_pynput.py
 resource/navigator
 test/test_copyright.py

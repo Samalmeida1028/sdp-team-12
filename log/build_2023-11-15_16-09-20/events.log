@@ -1,0 +1,529 @@
+[0.000000] (-) TimerEvent: {}
+[0.000227] (basic_mobile_robot) JobQueued: {'identifier': 'basic_mobile_robot', 'dependencies': OrderedDict()}
+[0.000249] (navigator) JobQueued: {'identifier': 'navigator', 'dependencies': OrderedDict()}
+[0.000263] (py_img_stream) JobQueued: {'identifier': 'py_img_stream', 'dependencies': OrderedDict()}
+[0.000450] (basic_mobile_robot) JobStarted: {'identifier': 'basic_mobile_robot'}
+[0.041648] (navigator) JobStarted: {'identifier': 'navigator'}
+[0.092981] (py_img_stream) JobStarted: {'identifier': 'py_img_stream'}
+[0.099824] (-) TimerEvent: {}
+[0.144941] (basic_mobile_robot) JobProgress: {'identifier': 'basic_mobile_robot', 'progress': 'cmake'}
+[0.145387] (basic_mobile_robot) Command: {'cmd': ['/usr/bin/cmake', '/home/adam/Desktop/sdp-team-12/basic_mobile_robot', '-DCMAKE_INSTALL_PREFIX=/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot'], 'cwd': '/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'adam'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/adam'), ('OLDPWD', '/home/adam'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '1626'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/adam/Desktop/sdp-team-12/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'adam'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'adam'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/adam/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/adam-Latitude-5520:@/tmp/.ICE-unix/1578,unix/adam-Latitude-5520:/tmp/.ICE-unix/1578'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/d542179d_8e25_481f_85d9_e724042279c8'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.41REE2'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.112'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/adam/Desktop/sdp-team-12/install/lidar_odometry:/home/adam/Desktop/sdp-team-12/install/py_img_stream:/home/adam/Desktop/sdp-team-12/install/sllidar_ros2:/home/adam/Desktop/sdp-team-12/install/navigator:/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages:/home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/adam/Desktop/sdp-team-12/install/lidar_odometry:/home/adam/Desktop/sdp-team-12/install/sllidar_ros2:/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot:/home/adam/Desktop/sdp-team-12/install/py_img_stream:/home/adam/Desktop/sdp-team-12/install/navigator:/opt/ros/humble')]), 'shell': False}
+[0.199942] (-) TimerEvent: {}
+[0.300256] (-) TimerEvent: {}
+[0.381915] (basic_mobile_robot) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.382472] (basic_mobile_robot) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.382784] (basic_mobile_robot) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.382856] (basic_mobile_robot) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.382907] (basic_mobile_robot) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.382949] (basic_mobile_robot) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.382990] (basic_mobile_robot) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.383030] (basic_mobile_robot) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.383070] (basic_mobile_robot) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.383109] (basic_mobile_robot) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.383149] (basic_mobile_robot) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.383189] (basic_mobile_robot) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.383229] (basic_mobile_robot) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.400352] (-) TimerEvent: {}
+[0.481224] (basic_mobile_robot) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter \n'}
+[0.500551] (-) TimerEvent: {}
+[0.542619] (basic_mobile_robot) StdoutLine: {'line': b'-- Found rclpy: 3.3.10 (/opt/ros/humble/share/rclpy/cmake)\n'}
+[0.543659] (basic_mobile_robot) StdoutLine: {'line': b'-- Found rclcpp: 16.0.6 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.573063] (basic_mobile_robot) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.576251] (basic_mobile_robot) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.582025] (basic_mobile_robot) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.591402] (basic_mobile_robot) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.600718] (-) TimerEvent: {}
+[0.604819] (basic_mobile_robot) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.656812] (basic_mobile_robot) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.658816] (basic_mobile_robot) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.4 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.700856] (-) TimerEvent: {}
+[0.726653] (basic_mobile_robot) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[0.748263] (basic_mobile_robot) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[0.784458] (basic_mobile_robot) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.791895] (basic_mobile_robot) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[0.800961] (-) TimerEvent: {}
+[0.847347] (basic_mobile_robot) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[0.847624] (basic_mobile_robot) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[0.878615] (py_img_stream) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../build/py_img_stream', 'build', '--build-base', '/home/adam/Desktop/sdp-team-12/build/py_img_stream/build', 'install', '--record', '/home/adam/Desktop/sdp-team-12/build/py_img_stream/install.log', '--single-version-externally-managed'], 'cwd': '/home/adam/Desktop/sdp-team-12/py_img_stream', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'adam', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/adam', 'OLDPWD': '/home/adam', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '1626', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/adam/Desktop/sdp-team-12/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'adam', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'adam', 'TERM': 'xterm-256color', 'GAZEBO_MODEL_PATH': ':/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/home/adam/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/adam-Latitude-5520:@/tmp/.ICE-unix/1578,unix/adam-Latitude-5520:/tmp/.ICE-unix/1578', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/d542179d_8e25_481f_85d9_e724042279c8', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.41REE2', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.112', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/adam/Desktop/sdp-team-12/install/lidar_odometry:/home/adam/Desktop/sdp-team-12/install/py_img_stream:/home/adam/Desktop/sdp-team-12/install/sllidar_ros2:/home/adam/Desktop/sdp-team-12/install/navigator:/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot:/opt/ros/humble', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/adam/Desktop/sdp-team-12/build/py_img_stream', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/adam/Desktop/sdp-team-12/build/py_img_stream/prefix_override:/home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages:/home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages:/home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/home/adam/Desktop/sdp-team-12/install/lidar_odometry:/home/adam/Desktop/sdp-team-12/install/sllidar_ros2:/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot'}, 'shell': False}
+[0.881231] (navigator) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../build/navigator', 'build', '--build-base', '/home/adam/Desktop/sdp-team-12/build/navigator/build', 'install', '--record', '/home/adam/Desktop/sdp-team-12/build/navigator/install.log', '--single-version-externally-managed'], 'cwd': '/home/adam/Desktop/sdp-team-12/navigator', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'adam', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/adam', 'OLDPWD': '/home/adam', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '1626', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/adam/Desktop/sdp-team-12/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'adam', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'adam', 'TERM': 'xterm-256color', 'GAZEBO_MODEL_PATH': ':/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/home/adam/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/adam-Latitude-5520:@/tmp/.ICE-unix/1578,unix/adam-Latitude-5520:/tmp/.ICE-unix/1578', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/d542179d_8e25_481f_85d9_e724042279c8', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.41REE2', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.112', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/adam/Desktop/sdp-team-12/install/lidar_odometry:/home/adam/Desktop/sdp-team-12/install/py_img_stream:/home/adam/Desktop/sdp-team-12/install/sllidar_ros2:/home/adam/Desktop/sdp-team-12/install/navigator:/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot:/opt/ros/humble', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/adam/Desktop/sdp-team-12/build/navigator', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/adam/Desktop/sdp-team-12/build/navigator/prefix_override:/home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages:/home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages:/home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/home/adam/Desktop/sdp-team-12/install/lidar_odometry:/home/adam/Desktop/sdp-team-12/install/sllidar_ros2:/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot'}, 'shell': False}
+[0.901129] (-) TimerEvent: {}
+[0.916180] (basic_mobile_robot) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[0.917566] (basic_mobile_robot) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.001305] (-) TimerEvent: {}
+[1.054466] (basic_mobile_robot) StdoutLine: {'line': b'-- Found geometry_msgs: 4.2.3 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[1.080748] (py_img_stream) StdoutLine: {'line': b'running egg_info\n'}
+[1.081234] (py_img_stream) StdoutLine: {'line': b'creating ../build/py_img_stream/py_img_stream.egg-info\n'}
+[1.081400] (py_img_stream) StdoutLine: {'line': b'writing ../build/py_img_stream/py_img_stream.egg-info/PKG-INFO\n'}
+[1.081562] (py_img_stream) StdoutLine: {'line': b'writing dependency_links to ../build/py_img_stream/py_img_stream.egg-info/dependency_links.txt\n'}
+[1.081663] (py_img_stream) StdoutLine: {'line': b'writing entry points to ../build/py_img_stream/py_img_stream.egg-info/entry_points.txt\n'}
+[1.081711] (py_img_stream) StdoutLine: {'line': b'writing requirements to ../build/py_img_stream/py_img_stream.egg-info/requires.txt\n'}
+[1.081776] (py_img_stream) StdoutLine: {'line': b'writing top-level names to ../build/py_img_stream/py_img_stream.egg-info/top_level.txt\n'}
+[1.081845] (py_img_stream) StdoutLine: {'line': b"writing manifest file '../build/py_img_stream/py_img_stream.egg-info/SOURCES.txt'\n"}
+[1.082921] (py_img_stream) StdoutLine: {'line': b"reading manifest file '../build/py_img_stream/py_img_stream.egg-info/SOURCES.txt'\n"}
+[1.083526] (py_img_stream) StdoutLine: {'line': b"writing manifest file '../build/py_img_stream/py_img_stream.egg-info/SOURCES.txt'\n"}
+[1.083660] (py_img_stream) StdoutLine: {'line': b'running build\n'}
+[1.083745] (py_img_stream) StdoutLine: {'line': b'running build_py\n'}
+[1.083817] (py_img_stream) StdoutLine: {'line': b'creating /home/adam/Desktop/sdp-team-12/build/py_img_stream/build\n'}
+[1.083906] (py_img_stream) StdoutLine: {'line': b'creating /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib\n'}
+[1.083948] (py_img_stream) StdoutLine: {'line': b'creating /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream\n'}
+[1.083989] (py_img_stream) StdoutLine: {'line': b'copying py_img_stream/image_pub.py -> /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream\n'}
+[1.084029] (py_img_stream) StdoutLine: {'line': b'copying py_img_stream/__init__.py -> /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream\n'}
+[1.084070] (py_img_stream) StdoutLine: {'line': b'copying py_img_stream/image_test_sub.py -> /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream\n'}
+[1.084140] (py_img_stream) StdoutLine: {'line': b'copying py_img_stream/target_pub.py -> /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream\n'}
+[1.084183] (py_img_stream) StdoutLine: {'line': b'running install\n'}
+[1.084254] (py_img_stream) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[1.084310] (py_img_stream) StderrLine: {'line': b'  warnings.warn(\n'}
+[1.084389] (py_img_stream) StdoutLine: {'line': b'running install_lib\n'}
+[1.084999] (py_img_stream) StdoutLine: {'line': b'creating /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream\n'}
+[1.085066] (py_img_stream) StdoutLine: {'line': b'copying /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream/image_pub.py -> /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream\n'}
+[1.085123] (py_img_stream) StdoutLine: {'line': b'copying /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream/__init__.py -> /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream\n'}
+[1.085196] (py_img_stream) StdoutLine: {'line': b'copying /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream/image_test_sub.py -> /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream\n'}
+[1.085236] (py_img_stream) StdoutLine: {'line': b'copying /home/adam/Desktop/sdp-team-12/build/py_img_stream/build/lib/py_img_stream/target_pub.py -> /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream\n'}
+[1.085501] (py_img_stream) StdoutLine: {'line': b'byte-compiling /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream/image_pub.py to image_pub.cpython-310.pyc\n'}
+[1.086835] (py_img_stream) StdoutLine: {'line': b'byte-compiling /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream/__init__.py to __init__.cpython-310.pyc\n'}
+[1.086897] (py_img_stream) StdoutLine: {'line': b'byte-compiling /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream/image_test_sub.py to image_test_sub.cpython-310.pyc\n'}
+[1.087200] (basic_mobile_robot) StdoutLine: {'line': b'-- Found nav2_msgs: 1.1.12 (/opt/ros/humble/share/nav2_msgs/cmake)\n'}
+[1.087368] (py_img_stream) StdoutLine: {'line': b'byte-compiling /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream/target_pub.py to target_pub.cpython-310.pyc\n'}
+[1.087541] (py_img_stream) StdoutLine: {'line': b'running install_data\n'}
+[1.088011] (py_img_stream) StdoutLine: {'line': b'creating /home/adam/Desktop/sdp-team-12/install/py_img_stream/share/ament_index\n'}
+[1.088118] (py_img_stream) StdoutLine: {'line': b'creating /home/adam/Desktop/sdp-team-12/install/py_img_stream/share/ament_index/resource_index\n'}
+[1.088164] (py_img_stream) StdoutLine: {'line': b'creating /home/adam/Desktop/sdp-team-12/install/py_img_stream/share/ament_index/resource_index/packages\n'}
+[1.088203] (py_img_stream) StdoutLine: {'line': b'copying resource/py_img_stream -> /home/adam/Desktop/sdp-team-12/install/py_img_stream/share/ament_index/resource_index/packages\n'}
+[1.088241] (py_img_stream) StdoutLine: {'line': b'copying package.xml -> /home/adam/Desktop/sdp-team-12/install/py_img_stream/share/py_img_stream\n'}
+[1.088278] (py_img_stream) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.089365] (navigator) StdoutLine: {'line': b'running egg_info\n'}
+[1.089784] (navigator) StdoutLine: {'line': b'creating ../build/navigator/navigator.egg-info\n'}
+[1.090022] (navigator) StdoutLine: {'line': b'writing ../build/navigator/navigator.egg-info/PKG-INFO\n'}
+[1.090135] (py_img_stream) StdoutLine: {'line': b'Copying ../build/py_img_stream/py_img_stream.egg-info to /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages/py_img_stream-0.0.0-py3.10.egg-info\n'}
+[1.090218] (navigator) StdoutLine: {'line': b'writing dependency_links to ../build/navigator/navigator.egg-info/dependency_links.txt\n'}
+[1.090332] (navigator) StdoutLine: {'line': b'writing entry points to ../build/navigator/navigator.egg-info/entry_points.txt\n'}
+[1.090412] (navigator) StdoutLine: {'line': b'writing requirements to ../build/navigator/navigator.egg-info/requires.txt\n'}
+[1.090470] (navigator) StdoutLine: {'line': b'writing top-level names to ../build/navigator/navigator.egg-info/top_level.txt\n'}
+[1.090564] (py_img_stream) StdoutLine: {'line': b'running install_scripts\n'}
+[1.090711] (navigator) StdoutLine: {'line': b"writing manifest file '../build/navigator/navigator.egg-info/SOURCES.txt'\n"}
+[1.092100] (navigator) StdoutLine: {'line': b"reading manifest file '../build/navigator/navigator.egg-info/SOURCES.txt'\n"}
+[1.092586] (navigator) StdoutLine: {'line': b"writing manifest file '../build/navigator/navigator.egg-info/SOURCES.txt'\n"}
+[1.092700] (navigator) StdoutLine: {'line': b'running build\n'}
+[1.092742] (navigator) StdoutLine: {'line': b'running build_py\n'}
+[1.092858] (navigator) StdoutLine: {'line': b'creating /home/adam/Desktop/sdp-team-12/build/navigator/build\n'}
+[1.092936] (navigator) StdoutLine: {'line': b'creating /home/adam/Desktop/sdp-team-12/build/navigator/build/lib\n'}
+[1.092981] (navigator) StdoutLine: {'line': b'creating /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator\n'}
+[1.093042] (navigator) StdoutLine: {'line': b'copying navigator/__init__.py -> /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator\n'}
+[1.093113] (navigator) StdoutLine: {'line': b'copying navigator/test_pynput.py -> /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator\n'}
+[1.093157] (navigator) StdoutLine: {'line': b'copying navigator/coord_pub_test.py -> /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator\n'}
+[1.093226] (navigator) StdoutLine: {'line': b'copying navigator/keyboard_teleop.py -> /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator\n'}
+[1.093270] (navigator) StdoutLine: {'line': b'copying navigator/odom_pub.py -> /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator\n'}
+[1.093339] (navigator) StdoutLine: {'line': b'copying navigator/cmd_vel_sub.py -> /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator\n'}
+[1.093380] (navigator) StdoutLine: {'line': b'copying navigator/nav2pose.py -> /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator\n'}
+[1.093590] (navigator) StdoutLine: {'line': b'running install\n'}
+[1.093687] (navigator) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[1.093743] (navigator) StderrLine: {'line': b'  warnings.warn(\n'}
+[1.093907] (navigator) StdoutLine: {'line': b'running install_lib\n'}
+[1.094433] (navigator) StdoutLine: {'line': b'creating /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator\n'}
+[1.094499] (navigator) StdoutLine: {'line': b'copying /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator/__init__.py -> /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator\n'}
+[1.094550] (navigator) StdoutLine: {'line': b'copying /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator/test_pynput.py -> /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator\n'}
+[1.094602] (navigator) StdoutLine: {'line': b'copying /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator/coord_pub_test.py -> /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator\n'}
+[1.094661] (navigator) StdoutLine: {'line': b'copying /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator/keyboard_teleop.py -> /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator\n'}
+[1.094721] (navigator) StdoutLine: {'line': b'copying /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator/odom_pub.py -> /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator\n'}
+[1.094781] (navigator) StdoutLine: {'line': b'copying /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator/cmd_vel_sub.py -> /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator\n'}
+[1.094839] (navigator) StdoutLine: {'line': b'copying /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator/nav2pose.py -> /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator\n'}
+[1.095089] (navigator) StdoutLine: {'line': b'byte-compiling /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/__init__.py to __init__.cpython-310.pyc\n'}
+[1.095228] (navigator) StdoutLine: {'line': b'byte-compiling /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/test_pynput.py to test_pynput.cpython-310.pyc\n'}
+[1.095462] (navigator) StdoutLine: {'line': b'byte-compiling /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/coord_pub_test.py to coord_pub_test.cpython-310.pyc\n'}
+[1.095724] (navigator) StdoutLine: {'line': b'byte-compiling /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/keyboard_teleop.py to keyboard_teleop.cpython-310.pyc\n'}
+[1.096160] (navigator) StdoutLine: {'line': b'byte-compiling /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/odom_pub.py to odom_pub.cpython-310.pyc\n'}
+[1.096360] (navigator) StdoutLine: {'line': b'byte-compiling /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/cmd_vel_sub.py to cmd_vel_sub.cpython-310.pyc\n'}
+[1.096604] (navigator) StdoutLine: {'line': b'byte-compiling /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/nav2pose.py to nav2pose.cpython-310.pyc\n'}
+[1.097243] (navigator) StdoutLine: {'line': b'running install_data\n'}
+[1.097640] (navigator) StdoutLine: {'line': b'creating /home/adam/Desktop/sdp-team-12/install/navigator/share/ament_index\n'}
+[1.097701] (navigator) StdoutLine: {'line': b'creating /home/adam/Desktop/sdp-team-12/install/navigator/share/ament_index/resource_index\n'}
+[1.097745] (navigator) StdoutLine: {'line': b'creating /home/adam/Desktop/sdp-team-12/install/navigator/share/ament_index/resource_index/packages\n'}
+[1.097821] (navigator) StdoutLine: {'line': b'copying resource/navigator -> /home/adam/Desktop/sdp-team-12/install/navigator/share/ament_index/resource_index/packages\n'}
+[1.097860] (navigator) StdoutLine: {'line': b'copying package.xml -> /home/adam/Desktop/sdp-team-12/install/navigator/share/navigator\n'}
+[1.097897] (navigator) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.099728] (navigator) StdoutLine: {'line': b'Copying ../build/navigator/navigator.egg-info to /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator-0.0.0-py3.10.egg-info\n'}
+[1.100265] (navigator) StdoutLine: {'line': b'running install_scripts\n'}
+[1.101373] (-) TimerEvent: {}
+[1.106352] (py_img_stream) StdoutLine: {'line': b'Installing pub script to /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/py_img_stream\n'}
+[1.106511] (py_img_stream) StdoutLine: {'line': b'Installing sub script to /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/py_img_stream\n'}
+[1.106588] (py_img_stream) StdoutLine: {'line': b'Installing target_pub script to /home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/py_img_stream\n'}
+[1.106789] (py_img_stream) StdoutLine: {'line': b"writing list of installed files to '/home/adam/Desktop/sdp-team-12/build/py_img_stream/install.log'\n"}
+[1.116306] (navigator) StdoutLine: {'line': b'Installing cmdvelsub script to /home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator\n'}
+[1.116483] (navigator) StdoutLine: {'line': b'Installing coordpub script to /home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator\n'}
+[1.116534] (navigator) StdoutLine: {'line': b'Installing keyboard script to /home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator\n'}
+[1.116575] (navigator) StdoutLine: {'line': b'Installing nav2pose script to /home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator\n'}
+[1.117102] (navigator) StdoutLine: {'line': b"writing list of installed files to '/home/adam/Desktop/sdp-team-12/build/navigator/install.log'\n"}
+[1.129629] (py_img_stream) CommandEnded: {'returncode': 0}
+[1.166486] (py_img_stream) JobEnded: {'identifier': 'py_img_stream', 'rc': 0}
+[1.167478] (navigator) CommandEnded: {'returncode': 0}
+[1.200394] (navigator) JobEnded: {'identifier': 'navigator', 'rc': 0}
+[1.201461] (-) TimerEvent: {}
+[1.301666] (-) TimerEvent: {}
+[1.312237] (basic_mobile_robot) StdoutLine: {'line': b'-- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[1.376061] (basic_mobile_robot) StdoutLine: {'line': b"-- Checking for module 'eigen3'\n"}
+[1.384055] (basic_mobile_robot) StdoutLine: {'line': b'--   Found eigen3, version 3.4.0\n'}
+[1.401786] (-) TimerEvent: {}
+[1.404162] (basic_mobile_robot) StdoutLine: {'line': b'-- Found Eigen: /usr/include/eigen3 (Required is at least version "3.1") \n'}
+[1.404281] (basic_mobile_robot) StdoutLine: {'line': b'-- Eigen found (include: /usr/include/eigen3, version: 3.4.0)\n'}
+[1.417509] (basic_mobile_robot) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found suitable version "1.74.0", minimum required is "1.65.0") found components: system filesystem date_time iostreams serialization \n'}
+[1.428693] (basic_mobile_robot) StdoutLine: {'line': b"-- Checking for module 'flann'\n"}
+[1.437687] (basic_mobile_robot) StdoutLine: {'line': b'--   Found flann, version 1.9.1\n'}
+[1.463929] (basic_mobile_robot) StdoutLine: {'line': b'-- Found FLANN: /usr/lib/x86_64-linux-gnu/libflann_cpp.so  \n'}
+[1.464076] (basic_mobile_robot) StdoutLine: {'line': b'-- FLANN found (include: /usr/include, lib: /usr/lib/x86_64-linux-gnu/libflann_cpp.so)\n'}
+[1.488347] (basic_mobile_robot) StdoutLine: {'line': b'-- Found GLEW: /usr/lib/x86_64-linux-gnu/libGLEW.so  \n'}
+[1.492115] (basic_mobile_robot) StdoutLine: {'line': b'-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so  found components: OpenGL GLX \n'}
+[1.501975] (-) TimerEvent: {}
+[1.586888] (basic_mobile_robot) StdoutLine: {'line': b'-- Found MPI_C: /usr/lib/x86_64-linux-gnu/libmpi.so (found version "3.1") \n'}
+[1.587172] (basic_mobile_robot) StdoutLine: {'line': b'-- Found MPI: TRUE (found version "3.1") found components: C \n'}
+[1.589623] (basic_mobile_robot) StdoutLine: {'line': b'-- Found JsonCpp: /usr/lib/x86_64-linux-gnu/libjsoncpp.so (found suitable version "1.9.5", minimum required is "0.7.0") \n'}
+[1.595433] (basic_mobile_robot) StdoutLine: {'line': b'-- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.2.11") \n'}
+[1.602124] (-) TimerEvent: {}
+[1.606270] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PNG: /usr/lib/x86_64-linux-gnu/libpng.so (found version "1.6.37") \n'}
+[1.613276] (basic_mobile_robot) StdoutLine: {'line': b'-- Found Eigen3: /usr/include/eigen3 (found version "3.4.0") \n'}
+[1.671173] (basic_mobile_robot) StdoutLine: {'line': b'-- Found X11: /usr/include   \n'}
+[1.671464] (basic_mobile_robot) StdoutLine: {'line': b'-- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so\n'}
+[1.702346] (-) TimerEvent: {}
+[1.735597] (basic_mobile_robot) StdoutLine: {'line': b'-- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so - found\n'}
+[1.735759] (basic_mobile_robot) StdoutLine: {'line': b'-- Looking for gethostbyname\n'}
+[1.790498] (basic_mobile_robot) StdoutLine: {'line': b'-- Looking for gethostbyname - found\n'}
+[1.790661] (basic_mobile_robot) StdoutLine: {'line': b'-- Looking for connect\n'}
+[1.802544] (-) TimerEvent: {}
+[1.852129] (basic_mobile_robot) StdoutLine: {'line': b'-- Looking for connect - found\n'}
+[1.852288] (basic_mobile_robot) StdoutLine: {'line': b'-- Looking for remove\n'}
+[1.902715] (-) TimerEvent: {}
+[1.915482] (basic_mobile_robot) StdoutLine: {'line': b'-- Looking for remove - found\n'}
+[1.915634] (basic_mobile_robot) StdoutLine: {'line': b'-- Looking for shmat\n'}
+[1.973118] (basic_mobile_robot) StdoutLine: {'line': b'-- Looking for shmat - found\n'}
+[1.973454] (basic_mobile_robot) StdoutLine: {'line': b'-- Looking for IceConnectionNumber in ICE\n'}
+[2.002798] (-) TimerEvent: {}
+[2.022961] (basic_mobile_robot) StdoutLine: {'line': b'-- Looking for IceConnectionNumber in ICE - found\n'}
+[2.083112] (basic_mobile_robot) StdoutLine: {'line': b'-- Found EXPAT: /usr/lib/x86_64-linux-gnu/libexpat.so (found version "2.4.7") \n'}
+[2.084553] (basic_mobile_robot) StdoutLine: {'line': b'-- Found double-conversion: /usr/lib/x86_64-linux-gnu/libdouble-conversion.so  \n'}
+[2.086239] (basic_mobile_robot) StdoutLine: {'line': b'-- Found LZ4: /usr/lib/x86_64-linux-gnu/liblz4.so (found version "1.9.3") \n'}
+[2.087247] (basic_mobile_robot) StdoutLine: {'line': b'-- Found LZMA: /usr/lib/x86_64-linux-gnu/liblzma.so (found version "5.2.5") \n'}
+[2.095782] (basic_mobile_robot) StdoutLine: {'line': b'-- Found JPEG: /usr/lib/x86_64-linux-gnu/libjpeg.so (found version "80") \n'}
+[2.099229] (basic_mobile_robot) StdoutLine: {'line': b'-- Found TIFF: /usr/lib/x86_64-linux-gnu/libtiff.so (found version "4.3.0")  \n'}
+[2.101797] (basic_mobile_robot) StdoutLine: {'line': b'-- Found Freetype: /usr/lib/x86_64-linux-gnu/libfreetype.so (found version "2.11.1") \n'}
+[2.102869] (-) TimerEvent: {}
+[2.105370] (basic_mobile_robot) StdoutLine: {'line': b'-- Found utf8cpp: /usr/include/utf8cpp  \n'}
+[2.161668] (basic_mobile_robot) StdoutLine: {'line': b"-- Checking for module 'libusb-1.0'\n"}
+[2.175041] (basic_mobile_robot) StdoutLine: {'line': b'--   Found libusb-1.0, version 1.0.25\n'}
+[2.203126] (-) TimerEvent: {}
+[2.227843] (basic_mobile_robot) StdoutLine: {'line': b'-- Found libusb: /usr/lib/x86_64-linux-gnu/libusb-1.0.so  \n'}
+[2.229451] (basic_mobile_robot) StdoutLine: {'line': b'-- Found OpenNI: /usr/lib/libOpenNI.so;libusb::libusb (found version "1.5.4.0") \n'}
+[2.229639] (basic_mobile_robot) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[2.300464] (basic_mobile_robot) StdoutLine: {'line': b'-- Found OpenNI2: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb (found version "2.2.0.33") \n'}
+[2.300895] (basic_mobile_robot) StdoutLine: {'line': b'-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)\n'}
+[2.301015] (basic_mobile_robot) StderrLine: {'line': b'\x1b[0m** WARNING ** io features related to pcap will be disabled\x1b[0m\n'}
+[2.303267] (-) TimerEvent: {}
+[2.403597] (-) TimerEvent: {}
+[2.407836] (basic_mobile_robot) StdoutLine: {'line': b'-- Eigen found (include: /usr/include/eigen3, version: 3.4.0)\n'}
+[2.412407] (basic_mobile_robot) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[2.416882] (basic_mobile_robot) StdoutLine: {'line': b'-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)\n'}
+[2.503792] (-) TimerEvent: {}
+[2.515500] (basic_mobile_robot) StdoutLine: {'line': b'-- Found Qhull version 8.0.2\n'}
+[2.603986] (-) TimerEvent: {}
+[2.616753] (basic_mobile_robot) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[2.704182] (-) TimerEvent: {}
+[2.714259] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_COMMON\n'}
+[2.714989] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  \n'}
+[2.715158] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_KDTREE\n'}
+[2.715740] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  \n'}
+[2.715816] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_OCTREE\n'}
+[2.716293] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  \n'}
+[2.716367] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_SEARCH\n'}
+[2.716950] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  \n'}
+[2.717179] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_SAMPLE_CONSENSUS\n'}
+[2.717783] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  \n'}
+[2.717862] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_FILTERS\n'}
+[2.718449] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  \n'}
+[2.718523] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_2D\n'}
+[2.718694] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_2D: /usr/include/pcl-1.12  \n'}
+[2.718768] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_GEOMETRY\n'}
+[2.718925] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_GEOMETRY: /usr/include/pcl-1.12  \n'}
+[2.718976] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_IO\n'}
+[2.719516] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  \n'}
+[2.719590] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_FEATURES\n'}
+[2.720171] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  \n'}
+[2.720245] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_ML\n'}
+[2.720766] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_ML: /usr/lib/x86_64-linux-gnu/libpcl_ml.so  \n'}
+[2.720941] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_SEGMENTATION\n'}
+[2.721516] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_SEGMENTATION: /usr/lib/x86_64-linux-gnu/libpcl_segmentation.so  \n'}
+[2.721590] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_VISUALIZATION\n'}
+[2.722179] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_VISUALIZATION: /usr/lib/x86_64-linux-gnu/libpcl_visualization.so  \n'}
+[2.722253] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_SURFACE\n'}
+[2.722916] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_SURFACE: /usr/lib/x86_64-linux-gnu/libpcl_surface.so  \n'}
+[2.722989] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_REGISTRATION\n'}
+[2.723509] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  \n'}
+[2.723584] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_KEYPOINTS\n'}
+[2.724118] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_KEYPOINTS: /usr/lib/x86_64-linux-gnu/libpcl_keypoints.so  \n'}
+[2.724210] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_TRACKING\n'}
+[2.724785] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_TRACKING: /usr/lib/x86_64-linux-gnu/libpcl_tracking.so  \n'}
+[2.724871] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_RECOGNITION\n'}
+[2.725510] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_RECOGNITION: /usr/lib/x86_64-linux-gnu/libpcl_recognition.so  \n'}
+[2.725592] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_STEREO\n'}
+[2.726208] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_STEREO: /usr/lib/x86_64-linux-gnu/libpcl_stereo.so  \n'}
+[2.726282] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_APPS\n'}
+[2.726882] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_APPS: /usr/lib/x86_64-linux-gnu/libpcl_apps.so  \n'}
+[2.727228] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_IN_HAND_SCANNER\n'}
+[2.727380] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_IN_HAND_SCANNER: /usr/include/pcl-1.12  \n'}
+[2.727454] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_MODELER\n'}
+[2.727606] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_MODELER: /usr/include/pcl-1.12  \n'}
+[2.727707] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_POINT_CLOUD_EDITOR\n'}
+[2.727879] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_POINT_CLOUD_EDITOR: /usr/include/pcl-1.12  \n'}
+[2.727970] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_OUTOFCORE\n'}
+[2.728586] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_OUTOFCORE: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so  \n'}
+[2.728640] (basic_mobile_robot) StdoutLine: {'line': b'-- looking for PCL_PEOPLE\n'}
+[2.729337] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL_PEOPLE: /usr/lib/x86_64-linux-gnu/libpcl_people.so  \n'}
+[2.729895] (basic_mobile_robot) StdoutLine: {'line': b'-- Found PCL: pcl_common;pcl_kdtree;pcl_octree;pcl_search;pcl_sample_consensus;pcl_filters;pcl_io;pcl_features;pcl_ml;pcl_segmentation;pcl_visualization;pcl_surface;pcl_registration;pcl_keypoints;pcl_tracking;pcl_recognition;pcl_stereo;pcl_apps;pcl_outofcore;pcl_people;Boost::system;Boost::filesystem;Boost::date_time;Boost::iostreams;Boost::serialization;/usr/lib/libOpenNI.so;libusb::libusb;/usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb;VTK::ChartsCore;VTK::CommonColor;VTK::CommonComputationalGeometry;VTK::CommonCore;VTK::CommonDataModel;VTK::CommonExecutionModel;VTK::CommonMath;VTK::CommonMisc;VTK::CommonTransforms;VTK::FiltersCore;VTK::FiltersExtraction;VTK::FiltersGeneral;VTK::FiltersGeometry;VTK::FiltersModeling;VTK::FiltersSources;VTK::ImagingCore;VTK::ImagingSources;VTK::InteractionImage;VTK::InteractionStyle;VTK::InteractionWidgets;VTK::IOCore;VTK::IOGeometry;VTK::IOImage;VTK::IOLegacy;VTK::IOPLY;VTK::RenderingAnnotation;VTK::RenderingCore;VTK::RenderingContext2D;VTK::RenderingLOD;VTK::RenderingFreeType;VTK::ViewsCore;VTK::ViewsContext2D;VTK::RenderingOpenGL2;VTK::GUISupportQt;FLANN::FLANN;QHULL::QHULL  \n'}
+[2.736046] (basic_mobile_robot) StdoutLine: {'line': b'-- Found laser_geometry: 2.4.0 (/opt/ros/humble/share/laser_geometry/cmake)\n'}
+[2.755674] (basic_mobile_robot) StdoutLine: {'line': b'-- Found pcl_conversions: 2.4.0 (/opt/ros/humble/share/pcl_conversions/cmake)\n'}
+[2.804356] (-) TimerEvent: {}
+[2.844317] (basic_mobile_robot) StdoutLine: {'line': b'-- Found tf2_eigen: 0.25.4 (/opt/ros/humble/share/tf2_eigen/cmake)\n'}
+[2.904529] (-) TimerEvent: {}
+[3.004799] (-) TimerEvent: {}
+[3.077455] (basic_mobile_robot) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.8 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[3.104905] (-) TimerEvent: {}
+[3.134333] (basic_mobile_robot) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[3.134599] (basic_mobile_robot) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/adam/Desktop/sdp-team-12/basic_mobile_robot/include;$<BUILD_INTERFACE:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/include>\n'}
+[3.134655] (basic_mobile_robot) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[3.135166] (basic_mobile_robot) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[3.135660] (basic_mobile_robot) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[3.136031] (basic_mobile_robot) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[3.137736] (basic_mobile_robot) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[3.137809] (basic_mobile_robot) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[3.137882] (basic_mobile_robot) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[3.138831] (basic_mobile_robot) StdoutLine: {'line': b'-- Configuring done\n'}
+[3.160384] (basic_mobile_robot) StdoutLine: {'line': b'-- Generating done\n'}
+[3.162537] (basic_mobile_robot) StdoutLine: {'line': b'-- Build files have been written to: /home/adam/Desktop/sdp-team-12/build/basic_mobile_robot\n'}
+[3.175365] (basic_mobile_robot) CommandEnded: {'returncode': 0}
+[3.175937] (basic_mobile_robot) JobProgress: {'identifier': 'basic_mobile_robot', 'progress': 'build'}
+[3.177087] (basic_mobile_robot) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot', '--', '-j8', '-l8'], 'cwd': '/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'adam'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/adam'), ('OLDPWD', '/home/adam'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '1626'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/adam/Desktop/sdp-team-12/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'adam'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'adam'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/adam/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/adam-Latitude-5520:@/tmp/.ICE-unix/1578,unix/adam-Latitude-5520:/tmp/.ICE-unix/1578'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/d542179d_8e25_481f_85d9_e724042279c8'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.41REE2'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.112'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/adam/Desktop/sdp-team-12/install/lidar_odometry:/home/adam/Desktop/sdp-team-12/install/py_img_stream:/home/adam/Desktop/sdp-team-12/install/sllidar_ros2:/home/adam/Desktop/sdp-team-12/install/navigator:/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages:/home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/adam/Desktop/sdp-team-12/install/lidar_odometry:/home/adam/Desktop/sdp-team-12/install/sllidar_ros2:/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot:/home/adam/Desktop/sdp-team-12/install/py_img_stream:/home/adam/Desktop/sdp-team-12/install/navigator:/opt/ros/humble')]), 'shell': False}
+[3.205005] (-) TimerEvent: {}
+[3.214373] (basic_mobile_robot) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/lidar_odometry_node.dir/src/lidar_odometry.cpp.o\x1b[0m\n'}
+[3.214574] (basic_mobile_robot) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/lidar_odometry_node.dir/src/lidar_odometry_node.cpp.o\x1b[0m\n'}
+[3.305117] (-) TimerEvent: {}
+[3.405437] (-) TimerEvent: {}
+[3.505771] (-) TimerEvent: {}
+[3.606096] (-) TimerEvent: {}
+[3.706453] (-) TimerEvent: {}
+[3.806834] (-) TimerEvent: {}
+[3.907229] (-) TimerEvent: {}
+[4.007616] (-) TimerEvent: {}
+[4.107981] (-) TimerEvent: {}
+[4.208317] (-) TimerEvent: {}
+[4.308678] (-) TimerEvent: {}
+[4.409037] (-) TimerEvent: {}
+[4.509385] (-) TimerEvent: {}
+[4.609753] (-) TimerEvent: {}
+[4.710128] (-) TimerEvent: {}
+[4.810489] (-) TimerEvent: {}
+[4.910831] (-) TimerEvent: {}
+[5.011169] (-) TimerEvent: {}
+[5.111531] (-) TimerEvent: {}
+[5.211895] (-) TimerEvent: {}
+[5.312258] (-) TimerEvent: {}
+[5.412651] (-) TimerEvent: {}
+[5.513030] (-) TimerEvent: {}
+[5.613371] (-) TimerEvent: {}
+[5.713686] (-) TimerEvent: {}
+[5.814026] (-) TimerEvent: {}
+[5.914396] (-) TimerEvent: {}
+[6.014745] (-) TimerEvent: {}
+[6.115090] (-) TimerEvent: {}
+[6.215438] (-) TimerEvent: {}
+[6.315782] (-) TimerEvent: {}
+[6.416153] (-) TimerEvent: {}
+[6.516521] (-) TimerEvent: {}
+[6.616936] (-) TimerEvent: {}
+[6.717295] (-) TimerEvent: {}
+[6.817651] (-) TimerEvent: {}
+[6.918003] (-) TimerEvent: {}
+[7.018358] (-) TimerEvent: {}
+[7.118717] (-) TimerEvent: {}
+[7.219068] (-) TimerEvent: {}
+[7.319411] (-) TimerEvent: {}
+[7.419754] (-) TimerEvent: {}
+[7.520128] (-) TimerEvent: {}
+[7.620479] (-) TimerEvent: {}
+[7.720841] (-) TimerEvent: {}
+[7.821194] (-) TimerEvent: {}
+[7.921553] (-) TimerEvent: {}
+[8.021896] (-) TimerEvent: {}
+[8.122254] (-) TimerEvent: {}
+[8.222611] (-) TimerEvent: {}
+[8.322965] (-) TimerEvent: {}
+[8.423317] (-) TimerEvent: {}
+[8.523684] (-) TimerEvent: {}
+[8.624045] (-) TimerEvent: {}
+[8.724393] (-) TimerEvent: {}
+[8.824783] (-) TimerEvent: {}
+[8.925162] (-) TimerEvent: {}
+[9.025536] (-) TimerEvent: {}
+[9.125881] (-) TimerEvent: {}
+[9.226231] (-) TimerEvent: {}
+[9.326588] (-) TimerEvent: {}
+[9.426952] (-) TimerEvent: {}
+[9.527317] (-) TimerEvent: {}
+[9.627706] (-) TimerEvent: {}
+[9.728079] (-) TimerEvent: {}
+[9.828427] (-) TimerEvent: {}
+[9.928818] (-) TimerEvent: {}
+[10.029180] (-) TimerEvent: {}
+[10.129545] (-) TimerEvent: {}
+[10.229899] (-) TimerEvent: {}
+[10.330266] (-) TimerEvent: {}
+[10.430654] (-) TimerEvent: {}
+[10.531027] (-) TimerEvent: {}
+[10.631393] (-) TimerEvent: {}
+[10.731753] (-) TimerEvent: {}
+[10.832101] (-) TimerEvent: {}
+[10.932451] (-) TimerEvent: {}
+[11.032820] (-) TimerEvent: {}
+[11.133211] (-) TimerEvent: {}
+[11.233721] (-) TimerEvent: {}
+[11.334184] (-) TimerEvent: {}
+[11.434586] (-) TimerEvent: {}
+[11.534933] (-) TimerEvent: {}
+[11.635269] (-) TimerEvent: {}
+[11.735614] (-) TimerEvent: {}
+[11.835977] (-) TimerEvent: {}
+[11.936335] (-) TimerEvent: {}
+[12.036702] (-) TimerEvent: {}
+[12.137052] (-) TimerEvent: {}
+[12.237384] (-) TimerEvent: {}
+[12.337704] (-) TimerEvent: {}
+[12.438053] (-) TimerEvent: {}
+[12.538398] (-) TimerEvent: {}
+[12.638758] (-) TimerEvent: {}
+[12.739109] (-) TimerEvent: {}
+[12.839455] (-) TimerEvent: {}
+[12.939802] (-) TimerEvent: {}
+[13.040148] (-) TimerEvent: {}
+[13.140519] (-) TimerEvent: {}
+[13.240908] (-) TimerEvent: {}
+[13.341245] (-) TimerEvent: {}
+[13.441586] (-) TimerEvent: {}
+[13.541987] (-) TimerEvent: {}
+[13.642264] (-) TimerEvent: {}
+[13.742594] (-) TimerEvent: {}
+[13.842951] (-) TimerEvent: {}
+[13.943340] (-) TimerEvent: {}
+[14.043731] (-) TimerEvent: {}
+[14.144073] (-) TimerEvent: {}
+[14.244435] (-) TimerEvent: {}
+[14.344795] (-) TimerEvent: {}
+[14.445166] (-) TimerEvent: {}
+[14.545463] (-) TimerEvent: {}
+[14.645827] (-) TimerEvent: {}
+[14.746178] (-) TimerEvent: {}
+[14.846541] (-) TimerEvent: {}
+[14.946930] (-) TimerEvent: {}
+[15.047326] (-) TimerEvent: {}
+[15.147721] (-) TimerEvent: {}
+[15.248133] (-) TimerEvent: {}
+[15.348509] (-) TimerEvent: {}
+[15.448878] (-) TimerEvent: {}
+[15.549211] (-) TimerEvent: {}
+[15.649497] (-) TimerEvent: {}
+[15.749867] (-) TimerEvent: {}
+[15.850212] (-) TimerEvent: {}
+[15.950545] (-) TimerEvent: {}
+[16.050899] (-) TimerEvent: {}
+[16.151277] (-) TimerEvent: {}
+[16.251559] (-) TimerEvent: {}
+[16.351897] (-) TimerEvent: {}
+[16.452250] (-) TimerEvent: {}
+[16.552571] (-) TimerEvent: {}
+[16.652905] (-) TimerEvent: {}
+[16.699842] (basic_mobile_robot) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable lidar_odometry_node\x1b[0m\n'}
+[16.753090] (-) TimerEvent: {}
+[16.853471] (-) TimerEvent: {}
+[16.953870] (-) TimerEvent: {}
+[17.054265] (-) TimerEvent: {}
+[17.154679] (-) TimerEvent: {}
+[17.255101] (-) TimerEvent: {}
+[17.355509] (-) TimerEvent: {}
+[17.455980] (-) TimerEvent: {}
+[17.556374] (-) TimerEvent: {}
+[17.656760] (-) TimerEvent: {}
+[17.757112] (-) TimerEvent: {}
+[17.857479] (-) TimerEvent: {}
+[17.907897] (basic_mobile_robot) StdoutLine: {'line': b'[100%] Built target lidar_odometry_node\n'}
+[17.915517] (basic_mobile_robot) CommandEnded: {'returncode': 0}
+[17.934785] (basic_mobile_robot) JobProgress: {'identifier': 'basic_mobile_robot', 'progress': 'install'}
+[17.940467] (basic_mobile_robot) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot'], 'cwd': '/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'adam'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/adam'), ('OLDPWD', '/home/adam'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '1626'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/adam/Desktop/sdp-team-12/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'adam'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'adam'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models/'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/adam/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/adam-Latitude-5520:@/tmp/.ICE-unix/1578,unix/adam-Latitude-5520:/tmp/.ICE-unix/1578'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/d542179d_8e25_481f_85d9_e724042279c8'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.41REE2'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.112'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/adam/Desktop/sdp-team-12/install/lidar_odometry:/home/adam/Desktop/sdp-team-12/install/py_img_stream:/home/adam/Desktop/sdp-team-12/install/sllidar_ros2:/home/adam/Desktop/sdp-team-12/install/navigator:/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/adam/Desktop/sdp-team-12/install/py_img_stream/lib/python3.10/site-packages:/home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/adam/Desktop/sdp-team-12/install/lidar_odometry:/home/adam/Desktop/sdp-team-12/install/sllidar_ros2:/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot:/home/adam/Desktop/sdp-team-12/install/py_img_stream:/home/adam/Desktop/sdp-team-12/install/navigator:/opt/ros/humble')]), 'shell': False}
+[17.946174] (basic_mobile_robot) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[17.946396] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config\n'}
+[17.946515] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf2.yaml\n'}
+[17.946609] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/slam.yaml\n'}
+[17.946694] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf.yaml\n'}
+[17.946775] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch\n'}
+[17.946855] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/gazebo_simulator.launch.py\n'}
+[17.946934] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/lidar_config.launch.py\n'}
+[17.947016] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/urdf_visualizer.launch.py\n'}
+[17.947095] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/robot.launch.py\n'}
+[17.947176] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/nav_simulated.launch.py\n'}
+[17.947232] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/rplidar.launch.py\n'}
+[17.947290] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/sensor_fusion_odom.launch.py\n'}
+[17.947355] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes\n'}
+[17.947417] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/elbow.stl\n'}
+[17.947503] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/robot_base.stl\n'}
+[17.947587] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/arm_base.stl\n'}
+[17.947849] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/wrist.stl\n'}
+[17.948232] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/wheel.stl\n'}
+[17.948327] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/bicep.stl\n'}
+[17.948624] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps\n'}
+[17.948732] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.yaml\n'}
+[17.948779] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/generated_map.yaml\n'}
+[17.948824] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/generated_map.pgm\n'}
+[17.949320] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.pgm\n'}
+[17.952098] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models\n'}
+[17.952154] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/robo_holly.urdf\n'}
+[17.952216] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_v2.urdf\n'}
+[17.952276] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_v1.urdf\n'}
+[17.952319] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description\n'}
+[17.952359] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes\n'}
+[17.952412] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/elbow.stl\n'}
+[17.952468] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/robot_base.stl\n'}
+[17.952524] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/arm_base.stl\n'}
+[17.952730] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/wrist.stl\n'}
+[17.953071] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/wheel.stl\n'}
+[17.953128] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/bicep.stl\n'}
+[17.953336] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/holly_model.sdf\n'}
+[17.953388] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/model.config\n'}
+[17.953439] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/model.sdf\n'}
+[17.953493] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/params\n'}
+[17.953549] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/params/nav2_params.yaml\n'}
+[17.953601] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz\n'}
+[17.953661] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/urdf_config.rviz\n'}
+[17.953704] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/nav2_config.rviz\n'}
+[17.953765] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/holly.rviz\n'}
+[17.953808] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds\n'}
+[17.953865] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world\n'}
+[17.953905] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world/empty.world\n'}
+[17.953959] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world/smalltown.world\n'}
+[17.954014] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/src\n'}
+[17.954056] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/src/lidar_odometry_node.cpp\n'}
+[17.954105] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/src/lidar_odometry.cpp\n'}
+[17.954166] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/lib/basic_mobile_robot/lidar_odometry_node\n'}
+[17.957533] (-) TimerEvent: {}
+[17.958992] (basic_mobile_robot) StdoutLine: {'line': b'-- Set runtime path of "/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/lib/basic_mobile_robot/lidar_odometry_node" to ""\n'}
+[17.959051] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/package_run_dependencies/basic_mobile_robot\n'}
+[17.959107] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/parent_prefix_path/basic_mobile_robot\n'}
+[17.959162] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/ament_prefix_path.sh\n'}
+[17.959215] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/ament_prefix_path.dsv\n'}
+[17.959263] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/path.sh\n'}
+[17.959316] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/path.dsv\n'}
+[17.959368] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.bash\n'}
+[17.959420] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.sh\n'}
+[17.959477] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.zsh\n'}
+[17.959539] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.dsv\n'}
+[17.959598] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.dsv\n'}
+[17.959678] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/packages/basic_mobile_robot\n'}
+[17.959754] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/cmake/basic_mobile_robotConfig.cmake\n'}
+[17.959807] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/cmake/basic_mobile_robotConfig-version.cmake\n'}
+[17.959871] (basic_mobile_robot) StdoutLine: {'line': b'-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.xml\n'}
+[17.961082] (basic_mobile_robot) CommandEnded: {'returncode': 0}
+[18.054612] (basic_mobile_robot) JobEnded: {'identifier': 'basic_mobile_robot', 'rc': 0}
+[18.055100] (-) EventReactorShutdown: {}

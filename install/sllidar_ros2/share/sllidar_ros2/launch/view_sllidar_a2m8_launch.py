@@ -1,1 +1,0 @@
-/home/adam/Desktop/sdp-team-12/sllidar_ros2/launch/view_sllidar_a2m8_launch.py

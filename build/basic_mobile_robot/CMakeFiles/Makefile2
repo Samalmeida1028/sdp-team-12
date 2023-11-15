@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/adam/Desktop/sdp-team-12/build/basic_mobile_robot
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all:
+all: CMakeFiles/lidar_odometry_node.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -73,6 +73,7 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/uninstall.dir/clean
 clean: CMakeFiles/basic_mobile_robot_uninstall.dir/clean
+clean: CMakeFiles/lidar_odometry_node.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -126,6 +127,32 @@ basic_mobile_robot_uninstall: CMakeFiles/basic_mobile_robot_uninstall.dir/rule
 CMakeFiles/basic_mobile_robot_uninstall.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_mobile_robot_uninstall.dir/build.make CMakeFiles/basic_mobile_robot_uninstall.dir/clean
 .PHONY : CMakeFiles/basic_mobile_robot_uninstall.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/lidar_odometry_node.dir
+
+# All Build rule for target.
+CMakeFiles/lidar_odometry_node.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_odometry_node.dir/build.make CMakeFiles/lidar_odometry_node.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_odometry_node.dir/build.make CMakeFiles/lidar_odometry_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot/CMakeFiles --progress-num=1,2,3 "Built target lidar_odometry_node"
+.PHONY : CMakeFiles/lidar_odometry_node.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/lidar_odometry_node.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adam/Desktop/sdp-team-12/build/basic_mobile_robot/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/lidar_odometry_node.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adam/Desktop/sdp-team-12/build/basic_mobile_robot/CMakeFiles 0
+.PHONY : CMakeFiles/lidar_odometry_node.dir/rule
+
+# Convenience name for target.
+lidar_odometry_node: CMakeFiles/lidar_odometry_node.dir/rule
+.PHONY : lidar_odometry_node
+
+# clean rule for target.
+CMakeFiles/lidar_odometry_node.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_odometry_node.dir/build.make CMakeFiles/lidar_odometry_node.dir/clean
+.PHONY : CMakeFiles/lidar_odometry_node.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

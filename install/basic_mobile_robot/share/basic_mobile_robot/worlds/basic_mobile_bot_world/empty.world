@@ -1,1 +1,21 @@
-/home/adam/Desktop/sdp-team-12/basic_mobile_robot/worlds/basic_mobile_bot_world/empty.world
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Import our own robot -->
+    <include>
+      <!-- Set the location where we want to spawn the robot -->
+      <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+      <!-- basic_mobile_robot -->
+      <uri>model://basic_mobile_bot_description</uri>
+    </include>
+  </world>
+</sdf>

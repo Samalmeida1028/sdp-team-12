@@ -1,1 +1,1 @@
-/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/basic_mobile_robot
+joint_state_publisher;robot_localization;robot_state_publisher;rviz;xacro;rclpy;rclcpp;geometry_msgs;nav_msgs;sensor_msgs;Eigen3;PCL;laser_geometry;pcl_conversions;tf2;tf2_eigen;ament_lint_auto;ament_lint_common

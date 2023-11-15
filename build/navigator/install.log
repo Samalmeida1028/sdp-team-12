@@ -2,12 +2,14 @@
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/test_pynput.py
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/coord_pub_test.py
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/keyboard_teleop.py
+/home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/odom_pub.py
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/cmd_vel_sub.py
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/nav2pose.py
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/__pycache__/__init__.cpython-310.pyc
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/__pycache__/test_pynput.cpython-310.pyc
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/__pycache__/coord_pub_test.cpython-310.pyc
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/__pycache__/keyboard_teleop.cpython-310.pyc
+/home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/__pycache__/odom_pub.cpython-310.pyc
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/__pycache__/cmd_vel_sub.cpython-310.pyc
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/__pycache__/nav2pose.cpython-310.pyc
 /home/adam/Desktop/sdp-team-12/install/navigator/share/ament_index/resource_index/packages/navigator
