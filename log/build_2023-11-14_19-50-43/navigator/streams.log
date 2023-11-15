@@ -1,0 +1,26 @@
+[0.832s] Invoking command in '/home/adam/Desktop/sdp-team-12/navigator': PYTHONPATH=/home/adam/Desktop/sdp-team-12/build/navigator/prefix_override:/home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/navigator build --build-base /home/adam/Desktop/sdp-team-12/build/navigator/build install --record /home/adam/Desktop/sdp-team-12/build/navigator/install.log --single-version-externally-managed
+[0.991s] running egg_info
+[0.992s] writing ../build/navigator/navigator.egg-info/PKG-INFO
+[0.992s] writing dependency_links to ../build/navigator/navigator.egg-info/dependency_links.txt
+[0.992s] writing entry points to ../build/navigator/navigator.egg-info/entry_points.txt
+[0.992s] writing requirements to ../build/navigator/navigator.egg-info/requires.txt
+[0.992s] writing top-level names to ../build/navigator/navigator.egg-info/top_level.txt
+[0.994s] reading manifest file '../build/navigator/navigator.egg-info/SOURCES.txt'
+[0.994s] writing manifest file '../build/navigator/navigator.egg-info/SOURCES.txt'
+[0.994s] running build
+[0.994s] running build_py
+[0.995s] running install
+[0.995s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[0.995s]   warnings.warn(
+[0.995s] running install_lib
+[0.996s] running install_data
+[0.996s] running install_egg_info
+[0.998s] removing '/home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator-0.0.0-py3.10.egg-info' (and everything under it)
+[0.998s] Copying ../build/navigator/navigator.egg-info to /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator-0.0.0-py3.10.egg-info
+[0.999s] running install_scripts
+[1.013s] Installing cmdvelsub script to /home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator
+[1.013s] Installing coordpub script to /home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator
+[1.013s] Installing keyboard script to /home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator
+[1.013s] Installing nav2pose script to /home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator
+[1.013s] writing list of installed files to '/home/adam/Desktop/sdp-team-12/build/navigator/install.log'
+[1.073s] Invoked command in '/home/adam/Desktop/sdp-team-12/navigator' returned '0': PYTHONPATH=/home/adam/Desktop/sdp-team-12/build/navigator/prefix_override:/home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/navigator build --build-base /home/adam/Desktop/sdp-team-12/build/navigator/build install --record /home/adam/Desktop/sdp-team-12/build/navigator/install.log --single-version-externally-managed

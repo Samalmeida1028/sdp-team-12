@@ -4076,7 +4076,7 @@
     <!-- Import our own robot -->
     <include>
       <!-- Set the location where we want to spawn the robot -->
-      <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+      <pose>0.0 0.0 1.0 0.0 0.0 0.0</pose>
       <!-- basic_mobile_robot -->
       <uri>model://basic_mobile_bot_description</uri>
     </include>
