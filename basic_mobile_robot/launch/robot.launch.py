@@ -12,6 +12,7 @@ import xacro
 def generate_launch_description():
     pkg_path = os.path.join(get_package_share_directory('basic_mobile_robot'))
     xacro_file = os.path.join(pkg_path, 'models', 'robo_holly.urdf')
+    robot_localization_file_path = os.path.join(pkg_path, 'config/ekf.yaml') 
 
     robot_description_config = Command(['xacro ', xacro_file])
     use_sim_time = LaunchConfiguration('use_sim_time')
@@ -25,6 +26,15 @@ def generate_launch_description():
         description='Use sim time if true'
     )
 
+    start_robot_localization_cmd = Node(
+        package='robot_localization',
+        executable='ekf_node',
+        name='ekf_filter_node',
+        output='screen',
+        parameters=[robot_localization_file_path, 
+        {'use_sim_time': use_sim_time}]
+    )
+
     node_robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -36,6 +46,7 @@ def generate_launch_description():
     ld = LaunchDescription()
 
     ld.add_action(declare_use_sim_time_cmd)
+    ld.add_action(start_robot_localization_cmd)
     ld.add_action(node_robot_state_publisher)
 
     return ld
