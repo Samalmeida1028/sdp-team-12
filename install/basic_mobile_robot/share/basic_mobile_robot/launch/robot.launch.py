@@ -15,6 +15,9 @@ def generate_launch_description():
     rviz_config_file = LaunchConfiguration('rviz_config_file')
     use_sim_time = LaunchConfiguration('use_sim_time')
 
+    remappings = [('/tf', 'tf'),
+                ('/tf_static', 'tf_static')]
+
     declare_use_sim_time_cmd = DeclareLaunchArgument(
         'use_sim_time',
         default_value='False',
@@ -53,6 +56,7 @@ def generate_launch_description():
         executable='robot_state_publisher',
         parameters=[{'use_sim_time': use_sim_time, 
         'robot_description': Command(['xacro ', model])}],
+        remappings=remappings,
         arguments=[model_file]
     )
 
@@ -64,13 +68,13 @@ def generate_launch_description():
         arguments=['-d', rviz_config_file]
     ) 
 
-    static_transform_publisher_cmd = Node(
-        package='tf2_ros',
-        executable='static_transform_publisher',
-        name='odom_broadcaster',
-        arguments=['0', '0', '0', '0', '0', '0', '1', 'odom', 'base_link'],
-        output='screen',
-    )
+    # static_transform_publisher_cmd = Node(
+    #     package='tf2_ros',
+    #     executable='static_transform_publisher',
+    #     name='odom_broadcaster',
+    #     arguments=['0', '0', '0', '0', '0', '0', '1', 'odom', 'base_footprint'],
+    #     output='screen',
+    # )
 
     # Launch!
     ld = LaunchDescription()
@@ -82,7 +86,7 @@ def generate_launch_description():
     ld.add_action(start_robot_localization_cmd)
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)
-    ld.add_action(static_transform_publisher_cmd)
+    #ld.add_action(static_transform_publisher_cmd)
     ld.add_action(start_rviz_cmd)
 
     return ld
