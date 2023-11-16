@@ -78,7 +78,6 @@ def generate_launch_description():
     ld.add_action(start_robot_localization_cmd)
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)
-    #ld.add_action(static_transform_publisher_cmd)
     ld.add_action(start_rviz_cmd)
 
     return ld
