@@ -13,8 +13,9 @@ navigator/cmd_vel_sub.py
 navigator/coord_pub_test.py
 navigator/keyboard_teleop.py
 navigator/nav2pose.py
-navigator/odom_pub.py
+navigator/odom_sub.py
 navigator/test_pynput.py
+navigator/tf_broadcaster.py
 resource/navigator
 test/test_copyright.py
 test/test_flake8.py

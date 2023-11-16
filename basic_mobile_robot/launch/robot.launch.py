@@ -68,14 +68,6 @@ def generate_launch_description():
         arguments=['-d', rviz_config_file]
     ) 
 
-    # static_transform_publisher_cmd = Node(
-    #     package='tf2_ros',
-    #     executable='static_transform_publisher',
-    #     name='odom_broadcaster',
-    #     arguments=['0', '0', '0', '0', '0', '0', '1', 'odom', 'base_footprint'],
-    #     output='screen',
-    # )
-
     # Launch!
     ld = LaunchDescription()
 

@@ -1,0 +1,136 @@
+-- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found rclpy: 3.3.10 (/opt/ros/humble/share/rclpy/cmake)
+-- Found rclcpp: 16.0.6 (/opt/ros/humble/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.4 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found geometry_msgs: 4.2.3 (/opt/ros/humble/share/geometry_msgs/cmake)
+-- Found nav2_msgs: 1.1.12 (/opt/ros/humble/share/nav2_msgs/cmake)
+-- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)
+-- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+-- FLANN found (include: /usr/include, lib: /usr/lib/x86_64-linux-gnu/libflann_cpp.so)
+-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[0m** WARNING ** io features related to pcap will be disabled[0m
+-- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+-- Found Qhull version 8.0.2
+-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+-- looking for PCL_COMMON
+-- looking for PCL_KDTREE
+-- looking for PCL_OCTREE
+-- looking for PCL_SEARCH
+-- looking for PCL_SAMPLE_CONSENSUS
+-- looking for PCL_FILTERS
+-- looking for PCL_2D
+-- looking for PCL_GEOMETRY
+-- looking for PCL_IO
+-- looking for PCL_FEATURES
+-- looking for PCL_ML
+-- looking for PCL_SEGMENTATION
+-- looking for PCL_VISUALIZATION
+-- looking for PCL_SURFACE
+-- looking for PCL_REGISTRATION
+-- looking for PCL_KEYPOINTS
+-- looking for PCL_TRACKING
+-- looking for PCL_RECOGNITION
+-- looking for PCL_STEREO
+-- looking for PCL_APPS
+-- looking for PCL_IN_HAND_SCANNER
+-- looking for PCL_MODELER
+-- looking for PCL_POINT_CLOUD_EDITOR
+-- looking for PCL_OUTOFCORE
+-- looking for PCL_PEOPLE
+-- Found laser_geometry: 2.4.0 (/opt/ros/humble/share/laser_geometry/cmake)
+-- Found pcl_conversions: 2.4.0 (/opt/ros/humble/share/pcl_conversions/cmake)
+-- Found tf2_eigen: 0.25.4 (/opt/ros/humble/share/tf2_eigen/cmake)
+-- Found ament_lint_auto: 0.12.8 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: /home/adam/Desktop/sdp-team-12/basic_mobile_robot/include;$<BUILD_INTERFACE:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/include>
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/adam/Desktop/sdp-team-12/build/basic_mobile_robot
+[35m[1mConsolidate compiler generated dependencies of target lidar_odometry_node[0m
+[100%] Built target lidar_odometry_node
+-- Install configuration: ""
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf2.yaml
+-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/doslam.yaml
+-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf.yaml
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/gazebo_simulator.launch.py
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/lidar_config.launch.py
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/urdf_visualizer.launch.py
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/robot.launch.py
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/nav_simulated.launch.py
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/rplidar.launch.py
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/sensor_fusion_odom.launch.py
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/elbow.stl
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/robot_base.stl
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/arm_base.stl
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/wrist.stl
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/wheel.stl
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/bicep.stl
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.yaml
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/generated_map.yaml
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/generated_map.pgm
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.pgm
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models
+-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/robo_holly.urdf
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_v2.urdf
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_v1.urdf
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/elbow.stl
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/robot_base.stl
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/arm_base.stl
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/wrist.stl
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/wheel.stl
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/bicep.stl
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/holly_model.sdf
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/model.config
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/model.sdf
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/params
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/params/nav2_params.yaml
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/urdf_config.rviz
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/nav2_config.rviz
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/holly.rviz
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world/empty.world
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world/smalltown.world
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/src
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/src/lidar_odometry_node.cpp
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/src/lidar_odometry.cpp
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/lib/basic_mobile_robot/lidar_odometry_node
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/package_run_dependencies/basic_mobile_robot
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/parent_prefix_path/basic_mobile_robot
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/ament_prefix_path.sh
+-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/path.sh
+-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/path.dsv
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.bash
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.sh
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.zsh
+-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.dsv
+-- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.dsv
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/packages/basic_mobile_robot
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/cmake/basic_mobile_robotConfig.cmake
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/cmake/basic_mobile_robotConfig-version.cmake
+-- Up-to-date: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.xml

@@ -1,5 +1,5 @@
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf2.yaml
-/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/slam.yaml
+/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/doslam.yaml
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf.yaml
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/gazebo_simulator.launch.py
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/lidar_config.launch.py
