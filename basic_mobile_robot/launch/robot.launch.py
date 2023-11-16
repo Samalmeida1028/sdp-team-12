@@ -2,21 +2,52 @@ import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.substitutions import LaunchConfiguration, Command
-from launch.actions import DeclareLaunchArgument
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 
 def generate_launch_description():
     pkg_path = os.path.join(get_package_share_directory('basic_mobile_robot'))
+    nav2_dir = get_package_share_directory('nav2_bringup')
+    nav2_bt_path = get_package_share_directory('nav2_bt_navigator')
+
+    behavior_tree_xml_path = os.path.join(nav2_bt_path, 'behavior_trees', 'navigate_w_replanning_and_recovery.xml')
     model_file = os.path.join(pkg_path, 'models', 'robo_holly.urdf')
     robot_localization_file_path = os.path.join(pkg_path, 'config', 'ekf.yaml')
     default_rviz_config_path = os.path.join(pkg_path, 'rviz', 'holly.rviz')
+<<<<<<< Updated upstream:basic_mobile_robot/launch/robot.launch.py
+=======
+    slam_params_file = os.path.join(pkg_path, 'config', 'doslam.yaml')
+    nav2_params_file = os.path.join(pkg_path, 'params', 'nav2_params.yaml')
+>>>>>>> Stashed changes:basic_mobile_robot/launch/nav_physical.launch.py
 
+    autostart = LaunchConfiguration('autostart')
+    default_bt_xml_filename = LaunchConfiguration('default_bt_xml_filename')
+    params_file = LaunchConfiguration('params_file')
     model = LaunchConfiguration('model')
     rviz_config_file = LaunchConfiguration('rviz_config_file')
     use_sim_time = LaunchConfiguration('use_sim_time')
 
     remappings = [('/tf', 'tf'),
                 ('/tf_static', 'tf_static')]
+
+    declare_autostart_cmd = DeclareLaunchArgument(
+        name='autostart', 
+        default_value='True',
+        description='Automatically startup the nav2 stack'
+    )
+
+    declare_bt_xml_cmd = DeclareLaunchArgument(
+        name='default_bt_xml_filename',
+        default_value=behavior_tree_xml_path,
+        description='Full path to the behavior tree xml file to use'
+    )
+
+    declare_params_file_cmd = DeclareLaunchArgument(
+        name='params_file',
+        default_value=nav2_params_file,
+        description='Full path to the ROS2 parameters file to use for all launched nodes'
+    )
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(
         'use_sim_time',
@@ -60,6 +91,59 @@ def generate_launch_description():
         arguments=[model_file]
     )
 
+<<<<<<< Updated upstream:basic_mobile_robot/launch/robot.launch.py
+=======
+    start_lidar_cmd = Node(
+        name='rplidar_composition',
+        package='rplidar_ros',
+        executable='rplidar_composition',
+        parameters=[{
+            'serial_port': '/dev/ttyUSB0',
+            'serial_baudrate': 115200,
+            'frame_id': 'lidar_link',
+            'angle_compensate': True,
+            'auto_standby': True,
+            'scan_mode': 'Standard'
+        }],
+        output='screen'
+    )
+
+    start_lidar_odom_pub_cmd = Node(
+        package='basic_mobile_robot',
+        executable='lidar_odometry_node',
+        name='lidar_odom_pub'
+    )
+
+    start_odom2baselink_tf_broadcaster_cmd = Node(
+        package='navigator',
+        executable='tfbr',
+        name='odom_tf_broadcaster'
+    )
+
+    start_slam_cmd = Node(
+        package='slam_toolbox',
+        executable='async_slam_toolbox_node',
+        name='slam_toolbox',
+        parameters=[
+            slam_params_file,
+            {'use_sim_time': use_sim_time}
+        ],
+        output='screen'
+    )
+
+    start_ros2_navigation_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'bringup_launch.py')),
+        launch_arguments = {'namespace': '',
+                            'use_namespace': False,
+                            'slam': True,
+                            'map': map_yaml_file,
+                            'use_sim_time': use_sim_time,
+                            'params_file': params_file,
+                            'default_bt_xml_filename': default_bt_xml_filename,
+                            'autostart': autostart}.items()
+    )
+
+>>>>>>> Stashed changes:basic_mobile_robot/launch/nav_physical.launch.py
     start_rviz_cmd = Node(
         package='rviz2',
         executable='rviz2',
@@ -71,6 +155,9 @@ def generate_launch_description():
     # Launch!
     ld = LaunchDescription()
 
+    ld.add_action(declare_autostart_cmd)
+    ld.add_action(declare_bt_xml_cmd)
+    ld.add_action(declare_params_file_cmd)
     ld.add_action(declare_use_sim_time_cmd)
     ld.add_action(declare_model_path_cmd)
     ld.add_action(declare_rviz_config_file_cmd)
