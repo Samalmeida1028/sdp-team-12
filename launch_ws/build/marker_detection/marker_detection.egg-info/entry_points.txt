@@ -1,4 +1,0 @@
-[console_scripts]
-detector = marker_detection.MarkerDetection:main
-tester = marker_detection.TargetPublisher:main
-

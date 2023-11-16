@@ -1,7 +1,0 @@
-{
-  "package_name": "aruco_msgs",
-  "non_idl_tuples": [
-    "/media/sf_sdp12_ws/dev_ws/src/aruco_ros2/aruco_msgs:msg/Marker.msg",
-    "/media/sf_sdp12_ws/dev_ws/src/aruco_ros2/aruco_msgs:msg/MarkerArray.msg"
-  ]
-}

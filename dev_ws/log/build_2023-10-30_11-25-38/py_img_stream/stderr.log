@@ -1,7 +1,0 @@
-/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
-  warnings.warn(
-  File "/media/sf_sdp12_ws/dev_ws/install/py_img_stream/lib/python3.10/site-packages/py_img_stream/image_test_sub.py", line 27
-    {history: keep last, depth: 1 to 10, reliability: best effort, durability: volatile})
-              ^^^^^^^^^
-SyntaxError: invalid syntax. Perhaps you forgot a comma?
-

@@ -1,0 +1,232 @@
+[0.146s] Invoking command in '/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/adam/Desktop/sdp-team-12/install/py_img_stream:/home/adam/Desktop/sdp-team-12/install/navigator:/opt/ros/humble /usr/bin/cmake /home/adam/Desktop/sdp-team-12/basic_mobile_robot -DCMAKE_INSTALL_PREFIX=/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot
+[0.382s] -- The C compiler identification is GNU 11.4.0
+[0.382s] -- The CXX compiler identification is GNU 11.4.0
+[0.382s] -- Detecting C compiler ABI info
+[0.382s] -- Detecting C compiler ABI info - done
+[0.382s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.383s] -- Detecting C compile features
+[0.383s] -- Detecting C compile features - done
+[0.383s] -- Detecting CXX compiler ABI info
+[0.383s] -- Detecting CXX compiler ABI info - done
+[0.383s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.383s] -- Detecting CXX compile features
+[0.383s] -- Detecting CXX compile features - done
+[0.383s] -- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.481s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[0.542s] -- Found rclpy: 3.3.10 (/opt/ros/humble/share/rclpy/cmake)
+[0.543s] -- Found rclcpp: 16.0.6 (/opt/ros/humble/share/rclcpp/cmake)
+[0.573s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.576s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.582s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.591s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.605s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.656s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.658s] -- Found rmw_fastrtps_cpp: 6.2.4 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.726s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.748s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.784s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.792s] -- Looking for pthread.h
+[0.847s] -- Looking for pthread.h - found
+[0.847s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.916s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.917s] -- Found Threads: TRUE  
+[1.054s] -- Found geometry_msgs: 4.2.3 (/opt/ros/humble/share/geometry_msgs/cmake)
+[1.087s] -- Found nav2_msgs: 1.1.12 (/opt/ros/humble/share/nav2_msgs/cmake)
+[1.312s] -- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)
+[1.376s] -- Checking for module 'eigen3'
+[1.384s] --   Found eigen3, version 3.4.0
+[1.404s] -- Found Eigen: /usr/include/eigen3 (Required is at least version "3.1") 
+[1.404s] -- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+[1.417s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found suitable version "1.74.0", minimum required is "1.65.0") found components: system filesystem date_time iostreams serialization 
+[1.428s] -- Checking for module 'flann'
+[1.437s] --   Found flann, version 1.9.1
+[1.464s] -- Found FLANN: /usr/lib/x86_64-linux-gnu/libflann_cpp.so  
+[1.464s] -- FLANN found (include: /usr/include, lib: /usr/lib/x86_64-linux-gnu/libflann_cpp.so)
+[1.488s] -- Found GLEW: /usr/lib/x86_64-linux-gnu/libGLEW.so  
+[1.492s] -- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so  found components: OpenGL GLX 
+[1.587s] -- Found MPI_C: /usr/lib/x86_64-linux-gnu/libmpi.so (found version "3.1") 
+[1.587s] -- Found MPI: TRUE (found version "3.1") found components: C 
+[1.589s] -- Found JsonCpp: /usr/lib/x86_64-linux-gnu/libjsoncpp.so (found suitable version "1.9.5", minimum required is "0.7.0") 
+[1.595s] -- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.2.11") 
+[1.606s] -- Found PNG: /usr/lib/x86_64-linux-gnu/libpng.so (found version "1.6.37") 
+[1.613s] -- Found Eigen3: /usr/include/eigen3 (found version "3.4.0") 
+[1.671s] -- Found X11: /usr/include   
+[1.671s] -- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so
+[1.735s] -- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so - found
+[1.735s] -- Looking for gethostbyname
+[1.790s] -- Looking for gethostbyname - found
+[1.790s] -- Looking for connect
+[1.852s] -- Looking for connect - found
+[1.852s] -- Looking for remove
+[1.915s] -- Looking for remove - found
+[1.915s] -- Looking for shmat
+[1.973s] -- Looking for shmat - found
+[1.973s] -- Looking for IceConnectionNumber in ICE
+[2.023s] -- Looking for IceConnectionNumber in ICE - found
+[2.083s] -- Found EXPAT: /usr/lib/x86_64-linux-gnu/libexpat.so (found version "2.4.7") 
+[2.084s] -- Found double-conversion: /usr/lib/x86_64-linux-gnu/libdouble-conversion.so  
+[2.086s] -- Found LZ4: /usr/lib/x86_64-linux-gnu/liblz4.so (found version "1.9.3") 
+[2.087s] -- Found LZMA: /usr/lib/x86_64-linux-gnu/liblzma.so (found version "5.2.5") 
+[2.095s] -- Found JPEG: /usr/lib/x86_64-linux-gnu/libjpeg.so (found version "80") 
+[2.099s] -- Found TIFF: /usr/lib/x86_64-linux-gnu/libtiff.so (found version "4.3.0")  
+[2.101s] -- Found Freetype: /usr/lib/x86_64-linux-gnu/libfreetype.so (found version "2.11.1") 
+[2.105s] -- Found utf8cpp: /usr/include/utf8cpp  
+[2.161s] -- Checking for module 'libusb-1.0'
+[2.175s] --   Found libusb-1.0, version 1.0.25
+[2.228s] -- Found libusb: /usr/lib/x86_64-linux-gnu/libusb-1.0.so  
+[2.229s] -- Found OpenNI: /usr/lib/libOpenNI.so;libusb::libusb (found version "1.5.4.0") 
+[2.229s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[2.300s] -- Found OpenNI2: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb (found version "2.2.0.33") 
+[2.301s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[2.301s] [0m** WARNING ** io features related to pcap will be disabled[0m
+[2.407s] -- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+[2.412s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[2.417s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[2.515s] -- Found Qhull version 8.0.2
+[2.616s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[2.714s] -- looking for PCL_COMMON
+[2.715s] -- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  
+[2.715s] -- looking for PCL_KDTREE
+[2.715s] -- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  
+[2.715s] -- looking for PCL_OCTREE
+[2.716s] -- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  
+[2.716s] -- looking for PCL_SEARCH
+[2.717s] -- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  
+[2.717s] -- looking for PCL_SAMPLE_CONSENSUS
+[2.717s] -- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  
+[2.717s] -- looking for PCL_FILTERS
+[2.718s] -- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  
+[2.718s] -- looking for PCL_2D
+[2.718s] -- Found PCL_2D: /usr/include/pcl-1.12  
+[2.718s] -- looking for PCL_GEOMETRY
+[2.719s] -- Found PCL_GEOMETRY: /usr/include/pcl-1.12  
+[2.719s] -- looking for PCL_IO
+[2.719s] -- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  
+[2.719s] -- looking for PCL_FEATURES
+[2.720s] -- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  
+[2.720s] -- looking for PCL_ML
+[2.720s] -- Found PCL_ML: /usr/lib/x86_64-linux-gnu/libpcl_ml.so  
+[2.721s] -- looking for PCL_SEGMENTATION
+[2.721s] -- Found PCL_SEGMENTATION: /usr/lib/x86_64-linux-gnu/libpcl_segmentation.so  
+[2.721s] -- looking for PCL_VISUALIZATION
+[2.722s] -- Found PCL_VISUALIZATION: /usr/lib/x86_64-linux-gnu/libpcl_visualization.so  
+[2.722s] -- looking for PCL_SURFACE
+[2.723s] -- Found PCL_SURFACE: /usr/lib/x86_64-linux-gnu/libpcl_surface.so  
+[2.723s] -- looking for PCL_REGISTRATION
+[2.723s] -- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  
+[2.723s] -- looking for PCL_KEYPOINTS
+[2.724s] -- Found PCL_KEYPOINTS: /usr/lib/x86_64-linux-gnu/libpcl_keypoints.so  
+[2.724s] -- looking for PCL_TRACKING
+[2.724s] -- Found PCL_TRACKING: /usr/lib/x86_64-linux-gnu/libpcl_tracking.so  
+[2.724s] -- looking for PCL_RECOGNITION
+[2.725s] -- Found PCL_RECOGNITION: /usr/lib/x86_64-linux-gnu/libpcl_recognition.so  
+[2.725s] -- looking for PCL_STEREO
+[2.726s] -- Found PCL_STEREO: /usr/lib/x86_64-linux-gnu/libpcl_stereo.so  
+[2.726s] -- looking for PCL_APPS
+[2.726s] -- Found PCL_APPS: /usr/lib/x86_64-linux-gnu/libpcl_apps.so  
+[2.727s] -- looking for PCL_IN_HAND_SCANNER
+[2.727s] -- Found PCL_IN_HAND_SCANNER: /usr/include/pcl-1.12  
+[2.727s] -- looking for PCL_MODELER
+[2.727s] -- Found PCL_MODELER: /usr/include/pcl-1.12  
+[2.727s] -- looking for PCL_POINT_CLOUD_EDITOR
+[2.727s] -- Found PCL_POINT_CLOUD_EDITOR: /usr/include/pcl-1.12  
+[2.728s] -- looking for PCL_OUTOFCORE
+[2.728s] -- Found PCL_OUTOFCORE: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so  
+[2.728s] -- looking for PCL_PEOPLE
+[2.729s] -- Found PCL_PEOPLE: /usr/lib/x86_64-linux-gnu/libpcl_people.so  
+[2.730s] -- Found PCL: pcl_common;pcl_kdtree;pcl_octree;pcl_search;pcl_sample_consensus;pcl_filters;pcl_io;pcl_features;pcl_ml;pcl_segmentation;pcl_visualization;pcl_surface;pcl_registration;pcl_keypoints;pcl_tracking;pcl_recognition;pcl_stereo;pcl_apps;pcl_outofcore;pcl_people;Boost::system;Boost::filesystem;Boost::date_time;Boost::iostreams;Boost::serialization;/usr/lib/libOpenNI.so;libusb::libusb;/usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb;VTK::ChartsCore;VTK::CommonColor;VTK::CommonComputationalGeometry;VTK::CommonCore;VTK::CommonDataModel;VTK::CommonExecutionModel;VTK::CommonMath;VTK::CommonMisc;VTK::CommonTransforms;VTK::FiltersCore;VTK::FiltersExtraction;VTK::FiltersGeneral;VTK::FiltersGeometry;VTK::FiltersModeling;VTK::FiltersSources;VTK::ImagingCore;VTK::ImagingSources;VTK::InteractionImage;VTK::InteractionStyle;VTK::InteractionWidgets;VTK::IOCore;VTK::IOGeometry;VTK::IOImage;VTK::IOLegacy;VTK::IOPLY;VTK::RenderingAnnotation;VTK::RenderingCore;VTK::RenderingContext2D;VTK::RenderingLOD;VTK::RenderingFreeType;VTK::ViewsCore;VTK::ViewsContext2D;VTK::RenderingOpenGL2;VTK::GUISupportQt;FLANN::FLANN;QHULL::QHULL  
+[2.736s] -- Found laser_geometry: 2.4.0 (/opt/ros/humble/share/laser_geometry/cmake)
+[2.755s] -- Found pcl_conversions: 2.4.0 (/opt/ros/humble/share/pcl_conversions/cmake)
+[2.844s] -- Found tf2_eigen: 0.25.4 (/opt/ros/humble/share/tf2_eigen/cmake)
+[3.077s] -- Found ament_lint_auto: 0.12.8 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[3.134s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[3.134s] -- Configured cppcheck include dirs: /home/adam/Desktop/sdp-team-12/basic_mobile_robot/include;$<BUILD_INTERFACE:/home/adam/Desktop/sdp-team-12/basic_mobile_robot/include>
+[3.134s] -- Configured cppcheck exclude dirs and/or files: 
+[3.135s] -- Added test 'flake8' to check Python code syntax and style conventions
+[3.135s] -- Added test 'lint_cmake' to check CMake code style
+[3.136s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[3.137s] -- Added test 'uncrustify' to check C / C++ code style
+[3.137s] -- Configured uncrustify additional arguments: 
+[3.137s] -- Added test 'xmllint' to check XML markup files
+[3.138s] -- Configuring done
+[3.160s] -- Generating done
+[3.162s] -- Build files have been written to: /home/adam/Desktop/sdp-team-12/build/basic_mobile_robot
+[3.175s] Invoked command in '/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/adam/Desktop/sdp-team-12/install/py_img_stream:/home/adam/Desktop/sdp-team-12/install/navigator:/opt/ros/humble /usr/bin/cmake /home/adam/Desktop/sdp-team-12/basic_mobile_robot -DCMAKE_INSTALL_PREFIX=/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot
+[3.177s] Invoking command in '/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/adam/Desktop/sdp-team-12/install/py_img_stream:/home/adam/Desktop/sdp-team-12/install/navigator:/opt/ros/humble /usr/bin/cmake --build /home/adam/Desktop/sdp-team-12/build/basic_mobile_robot -- -j8 -l8
+[3.214s] [ 66%] [32mBuilding CXX object CMakeFiles/lidar_odometry_node.dir/src/lidar_odometry.cpp.o[0m
+[3.214s] [ 66%] [32mBuilding CXX object CMakeFiles/lidar_odometry_node.dir/src/lidar_odometry_node.cpp.o[0m
+[16.700s] [100%] [32m[1mLinking CXX executable lidar_odometry_node[0m
+[17.908s] [100%] Built target lidar_odometry_node
+[17.915s] Invoked command in '/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/adam/Desktop/sdp-team-12/install/py_img_stream:/home/adam/Desktop/sdp-team-12/install/navigator:/opt/ros/humble /usr/bin/cmake --build /home/adam/Desktop/sdp-team-12/build/basic_mobile_robot -- -j8 -l8
+[17.941s] Invoking command in '/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/adam/Desktop/sdp-team-12/install/py_img_stream:/home/adam/Desktop/sdp-team-12/install/navigator:/opt/ros/humble /usr/bin/cmake --install /home/adam/Desktop/sdp-team-12/build/basic_mobile_robot
+[17.946s] -- Install configuration: ""
+[17.946s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config
+[17.946s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf2.yaml
+[17.946s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/slam.yaml
+[17.946s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/ekf.yaml
+[17.946s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch
+[17.946s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/gazebo_simulator.launch.py
+[17.947s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/lidar_config.launch.py
+[17.947s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/urdf_visualizer.launch.py
+[17.947s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/robot.launch.py
+[17.947s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/nav_simulated.launch.py
+[17.947s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/rplidar.launch.py
+[17.947s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/launch/sensor_fusion_odom.launch.py
+[17.947s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes
+[17.947s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/elbow.stl
+[17.947s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/robot_base.stl
+[17.947s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/arm_base.stl
+[17.947s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/wrist.stl
+[17.948s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/wheel.stl
+[17.948s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/bicep.stl
+[17.948s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps
+[17.948s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.yaml
+[17.948s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/generated_map.yaml
+[17.948s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/generated_map.pgm
+[17.949s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.pgm
+[17.952s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models
+[17.952s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/robo_holly.urdf
+[17.952s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_v2.urdf
+[17.952s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_v1.urdf
+[17.952s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description
+[17.952s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes
+[17.952s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/elbow.stl
+[17.952s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/robot_base.stl
+[17.952s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/arm_base.stl
+[17.952s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/wrist.stl
+[17.953s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/wheel.stl
+[17.953s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/meshes/bicep.stl
+[17.953s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/holly_model.sdf
+[17.953s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/model.config
+[17.953s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_description/model.sdf
+[17.953s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/params
+[17.953s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/params/nav2_params.yaml
+[17.953s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz
+[17.953s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/urdf_config.rviz
+[17.953s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/nav2_config.rviz
+[17.953s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/holly.rviz
+[17.953s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds
+[17.953s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world
+[17.953s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world/empty.world
+[17.954s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world/smalltown.world
+[17.954s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/src
+[17.954s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/src/lidar_odometry_node.cpp
+[17.954s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/src/lidar_odometry.cpp
+[17.954s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/lib/basic_mobile_robot/lidar_odometry_node
+[17.959s] -- Set runtime path of "/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/lib/basic_mobile_robot/lidar_odometry_node" to ""
+[17.959s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/package_run_dependencies/basic_mobile_robot
+[17.959s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/parent_prefix_path/basic_mobile_robot
+[17.959s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/ament_prefix_path.sh
+[17.959s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/ament_prefix_path.dsv
+[17.959s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/path.sh
+[17.959s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/environment/path.dsv
+[17.959s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.bash
+[17.959s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.sh
+[17.959s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.zsh
+[17.959s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/local_setup.dsv
+[17.959s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.dsv
+[17.959s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/ament_index/resource_index/packages/basic_mobile_robot
+[17.959s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/cmake/basic_mobile_robotConfig.cmake
+[17.959s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/cmake/basic_mobile_robotConfig-version.cmake
+[17.959s] -- Installing: /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/package.xml
+[17.961s] Invoked command in '/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/adam/Desktop/sdp-team-12/install/py_img_stream:/home/adam/Desktop/sdp-team-12/install/navigator:/opt/ros/humble /usr/bin/cmake --install /home/adam/Desktop/sdp-team-12/build/basic_mobile_robot
