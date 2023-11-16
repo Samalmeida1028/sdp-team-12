@@ -19,7 +19,7 @@ BUTTON_3 = 5
 BUTTON_4 = 6
 BUTTON_5 = 7
 
-sport = serial.Serial(port='COM12', baudrate=9600, write_timeout=1,parity=serial.PARITY_ODD,
+sport = serial.Serial(port='/dev/ttyACM1', baudrate=9600, write_timeout=1,parity=serial.PARITY_ODD,
     stopbits=serial.STOPBITS_TWO,
     bytesize=serial.SEVENBITS)
 

@@ -1,3 +1,9 @@
+# SDP Team 12
+# Date created: 11/9/23
+# Date last modified: 11/15/23
+# Author: Arjun Viswanathan
+# Description: launch file to launch all necessary components for physical navigation
+
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
@@ -10,6 +16,7 @@ def generate_launch_description():
     model_file = os.path.join(pkg_path, 'models', 'robo_holly.urdf')
     robot_localization_file_path = os.path.join(pkg_path, 'config', 'ekf.yaml')
     default_rviz_config_path = os.path.join(pkg_path, 'rviz', 'holly.rviz')
+    slam_params_file = os.path.join(pkg_path, 'config', 'slam.yaml')
 
     model = LaunchConfiguration('model')
     rviz_config_file = LaunchConfiguration('rviz_config_file')
@@ -60,6 +67,44 @@ def generate_launch_description():
         arguments=[model_file]
     )
 
+    start_lidar_cmd = Node(
+        name='rplidar_composition',
+        package='rplidar_ros',
+        executable='rplidar_composition',
+        parameters=[{
+            'serial_port': '/dev/ttyUSB0',
+            'serial_baudrate': 115200,
+            'frame_id': 'lidar_link',
+            'angle_compensate': True,
+            'auto_standby': True,
+            'scan_mode': 'Standard'
+        }],
+        output='screen'
+    )
+
+    start_lidar_odom_pub_cmd = Node(
+        package='basic_mobile_robot',
+        executable='lidar_odometry_node',
+        name='lidar_odom_pub'
+    )
+
+    start_odom2baselink_tf_broadcaster_cmd = Node(
+        package='navigator',
+        executable='tfbr',
+        name='odom_tf_broadcaster'
+    )
+
+    start_slam_cmd = Node(
+        package='slam_toolbox',
+        executable='async_slam_toolbox_node',
+        name='slam_toolbox',
+        parameters=[
+            slam_params_file,
+            {'use_sim_time': use_sim_time}
+        ],
+        output='screen'
+    )
+
     start_rviz_cmd = Node(
         package='rviz2',
         executable='rviz2',
@@ -78,6 +123,10 @@ def generate_launch_description():
     ld.add_action(start_robot_localization_cmd)
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)
+    ld.add_action(start_lidar_cmd)
+    ld.add_action(start_lidar_odom_pub_cmd)
+    ld.add_action(start_odom2baselink_tf_broadcaster_cmd)
+    ld.add_action(start_slam_cmd)
     ld.add_action(start_rviz_cmd)
 
     return ld
