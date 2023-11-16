@@ -1,3 +1,11 @@
+# SDP Team 12
+# Date created: 11/9/23
+# Date last modified: 11/15/23
+# Author: Arjun Viswanathan
+# Description: launch file to launch all necessary components for physical navigation
+
+# TODO: figure out if map_yaml_file is needed to start nav stack
+
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
@@ -15,11 +23,8 @@ def generate_launch_description():
     model_file = os.path.join(pkg_path, 'models', 'robo_holly.urdf')
     robot_localization_file_path = os.path.join(pkg_path, 'config', 'ekf.yaml')
     default_rviz_config_path = os.path.join(pkg_path, 'rviz', 'holly.rviz')
-<<<<<<< Updated upstream:basic_mobile_robot/launch/robot.launch.py
-=======
     slam_params_file = os.path.join(pkg_path, 'config', 'doslam.yaml')
     nav2_params_file = os.path.join(pkg_path, 'params', 'nav2_params.yaml')
->>>>>>> Stashed changes:basic_mobile_robot/launch/nav_physical.launch.py
 
     autostart = LaunchConfiguration('autostart')
     default_bt_xml_filename = LaunchConfiguration('default_bt_xml_filename')
@@ -91,8 +96,6 @@ def generate_launch_description():
         arguments=[model_file]
     )
 
-<<<<<<< Updated upstream:basic_mobile_robot/launch/robot.launch.py
-=======
     start_lidar_cmd = Node(
         name='rplidar_composition',
         package='rplidar_ros',
@@ -143,7 +146,6 @@ def generate_launch_description():
                             'autostart': autostart}.items()
     )
 
->>>>>>> Stashed changes:basic_mobile_robot/launch/nav_physical.launch.py
     start_rviz_cmd = Node(
         package='rviz2',
         executable='rviz2',
@@ -165,6 +167,11 @@ def generate_launch_description():
     ld.add_action(start_robot_localization_cmd)
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)
+    ld.add_action(start_lidar_cmd)
+    ld.add_action(start_lidar_odom_pub_cmd)
+    ld.add_action(start_odom2baselink_tf_broadcaster_cmd)
+    ld.add_action(start_slam_cmd)
+    ld.add_action(start_ros2_navigation_cmd)
     ld.add_action(start_rviz_cmd)
 
     return ld
