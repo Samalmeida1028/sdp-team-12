@@ -16,7 +16,7 @@ def generate_launch_description():
     model_file = os.path.join(pkg_path, 'models', 'robo_holly.urdf')
     robot_localization_file_path = os.path.join(pkg_path, 'config', 'ekf.yaml')
     default_rviz_config_path = os.path.join(pkg_path, 'rviz', 'holly.rviz')
-    slam_params_file = os.path.join(pkg_path, 'config', 'slam.yaml')
+    slam_params_file = os.path.join(pkg_path, 'config', 'doslam.yaml')
 
     model = LaunchConfiguration('model')
     rviz_config_file = LaunchConfiguration('rviz_config_file')
