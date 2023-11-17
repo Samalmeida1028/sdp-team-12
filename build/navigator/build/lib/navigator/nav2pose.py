@@ -29,7 +29,7 @@ class Nav2Pose(Node):
 
         # Wait for navigation to fully activate, since autostarting nav2
         #self.navigator.lifecycleStartup()
-        self.navigator.waitUntilNav2Active()
+        self.navigator.waitUntilNav2Active(localizer='bt_navigator')
 
         self.i = 0
         self.startnav = False

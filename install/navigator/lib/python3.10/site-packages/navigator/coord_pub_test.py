@@ -6,14 +6,14 @@ class CoordPub(Node):
     def __init__(self):
         super().__init__("coords_pub")
 
-        self.publisher = self.create_publisher(Float32MultiArray, '/coords', 10)
+        self.publisher = self.create_publisher(Float32MultiArray, '/translation_list', 10)
         
         time_period = 0.5
         self.timer = self.create_timer(time_period, self.timer_callback)
         
     def timer_callback(self):
         msg = Float32MultiArray()
-        msg.data = [30.0, 0.5]
+        msg.data = [5.0, 5.0, 5.0, 20, 10]
         self.publisher.publish(msg)
 
         print("Publishing {}".format(msg.data))

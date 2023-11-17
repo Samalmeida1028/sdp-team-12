@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 11/9/23
-# Date last modified: 11/9/23
+# Date last modified: 11/17/23
 # Description: Send cmd vel values from the nav stack over serial to the pico
 
 from geometry_msgs.msg import Twist
 import rclpy
 from rclpy.node import Node
+import math
 import serial
+import json
 
 class CmdVelSub(Node):
     def __init__(self):
@@ -15,23 +17,17 @@ class CmdVelSub(Node):
 
         self.robot_radius = 0.15
 
-        #self.s = serial.Serial("/dev/ttyUSB0", 115200)
+        self.s = serial.Serial("/dev/ttyACM1", 115200)
         self.poseSub = self.create_subscription(Twist, '/cmd_vel_nav', self.cmdvel_callback, 10)
 
     def cmdvel_callback(self, msg):
         tvel = msg.linear.x
         rvel = msg.angular.z
+        v = [tvel * math.sin(rvel), tvel * math.cos(rvel)]
 
-        t_rvel = self.robot_radius * rvel
+        print("Vx: {}, Vy: {}".format(v[0], v[1]))
 
-        #print("Linear Velocity: {}, Angular Velocity: {}".format(tvel, rvel))
-
-        left_speed = tvel - t_rvel
-        right_speed = tvel + t_rvel
-
-        print("Left motor speed: {}, Right motor speed: {}".format(left_speed, right_speed))
-
-        #self.s.write(bytes(str(tvel) + "," + str(rvel), 'ascii'))
+        self.s.write(bytearray(json.dumps(v) + '\n', 'utf-8'))
 
 def main(args=None):
     rclpy.init(args=args)

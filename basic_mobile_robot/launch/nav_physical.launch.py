@@ -70,6 +70,13 @@ def generate_launch_description():
         {'use_sim_time': use_sim_time}]
     )
 
+    start_amcl_cmd = Node(
+        package='nav2_amcl',
+        executable='amcl',
+        name='amcl',
+        output='screen'
+    )
+
     start_joint_state_publisher_cmd = Node(
         package='joint_state_publisher',
         executable='joint_state_publisher',
@@ -148,6 +155,7 @@ def generate_launch_description():
     ld.add_action(declare_rviz_config_file_cmd)
 
     ld.add_action(start_robot_localization_cmd)
+    ld.add_action(start_amcl_cmd)
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)
     ld.add_action(start_lidar_cmd)
