@@ -1,6 +1,6 @@
 # SDP Team 12
 # Date created: 11/9/23
-# Date last modified: 11/16/23
+# Date last modified: 11/17/23
 # Author: Arjun Viswanathan
 # Description: launch file to launch all necessary components for physical navigation
 
@@ -130,6 +130,7 @@ def generate_launch_description():
         output='screen'
     )
 
+    # TODO: should we change the navigation_launch.py to involve AMCL? 
     start_ros2_navigation_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'navigation_launch.py')),
         launch_arguments = {'use_sim_time': use_sim_time,
