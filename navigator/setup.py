@@ -20,11 +20,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'keyboard = navigator.keyboard_teleop:main',
             'nav2pose = navigator.nav2pose:main',
             'cmdvelsub = navigator.cmd_vel_sub:main',
             'coordpub = navigator.coord_pub_test:main',
-            'odomsub = navigator.odom_sub:main',
             'tfbr = navigator.tf_broadcaster:main'
         ],
     },

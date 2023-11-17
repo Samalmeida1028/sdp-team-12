@@ -1,6 +1,6 @@
 # SDP Team 12
 # Date created: 11/9/23
-# Date last modified: 11/16/23
+# Date last modified: 11/17/23
 # Author: Arjun Viswanathan
 # Description: launch file to launch all necessary components for physical navigation
 
@@ -113,11 +113,11 @@ def generate_launch_description():
         name='lidar_odom_pub'
     )
 
-    start_odom2baselink_tf_broadcaster_cmd = Node(
-        package='navigator',
-        executable='tfbr',
-        name='odom_tf_broadcaster'
-    )
+    # start_odom2baselink_tf_broadcaster_cmd = Node(
+    #     package='navigator',
+    #     executable='tfbr',
+    #     name='odom_tf_broadcaster'
+    # )
 
     start_slam_cmd = Node(
         package='slam_toolbox',
@@ -130,6 +130,7 @@ def generate_launch_description():
         output='screen'
     )
 
+    # TODO: should we change the navigation_launch.py to involve AMCL? 
     start_ros2_navigation_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'navigation_launch.py')),
         launch_arguments = {'use_sim_time': use_sim_time,
@@ -160,7 +161,7 @@ def generate_launch_description():
     ld.add_action(start_joint_state_publisher_cmd)
     ld.add_action(start_lidar_cmd)
     ld.add_action(start_lidar_odom_pub_cmd)
-    ld.add_action(start_odom2baselink_tf_broadcaster_cmd)
+    #ld.add_action(start_odom2baselink_tf_broadcaster_cmd)
     ld.add_action(start_slam_cmd)
     ld.add_action(start_ros2_navigation_cmd)
     ld.add_action(start_rviz_cmd)

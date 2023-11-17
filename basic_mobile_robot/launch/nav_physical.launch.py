@@ -113,11 +113,11 @@ def generate_launch_description():
         name='lidar_odom_pub'
     )
 
-    start_odom2baselink_tf_broadcaster_cmd = Node(
-        package='navigator',
-        executable='tfbr',
-        name='odom_tf_broadcaster'
-    )
+    # start_odom2baselink_tf_broadcaster_cmd = Node(
+    #     package='navigator',
+    #     executable='tfbr',
+    #     name='odom_tf_broadcaster'
+    # )
 
     start_slam_cmd = Node(
         package='slam_toolbox',
@@ -161,7 +161,7 @@ def generate_launch_description():
     ld.add_action(start_joint_state_publisher_cmd)
     ld.add_action(start_lidar_cmd)
     ld.add_action(start_lidar_odom_pub_cmd)
-    ld.add_action(start_odom2baselink_tf_broadcaster_cmd)
+    #ld.add_action(start_odom2baselink_tf_broadcaster_cmd)
     ld.add_action(start_slam_cmd)
     ld.add_action(start_ros2_navigation_cmd)
     ld.add_action(start_rviz_cmd)
