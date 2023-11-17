@@ -18,7 +18,7 @@ def generate_launch_description():
   pkg_gazebo_ros = FindPackageShare(package='gazebo_ros').find('gazebo_ros')   
   pkg_share = FindPackageShare(package='basic_mobile_robot').find('basic_mobile_robot')
   default_launch_dir = os.path.join(pkg_share, 'launch')
-  default_model_path = os.path.join(pkg_share, 'models/robo_holly.urdf')
+  default_model_path = os.path.join(pkg_share, 'models/basic_mobile_bot_v2.urdf')
   robot_localization_file_path = os.path.join(pkg_share, 'config/ekf2.yaml') 
   robot_name_in_urdf = 'basic_mobile_bot'
   default_rviz_config_path = os.path.join(pkg_share, 'rviz/nav2_config.rviz')
@@ -120,7 +120,7 @@ def generate_launch_description():
     
   declare_use_sim_time_cmd = DeclareLaunchArgument(
     name='use_sim_time',
-    default_value='False',
+    default_value='True',
     description='Use simulation (Gazebo) clock if true')
 
   declare_use_simulator_cmd = DeclareLaunchArgument(

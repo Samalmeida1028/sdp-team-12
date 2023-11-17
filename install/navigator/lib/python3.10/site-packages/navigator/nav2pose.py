@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 11/5/23
-# Date last modified: 11/11/23
+# Date last modified: 11/16/23
 # Description: Using Nav2 to navigate to a given pose
 
 from geometry_msgs.msg import PoseStamped
@@ -22,14 +22,14 @@ class Nav2Pose(Node):
 
         print("Setting poses...")
         self.initial_pose = PoseStamped()
-        self.prev_pose = PoseStamped()
         self.goal = PoseStamped()
 
-        self.init_navigator(3.45, 2.15, 1.0, 0.0)
+        self.init_navigator(0.0, 0.0, 1.0)
+        self.prev_pose = self.initial_pose
 
         # Wait for navigation to fully activate, since autostarting nav2
         #self.navigator.lifecycleStartup()
-        self.navigator.waitUntilNav2Active(localizer="bt_navigator")
+        self.navigator.waitUntilNav2Active()
 
         self.i = 0
         self.startnav = False
@@ -44,13 +44,12 @@ class Nav2Pose(Node):
 
         print("Ready!")
 
-    def init_navigator(self, x, y, z, w):
+    def init_navigator(self, x, y, w):
         # Set our demo's initial pose
         self.initial_pose.header.frame_id = 'map'
         self.initial_pose.header.stamp = self.navigator.get_clock().now().to_msg()
         self.initial_pose.pose.position.x = x
         self.initial_pose.pose.position.y = y
-        self.initial_pose.pose.orientation.z = z
         self.initial_pose.pose.orientation.w = w
 
         self.navigator.setInitialPose(self.initial_pose)
@@ -74,25 +73,25 @@ class Nav2Pose(Node):
         self.navigator.goToPose(goal_pose)
 
     def setgoal(self, goalmsg):
-        # goalmsg = [xpos, ypos, dist, angle]
+        # goalmsg = [xpos, ypos, dist, xangle, yangle]
         self.goal.header.frame_id = 'map'
         self.goal.header.stamp = self.navigator.get_clock().now().to_msg()
+
+        d = goalmsg.data[2]*math.cos(goalmsg.data[4]) # true dist = seen dist * sin(yangle)
         
-        self.goal.pose.position.x = self.initial_pose.pose.position.x + (goalmsg.data[2]*math.sin(goalmsg.data[3]))/100 # xf = xi + dsin(phi)
-        self.goal.pose.position.y = self.initial_pose.pose.position.y + (goalmsg.data[2]*math.cos(goalmsg.data[3]))/100 # yf = yi + dcos(phi)
-        self.goal.pose.position.z = self.initial_pose.pose.position.z
+        self.goal.pose.position.x = self.prev_pose.pose.position.x + (d*math.sin(goalmsg.data[3]))/100 # xf = xi + dsin(phi)
+        self.goal.pose.position.y = self.prev_pose.pose.position.y + (d*math.cos(goalmsg.data[3]))/100 # yf = yi + dcos(phi)
 
         rot = Rotation.from_euler('xyz', [0, 0, goalmsg.data[3]], degrees=True)
         rot_quat = rot.as_quat() # convert angle to quaternion format
 
-        self.goal.pose.orientation.x = rot_quat[0] # set the orientation to be looking at the marker at the end of navigation
-        self.goal.pose.orientation.y = rot_quat[1]
-        self.goal.pose.orientation.z = rot_quat[2]
-        self.goal.pose.orientation.w = rot_quat[3]
-
-        self.startnav = True
+        self.goal.pose.orientation.x = self.prev_pose.pose.orientation.x + rot_quat[0] # set the orientation to be looking at the marker at the end of navigation
+        self.goal.pose.orientation.y = self.prev_pose.pose.orientation.x + rot_quat[1]
+        self.goal.pose.orientation.z = self.prev_pose.pose.orientation.x + rot_quat[2]
+        self.goal.pose.orientation.w = self.prev_pose.pose.orientation.x + rot_quat[3]
 
         if self.goal != self.prev_pose:
+            self.startnav = True
             print("Updated goal pose!")
 
     def nav2pose_callback(self):
