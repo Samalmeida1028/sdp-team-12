@@ -17,7 +17,7 @@ class CmdVelSub(Node):
 
         self.robot_radius = 0.15
 
-        self.s = serial.Serial("/dev/ttyACM2", 115200)
+        self.s = serial.Serial("/dev/ttyACM1", 115200)
         self.poseSub = self.create_subscription(Twist, '/cmd_vel_nav', self.cmdvel_callback, 10)
 
     def cmdvel_callback(self, msg):

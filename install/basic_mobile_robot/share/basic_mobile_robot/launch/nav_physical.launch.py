@@ -21,6 +21,8 @@ def generate_launch_description():
     default_rviz_config_path = os.path.join(pkg_path, 'rviz', 'holly.rviz')
     slam_params_file = os.path.join(pkg_path, 'config', 'doslam.yaml')
     nav2_params_file = os.path.join(pkg_path, 'params', 'nav2_params.yaml')
+    behavior_tree_xml_path = os.path.join(pkg_path, 'behavior_trees', 'navigate_w_replanning_and_recovery.xml')
+    map_yaml_file = os.path.join(pkg_path, 'maps', 'slam_map.yaml')
 
     autostart = LaunchConfiguration('autostart')
     params_file = LaunchConfiguration('params_file')
@@ -65,17 +67,15 @@ def generate_launch_description():
         package='robot_localization',
         executable='ekf_node',
         name='ekf_filter_node',
-        output='screen',
         parameters=[robot_localization_file_path, 
         {'use_sim_time': use_sim_time}]
     )
 
-    start_amcl_cmd = Node(
-        package='nav2_amcl',
-        executable='amcl',
-        name='amcl',
-        output='screen'
-    )
+    # start_amcl_cmd = Node(
+    #     package='nav2_amcl',
+    #     executable='amcl',
+    #     name='amcl',
+    # )
 
     start_joint_state_publisher_cmd = Node(
         package='joint_state_publisher',
@@ -104,13 +104,19 @@ def generate_launch_description():
             'auto_standby': True,
             'scan_mode': 'Standard'
         }],
-        output='screen'
     )
 
     start_lidar_odom_pub_cmd = Node(
         package='basic_mobile_robot',
         executable='lidar_odometry_node',
         name='lidar_odom_pub'
+    )
+
+    start_encoder_odom_pub_cmd = Node(
+        package='navigator',
+        executable='enc2odom',
+        name='encoder_odom_pub',
+        output='screen'
     )
 
     # start_odom2baselink_tf_broadcaster_cmd = Node(
@@ -127,15 +133,26 @@ def generate_launch_description():
             slam_params_file,
             {'use_sim_time': use_sim_time}
         ],
-        output='screen'
     )
 
     # TODO: should we change the navigation_launch.py to involve AMCL? 
+    # start_ros2_navigation_cmd = IncludeLaunchDescription(
+    #     PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'navigation_launch.py')),
+    #     launch_arguments = {'use_sim_time': use_sim_time,
+    #                         'params_file': params_file,
+    #                         'autostart': autostart}.items()
+    # )
+
     start_ros2_navigation_cmd = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'navigation_launch.py')),
-        launch_arguments = {'use_sim_time': use_sim_time,
-                            'params_file': params_file,
-                            'autostart': autostart}.items()
+    PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'bringup_launch.py')),
+    launch_arguments = {'namespace': '',
+                        'use_namespace': 'False',
+                        'slam': 'False',
+                        'map': map_yaml_file,
+                        'use_sim_time': use_sim_time,
+                        'params_file': params_file,
+                        'default_bt_xml_filename': behavior_tree_xml_path,
+                        'autostart': autostart}.items()
     )
 
     start_rviz_cmd = Node(
@@ -156,12 +173,13 @@ def generate_launch_description():
     ld.add_action(declare_rviz_config_file_cmd)
 
     ld.add_action(start_robot_localization_cmd)
-    ld.add_action(start_amcl_cmd)
+    #ld.add_action(start_amcl_cmd)
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)
     ld.add_action(start_lidar_cmd)
     ld.add_action(start_lidar_odom_pub_cmd)
     #ld.add_action(start_odom2baselink_tf_broadcaster_cmd)
+    ld.add_action(start_encoder_odom_pub_cmd)
     ld.add_action(start_slam_cmd)
     ld.add_action(start_ros2_navigation_cmd)
     ld.add_action(start_rviz_cmd)

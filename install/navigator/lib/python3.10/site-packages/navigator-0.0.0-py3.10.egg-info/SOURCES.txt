@@ -11,6 +11,7 @@ setup.py
 navigator/__init__.py
 navigator/cmd_vel_sub.py
 navigator/coord_pub_test.py
+navigator/encoder2odom.py
 navigator/nav2pose.py
 navigator/tf_broadcaster.py
 resource/navigator

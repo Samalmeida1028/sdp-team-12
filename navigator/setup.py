@@ -23,7 +23,8 @@ setup(
             'nav2pose = navigator.nav2pose:main',
             'cmdvelsub = navigator.cmd_vel_sub:main',
             'coordpub = navigator.coord_pub_test:main',
-            'tfbr = navigator.tf_broadcaster:main'
+            'tfbr = navigator.tf_broadcaster:main',
+            'enc2odom = navigator.encoder2odom:main'
         ],
     },
 )

@@ -18,7 +18,9 @@
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/meshes/bicep.stl
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.yaml
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/generated_map.yaml
+/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/slam_map.yaml.pgm
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/generated_map.pgm
+/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/slam_map.yaml.yaml
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/maps/smalltown_world.pgm
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/robo_holly.urdf
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/models/basic_mobile_bot_v2.urdf
