@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 11/5/23
-# Date last modified: 11/16/23
+# Date last modified: 11/18/23
 # Description: Using Nav2 to navigate to a given pose
 
 from geometry_msgs.msg import PoseStamped
@@ -28,13 +28,13 @@ class Nav2Pose(Node):
         self.prev_pose = self.initial_pose
 
         # Wait for navigation to fully activate, since autostarting nav2
-        #self.navigator.lifecycleStartup()
-        self.navigator.waitUntilNav2Active(localizer='bt_navigator')
+        self.navigator.lifecycleStartup()
+        #self.navigator.waitUntilNav2Active(localizer='bt_navigator')
 
         self.i = 0
         self.startnav = False
 
-        # self.navigator.changeMap('/mnt/e/UMass_Amherst/SDP/sdp-team-12/basic_mobile_robot/maps/smalltown_world.yaml')
+        self.navigator.changeMap('basic_mobile_robot/maps/slam_map.yaml')
 
         print("Creating subscribers and callbacks...")
         self.coordsub = self.create_subscription(Float32MultiArray, '/translation_list', self.setgoal, 10)
