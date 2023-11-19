@@ -28,13 +28,13 @@ class Nav2Pose(Node):
         self.prev_pose = self.initial_pose
 
         # Wait for navigation to fully activate, since autostarting nav2
-        self.navigator.lifecycleStartup()
-        #self.navigator.waitUntilNav2Active(localizer='bt_navigator')
+        #self.navigator.lifecycleStartup()
+        self.navigator.waitUntilNav2Active(localizer='bt_navigator')
 
         self.i = 0
         self.startnav = False
 
-        self.navigator.changeMap('basic_mobile_robot/maps/slam_map.yaml')
+        #self.navigator.changeMap('basic_mobile_robot/maps/slam_map.yaml')
 
         print("Creating subscribers and callbacks...")
         self.coordsub = self.create_subscription(Float32MultiArray, '/translation_list', self.setgoal, 10)
@@ -102,7 +102,7 @@ class Nav2Pose(Node):
             # self.navigator.followPath(smooth_path)
 
             if self.goal != self.prev_pose:
-                self.navigator.goToPose(self.goal)
+                self.navigator.goToPose(self.goal, behavior_tree='/home/adam/Desktop/sdp-team-12/basic_mobile_robot/behavior_trees/navigate_to_pose_w_replanning_and_recovery.xml')
                 self.prev_pose = self.goal
 
             if not self.navigator.isTaskComplete():

@@ -13,7 +13,7 @@ class CoordPub(Node):
         
     def timer_callback(self):
         msg = Float32MultiArray()
-        msg.data = [5.0, 5.0, 5.0, 20, 10]
+        msg.data = [46.0, 51.0, 40.0, 60.0, 50.0]
         self.publisher.publish(msg)
 
         print("Publishing {}".format(msg.data))

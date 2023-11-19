@@ -136,24 +136,24 @@ def generate_launch_description():
     )
 
     # TODO: should we change the navigation_launch.py to involve AMCL? 
-    # start_ros2_navigation_cmd = IncludeLaunchDescription(
-    #     PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'navigation_launch.py')),
-    #     launch_arguments = {'use_sim_time': use_sim_time,
-    #                         'params_file': params_file,
-    #                         'autostart': autostart}.items()
-    # )
-
     start_ros2_navigation_cmd = IncludeLaunchDescription(
-    PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'bringup_launch.py')),
-    launch_arguments = {'namespace': '',
-                        'use_namespace': 'False',
-                        'slam': 'False',
-                        'map': map_yaml_file,
-                        'use_sim_time': use_sim_time,
-                        'params_file': params_file,
-                        'default_bt_xml_filename': behavior_tree_xml_path,
-                        'autostart': autostart}.items()
+        PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'navigation_launch.py')),
+        launch_arguments = {'use_sim_time': use_sim_time,
+                            'params_file': params_file,
+                            'autostart': autostart}.items()
     )
+
+    # start_ros2_navigation_cmd = IncludeLaunchDescription(
+    # PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'bringup_launch.py')),
+    # launch_arguments = {'namespace': '',
+    #                     'use_namespace': 'False',
+    #                     'slam': 'False',
+    #                     'map': map_yaml_file,
+    #                     'use_sim_time': use_sim_time,
+    #                     'params_file': params_file,
+    #                     'default_bt_xml_filename': behavior_tree_xml_path,
+    #                     'autostart': autostart}.items()
+    # )
 
     start_rviz_cmd = Node(
         package='rviz2',
