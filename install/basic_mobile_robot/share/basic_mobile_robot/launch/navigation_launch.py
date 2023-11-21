@@ -202,6 +202,12 @@ def generate_launch_description():
                 + [('cmd_vel', 'cmd_vel_nav'), ('cmd_vel_smoothed', 'cmd_vel')],
             ),
             Node(
+                package='nav2_amcl',
+                executable='amcl',
+                name='amcl',
+                output='screen'
+            ),
+            Node(
                 package='nav2_lifecycle_manager',
                 executable='lifecycle_manager',
                 name='lifecycle_manager_navigation',
