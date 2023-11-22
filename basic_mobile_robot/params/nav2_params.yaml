@@ -39,8 +39,8 @@ amcl:
     z_max: 0.05
     z_rand: 0.5
     z_short: 0.05
-    scan_topic: scan
-    map_topic: map
+    scan_topic: /scan
+    map_topic: /map
     initial_pose:
       x: 0.0
       y: 0.0
@@ -199,8 +199,10 @@ local_costmap:
       plugins: ["voxel_layer", "inflation_layer"]
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 3.0
-        inflation_radius: 0.55
+        cost_scaling_factor: 1.0
+        inflation_radius: 0.3
+        inflate_unknown: false
+        inflate_around_unknown: true
       voxel_layer:
         plugin: "nav2_costmap_2d::VoxelLayer"
         enabled: True
@@ -265,8 +267,10 @@ global_costmap:
         map_subscribe_transient_local: True
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 3.0
-        inflation_radius: 0.55
+        cost_scaling_factor: 1.0
+        inflation_radius: 0.3
+        inflate_unknown: false
+        inflate_around_unknown: true
       always_send_full_costmap: True
   global_costmap_client:
     ros__parameters:
