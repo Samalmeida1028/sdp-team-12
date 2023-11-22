@@ -169,7 +169,8 @@ class ChassisController:
             self.motor_controller_2.wheel_1_stop()
         self.motor_controller_2.PWM1.duty_cycle = abs(speed)
 
-    def set_br_wheel(self, speed : int = 15000):
+    def set_br_wheel(self, 
+                     speed : int = 15000):
         if (speed > 10000):
             print("BL FORWARD")
             self.motor_controller_2.wheel_2_forward()

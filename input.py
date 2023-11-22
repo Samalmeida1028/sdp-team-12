@@ -1,7 +1,9 @@
+
 import serial
 import pynput
 from pynput import keyboard
 from pynput.keyboard import Key
+import json
 
 sport = serial.Serial(port='/dev/ttyACM1', baudrate=9600,parity=serial.PARITY_ODD,
     stopbits=serial.STOPBITS_TWO,
@@ -27,6 +29,9 @@ def on_key_release(key):
 
     print(sendingdatax/180,sendingdatay/180)
     sport.write(bytearray(str(sendingdatay/180)+" "+ str(sendingdatax/180)+'\n',encoding='UTF-8'))
+    encoders = sport.readline()
+    print(json.loads(encoders.decode("utf-8")))
+
 
 
 with keyboard.Listener(on_press=on_key_release) as listener:
