@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 11/9/23
-# Date last modified: 11/17/23
+# Date last modified: 11/26/23
 # Description: Send cmd vel values from the nav stack over serial to the pico
 
 from geometry_msgs.msg import Twist
@@ -14,9 +14,6 @@ import json
 class CmdVelSub(Node):
     def __init__(self):
         super().__init__('cmdvelsub')
-
-        self.robot_radius = 0.15
-
         self.s = serial.Serial("/dev/ttyACM1", 115200)
         self.poseSub = self.create_subscription(Twist, '/cmd_vel_nav', self.cmdvel_callback, 10)
 
