@@ -20,7 +20,9 @@ class CmdVelSub(Node):
     def cmdvel_callback(self, msg):
         tvel = msg.linear.x
         rvel = msg.angular.z
-        v = [tvel * math.sin(rvel), tvel * math.cos(rvel)]
+        # v = [tvel * math.sin(rvel), tvel * math.cos(rvel)]
+
+        v = [tvel, rvel]
 
         print("Vx: {}, Vy: {}".format(v[0], v[1]))
 

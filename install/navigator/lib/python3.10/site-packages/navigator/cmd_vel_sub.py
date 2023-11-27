@@ -14,17 +14,19 @@ import json
 class CmdVelSub(Node):
     def __init__(self):
         super().__init__('cmdvelsub')
-        #self.s = serial.Serial("/dev/ttyACM1", 115200)
+        self.s = serial.Serial("/dev/ttyACM1", 115200)
         self.poseSub = self.create_subscription(Twist, '/cmd_vel_nav', self.cmdvel_callback, 10)
 
     def cmdvel_callback(self, msg):
         tvel = msg.linear.x
         rvel = msg.angular.z
-        v = [tvel * math.sin(rvel), tvel * math.cos(rvel)]
+        # v = [tvel * math.sin(rvel), tvel * math.cos(rvel)]
+
+        v = [tvel, rvel]
 
         print("Vx: {}, Vy: {}".format(v[0], v[1]))
 
-        #self.s.write(bytearray(json.dumps(v) + '\n', 'utf-8'))
+        self.s.write(bytearray(json.dumps(v) + '\n', 'utf-8'))
 
 def main(args=None):
     rclpy.init(args=args)

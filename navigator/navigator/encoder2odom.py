@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 11/17/23
-# Date last modified: 11/17/23
+# Date last modified: 11/27/23
 # Description: Use encoder values and turn into Odometry messages
 
-from std_msgs.msg import Float32MultiArray
 from nav_msgs.msg import Odometry
 import rclpy
 from rclpy.node import Node
@@ -27,15 +26,16 @@ class Encoder2Odom(Node):
         time_period = 0.5
         self.timer = self.create_timer(time_period, self.timer_callback)
 
-    def timer_callback(self):
-        smsg = self.s.readline()
-        if smsg:
-            msg = Odometry()
-            msg.header.stamp = self.get_clock().now().to_msg()
-            msg.header.frame_id = "odom"
+        self.msg = Odometry()
+        self.msg.header.frame_id = "odom"
+        self.msg.child_frame_id = "base_footprint"
 
+    def timer_callback(self):
+        if self.s.in_waiting > 0:
+            smsg = self.s.readline()
+        
+        if smsg:
             encoder_array = json.loads(smsg.decode('utf-8'))
-            print(encoder_array)
 
             lf_rev = encoder_array[2]
             rf_rev = encoder_array[1]
@@ -51,15 +51,16 @@ class Encoder2Odom(Node):
             rot = Rotation.from_euler('xyz', [0, 0, self.phi], degrees=False)
             rot_quat = rot.as_quat() # convert angle to quaternion format
 
-            msg.pose.pose.position.x += d*math.cos(self.phi)
-            msg.pose.pose.position.y += d*math.sin(self.phi)
+            self.msg.pose.pose.position.x += d*math.cos(self.phi)
+            self.msg.pose.pose.position.y += d*math.sin(self.phi)
 
-            msg.pose.pose.orientation.x = rot_quat[0]
-            msg.pose.pose.orientation.y = rot_quat[1]
-            msg.pose.pose.orientation.z = rot_quat[2]
-            msg.pose.pose.orientation.w = rot_quat[3]
+            self.msg.pose.pose.orientation.x = rot_quat[0]
+            self.msg.pose.pose.orientation.y = rot_quat[1]
+            self.msg.pose.pose.orientation.z = rot_quat[2]
+            self.msg.pose.pose.orientation.w = rot_quat[3]
 
-            self.odompub.publish(msg)
+        self.msg.header.stamp = self.get_clock().now().to_msg()
+        self.odompub.publish(self.msg)
 
 def main(args=None):
     rclpy.init(args=args)
