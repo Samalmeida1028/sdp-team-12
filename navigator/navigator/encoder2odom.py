@@ -46,8 +46,8 @@ class Encoder2Odom(Node):
         lf_rev = encoder_array[2]
         rf_rev = encoder_array[1]
 
-        lb_rev = lf_rev
-        rb_rev = encoder_array[0]
+        lb_rev = encoder_array[0]
+        rb_rev = rf_rev
 
         l_dist = (lf_rev + lb_rev) / 2
         r_dist = (rf_rev + rb_rev) / 2
@@ -56,7 +56,7 @@ class Encoder2Odom(Node):
         self.phi += ((r_dist - l_dist) / (2*self.robot_radius))
         rot = Rotation.from_euler('xyz', [0, 0, self.phi], degrees=False)
         rot_quat = rot.as_quat() # convert angle to quaternion format
-        
+
         dx = d*math.cos(self.phi)*dt
         dy = d*math.sin(self.phi)*dt
         self.count+=1
