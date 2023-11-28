@@ -13,6 +13,7 @@ navigator/cmd_vel_sub.py
 navigator/coord_pub_test.py
 navigator/encoder2odom.py
 navigator/nav2pose.py
+navigator/temp.py
 resource/navigator
 test/test_copyright.py
 test/test_flake8.py

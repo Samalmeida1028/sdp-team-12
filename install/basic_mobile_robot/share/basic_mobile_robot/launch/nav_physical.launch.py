@@ -1,6 +1,6 @@
 # SDP Team 12
 # Date created: 11/9/23
-# Date last modified: 11/22/23
+# Date last modified: 11/28/23
 # Author: Arjun Viswanathan
 # Description: launch file to launch all necessary components for physical navigation
 
@@ -100,11 +100,11 @@ def generate_launch_description():
         }],
     )
 
-    # start_lidar_odom_pub_cmd = Node(
-    #     package='basic_mobile_robot',
-    #     executable='lidar_odometry_node',
-    #     name='lidar_odom_pub'
-    # )
+    start_lidar_odom_pub_cmd = Node(
+        package='basic_mobile_robot',
+        executable='lidar_odometry_node',
+        name='lidar_odom_pub'
+    )
 
     start_encoder_odom_pub_cmd = Node(
         package='navigator',
@@ -151,9 +151,15 @@ def generate_launch_description():
         arguments=['-d', rviz_config_file]
     ) 
 
-    start_serial_pub_cmd = Node(
+    start_cmdvel_pub_cmd = Node(
         package='navigator',
         executable='cmdvelsub',
+        name='cmdvel_pub',
+    )
+
+    start_serial_pub_cmd = Node(
+        package='py_serial',
+        executable='serial_handler',
         name='serial_pub',
     )
 
@@ -170,10 +176,11 @@ def generate_launch_description():
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)
     ld.add_action(start_lidar_cmd)
-    #ld.add_action(start_lidar_odom_pub_cmd)
+    ld.add_action(start_lidar_odom_pub_cmd)
     ld.add_action(start_encoder_odom_pub_cmd)
     ld.add_action(start_slam_cmd)
     ld.add_action(start_ros2_navigation_cmd)
+    ld.add_action(start_cmdvel_pub_cmd)
     ld.add_action(start_serial_pub_cmd)
     ld.add_action(start_rviz_cmd)
 

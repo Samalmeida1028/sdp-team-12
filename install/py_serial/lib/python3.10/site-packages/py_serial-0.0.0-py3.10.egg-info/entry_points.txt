@@ -1,0 +1,3 @@
+[console_scripts]
+serial_handler = py_serial.serial_handler:main
+

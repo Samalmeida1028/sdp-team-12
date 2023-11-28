@@ -1,0 +1,33 @@
+[1.004s] Invoking command in '/home/adam/Desktop/sdp-team-12/navigator': PYTHONPATH=/home/adam/Desktop/sdp-team-12/build/navigator/prefix_override:/home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/navigator build --build-base /home/adam/Desktop/sdp-team-12/build/navigator/build install --record /home/adam/Desktop/sdp-team-12/build/navigator/install.log --single-version-externally-managed
+[1.213s] running egg_info
+[1.214s] writing ../build/navigator/navigator.egg-info/PKG-INFO
+[1.214s] writing dependency_links to ../build/navigator/navigator.egg-info/dependency_links.txt
+[1.215s] writing entry points to ../build/navigator/navigator.egg-info/entry_points.txt
+[1.215s] writing requirements to ../build/navigator/navigator.egg-info/requires.txt
+[1.215s] writing top-level names to ../build/navigator/navigator.egg-info/top_level.txt
+[1.217s] reading manifest file '../build/navigator/navigator.egg-info/SOURCES.txt'
+[1.218s] writing manifest file '../build/navigator/navigator.egg-info/SOURCES.txt'
+[1.218s] running build
+[1.218s] running build_py
+[1.218s] copying navigator/encoder2odom.py -> /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator
+[1.218s] copying navigator/temp.py -> /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator
+[1.218s] running install
+[1.219s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.219s]   warnings.warn(
+[1.219s] running install_lib
+[1.220s] copying /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator/encoder2odom.py -> /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator
+[1.220s] copying /home/adam/Desktop/sdp-team-12/build/navigator/build/lib/navigator/temp.py -> /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator
+[1.221s] byte-compiling /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/encoder2odom.py to encoder2odom.cpython-310.pyc
+[1.222s] Sorry: IndentationError: unexpected indent (encoder2odom.py, line 119)
+[1.222s] byte-compiling /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/temp.py to temp.cpython-310.pyc
+[1.223s] running install_data
+[1.223s] running install_egg_info
+[1.224s] removing '/home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator-0.0.0-py3.10.egg-info' (and everything under it)
+[1.224s] Copying ../build/navigator/navigator.egg-info to /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator-0.0.0-py3.10.egg-info
+[1.225s] running install_scripts
+[1.242s] Installing cmdvelsub script to /home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator
+[1.242s] Installing coordpub script to /home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator
+[1.242s] Installing enc2odom script to /home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator
+[1.242s] Installing nav2pose script to /home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator
+[1.242s] writing list of installed files to '/home/adam/Desktop/sdp-team-12/build/navigator/install.log'
+[1.272s] Invoked command in '/home/adam/Desktop/sdp-team-12/navigator' returned '0': PYTHONPATH=/home/adam/Desktop/sdp-team-12/build/navigator/prefix_override:/home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/navigator build --build-base /home/adam/Desktop/sdp-team-12/build/navigator/build install --record /home/adam/Desktop/sdp-team-12/build/navigator/install.log --single-version-externally-managed
