@@ -37,6 +37,7 @@
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/params/nav2_params.yaml
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/urdf_config.rviz
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/nav2_config.rviz
+/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/holly_nav.rviz
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/rviz/holly.rviz
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world/empty.world
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/worlds/basic_mobile_bot_world/smalltown.world

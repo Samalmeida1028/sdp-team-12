@@ -54,7 +54,7 @@ class LidarOdometryNode : public rclcpp::Node
         this->declare_parameter<double>("transformation_epsilon", 0.005);
         this->declare_parameter<double>("maximum_iterations", 30);
         this->declare_parameter<std::string>("scan_topic_name", "scan");
-        this->declare_parameter<std::string>("odom_topic_name", "lidar/odom");
+        this->declare_parameter<std::string>("odom_topic_name", "/lidar/odom");
       }
 
       void scan_callback(const sensor_msgs::msg::LaserScan::SharedPtr scan_msg) {

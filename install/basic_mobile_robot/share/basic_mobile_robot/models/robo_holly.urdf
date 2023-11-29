@@ -62,7 +62,7 @@
   <!-- ********************** ROBOT BASE *********************************  -->
   <link name="base_link">
     <visual>
-      <origin xyz="0 0 -0.05" rpy="0 0 3.141592654"/>
+      <origin xyz="0 0 -0.05" rpy="0 0 0"/>
       <geometry>
         <box size="${base_length} ${base_width} ${base_height}"/>
       </geometry>

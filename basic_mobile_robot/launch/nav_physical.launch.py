@@ -18,7 +18,7 @@ def generate_launch_description():
 
     model_file = os.path.join(pkg_path, 'models', 'robo_holly.urdf')
     robot_localization_file_path = os.path.join(pkg_path, 'config', 'ekf.yaml')
-    default_rviz_config_path = os.path.join(pkg_path, 'rviz', 'holly.rviz')
+    default_rviz_config_path = os.path.join(pkg_path, 'rviz', 'holly_nav.rviz')
     slam_params_file = os.path.join(pkg_path, 'config', 'doslam.yaml')
     nav2_params_file = os.path.join(pkg_path, 'params', 'nav2_params.yaml')
     behavior_tree_xml_path = os.path.join(pkg_path, 'behavior_trees', 'navigate_w_replanning_and_recovery.xml')
