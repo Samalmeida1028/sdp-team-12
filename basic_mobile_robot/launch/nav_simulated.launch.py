@@ -17,7 +17,7 @@ def generate_launch_description():
   # Set the path to different files and folders.
   pkg_gazebo_ros = FindPackageShare(package='gazebo_ros').find('gazebo_ros')   
   pkg_share = FindPackageShare(package='basic_mobile_robot').find('basic_mobile_robot')
-  default_model_path = os.path.join(pkg_share, 'models/robo_holly.urdf')
+  default_model_path = os.path.join(pkg_share, 'models/basic_mobile_bot_v2.urdf')
   robot_localization_file_path = os.path.join(pkg_share, 'config/ekf2.yaml') 
   default_rviz_config_path = os.path.join(pkg_share, 'rviz/nav2_config.rviz')
   world_file_name = 'basic_mobile_bot_world/smalltown.world'
@@ -185,13 +185,13 @@ def generate_launch_description():
                         'default_bt_xml_filename': default_bt_xml_filename,
                         'autostart': autostart}.items())
   
-  static_transform_publisher_cmd = Node(
-      package='tf2_ros',
-      executable='static_transform_publisher',
-      name='link1_broadcaster',
-      arguments=['0', '0', '0', '0', '0', '0', '1', 'map', 'odom'],
-      output='screen',
-  )
+  # static_transform_publisher_cmd = Node(
+  #     package='tf2_ros',
+  #     executable='static_transform_publisher',
+  #     name='link1_broadcaster',
+  #     arguments=['0', '0', '0', '0', '0', '0', '1', 'map', 'odom'],
+  #     output='screen',
+  # )
 
   # static_transform_publisher2_cmd = Node(
   #     package='tf2_ros',
@@ -228,6 +228,6 @@ def generate_launch_description():
   ld.add_action(start_robot_state_publisher_cmd)
   ld.add_action(start_rviz_cmd)
   ld.add_action(start_ros2_navigation_cmd)
-  ld.add_action(static_transform_publisher_cmd)
+  #ld.add_action(static_transform_publisher_cmd)
 
   return ld
