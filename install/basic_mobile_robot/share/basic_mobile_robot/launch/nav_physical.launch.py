@@ -1,6 +1,6 @@
 # SDP Team 12
 # Date created: 11/9/23
-# Date last modified: 11/29/23
+# Date last modified: 11/30/23
 # Author: Arjun Viswanathan
 # Description: launch file to launch all necessary components for physical navigation
 
@@ -46,7 +46,7 @@ def generate_launch_description():
     )
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(
-        'use_sim_time',
+        name='use_sim_time',
         default_value='False',
         description='Use sim time if true'
     )
@@ -103,13 +103,13 @@ def generate_launch_description():
     start_lidar_odom_pub_cmd = Node(
         package='basic_mobile_robot',
         executable='lidar_odometry_node',
-        name='lidar_odom_pub'
+        name='lidar_odometry_node'
     )
 
     start_encoder_odom_pub_cmd = Node(
         package='navigator',
-        executable='enc2odom',
-        name='encoder_odom_pub',
+        executable='sens2odom',
+        name='sens2odom',
         output='screen'
     )
 
@@ -123,7 +123,6 @@ def generate_launch_description():
         ],
     )
 
-    # TODO: should we change the navigation_launch.py to involve AMCL? 
     start_ros2_navigation_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'navigation_launch.py')),
         launch_arguments = {'use_sim_time': use_sim_time,
@@ -143,14 +142,6 @@ def generate_launch_description():
     #                     'autostart': autostart}.items()
     # )
 
-    start_rviz_cmd = Node(
-        package='rviz2',
-        executable='rviz2',
-        name='rviz2',
-        output='screen',
-        arguments=['-d', rviz_config_file]
-    ) 
-
     start_cmdvel_pub_cmd = Node(
         package='navigator',
         executable='cmdvelsub',
@@ -162,6 +153,14 @@ def generate_launch_description():
         executable='serial_handler',
         name='serial_handler',
     )
+
+    start_rviz_cmd = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        output='screen',
+        arguments=['-d', rviz_config_file]
+    ) 
 
     # Launch!
     ld = LaunchDescription()

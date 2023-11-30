@@ -14,10 +14,10 @@ from scipy.spatial.transform import Rotation
 from geometry_msgs.msg import Quaternion
 from std_msgs.msg import String
 
-class Encoder2Odom(Node):
+class Sensor2Odom(Node):
     def __init__(self):
         self.count = 0
-        super().__init__('enc2odom')
+        super().__init__('sens2odom')
         self.current_time = self.get_clock().now().to_msg().sec
 
         self.wheel_sep = 0.41# m
@@ -37,7 +37,7 @@ class Encoder2Odom(Node):
 
         self.encmsg = Odometry()
         self.encmsg.header.frame_id = "odom"
-        self.encmsg.child_frame_id = "base_footprint"
+        self.encmsg.child_frame_id = "base_link"
 
         self.imumsg = Imu()
         self.imumsg.header.frame_id = "odom"
@@ -103,7 +103,7 @@ class Encoder2Odom(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    encsub = Encoder2Odom()
+    encsub = Sensor2Odom()
 
     rclpy.spin(encsub)
 
