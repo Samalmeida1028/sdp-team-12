@@ -16,7 +16,7 @@ class SerHandler(Node):
     def __init__(self):
         super().__init__('ser_handle')
         self.ser = serial.Serial(
-                    '/dev/ttyACM2',
+                    '/dev/ttyACM1',
                     baudrate=115200,
                     timeout=0.01)
 
@@ -49,9 +49,9 @@ class SerHandler(Node):
             self.encoder_data.data = [info['Encoder']['BL']['Pos'], 
                                     info['Encoder']['FL']['Pos'], 
                                     info['Encoder']['FR']['Pos'], 
-                                    info['Encoder']['BL']['Vel'] * self.wheel_radius, 
-                                    info['Encoder']['FL']['Vel'] * self.wheel_radius, 
-                                    info['Encoder']['FR']['Vel'] * self.wheel_radius]
+                                    info['Encoder']['BL']['Vel'], 
+                                    info['Encoder']['FL']['Vel'], 
+                                    info['Encoder']['FR']['Vel']]
             
             self.imu_data.data = [info['IMU']['Accel']['x'], info['IMU']['Accel']['y'], info['IMU']['Accel']['z'],
                                     info['IMU']['Gyro']['r'], info['IMU']['Gyro']['p'], info['IMU']['Gyro']['y']]

@@ -13,6 +13,7 @@ import math
 from scipy.spatial.transform import Rotation
 from geometry_msgs.msg import Quaternion
 from std_msgs.msg import String
+import time
 
 class Sensor2Odom(Node):
     def __init__(self):
@@ -58,36 +59,42 @@ class Sensor2Odom(Node):
     def encoder_to_odom(self,msg):
         encoder_array = msg.data # receiving position and velocity
 
-        lb_rev = encoder_array[0]
-        lf_rev = encoder_array[1]
+        lb_pos = encoder_array[0]*2*self.wheel_radius*math.pi
+        lf_pos = encoder_array[1]*2*self.wheel_radius*math.pi
+        rf_pos = encoder_array[2]*2*self.wheel_radius*math.pi
 
-        rf_rev = encoder_array[2]
-        rb_rev = rf_rev
+        lb_vel = encoder_array[3]*2*self.wheel_radius
+        lf_vel = encoder_array[4]*2*self.wheel_radius
+        rf_vel = encoder_array[5]*2*self.wheel_radius
+        vel_xy = (lf_vel+rf_vel)*.5
+        pos_xy = (lf_pos + rf_pos) *.5
+        vel_th = ((lf_vel-rf_vel)/self.wheel_sep)
+        self.phi += vel_th
+        dx = 0
+        dy = 0
 
-        l_dist = ((lf_rev + lb_rev) / 2) * (2*self.wheel_radius*math.pi)
-        r_dist = ((rf_rev + rb_rev) / 2) * (2*self.wheel_radius*math.pi)
-        d = (l_dist + r_dist) / 2
+        if(vel_xy != 0):
+            dx = vel_xy*math.cos(vel_th)
+            dy = vel_xy*math.sin(vel_th)
+            px = pos_xy*math.sin(vel_th)
+            py = pos_xy*math.cos(vel_th)
 
-        self.phi = ((r_dist - l_dist) / (self.wheel_sep))
-        rot = Rotation.from_euler('xyz', [0, 0, self.phi], degrees=False)
+
+        rot = Rotation.from_euler('xyz', [0, 0, math.sin(self.phi*.5)], degrees=False)
+        rot_str = String()
+        rot_str.data = str(self.phi)
+        self.debug_pub.publish(rot_str)
         rot_quat = rot.as_quat() # convert angle to quaternion format
-
-        dx = d*math.cos(self.phi)
-        dy = d*math.sin(self.phi)
         self.count+=1
 
-        self.encmsg.pose.pose.position.x = dx
-        self.encmsg.pose.pose.position.y = dy
+        self.encmsg.pose.pose.position.x += dx
+        self.encmsg.pose.pose.position.y += dy
         self.encmsg.pose.pose.position.z = 0.0508 # 0.1008
         self.encmsg.pose.pose.orientation = Quaternion(x=rot_quat[0],y=rot_quat[1],z=rot_quat[2],w=rot_quat[3])
 
-        lb_vel = encoder_array[3]
-        lf_vel = encoder_array[4]
-        rf_vel = encoder_array[5]
-        rb_vel = rf_vel
 
-        self.encmsg.twist.twist.linear.x = (((lf_vel + lb_vel) / 2) + ((rf_vel + rb_vel) / 2)) / 2
-        self.encmsg.twist.twist.angular.z = (((lf_vel + lb_vel) / 2) - ((rf_vel + rb_vel) / 2)) / (self.wheel_sep)
+        self.encmsg.twist.twist.linear.x = vel_xy
+        self.encmsg.twist.twist.angular.z = vel_th
 
         # print(self.msg.pose)
 

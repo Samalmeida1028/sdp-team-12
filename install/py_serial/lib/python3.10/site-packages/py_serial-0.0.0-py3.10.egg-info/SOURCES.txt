@@ -10,6 +10,7 @@ setup.py
 ../build/py_serial/py_serial.egg-info/zip-safe
 py_serial/__init__.py
 py_serial/serial_handler.py
+py_serial/serial_handler_teleop.py
 resource/py_serial
 test/test_copyright.py
 test/test_flake8.py

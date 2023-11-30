@@ -1,0 +1,7 @@
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+  File "/home/adam/Desktop/sdp-team-12/install/py_serial/lib/python3.10/site-packages/py_serial/serial_handler_teleop.py", line 15
+    from std_msgs.msg import String()
+                                   ^
+SyntaxError: invalid syntax
+
