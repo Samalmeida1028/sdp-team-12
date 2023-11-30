@@ -25,7 +25,7 @@ class Encoder2Odom(Node):
         self.phi = 0
 
         self.s = serial.Serial("/dev/ttyACM1", 115200)
-        self.odompub = self.create_publisher(Odometry, 'wheel/odom', 10)
+        self.odompub = self.create_publisher(Odometry, '/wheel/odom', 10)
         self.encoder_sub = self.create_subscription(Float32MultiArray, "encoder_data", self.encoder_to_odom, 10)
 
         time_period = 0.16
