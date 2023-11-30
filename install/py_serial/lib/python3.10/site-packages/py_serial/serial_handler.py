@@ -16,7 +16,7 @@ class SerHandler(Node):
     def __init__(self):
         super().__init__('ser_handle')
         self.ser = serial.Serial(
-                    '/dev/ttyACM2',
+                    '/dev/ttyACM1',
                     baudrate=115200,
                     timeout=0.01)
 
