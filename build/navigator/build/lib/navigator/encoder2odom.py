@@ -9,7 +9,6 @@ from std_msgs.msg import Float32MultiArray
 import rclpy
 from rclpy.node import Node
 import math
-import serial
 from scipy.spatial.transform import Rotation
 from geometry_msgs.msg import Quaternion
 
@@ -24,8 +23,7 @@ class Encoder2Odom(Node):
         self.wheel_radius = 0.0508 # m
         self.phi = 0
 
-        self.s = serial.Serial("/dev/ttyACM1", 115200)
-        self.odompub = self.create_publisher(Odometry, 'wheel/odom', 10)
+        self.odompub = self.create_publisher(Odometry, '/wheel/odom', 10)
         self.encoder_sub = self.create_subscription(Float32MultiArray, "encoder_data", self.encoder_to_odom, 10)
 
         time_period = 0.16
