@@ -48,7 +48,7 @@ def generate_launch_description():
         'bt_navigator',
         'waypoint_follower',
         'velocity_smoother',
-        'amcl'
+        #'amcl'
     ]
 
     # Map fully qualified names to relative ones so the node's namespace can be prepended.
@@ -201,12 +201,12 @@ def generate_launch_description():
                 remappings=remappings
                 + [('cmd_vel', 'cmd_vel_nav'), ('cmd_vel_smoothed', 'cmd_vel')],
             ),
-            Node(
-                package='nav2_amcl',
-                executable='amcl',
-                name='amcl',
-                output='screen'
-            ),
+            # Node(
+            #     package='nav2_amcl',
+            #     executable='amcl',
+            #     name='amcl',
+            #     output='screen'
+            # ),
             Node(
                 package='nav2_lifecycle_manager',
                 executable='lifecycle_manager',
