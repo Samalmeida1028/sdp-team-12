@@ -62,7 +62,7 @@ class LidarOdometryNode : public rclcpp::Node
         auto pcl_point_cloud = cloudmsg2cloud(point_cloud_msg);
 
         auto scan_data = std::make_shared<ScanData>();
-        scan_data->timestamp = scan_msg->header.stamp.sec + scan_msg->header.stamp.nanosec / 1e9;
+        scan_data->timestamp = now().seconds();
         scan_data->point_cloud = pcl_point_cloud;
 
         lidar_odometry_ptr->process_scan_data(scan_data);

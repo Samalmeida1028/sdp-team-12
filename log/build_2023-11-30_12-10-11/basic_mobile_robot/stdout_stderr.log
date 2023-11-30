@@ -1,0 +1,10 @@
+[ 33%] [32mBuilding CXX object CMakeFiles/lidar_odometry_node.dir/src/lidar_odometry_node.cpp.o[0m
+[01m[K/home/adam/Desktop/sdp-team-12/basic_mobile_robot/src/lidar_odometry_node.cpp:[m[K In member function ‘[01m[Kvoid LidarOdometryNode::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/adam/Desktop/sdp-team-12/basic_mobile_robot/src/lidar_odometry_node.cpp:65:35:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Krclcpp::Time[m[K’ to ‘[01m[Kdouble[m[K’ in assignment
+   65 |         scan_data->timestamp = [01;31m[Know()[m[K;
+      |                                [01;31m[K~~~^~[m[K
+      |                                   [01;31m[K|[m[K
+      |                                   [01;31m[Krclcpp::Time[m[K
+gmake[2]: *** [CMakeFiles/lidar_odometry_node.dir/build.make:76: CMakeFiles/lidar_odometry_node.dir/src/lidar_odometry_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/lidar_odometry_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

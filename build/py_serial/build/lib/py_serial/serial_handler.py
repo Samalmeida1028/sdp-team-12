@@ -20,9 +20,9 @@ class SerHandler(Node):
                     baudrate=115200,
                     timeout=0.01)
 
-        self.encoder_publisher = self.create_publisher(Float32MultiArray, "encoder_data", 1)
+        self.encoder_publisher = self.create_publisher(Float32MultiArray, "/encoder_data", 1)
         self.imu_publisher = self.create_publisher(Float32MultiArray, "/imu_data", 1)
-        self.debug_publisher = self.create_publisher(String, "encoder_debug", 1)
+        self.debug_publisher = self.create_publisher(String, "/encoder_debug", 1)
         self.cmdvel_subscriber = self.create_subscription(Float32MultiArray, "cmd_vel_vectors", self.send_motor_commands, 10)
 
         timer_period = .05
@@ -45,23 +45,19 @@ class SerHandler(Node):
             msg = self.ser.readline()
         if msg:
             # print(msg.decode())
-            try:
-                info = json.loads(msg.decode())
-                self.encoder_data.data = [info['Encoder']['BL']['Pos'], 
-                                        info['Encoder']['FL']['Pos'], 
-                                        info['Encoder']['FR']['Pos'], 
-                                        info['Encoder']['BL']['Vel'] * self.wheel_radius, 
-                                        info['Encoder']['FL']['Vel'] * self.wheel_radius, 
-                                        info['Encoder']['FR']['Vel'] * self.wheel_radius]
-                
-                self.imu_data.data = [info['IMU']['r'], info['IMU']['p'], info['IMU']['y']]
+            info = json.loads(msg.decode())
+            self.encoder_data.data = [info['Encoder']['BL']['Pos'], 
+                                    info['Encoder']['FL']['Pos'], 
+                                    info['Encoder']['FR']['Pos'], 
+                                    info['Encoder']['BL']['Vel'] * self.wheel_radius, 
+                                    info['Encoder']['FL']['Vel'] * self.wheel_radius, 
+                                    info['Encoder']['FR']['Vel'] * self.wheel_radius]
+            
+            self.imu_data.data = [info['IMU']['Accel']['x'], info['IMU']['Accel']['y'], info['IMU']['Accel']['z'],
+                                    info['IMU']['Gyro']['r'], info['IMU']['Gyro']['p'], info['IMU']['Gyro']['y']]
 
-                self.encoder_publisher.publish(self.encoder_data)
-                self.imu_publisher.publish(self.imu_data)
-            except json.JSONDecodeError as j:
-                debug_string = String()
-                debug_string.data = str(j)
-                self.debug_publisher.publish(debug_string)
+            self.encoder_publisher.publish(self.encoder_data)
+            self.imu_publisher.publish(self.imu_data)
 
 def main(args=None):
     rclpy.init(args=args)

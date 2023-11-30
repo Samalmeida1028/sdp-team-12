@@ -94,10 +94,13 @@ class Sensor2Odom(Node):
     def imu_to_odom(self, msg):
         imu_array = msg.data
 
-        self.imumsg.angular_velocity.x = imu_array[0]
-        self.imumsg.angular_velocity.y = imu_array[1]
-        self.imumsg.angular_velocity.z = imu_array[2]
-
+        self.imumsg.linear_acceleration.x = imu_array[0]
+        self.imumsg.linear_acceleration.y = imu_array[1]
+        self.imumsg.linear_acceleration.z = imu_array[2]
+        self.imumsg.angular_velocity.x = imu_array[3]
+        self.imumsg.angular_velocity.y = imu_array[4]
+        self.imumsg.angular_velocity.z = imu_array[5]
+        self.imumsg.linear_acceleration_covariance[0:9] = 0.1
         self.imumsg.angular_velocity_covariance[0:9] = 0.1
 
 def main(args=None):
