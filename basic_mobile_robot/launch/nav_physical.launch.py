@@ -1,6 +1,6 @@
 # SDP Team 12
 # Date created: 11/9/23
-# Date last modified: 11/28/23
+# Date last modified: 11/29/23
 # Author: Arjun Viswanathan
 # Description: launch file to launch all necessary components for physical navigation
 
@@ -171,6 +171,7 @@ def generate_launch_description():
     ld.add_action(declare_use_sim_time_cmd)
     ld.add_action(declare_model_path_cmd)
     ld.add_action(declare_rviz_config_file_cmd)
+    ld.add_action(start_ros2_navigation_cmd)
 
     ld.add_action(start_cmdvel_pub_cmd)
     ld.add_action(start_serial_pub_cmd)
@@ -181,7 +182,6 @@ def generate_launch_description():
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)
     ld.add_action(start_slam_cmd)
-    ld.add_action(start_ros2_navigation_cmd)
     ld.add_action(start_rviz_cmd)
 
     return ld

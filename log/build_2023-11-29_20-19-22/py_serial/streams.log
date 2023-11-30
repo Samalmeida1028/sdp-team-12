@@ -1,0 +1,23 @@
+[1.702s] Invoking command in '/home/adam/Desktop/sdp-team-12/py_serial': PYTHONPATH=/home/adam/Desktop/sdp-team-12/build/py_serial/prefix_override:/home/adam/Desktop/sdp-team-12/install/py_serial/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/py_serial build --build-base /home/adam/Desktop/sdp-team-12/build/py_serial/build install --record /home/adam/Desktop/sdp-team-12/build/py_serial/install.log --single-version-externally-managed
+[2.006s] running egg_info
+[2.008s] writing ../build/py_serial/py_serial.egg-info/PKG-INFO
+[2.009s] writing dependency_links to ../build/py_serial/py_serial.egg-info/dependency_links.txt
+[2.010s] writing entry points to ../build/py_serial/py_serial.egg-info/entry_points.txt
+[2.010s] writing requirements to ../build/py_serial/py_serial.egg-info/requires.txt
+[2.010s] writing top-level names to ../build/py_serial/py_serial.egg-info/top_level.txt
+[2.011s] reading manifest file '../build/py_serial/py_serial.egg-info/SOURCES.txt'
+[2.012s] writing manifest file '../build/py_serial/py_serial.egg-info/SOURCES.txt'
+[2.012s] running build
+[2.012s] running build_py
+[2.014s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[2.015s]   warnings.warn(
+[2.016s] running install
+[2.017s] running install_lib
+[2.020s] running install_data
+[2.021s] running install_egg_info
+[2.028s] removing '/home/adam/Desktop/sdp-team-12/install/py_serial/lib/python3.10/site-packages/py_serial-0.0.0-py3.10.egg-info' (and everything under it)
+[2.029s] Copying ../build/py_serial/py_serial.egg-info to /home/adam/Desktop/sdp-team-12/install/py_serial/lib/python3.10/site-packages/py_serial-0.0.0-py3.10.egg-info
+[2.029s] running install_scripts
+[2.062s] Installing serial_handler script to /home/adam/Desktop/sdp-team-12/install/py_serial/lib/py_serial
+[2.062s] writing list of installed files to '/home/adam/Desktop/sdp-team-12/build/py_serial/install.log'
+[2.223s] Invoked command in '/home/adam/Desktop/sdp-team-12/py_serial' returned '0': PYTHONPATH=/home/adam/Desktop/sdp-team-12/build/py_serial/prefix_override:/home/adam/Desktop/sdp-team-12/install/py_serial/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/py_serial build --build-base /home/adam/Desktop/sdp-team-12/build/py_serial/build install --record /home/adam/Desktop/sdp-team-12/build/py_serial/install.log --single-version-externally-managed
