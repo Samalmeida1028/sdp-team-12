@@ -10,36 +10,58 @@ from rclpy.node import Node
 from std_msgs.msg import Float32MultiArray
 import serial
 import json
+from std_msgs.msg import String 
 
 class SerHandler(Node):
     def __init__(self):
         super().__init__('ser_handle')
         self.ser = serial.Serial(
-                    '/dev/ttyACM1',
+                    '/dev/ttyACM2',
                     baudrate=115200,
                     timeout=0.01)
 
         self.encoder_publisher = self.create_publisher(Float32MultiArray, "encoder_data", 1)
+        self.imu_publisher = self.create_publisher(Float32MultiArray, "/imu_data", 1)
+        self.debug_publisher = self.create_publisher(String, "encoder_debug", 1)
         self.cmdvel_subscriber = self.create_subscription(Float32MultiArray, "cmd_vel_vectors", self.send_motor_commands, 10)
 
-        timer_period = .005
+        timer_period = .05
         self.timer = self.create_timer(timer_period, self.get_encoder_info)
 
         self.get_logger().info('Initialized timer')
 
         self.encoder_data = Float32MultiArray()
+        self.imu_data = Float32MultiArray()
         self.cmdvel_data = Float32MultiArray()
+
+        self.wheel_radius = 0.0508
 
     def send_motor_commands(self,msg):
         self.ser.write(bytes(json.dumps(list(msg.data)) + "\n", "utf-8"))
 
     def get_encoder_info(self):
-        msg = self.ser.readline()
+        msg = []
+        while(self.ser.in_waiting): 
+            msg = self.ser.readline()
         if msg:
-            encoder_info = json.loads(msg.decode())
-            print(encoder_info)
-            self.encoder_data.data = encoder_info
-            self.encoder_publisher.publish(self.encoder_data)
+            # print(msg.decode())
+            try:
+                info = json.loads(msg.decode())
+                self.encoder_data.data = [info['Encoder']['BL']['Pos'], 
+                                        info['Encoder']['FL']['Pos'], 
+                                        info['Encoder']['FR']['Pos'], 
+                                        info['Encoder']['BL']['Vel'] * self.wheel_radius, 
+                                        info['Encoder']['FL']['Vel'] * self.wheel_radius, 
+                                        info['Encoder']['FR']['Vel'] * self.wheel_radius]
+                
+                self.imu_data.data = [info['IMU']['r'], info['IMU']['p'], info['IMU']['y']]
+
+                self.encoder_publisher.publish(self.encoder_data)
+                self.imu_publisher.publish(self.imu_data)
+            except json.JSONDecodeError as j:
+                debug_string = String()
+                debug_string.data = str(j)
+                self.debug_publisher.publish(debug_string)
 
 def main(args=None):
     rclpy.init(args=args)
