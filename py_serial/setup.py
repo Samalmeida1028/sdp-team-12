@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'serial_handler = py_serial.serial_handler:main'
+            'serial_handler = py_serial.serial_handler:main',
+            'serial_handler_teleop = py_serial.serial_handler_teleop:main'
         ],
     },
 )
