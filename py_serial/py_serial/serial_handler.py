@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan, Samuel Almeida
 # Date created: 11/28/23
-# Date last modified: 11/28/23
+# Date last modified: 12/1/23
 # Description: The serial handler node. Reads and writes to serial only here
 
 # Import ROS specific packages
@@ -22,7 +22,6 @@ class SerHandler(Node):
 
         self.encoder_publisher = self.create_publisher(Float32MultiArray, "/encoder_data", 1)
         self.imu_publisher = self.create_publisher(Float32MultiArray, "/imu_data", 1)
-        self.debug_publisher = self.create_publisher(String, "/encoder_debug", 1)
         self.cmdvel_subscriber = self.create_subscription(Float32MultiArray, "cmd_vel_vectors", self.send_motor_commands, 10)
 
         timer_period = .05
@@ -35,6 +34,8 @@ class SerHandler(Node):
         self.cmdvel_data = Float32MultiArray()
 
         self.wheel_radius = 0.0508
+
+        self.debug_publisher = self.create_publisher(String, "/encoder_debug", 1)
 
     def send_motor_commands(self,msg):
         self.ser.write(bytes(json.dumps(list(msg.data)) + "\n", "utf-8"))

@@ -5,8 +5,8 @@
 # Description: launch file to launch all necessary components for physical navigation
 
 # TODO: 
-# 1. Smooth out path movement using one of the plugins from Nav2 docs https://navigation.ros.org/plugins/index.html
-# 2. Calibrate the odometry using the xml file in behavior_trees
+# 1. Calibrate the odometry using the xml file in behavior_trees
+# 2. Fix odometry drifting and innacuracy over time
 
 import os
 from ament_index_python.packages import get_package_share_directory
