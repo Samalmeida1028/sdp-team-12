@@ -72,18 +72,22 @@ class Sensor2Odom(Node):
 
         vel_th = ((lf_vel-rf_vel)/self.wheel_sep)
         
-        self.phi += vel_th
+        self.phi -= vel_th
         dx = 0
         dy = 0
 
         if(vel_xy != 0):
-            dx = vel_xy*math.cos(vel_th)
-            dy = vel_xy*math.sin(vel_th)
+            dx = vel_xy*math.cos(vel_th)*.1
+            dy = vel_xy*math.sin(vel_th)*.1
             px = pos_xy*math.sin(vel_th)
             py = pos_xy*math.cos(vel_th)
+        
+        ephi = String()
+        ephi.data = str(self.phi)
+        self.debug_pub.publish(ephi)
 
 
-        rot = Rotation.from_euler('xyz', [0, 0, math.sin(self.phi*.5)], degrees=False)
+        rot = Rotation.from_euler('xyz', [0,0, self.phi*10], degrees=True)
         rot_str = String()
         rot_str.data = str(self.phi)
         self.debug_pub.publish(rot_str)
@@ -97,7 +101,7 @@ class Sensor2Odom(Node):
 
 
         self.encmsg.twist.twist.linear.x = vel_xy
-        self.encmsg.twist.twist.angular.z = vel_th
+        self.encmsg.twist.twist.angular.z = vel_th- math.pi/4
 
         # print(self.msg.pose)
 
