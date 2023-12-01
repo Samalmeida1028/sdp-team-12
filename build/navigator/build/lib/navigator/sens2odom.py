@@ -63,12 +63,15 @@ class Sensor2Odom(Node):
         lf_pos = encoder_array[1]*2*self.wheel_radius*math.pi
         rf_pos = encoder_array[2]*2*self.wheel_radius*math.pi
 
-        lb_vel = encoder_array[3]*2*self.wheel_radius
-        lf_vel = encoder_array[4]*2*self.wheel_radius
-        rf_vel = encoder_array[5]*2*self.wheel_radius
+        lb_vel = encoder_array[3]*self.wheel_radius
+        lf_vel = encoder_array[4]*self.wheel_radius
+        rf_vel = encoder_array[5]*self.wheel_radius
+
         vel_xy = (lf_vel+rf_vel)*.5
         pos_xy = (lf_pos + rf_pos) *.5
+
         vel_th = ((lf_vel-rf_vel)/self.wheel_sep)
+        
         self.phi += vel_th
         dx = 0
         dy = 0
