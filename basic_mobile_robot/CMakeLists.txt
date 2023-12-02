@@ -40,32 +40,9 @@ link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
 install(
-  DIRECTORY config launch meshes maps models params rviz worlds src
+  DIRECTORY config launch meshes maps models params rviz worlds
   DESTINATION share/${PROJECT_NAME}
 )
-
-add_executable(lidar_odometry_node src/lidar_odometry_node.cpp src/lidar_odometry.cpp)
-ament_target_dependencies(lidar_odometry_node
-  rclcpp
-  sensor_msgs
-  geometry_msgs
-  nav_msgs
-  laser_geometry
-  pcl_conversions
-  tf2
-  tf2_eigen
-)
-
-target_include_directories(lidar_odometry_node PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include>)
-
-target_link_libraries(lidar_odometry_node
-  ${PCL_LIBRARIES}
-)
-
-install(TARGETS lidar_odometry_node
-  DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

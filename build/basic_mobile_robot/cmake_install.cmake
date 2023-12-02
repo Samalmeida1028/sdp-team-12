@@ -52,28 +52,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     "/home/adam/Desktop/sdp-team-12/basic_mobile_robot/params"
     "/home/adam/Desktop/sdp-team-12/basic_mobile_robot/rviz"
     "/home/adam/Desktop/sdp-team-12/basic_mobile_robot/worlds"
-    "/home/adam/Desktop/sdp-team-12/basic_mobile_robot/src"
     )
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/basic_mobile_robot/lidar_odometry_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/basic_mobile_robot/lidar_odometry_node")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/basic_mobile_robot/lidar_odometry_node"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/basic_mobile_robot" TYPE EXECUTABLE FILES "/home/adam/Desktop/sdp-team-12/build/basic_mobile_robot/lidar_odometry_node")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/basic_mobile_robot/lidar_odometry_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/basic_mobile_robot/lidar_odometry_node")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/basic_mobile_robot/lidar_odometry_node"
-         OLD_RPATH "/opt/ros/humble/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/basic_mobile_robot/lidar_odometry_node")
-    endif()
-  endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
