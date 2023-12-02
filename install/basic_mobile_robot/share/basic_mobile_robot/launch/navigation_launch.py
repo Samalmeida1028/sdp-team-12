@@ -212,6 +212,7 @@ def generate_launch_description():
                 package='nav2_recoveries',
                 executable='recoveries_server',
                 name='recoveries_server',
+                parameters=[configured_params],
                 output='screen'
             ),
             Node(
