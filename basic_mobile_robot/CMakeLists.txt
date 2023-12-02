@@ -40,7 +40,7 @@ link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
 install(
-  DIRECTORY config launch meshes maps models params rviz worlds src
+  DIRECTORY behavior_trees config include launch maps models params rviz src
   DESTINATION share/${PROJECT_NAME}
 )
 

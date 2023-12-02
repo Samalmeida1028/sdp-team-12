@@ -1,6 +1,6 @@
 # SDP Team 12
 # Date created: 11/9/23
-# Date last modified: 11/30/23
+# Date last modified: 12/2/23
 # Author: Arjun Viswanathan
 # Description: launch file to launch all necessary components for physical navigation
 
@@ -25,8 +25,6 @@ def generate_launch_description():
     default_rviz_config_path = os.path.join(pkg_path, 'rviz', 'holly_nav.rviz')
     slam_params_file = os.path.join(pkg_path, 'config', 'doslam.yaml')
     nav2_params_file = os.path.join(pkg_path, 'params', 'nav2_params.yaml')
-    behavior_tree_xml_path = os.path.join(pkg_path, 'behavior_trees', 'navigate_w_replanning_and_recovery.xml')
-    map_yaml_file = os.path.join(pkg_path, 'maps', 'slam_map.yaml')
 
     autostart = LaunchConfiguration('autostart')
     params_file = LaunchConfiguration('params_file')
@@ -133,18 +131,6 @@ def generate_launch_description():
                             'params_file': params_file,
                             'autostart': autostart}.items()
     )
-
-    # start_ros2_navigation_cmd = IncludeLaunchDescription(
-    # PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'bringup_launch.py')),
-    # launch_arguments = {'namespace': '',
-    #                     'use_namespace': 'False',
-    #                     'slam': 'False',
-    #                     'map': map_yaml_file,
-    #                     'use_sim_time': use_sim_time,
-    #                     'params_file': params_file,
-    #                     'default_bt_xml_filename': behavior_tree_xml_path,
-    #                     'autostart': autostart}.items()
-    # )
 
     start_cmdvel_pub_cmd = Node(
         package='navigator',

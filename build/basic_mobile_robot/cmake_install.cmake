@@ -44,14 +44,14 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE DIRECTORY FILES
+    "/home/adam/Desktop/sdp-team-12/basic_mobile_robot/behavior_trees"
     "/home/adam/Desktop/sdp-team-12/basic_mobile_robot/config"
+    "/home/adam/Desktop/sdp-team-12/basic_mobile_robot/include"
     "/home/adam/Desktop/sdp-team-12/basic_mobile_robot/launch"
-    "/home/adam/Desktop/sdp-team-12/basic_mobile_robot/meshes"
     "/home/adam/Desktop/sdp-team-12/basic_mobile_robot/maps"
     "/home/adam/Desktop/sdp-team-12/basic_mobile_robot/models"
     "/home/adam/Desktop/sdp-team-12/basic_mobile_robot/params"
     "/home/adam/Desktop/sdp-team-12/basic_mobile_robot/rviz"
-    "/home/adam/Desktop/sdp-team-12/basic_mobile_robot/worlds"
     "/home/adam/Desktop/sdp-team-12/basic_mobile_robot/src"
     )
 endif()
