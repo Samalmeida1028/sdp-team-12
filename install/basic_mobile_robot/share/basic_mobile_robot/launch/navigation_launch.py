@@ -45,6 +45,7 @@ def generate_launch_description():
         'smoother_server',
         'planner_server',
         'behavior_server',
+        'recoveries_server',
         'bt_navigator',
         'waypoint_follower',
         'velocity_smoother',
@@ -207,6 +208,12 @@ def generate_launch_description():
             #     name='amcl',
             #     output='screen'
             # ),
+            Node(
+                package='nav2_recoveries',
+                executable='recoveries_server',
+                name='recoveries_server',
+                output='screen'
+            ),
             Node(
                 package='nav2_lifecycle_manager',
                 executable='lifecycle_manager',

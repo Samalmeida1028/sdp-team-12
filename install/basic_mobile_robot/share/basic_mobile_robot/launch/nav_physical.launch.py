@@ -5,8 +5,8 @@
 # Description: launch file to launch all necessary components for physical navigation
 
 # TODO: 
-# 1. Smooth out path movement using one of the plugins from Nav2 docs https://navigation.ros.org/plugins/index.html
-# 2. Calibrate the odometry using the xml file in behavior_trees
+# 1. Calibrate the odometry using the xml file in behavior_trees
+# 2. Fix odometry drifting and innacuracy over time
 
 import os
 from ament_index_python.packages import get_package_share_directory
@@ -177,7 +177,6 @@ def generate_launch_description():
     ld.add_action(start_lidar_cmd)
     ld.add_action(start_lidar_odom_pub_cmd)
     ld.add_action(start_encoder_odom_pub_cmd)
-    ld.add_action(start_ros2_navigation_cmd)
 
     ld.add_action(start_cmdvel_pub_cmd)
     ld.add_action(start_serial_pub_cmd)
@@ -185,6 +184,7 @@ def generate_launch_description():
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)
     ld.add_action(start_slam_cmd)
+    ld.add_action(start_ros2_navigation_cmd)
     ld.add_action(start_rviz_cmd)
 
     return ld
