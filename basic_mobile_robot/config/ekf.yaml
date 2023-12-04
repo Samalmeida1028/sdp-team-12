@@ -97,7 +97,7 @@ ekf_filter_node:
                        false, false, false]
 
         odom1_config: [false, false, false,
-                       false, false, true,
+                       false, false, false,
                        false,  false,  false,
                        false, false, false,
                        false, false, false]
@@ -152,10 +152,10 @@ ekf_filter_node:
 
         imu0: /imu_odom
         imu0_config: [false, false, false,
-                      false,  false,  true,
+                      false,  false,  false,
                       false, false, false,
                       false,  false,  true,
-                      true,  false,  false]
+                      true,  true,  false]
 
         #        [x_pos   , y_pos    , z_pos,
         #         roll    , pitch    , yaw,

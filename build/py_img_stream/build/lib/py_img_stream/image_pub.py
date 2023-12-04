@@ -11,34 +11,37 @@ import rclpy
 from rclpy.node import Node
 import std_msgs.msg as std_m
 from std_msgs.msg import String
-from std_msgs.msg import Int32
+from std_msgs.msg import Int32,Float32
 from std_msgs.msg import Float32MultiArray
 from std_msgs.msg import Int32MultiArray
 import serial
 import json
-
+import math
 
 class ImagePublisher(Node):
 
   def __init__(self):
     super().__init__('image_pub')
     self.ser = serial.Serial(
-             '/dev/ttyACM1',
+             '/dev/ttyACM3',
              baudrate=115200,
              timeout=0.01)
     
     self.translation_publisher = self.create_publisher(Float32MultiArray, "translation_list", 1)
     self.rotation_publisher = self.create_publisher(Float32MultiArray, "rotation_list", 1)
-    self.position_publisher = self.create_publisher(Float32MultiArray, "xyPos", 1)
+    self.angleX_publisher = self.create_publisher(Float32, "camera_anglex", 1)
+    self.angleY_publisher = self.create_publisher(Float32, "camera_angley", 1)
+    self.time_publisher = self.create_publisher(Float32, "camera_time", 1)
     timer_period = .016
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
     self.camParams = sio.loadmat("./calibration/logi_camParams.mat")
     self.cameraMatrix = self.camParams['cameraMatrix']
     self.distCoeffs = self.camParams['distortionCoefficients']
-    self.angle = 0
+    self.angle = Float32MultiArray()
     self.marker_position = Float32MultiArray()
     self.translation = Float32MultiArray()
+    self.last_target_time = time.time()
 
     self.target_subscription = self.create_subscription(
       Int32, 
@@ -50,7 +53,7 @@ class ImagePublisher(Node):
     self.aruco_params = aruco.DetectorParameters_create()
     self.resolutionX = 1920
     self.resolutionY = 1080
-    self.target = 9999
+    self.target = 0
     # self.aruco_params = cv2.arbytearray(datastring,encoding="utf-8")uco.DetectorParameters()
     # self.detector = cv2.aruco.ArucoDetector(self.aruco_dict, self.aruco_params)
     self.markerLength = 60 # mm
@@ -112,8 +115,8 @@ class ImagePublisher(Node):
           self.get_logger().warn("\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0]))
           stri = String()
           stri.data = "\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0])
-          self.translation.data = [float(tvec[0][0][0]),float(tvec[0][0][1]),float(tvec[0][0][2]), float(self.angle)]
-          self.translation_publisher.publish(self.translation)
+          # self.translation.data = [float(tvec[0][0][0]),float(tvec[0][0][1]),float(tvec[0][0][2]), float(self.angle)]
+          # self.translation_publisher.publish(self.translation)
     return (corners,ids)
   
 
@@ -122,7 +125,7 @@ class ImagePublisher(Node):
   def get_pixel_pos(self,corners,ids):
     for (markerCorner, markerID) in zip(corners, ids):
 
-        # Draw the axis on the aruco markers        print(tvecoord)
+        # Draw the axis on the aruco markers        ##print(tvecoord)
 
         # extract the marker corners (which are always returned in
         # top-left, top-right, bottom-right, and bottom-left order)
@@ -178,21 +181,36 @@ class ImagePublisher(Node):
     Callback function.
     This function gets called every 0.016 seconds.
     """
+    target_found = False
     ret, self.frame = self.cam.read()
     if ret == True:
       (corners,ids) = self.get_pose()
       # self.get_logger().info("getting stuff")
       # cv2.imshow('camera', self.frame)
       if(corners is not None and ids is not None):
-        self.aruco_display(corners,ids)
         self.get_pixel_pos(corners,ids)
+        self.aruco_display(corners,ids)
         for (markerCorner, markerID) in zip(corners, ids):
           if(markerID == self.target):
-            self.get_logger().info("%s" % json.dumps(list(self.marker_position.data) + [self.translation.data[2]]))
-            self.ser.write(bytearray(json.dumps(list(self.marker_position.data) + [self.translation.data[2]]) + "\n",encoding="utf-8"))
+            target_found = True
+            self.last_target_time = time.time()
+            ##print(self.last_target_time)
+            # self.get_logger().info("%s" % json.dumps(list(self.marker_position.data))+ "\n")
+            self.ser.write(bytearray(json.dumps(list(self.marker_position.data) + [True]) + "\n",encoding="utf-8"))
       serial_in = self.ser.readline()
       if serial_in:
-        self.angle = int(json.loads(serial_in.decode('utf-8')))
+        list_data = json.loads(serial_in.decode('utf-8'))
+        list_data= [float(x) for x in list_data]
+        self.angleX_publisher.publish(Float32(data = list_data[0]))
+        self.angleY_publisher.publish(Float32(data = list_data[1]))
+        self.time_publisher.publish(Float32(data = list_data[2]))
+      
+      if not target_found and (time.time() - self.last_target_time) > 3:
+        # ##print("WHY")
+        search = [math.sin(time.time())*60+90,math.cos(time.time())*30+90,False]
+        # ##print(search)
+        self.ser.write(bytearray(json.dumps(search) + "\n",encoding="utf-8"))
+
       cv2.imshow('camera',self.frame)
       cv2.waitKey(16)
 
