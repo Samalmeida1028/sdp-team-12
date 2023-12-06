@@ -46,7 +46,7 @@ ekf_filter_node:
         publish_tf: True
 
 # Whether to publish the acceleration state. Defaults to false if unspecified.
-        publish_acceleration: false
+        publish_acceleration: True
 
 # If the filter sees a jump back in time, the filter is reset (convenient for testing with rosbags!)
         reset_on_time_jump: true
@@ -116,7 +116,7 @@ ekf_filter_node:
 # [ADVANCED] Large messages in ROS can exhibit strange behavior when they arrive at a high frequency. This is a result
 # of Nagle's algorithm. This option tells the ROS subscriber to use the tcpNoDelay option, which disables Nagle's
 # algorithm.
-        odom0_nodelay: true
+        odom0_nodelay: false
         odom1_nodelay: true
         imu0_nodelay: true
 
@@ -163,7 +163,7 @@ ekf_filter_node:
         #         roll_vel, pitch_vel, yaw_vel,
         #         x_accel , y_accel  , z_accel]
         
-        imu0_nodelay: true
+        imu0_nodelay: False
         imu0_differential: false
         imu0_relative: true
         imu0_queue_size: 10
