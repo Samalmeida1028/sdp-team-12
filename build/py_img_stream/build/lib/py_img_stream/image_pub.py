@@ -23,7 +23,7 @@ class ImagePublisher(Node):
   def __init__(self):
     super().__init__('image_pub')
     self.ser = serial.Serial(
-             '/dev/ttyACM1',
+             '/dev/ttyACM3',
              baudrate=115200,
              timeout=0.01)
     

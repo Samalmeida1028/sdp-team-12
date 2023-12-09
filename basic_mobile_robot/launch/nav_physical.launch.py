@@ -145,7 +145,7 @@ def generate_launch_description():
     )
 
     start_rviz_cmd = Node(
-        package='rviz2',
+        package='rviz2',ERROR
         executable='rviz2',
         name='rviz2',
         output='screen',
