@@ -1,6 +1,8 @@
 <?xml version="1.0" ?>
 <robot name="basic_mobile_bot" xmlns:xacro="http://ros.org/wiki/xacro">
 
+  <xacro:include filename="ros2_control.xacro"/>
+
   <!-- ****************** ROBOT CONSTANTS *******************************  -->
   <!-- Define the size of the robot's main chassis in meters -->
   <xacro:property name="base_width" value="0.39"/>
@@ -125,8 +127,8 @@
   <!-- Instantiate two wheels using the macro we just made through the 
        xacro:wheel tags. We also define the parameters to have one wheel
        on both sides at the back of our robot (i.e. x_reflect=-1). -->
-  <xacro:wheel prefix="drivewhl_l" x_reflect="-1" y_reflect="1" />
-  <xacro:wheel prefix="drivewhl_r" x_reflect="-1" y_reflect="-1" />
+  <xacro:wheel prefix="left_wheel" x_reflect="-1" y_reflect="1" />
+  <xacro:wheel prefix="right_wheel" x_reflect="-1" y_reflect="-1" />
 
   <!-- *********************** CASTER WHEEL ******************************  -->
   <!-- We add a caster wheel. It will be modeled as sphere.
