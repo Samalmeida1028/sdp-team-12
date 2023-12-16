@@ -186,22 +186,6 @@ def generate_launch_description():
                         'params_file': params_file,
                         'default_bt_xml_filename': default_bt_xml_filename,
                         'autostart': autostart}.items())
-  
-  static_transform_publisher_cmd = Node(
-      package='tf2_ros',
-      executable='static_transform_publisher',
-      name='link1_broadcaster',
-      arguments=['0', '0', '0', '0', '0', '0', '1', 'map', 'odom'],
-      output='screen',
-  )
-
-  # static_transform_publisher2_cmd = Node(
-  #     package='tf2_ros',
-  #     executable='static_transform_publisher',
-  #     name='link1_broadcaster',
-  #     arguments=['0', '0', '0', '0', '0', '0', '1', 'base_link', 'odom'],
-  #     output='screen',
-  # )
 
   # Create the launch description and populate
   ld = LaunchDescription()
@@ -230,6 +214,5 @@ def generate_launch_description():
   ld.add_action(start_robot_state_publisher_cmd)
   ld.add_action(start_rviz_cmd)
   ld.add_action(start_ros2_navigation_cmd)
-  ld.add_action(static_transform_publisher_cmd)
-
+  
   return ld
