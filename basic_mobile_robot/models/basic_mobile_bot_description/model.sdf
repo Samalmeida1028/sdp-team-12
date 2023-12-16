@@ -222,10 +222,10 @@
   </link>
   
   <!-- *********************** DRIVE WHEELS ******************************  -->
-  <link name="drivewhl_l_link">
+  <link name="left_wheel_link">
     <pose>-0.221 0.23 -0.05 0 1.570796 1.570796</pose>
     
-    <collision name="drivewhl_l_collision">
+    <collision name="left_wheel_collision">
       <geometry>
         <cylinder>
           <radius>0.14</radius>
@@ -234,7 +234,7 @@
       </geometry>
     </collision>
 
-    <visual name="drivewhl_l_visual">
+    <visual name="left_wheel_visual">
       <geometry>
         <cylinder>
           <radius>0.14</radius>
@@ -244,10 +244,10 @@
     </visual>
   </link>
 
-  <link name="drivewhl_r_link">
+  <link name="right_wheel_link">
     <pose>-0.221 -0.23 -0.05 0 1.570796 1.570796</pose>
     
-    <collision name="drivewhl_r_collision">
+    <collision name="right_wheel_collision">
       <geometry>
         <cylinder>
           <radius>0.14</radius>
@@ -256,7 +256,7 @@
       </geometry>
     </collision>
 
-    <visual name="drivewhl_r_visual">
+    <visual name="right_wheel_visual">
       <geometry>
         <cylinder>
           <radius>0.14</radius>
@@ -316,18 +316,18 @@
     <pose>0 0 0 0 0 0</pose>
   </joint>
 
-  <joint name="drivewhl_l_joint" type="revolute">
+  <joint name="left_wheel_joint" type="revolute">
     <parent>base_link</parent>
-    <child>drivewhl_l_link</child>
+    <child>left_wheel_link</child>
     <pose>0 0 0 0 0 0</pose>
     <axis>
       <xyz>0 0 1</xyz>
     </axis>
   </joint>
 
-  <joint name="drivewhl_r_joint" type="revolute">
+  <joint name="right_wheel_joint" type="revolute">
     <parent>base_link</parent>
-    <child>drivewhl_r_link</child>
+    <child>right_wheel_link</child>
     <pose>0 0 0 0 0 0</pose>
     <axis>
       <xyz>0 0 1</xyz>
@@ -364,8 +364,8 @@
     <update_rate>30</update_rate>
 
     <!-- wheels -->
-    <left_joint>drivewhl_l_joint</left_joint>
-    <right_joint>drivewhl_r_joint</right_joint>
+    <left_joint>left_wheel_joint</left_joint>
+    <right_joint>right_wheel_joint</right_joint>
 
     <!-- kinematics -->
     <wheel_separation>0.52</wheel_separation>
@@ -411,8 +411,8 @@
       <remapping>~/out:=joint_states</remapping>
     </ros>
     <update_rate>30</update_rate>
-    <joint_name>drivewhl_l_joint</joint_name>
-    <joint_name>drivewhl_r_joint</joint_name>
+    <joint_name>left_wheel_joint</joint_name>
+    <joint_name>right_wheel_joint</joint_name>
   </plugin>   
   
   </model>
