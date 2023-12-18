@@ -1,11 +1,10 @@
 # sdp-team-12
 This is the repository for Team 12's Senior Design Project (SDP)
 
-## Navigation
+## Simulated Navigation using ROS2 Humble Navigation Stack
 
-In this branch, there are 2 main packages:
+In this branch:
 - basic_mobile_robot
-- navigator
 
 Before running, make sure to run both ```ros_humble_setup.sh``` and ```ros_humble_nav2_setup.sh``` scripts in ```basic_mobile_robot/rospkginstall``` directory, if you do not have ROS2 Humble and/or Nav2 installed
 
@@ -54,10 +53,4 @@ With SLAM:
 ![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/640f0523-9a59-4c94-a101-6ae795f46254)
 
 Use ```rqt_robot_steering``` and change the topic to ```cmd_vel``` to use a GUI for moving the robot in Gazebo. 
-
-## navigator Package
-
-This package has code to publish to ```/cmd_vel``` topic through keyboard input as well as publish a random pose to check if navigation works
-
-Points to navigate to are in the the form of ```PoseStamped``` messages. They are published to the ```/goal_pose``` topic. Once this is done, ```/cmd_vel_nav``` will output many ```Twist``` messages for the robot to get to the goal state. 
 
