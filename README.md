@@ -15,6 +15,8 @@ Nav Pico REPL: ```/dev/ACM0``` \
 Tracking Pico: ```/dev/ACM3``` \
 Tracking Pico REPL: ```/dev/ACM2``` 
 
+![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/433cd966-4cd0-4a59-bcd3-ea5257845dc6)
+
 ## Running Navigation
 Once all the required ROS2 packages are installed, make sure the Nav Pico is connected to the computer and the correct port is verified. Then, open a REPL in VS Code to see any input coming from ROS. Then, run the ```nav_physical.launch.py``` script. This will fire up the Nav stack and open RViz showing the robot and SLAM output.
 
