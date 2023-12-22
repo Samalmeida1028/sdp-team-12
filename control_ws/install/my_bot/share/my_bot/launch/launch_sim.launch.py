@@ -1,3 +1,10 @@
+'''
+ros2 launch my_bot launch_sim.launch.py
+ros2 run controller_manager spawner diff_cont
+ros2 run controller_manager spawner joint_broad
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped
+'''
+
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription

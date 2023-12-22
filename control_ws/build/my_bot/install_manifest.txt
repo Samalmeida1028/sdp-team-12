@@ -1,6 +1,7 @@
 /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/config/my_controllers.yaml
 /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/config/empty.yaml
 /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/description/robot.urdf.xacro
+/home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/description/robo_holly.xacro
 /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/description/gazebo_control.xacro
 /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/description/inertial_macros.xacro
 /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/description/robot_core.xacro
