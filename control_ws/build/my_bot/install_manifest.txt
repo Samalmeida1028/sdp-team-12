@@ -8,6 +8,7 @@
 /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/description/robot_core.xacro
 /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/description/ros2_control.xacro
 /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/launch/rsp.launch.py
+/home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/launch/launch_robot.launch.py
 /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/launch/launch_sim.launch.py
 /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/worlds/empty.world
 /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/rviz/mybot_config.rviz

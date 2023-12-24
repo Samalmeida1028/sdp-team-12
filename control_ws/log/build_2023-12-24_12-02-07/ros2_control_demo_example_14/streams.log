@@ -1,0 +1,84 @@
+[0.136s] Invoking command in '/home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_14': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_14 -DCMAKE_INSTALL_PREFIX=/home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14
+[0.197s] -- The CXX compiler identification is GNU 11.4.0
+[0.202s] -- Detecting CXX compiler ABI info
+[0.272s] -- Detecting CXX compiler ABI info - done
+[0.278s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.278s] -- Detecting CXX compile features
+[0.278s] -- Detecting CXX compile features - done
+[0.281s] -- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.450s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[0.535s] -- Found hardware_interface: 2.36.0 (/opt/ros/humble/share/hardware_interface/cmake)
+[0.575s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.581s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.590s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.602s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.619s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.321s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.327s] -- Found rmw_fastrtps_cpp: 6.2.5 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.388s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.602s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.605s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.630s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.644s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.656s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.674s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.694s] -- Looking for C++ include pthread.h
+[1.849s] -- Looking for C++ include pthread.h - found
+[1.851s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[2.010s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[2.011s] -- Found Threads: TRUE  
+[2.233s] -- Found realtime_tools: 2.5.0 (/opt/ros/humble/share/realtime_tools/cmake)
+[2.368s] -- Found ament_cmake_gtest: 1.3.6 (/opt/ros/humble/share/ament_cmake_gtest/cmake)
+[2.460s] -- Configuring done
+[2.512s] -- Generating done
+[2.521s] -- Build files have been written to: /home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_14
+[2.536s] Invoked command in '/home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_14' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_14 -DCMAKE_INSTALL_PREFIX=/home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14
+[2.536s] Invoking command in '/home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_14': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_14 -- -j8 -l8
+[4.145s] [ 33%] [32mBuilding CXX object CMakeFiles/ros2_control_demo_example_14.dir/hardware/rrbot_actuator_without_feedback.cpp.o[0m
+[4.145s] [ 66%] [32mBuilding CXX object CMakeFiles/ros2_control_demo_example_14.dir/hardware/rrbot_sensor_for_position_feedback.cpp.o[0m
+[9.134s] [100%] [32m[1mLinking CXX shared library libros2_control_demo_example_14.so[0m
+[9.597s] [100%] Built target ros2_control_demo_example_14
+[9.631s] Invoked command in '/home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_14' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_14 -- -j8 -l8
+[10.059s] Invoking command in '/home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_14': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_14
+[11.181s] -- Install configuration: ""
+[11.182s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/ros2_control_demo_example_14.xml
+[11.183s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/include/ros2_control_demo_example_14
+[11.184s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/include/ros2_control_demo_example_14/ros2_control_demo_example_14
+[11.185s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/include/ros2_control_demo_example_14/ros2_control_demo_example_14/rrbot_actuator_without_feedback.hpp
+[11.185s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/include/ros2_control_demo_example_14/ros2_control_demo_example_14/rrbot_sensor_for_position_feedback.hpp
+[11.186s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/include/ros2_control_demo_example_14/ros2_control_demo_example_14/visibility_control.h
+[11.202s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/launch
+[11.202s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/launch/view_robot.launch.py
+[11.202s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/ros2_control
+[11.202s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/ros2_control/rrbot_modular_actuators_without_feedback_sensors_for_position_feedback.ros2_control.xacro
+[11.202s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/urdf
+[11.202s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/urdf/rrbot_modular_actuators_without_feedback_sensors_for_position_feedback.urdf.xacro
+[11.202s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/launch
+[11.202s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/launch/rrbot_modular_actuators_without_feedback_sensors_for_position_feedback.launch.py
+[11.202s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/config
+[11.202s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/config/rrbot_modular_actuators_without_feedback_sensors_for_position_feedback.yaml
+[11.202s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/lib/libros2_control_demo_example_14.so
+[11.203s] -- Set runtime path of "/home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/lib/libros2_control_demo_example_14.so" to ""
+[11.203s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/environment/library_path.sh
+[11.203s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/environment/library_path.dsv
+[11.203s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ament_index/resource_index/package_run_dependencies/ros2_control_demo_example_14
+[11.203s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ament_index/resource_index/parent_prefix_path/ros2_control_demo_example_14
+[11.203s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/environment/ament_prefix_path.sh
+[11.203s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/environment/ament_prefix_path.dsv
+[11.203s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/environment/path.sh
+[11.203s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/environment/path.dsv
+[11.203s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/local_setup.bash
+[11.203s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/local_setup.sh
+[11.204s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/local_setup.zsh
+[11.204s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/local_setup.dsv
+[11.204s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/package.dsv
+[11.204s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ament_index/resource_index/packages/ros2_control_demo_example_14
+[11.204s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/ros2_control_demo_example_14
+[11.204s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/cmake/export_ros2_control_demo_example_14Export.cmake
+[11.204s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/cmake/export_ros2_control_demo_example_14Export-noconfig.cmake
+[11.204s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/cmake/ament_cmake_export_targets-extras.cmake
+[11.204s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/cmake/ament_cmake_export_dependencies-extras.cmake
+[11.204s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/cmake/ros2_control_demo_example_14Config.cmake
+[11.204s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/cmake/ros2_control_demo_example_14Config-version.cmake
+[11.204s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_14/share/ros2_control_demo_example_14/package.xml
+[11.207s] Invoked command in '/home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_14' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_14

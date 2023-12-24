@@ -1,0 +1,60 @@
+[0.119s] Invoking command in '/home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_12': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_12 -- -j8 -l8
+[0.184s] [ 20%] Built target passthrough_controller_parameters
+[0.200s] [ 60%] Built target ros2_control_demo_example_12
+[0.228s] [100%] Built target passthrough_controller
+[0.274s] Invoked command in '/home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_12' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_12 -- -j8 -l8
+[0.470s] Invoking command in '/home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_12': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_12
+[0.612s] -- Install configuration: ""
+[0.612s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/ros2_control_demo_example_12.xml
+[0.612s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/include/passthrough_controller_parameters
+[0.612s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/include/passthrough_controller_parameters/passthrough_controller_parameters.hpp
+[0.612s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/passthrough_controller.xml
+[0.612s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/include/ros2_control_demo_example_12
+[0.612s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/include/ros2_control_demo_example_12/ros2_control_demo_example_12
+[0.612s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/include/ros2_control_demo_example_12/ros2_control_demo_example_12/visibility_control.h
+[0.612s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/include/ros2_control_demo_example_12/ros2_control_demo_example_12/rrbot.hpp
+[0.612s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/launch
+[0.612s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/launch/view_robot.launch.py
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/ros2_control
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/ros2_control/rrbot.ros2_control.xacro
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/urdf
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/urdf/rrbot.urdf.xacro
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/gazebo
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/gazebo/rrbot.gazebo.xacro
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/launch
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/launch/rrbot.launch.py
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/launch/launch_chained_controllers.launch.py
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/config
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/config/rrbot_chained_controllers.yaml
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/lib/libros2_control_demo_example_12.so
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/include/passthrough_controller
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/include/passthrough_controller/passthrough_controller
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/include/passthrough_controller/passthrough_controller/visibility_control.h
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/include/passthrough_controller/passthrough_controller/passthrough_controller.hpp
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/lib/libpassthrough_controller.so
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/environment/library_path.sh
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/environment/library_path.dsv
+[0.613s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ament_index/resource_index/package_run_dependencies/ros2_control_demo_example_12
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ament_index/resource_index/parent_prefix_path/ros2_control_demo_example_12
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/environment/ament_prefix_path.sh
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/environment/ament_prefix_path.dsv
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/environment/path.sh
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/environment/path.dsv
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/local_setup.bash
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/local_setup.sh
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/local_setup.zsh
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/local_setup.dsv
+[0.614s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/package.dsv
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ament_index/resource_index/packages/ros2_control_demo_example_12
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/ros2_control_demo_example_12
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ament_index/resource_index/controller_interface__pluginlib__plugin/ros2_control_demo_example_12
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/cmake/export_passthrough_controllerExport.cmake
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/cmake/export_passthrough_controllerExport-noconfig.cmake
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/cmake/export_ros2_control_demo_example_12Export.cmake
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/cmake/export_ros2_control_demo_example_12Export-noconfig.cmake
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/cmake/ament_cmake_export_targets-extras.cmake
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/cmake/ament_cmake_export_dependencies-extras.cmake
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/cmake/ros2_control_demo_example_12Config.cmake
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/cmake/ros2_control_demo_example_12Config-version.cmake
+[0.614s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/ros2_control_demo_example_12/share/ros2_control_demo_example_12/package.xml
+[0.863s] Invoked command in '/home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_12' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/adam/Desktop/sdp-team-12/control_ws/build/ros2_control_demo_example_12

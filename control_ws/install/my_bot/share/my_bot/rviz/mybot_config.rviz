@@ -66,30 +66,36 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base_footprint:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        caster_wheel:
+          Value: true
+        drivewhl_lb_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        chassis:
+        drivewhl_lf_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        left_wheel:
+        drivewhl_rb_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        right_wheel:
+        drivewhl_rf_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        imu_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        lidar_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -107,17 +113,21 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        base_footprint:
-          Value: true
         base_link:
           Value: true
-        caster_wheel:
+        drivewhl_lb_link:
           Value: true
-        chassis:
+        drivewhl_lf_link:
           Value: true
-        left_wheel:
+        drivewhl_rb_link:
           Value: true
-        right_wheel:
+        drivewhl_rf_link:
+          Value: true
+        imu_link:
+          Value: true
+        lidar_link:
+          Value: true
+        odom:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -126,21 +136,26 @@ Visualization Manager:
       Show Names: false
       Tree:
         base_link:
-          base_footprint:
+          drivewhl_lb_link:
             {}
-          chassis:
-            caster_wheel:
-              {}
-          left_wheel:
+          drivewhl_lf_link:
             {}
-          right_wheel:
+          drivewhl_rb_link:
             {}
+          drivewhl_rf_link:
+            {}
+          imu_link:
+            {}
+          lidar_link:
+            {}
+        odom:
+          {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:
@@ -183,7 +198,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 1.8686928749084473
+      Distance: 6.153520584106445
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
