@@ -1,0 +1,43 @@
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::CallbackReturn diffdrive_arduino::DiffDriveArduinoHardware::on_init(const hardware_interface::HardwareInfo&)[m[K’:
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:39:8:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct diffdrive_arduino::DiffDriveArduinoHardware::Config[m[K’ has no member named ‘[01m[Kfront_left_wheel_name[m[K’; did you mean ‘[01m[Kleft_wheel_name[m[K’?
+   39 |   cfg_.[01;31m[Kfront_left_wheel_name[m[K = info_.hardware_parameters["front_left_wheel_name"];
+      |        [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+      |        [32m[Kleft_wheel_name[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:40:8:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct diffdrive_arduino::DiffDriveArduinoHardware::Config[m[K’ has no member named ‘[01m[Kfront_right_wheel_name[m[K’; did you mean ‘[01m[Kright_wheel_name[m[K’?
+   40 |   cfg_.[01;31m[Kfront_right_wheel_name[m[K = info_.hardware_parameters["front_right_wheel_name"];
+      |        [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+      |        [32m[Kright_wheel_name[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:41:8:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct diffdrive_arduino::DiffDriveArduinoHardware::Config[m[K’ has no member named ‘[01m[Kback_left_wheel_name[m[K’; did you mean ‘[01m[Kleft_wheel_name[m[K’?
+   41 |   cfg_.[01;31m[Kback_left_wheel_name[m[K = info_.hardware_parameters["back_left_wheel_name"];
+      |        [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+      |        [32m[Kleft_wheel_name[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:42:8:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct diffdrive_arduino::DiffDriveArduinoHardware::Config[m[K’ has no member named ‘[01m[Kback_right_wheel_name[m[K’; did you mean ‘[01m[Kright_wheel_name[m[K’?
+   42 |   cfg_.[01;31m[Kback_right_wheel_name[m[K = info_.hardware_parameters["back_right_wheel_name"];
+      |        [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+      |        [32m[Kright_wheel_name[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:62:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct diffdrive_arduino::DiffDriveArduinoHardware::Config[m[K’ has no member named ‘[01m[Kfront_left_wheel_name[m[K’; did you mean ‘[01m[Kleft_wheel_name[m[K’?
+   62 |   wheel_lf_.setup(cfg_.[01;31m[Kfront_left_wheel_name[m[K, cfg_.enc_counts_per_rev);
+      |                        [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+      |                        [32m[Kleft_wheel_name[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:63:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct diffdrive_arduino::DiffDriveArduinoHardware::Config[m[K’ has no member named ‘[01m[Kfront_right_wheel_name[m[K’; did you mean ‘[01m[Kright_wheel_name[m[K’?
+   63 |   wheel_rf_.setup(cfg_.[01;31m[Kfront_right_wheel_name[m[K, cfg_.enc_counts_per_rev);
+      |                        [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                        [32m[Kright_wheel_name[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:64:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct diffdrive_arduino::DiffDriveArduinoHardware::Config[m[K’ has no member named ‘[01m[Kback_left_wheel_name[m[K’; did you mean ‘[01m[Kleft_wheel_name[m[K’?
+   64 |   wheel_lb_.setup(cfg_.[01;31m[Kback_left_wheel_name[m[K, cfg_.enc_counts_per_rev);
+      |                        [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+      |                        [32m[Kleft_wheel_name[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:65:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct diffdrive_arduino::DiffDriveArduinoHardware::Config[m[K’ has no member named ‘[01m[Kback_right_wheel_name[m[K’; did you mean ‘[01m[Kright_wheel_name[m[K’?
+   65 |   wheel_rb_.setup(cfg_.[01;31m[Kback_right_wheel_name[m[K, cfg_.enc_counts_per_rev);
+      |                        [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+      |                        [32m[Kright_wheel_name[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::return_type diffdrive_arduino::DiffDriveArduinoHardware::write(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:265:7:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmotor_lb_counts_per_loop[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  265 |   int [01;35m[Kmotor_lb_counts_per_loop[m[K = wheel_lb_.cmd / wheel_lb_.rads_per_count / cfg_.loop_rate;
+      |       [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:266:7:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmotor_rb_counts_per_loop[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  266 |   int [01;35m[Kmotor_rb_counts_per_loop[m[K = wheel_rb_.cmd / wheel_rb_.rads_per_count / cfg_.loop_rate;
+      |       [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/diffdrive_arduino.dir/build.make:76: CMakeFiles/diffdrive_arduino.dir/hardware/diffbot_system.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/diffdrive_arduino.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

@@ -1,8 +1,1 @@
-<?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
-
-    <xacro:include filename="robo_holly.xacro"/>
-    <!-- <xacro:include filename="gazebo_control.xacro"/> -->
-    <xacro:include filename="ros2_control.xacro"/>
-
-</robot>
+/home/adam/Desktop/sdp-team-12/control_ws/src/my_bot/description/robot.urdf.xacro

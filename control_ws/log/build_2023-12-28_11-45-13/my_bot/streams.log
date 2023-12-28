@@ -1,0 +1,35 @@
+[0.173s] Invoking command in '/home/adam/Desktop/sdp-team-12/control_ws/build/my_bot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/adam/Desktop/sdp-team-12/control_ws/build/my_bot -- -j8 -l8
+[0.216s] Invoked command in '/home/adam/Desktop/sdp-team-12/control_ws/build/my_bot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/adam/Desktop/sdp-team-12/control_ws/build/my_bot -- -j8 -l8
+[0.265s] Invoking command in '/home/adam/Desktop/sdp-team-12/control_ws/build/my_bot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/adam/Desktop/sdp-team-12/control_ws/build/my_bot
+[0.281s] -- Install configuration: ""
+[0.281s] -- Execute custom install script
+[0.282s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/config/empty.yaml
+[0.282s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/config/gazebo_params.yaml
+[0.283s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/config/my_controllers.yaml
+[0.283s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/description/gazebo_control.xacro
+[0.284s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/description/inertial_macros.xacro
+[0.284s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/description/robo_holly.xacro
+[0.284s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/description/robot.urdf.xacro
+[0.284s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/description/robot_core.xacro
+[0.284s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/description/ros2_control.xacro
+[0.285s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/launch/launch_robot.launch.py
+[0.286s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/launch/launch_sim.launch.py
+[0.286s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/launch/rsp.launch.py
+[0.286s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/worlds/empty.world
+[0.287s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/rviz/mybot_config.rviz
+[0.287s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/ament_index/resource_index/package_run_dependencies/my_bot
+[0.287s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/ament_index/resource_index/parent_prefix_path/my_bot
+[0.287s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/environment/ament_prefix_path.sh
+[0.287s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/environment/ament_prefix_path.dsv
+[0.287s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/environment/path.sh
+[0.287s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/environment/path.dsv
+[0.287s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/local_setup.bash
+[0.287s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/local_setup.sh
+[0.287s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/local_setup.zsh
+[0.288s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/local_setup.dsv
+[0.288s] -- Symlinking: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/package.dsv
+[0.297s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/ament_index/resource_index/packages/my_bot
+[0.297s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/cmake/my_botConfig.cmake
+[0.298s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/cmake/my_botConfig-version.cmake
+[0.298s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/my_bot/share/my_bot/package.xml
+[0.342s] Invoked command in '/home/adam/Desktop/sdp-team-12/control_ws/build/my_bot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/adam/Desktop/sdp-team-12/control_ws/build/my_bot

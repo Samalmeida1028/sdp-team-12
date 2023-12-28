@@ -1,0 +1,55 @@
+[0.198s] Invoking command in '/home/adam/Desktop/sdp-team-12/control_ws/build/diffdrive_arduino': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/adam/Desktop/sdp-team-12/control_ws/build/diffdrive_arduino -- -j8 -l8
+[0.251s] [35m[1mConsolidate compiler generated dependencies of target diffdrive_arduino[0m
+[0.286s] [ 50%] [32mBuilding CXX object CMakeFiles/diffdrive_arduino.dir/hardware/diffbot_system.cpp.o[0m
+[2.190s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::return_type diffdrive_arduino::DiffDriveArduinoHardware::write(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[2.190s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:265:7:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmotor_lb_counts_per_loop[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[2.190s]   265 |   int [01;35m[Kmotor_lb_counts_per_loop[m[K = wheel_lb_.cmd / wheel_lb_.rads_per_count / cfg_.loop_rate;
+[2.190s]       |       [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.190s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:266:7:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmotor_rb_counts_per_loop[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[2.190s]   266 |   int [01;35m[Kmotor_rb_counts_per_loop[m[K = wheel_rb_.cmd / wheel_rb_.rads_per_count / cfg_.loop_rate;
+[2.190s]       |       [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.049s] [100%] [32m[1mLinking CXX shared library libdiffdrive_arduino.so[0m
+[3.175s] [100%] Built target diffdrive_arduino
+[3.184s] Invoked command in '/home/adam/Desktop/sdp-team-12/control_ws/build/diffdrive_arduino' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/adam/Desktop/sdp-team-12/control_ws/build/diffdrive_arduino -- -j8 -l8
+[3.208s] Invoking command in '/home/adam/Desktop/sdp-team-12/control_ws/build/diffdrive_arduino': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/adam/Desktop/sdp-team-12/control_ws/build/diffdrive_arduino
+[3.216s] -- Install configuration: ""
+[3.217s] -- Execute custom install script
+[3.217s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino//diffdrive_arduino.xml
+[3.217s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/include/diffdrive_arduino/diffdrive_arduino/arduino_comms.hpp
+[3.217s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/include/diffdrive_arduino/diffdrive_arduino/diffbot_system.hpp
+[3.218s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/include/diffdrive_arduino/diffdrive_arduino/visibility_control.h
+[3.218s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/include/diffdrive_arduino/diffdrive_arduino/wheel.hpp
+[3.218s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/launch/view_robot.launch.py
+[3.218s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/ros2_control/diffbot.ros2_control.xacro
+[3.218s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/urdf/diffbot.materials.xacro
+[3.219s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/urdf/diffbot.urdf.xacro
+[3.219s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/urdf/diffbot_description.urdf.xacro
+[3.219s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/rviz/diffbot.rviz
+[3.219s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/rviz/diffbot_view.rviz
+[3.219s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/launch/diffbot.launch.py
+[3.219s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/config/diffbot_controllers.yaml
+[3.220s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/environment/library_path.sh
+[3.220s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/environment/library_path.dsv
+[3.220s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/ament_index/resource_index/package_run_dependencies/diffdrive_arduino
+[3.220s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/ament_index/resource_index/parent_prefix_path/diffdrive_arduino
+[3.220s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/environment/ament_prefix_path.sh
+[3.221s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/environment/ament_prefix_path.dsv
+[3.221s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/environment/path.sh
+[3.221s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/environment/path.dsv
+[3.221s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/local_setup.bash
+[3.221s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/local_setup.sh
+[3.222s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/local_setup.zsh
+[3.222s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/local_setup.dsv
+[3.222s] -- Symlinking: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/package.dsv
+[3.229s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/ament_index/resource_index/packages/diffdrive_arduino
+[3.229s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/diffdrive_arduino
+[3.229s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/cmake/ament_cmake_export_targets-extras.cmake
+[3.229s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/cmake/ament_cmake_export_dependencies-extras.cmake
+[3.229s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/cmake/diffdrive_arduinoConfig.cmake
+[3.229s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/cmake/diffdrive_arduinoConfig-version.cmake
+[3.229s] -- Up-to-date symlink: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/package.xml
+[3.230s] -- Installing: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/lib/libdiffdrive_arduino.so
+[3.231s] -- Set runtime path of "/home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/lib/libdiffdrive_arduino.so" to ""
+[3.231s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/cmake/export_diffdrive_arduinoExport.cmake
+[3.231s] -- Up-to-date: /home/adam/Desktop/sdp-team-12/control_ws/install/diffdrive_arduino/share/diffdrive_arduino/cmake/export_diffdrive_arduinoExport-noconfig.cmake
+[3.232s] Invoked command in '/home/adam/Desktop/sdp-team-12/control_ws/build/diffdrive_arduino' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/adam/Desktop/sdp-team-12/control_ws/build/diffdrive_arduino

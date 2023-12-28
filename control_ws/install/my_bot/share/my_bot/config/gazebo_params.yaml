@@ -1,3 +1,1 @@
-gazebo:
-  ros__parameters:
-    publish_rate: 400.0
+/home/adam/Desktop/sdp-team-12/control_ws/src/my_bot/config/gazebo_params.yaml

@@ -1,0 +1,7 @@
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::return_type diffdrive_arduino::DiffDriveArduinoHardware::write(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:265:7:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmotor_lb_counts_per_loop[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  265 |   int [01;35m[Kmotor_lb_counts_per_loop[m[K = wheel_lb_.cmd / wheel_lb_.rads_per_count / cfg_.loop_rate;
+      |       [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:266:7:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmotor_rb_counts_per_loop[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  266 |   int [01;35m[Kmotor_rb_counts_per_loop[m[K = wheel_rb_.cmd / wheel_rb_.rads_per_count / cfg_.loop_rate;
+      |       [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K

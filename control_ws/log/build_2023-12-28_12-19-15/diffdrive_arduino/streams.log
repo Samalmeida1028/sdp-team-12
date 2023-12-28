@@ -1,0 +1,57 @@
+[0.199s] Invoking command in '/home/adam/Desktop/sdp-team-12/control_ws/build/diffdrive_arduino': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/adam/Desktop/sdp-team-12/control_ws/build/diffdrive_arduino -- -j8 -l8
+[0.265s] [ 50%] [32mBuilding CXX object CMakeFiles/diffdrive_arduino.dir/hardware/diffbot_system.cpp.o[0m
+[2.179s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::CallbackReturn diffdrive_arduino::DiffDriveArduinoHardware::on_init(const hardware_interface::HardwareInfo&)[m[K’:
+[2.179s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:39:8:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct diffdrive_arduino::DiffDriveArduinoHardware::Config[m[K’ has no member named ‘[01m[Kfront_left_wheel_name[m[K’; did you mean ‘[01m[Kleft_wheel_name[m[K’?
+[2.180s]    39 |   cfg_.[01;31m[Kfront_left_wheel_name[m[K = info_.hardware_parameters["front_left_wheel_name"];
+[2.180s]       |        [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[2.180s]       |        [32m[Kleft_wheel_name[m[K
+[2.180s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:40:8:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct diffdrive_arduino::DiffDriveArduinoHardware::Config[m[K’ has no member named ‘[01m[Kfront_right_wheel_name[m[K’; did you mean ‘[01m[Kright_wheel_name[m[K’?
+[2.180s]    40 |   cfg_.[01;31m[Kfront_right_wheel_name[m[K = info_.hardware_parameters["front_right_wheel_name"];
+[2.180s]       |        [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.180s]       |        [32m[Kright_wheel_name[m[K
+[2.180s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:41:8:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct diffdrive_arduino::DiffDriveArduinoHardware::Config[m[K’ has no member named ‘[01m[Kback_left_wheel_name[m[K’; did you mean ‘[01m[Kleft_wheel_name[m[K’?
+[2.180s]    41 |   cfg_.[01;31m[Kback_left_wheel_name[m[K = info_.hardware_parameters["back_left_wheel_name"];
+[2.180s]       |        [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[2.180s]       |        [32m[Kleft_wheel_name[m[K
+[2.181s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:42:8:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct diffdrive_arduino::DiffDriveArduinoHardware::Config[m[K’ has no member named ‘[01m[Kback_right_wheel_name[m[K’; did you mean ‘[01m[Kright_wheel_name[m[K’?
+[2.181s]    42 |   cfg_.[01;31m[Kback_right_wheel_name[m[K = info_.hardware_parameters["back_right_wheel_name"];
+[2.181s]       |        [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[2.181s]       |        [32m[Kright_wheel_name[m[K
+[2.181s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:62:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct diffdrive_arduino::DiffDriveArduinoHardware::Config[m[K’ has no member named ‘[01m[Kfront_left_wheel_name[m[K’; did you mean ‘[01m[Kleft_wheel_name[m[K’?
+[2.181s]    62 |   wheel_lf_.setup(cfg_.[01;31m[Kfront_left_wheel_name[m[K, cfg_.enc_counts_per_rev);
+[2.181s]       |                        [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[2.181s]       |                        [32m[Kleft_wheel_name[m[K
+[2.181s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:63:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct diffdrive_arduino::DiffDriveArduinoHardware::Config[m[K’ has no member named ‘[01m[Kfront_right_wheel_name[m[K’; did you mean ‘[01m[Kright_wheel_name[m[K’?
+[2.181s]    63 |   wheel_rf_.setup(cfg_.[01;31m[Kfront_right_wheel_name[m[K, cfg_.enc_counts_per_rev);
+[2.181s]       |                        [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.181s]       |                        [32m[Kright_wheel_name[m[K
+[2.182s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:64:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct diffdrive_arduino::DiffDriveArduinoHardware::Config[m[K’ has no member named ‘[01m[Kback_left_wheel_name[m[K’; did you mean ‘[01m[Kleft_wheel_name[m[K’?
+[2.182s]    64 |   wheel_lb_.setup(cfg_.[01;31m[Kback_left_wheel_name[m[K, cfg_.enc_counts_per_rev);
+[2.182s]       |                        [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[2.182s]       |                        [32m[Kleft_wheel_name[m[K
+[2.182s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:65:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct diffdrive_arduino::DiffDriveArduinoHardware::Config[m[K’ has no member named ‘[01m[Kback_right_wheel_name[m[K’; did you mean ‘[01m[Kright_wheel_name[m[K’?
+[2.182s]    65 |   wheel_rb_.setup(cfg_.[01;31m[Kback_right_wheel_name[m[K, cfg_.enc_counts_per_rev);
+[2.182s]       |                        [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[2.182s]       |                        [32m[Kright_wheel_name[m[K
+[2.191s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::return_type diffdrive_arduino::DiffDriveArduinoHardware::read(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[2.191s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:241:32:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[Kwheel_rb_[m[K’
+[2.191s]   241 |   wheel_lb_.pos = wheel_lf_.pos
+[2.192s]       |                                [01;31m[K^[m[K
+[2.192s]       |                                [32m[K;[m[K
+[2.192s]   242 |   [32m[Kwheel_rb_[m[K.pos = wheel_rf_.pos
+[2.192s]       |   [32m[K~~~~~~~~~[m[K                     
+[2.192s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::return_type diffdrive_arduino::DiffDriveArduinoHardware::write(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[2.192s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:265:7:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmotor_lb_counts_per_loop[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[2.192s]   265 |   int [01;35m[Kmotor_lb_counts_per_loop[m[K = wheel_lb_.cmd / wheel_lb_.rads_per_count / cfg_.loop_rate;
+[2.192s]       |       [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.192s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:266:7:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmotor_rb_counts_per_loop[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[2.192s]   266 |   int [01;35m[Kmotor_rb_counts_per_loop[m[K = wheel_rb_.cmd / wheel_rb_.rads_per_count / cfg_.loop_rate;
+[2.192s]       |       [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.636s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::return_type diffdrive_arduino::DiffDriveArduinoHardware::read(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[2.636s] [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/diffdrive_arduino/hardware/diffbot_system.cpp:253:1:[m[K [01;35m[Kwarning: [m[Kcontrol reaches end of non-void function [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreturn-type-Wreturn-type]8;;[m[K]
+[2.636s]   253 | [01;35m[K}[m[K
+[2.636s]       | [01;35m[K^[m[K
+[2.659s] gmake[2]: *** [CMakeFiles/diffdrive_arduino.dir/build.make:76: CMakeFiles/diffdrive_arduino.dir/hardware/diffbot_system.cpp.o] Error 1
+[2.659s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/diffdrive_arduino.dir/all] Error 2
+[2.659s] gmake: *** [Makefile:146: all] Error 2
+[2.765s] Invoked command in '/home/adam/Desktop/sdp-team-12/control_ws/build/diffdrive_arduino' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/adam/Desktop/sdp-team-12/control_ws/build/diffdrive_arduino -- -j8 -l8
