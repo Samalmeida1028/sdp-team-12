@@ -1,1 +1,0 @@
-/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_5/description/launch/view_robot.launch.py
