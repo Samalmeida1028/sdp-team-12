@@ -1,0 +1,19 @@
+In file included from [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:15[m[K:
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:81:11:[m[K [01;31m[Kerror: [m[K‘[01m[KPublisher[m[K’ in namespace ‘[01m[Krclcpp[m[K’ does not name a template type
+   81 |   rclcpp::[01;31m[KPublisher[m[K<std_msgs::msg::Float32MultiArray>::SharedPtr velpub;
+      |           [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::CallbackReturn ros2_control_demo_example_2::DiffBotSystemHardware::on_init(const hardware_interface::HardwareInfo&)[m[K’:
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:53:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kvelpub[m[K’ was not declared in this scope
+   53 |   [01;31m[Kvelpub[m[K = rclcpp::Node::create_publisher<std_msgs::msg::Float32MultiArray>("/wheel/vels", 10);
+      |   [01;31m[K^~~~~~[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:53:76:[m[K [01;31m[Kerror: [m[Kcannot call member function ‘[01m[Kstd::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&) [with MessageT = std_msgs::msg::Float32MultiArray_<std::allocator<void> >; AllocatorT = std::allocator<void>; PublisherT = rclcpp::Publisher<std_msgs::msg::Float32MultiArray_<std::allocator<void> >, std::allocator<void> >; std::string = std::__cxx11::basic_string<char>][m[K’ without object
+   53 | [01;31m[Kcpp::Node::create_publisher<std_msgs::msg::Float32MultiArray>("/wheel/vels", 10)[m[K;
+      | [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~[m[K
+
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::return_type ros2_control_demo_example_2::DiffBotSystemHardware::write(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:221:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kvelpub[m[K’ was not declared in this scope
+  221 |   [01;31m[Kvelpub[m[K->publish(wheelvels);
+      |   [01;31m[K^~~~~~[m[K
+gmake[2]: *** [CMakeFiles/ros2_control_demo_example_2.dir/build.make:76: CMakeFiles/ros2_control_demo_example_2.dir/hardware/diffbot_system.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/ros2_control_demo_example_2.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

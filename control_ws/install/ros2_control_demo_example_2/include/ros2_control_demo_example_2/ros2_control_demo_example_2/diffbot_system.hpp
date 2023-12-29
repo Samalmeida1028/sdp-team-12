@@ -29,8 +29,6 @@
 #include "rclcpp/time.hpp"
 #include "rclcpp_lifecycle/node_interfaces/lifecycle_node_interface.hpp"
 #include "rclcpp_lifecycle/state.hpp"
-#include "std_msgs/msg/float32_multi_array.hpp"
-#include "std_msgs/msg/multi_array_dimension.hpp"
 
 #include "ros2_control_demo_example_2/visibility_control.h"
 
@@ -76,8 +74,6 @@ private:
   std::vector<double> hw_commands_;
   std::vector<double> hw_positions_;
   std::vector<double> hw_velocities_;
-
-  std_msgs::msg::Float32MultiArray wheelvels;
 };
 
 }  // namespace ros2_control_demo_example_2
