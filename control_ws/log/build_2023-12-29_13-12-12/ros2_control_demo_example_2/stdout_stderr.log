@@ -1,0 +1,9 @@
+[35m[1mConsolidate compiler generated dependencies of target ros2_control_demo_example_2[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/ros2_control_demo_example_2.dir/hardware/diffbot_system.cpp.o[0m
+In file included from [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:15[m[K:
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:38:1:[m[K [01;31m[Kerror: [m[Kexpected class-name before ‘[01m[K{[m[K’ token
+   38 | [01;31m[K{[m[K
+      | [01;31m[K^[m[K
+gmake[2]: *** [CMakeFiles/ros2_control_demo_example_2.dir/build.make:76: CMakeFiles/ros2_control_demo_example_2.dir/hardware/diffbot_system.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/ros2_control_demo_example_2.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

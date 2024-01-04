@@ -1,0 +1,114 @@
+In file included from [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:15[m[K:
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:37:82:[m[K [01;31m[Kerror: [m[K‘[01m[Krclpcpp[m[K’ has not been declared
+   37 | ardware : public hardware_interface::SystemInterface, public [01;31m[Krclpcpp[m[K::Node
+      |                                                              [01;31m[K^~~~~~~[m[K
+
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:37:91:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K{[m[K’ before ‘[01m[KNode[m[K’
+   37 | dware : public hardware_interface::SystemInterface, public rclpcpp::[01;31m[KNode[m[K
+      |                                                                     [01;31m[K^~~~[m[K
+
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:39:1:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kpublic[m[K’
+   39 | [01;31m[Kpublic[m[K:
+      | [01;31m[K^~~~~~[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:39:1:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K}[m[K’ before ‘[01m[Kpublic[m[K’
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:38:1:[m[K [01;36m[Knote: [m[Kto match this ‘[01m[K{[m[K’
+   38 | [01;36m[K{[m[K
+      | [01;36m[K^[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:44:52:[m[K [01;31m[Kerror: [m[Kvirt-specifiers in ‘[01m[Kon_init[m[K’ not allowed outside a class definition
+   44 |     const hardware_interface::HardwareInfo & info) [01;31m[Koverride[m[K;
+      |                                                    [01;31m[K^~~~~~~~[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:47:77:[m[K [01;31m[Kerror: [m[Kvirt-specifiers in ‘[01m[Kexport_state_interfaces[m[K’ not allowed outside a class definition
+   47 | <hardware_interface::StateInterface> export_state_interfaces() [01;31m[Koverride[m[K;
+      |                                                                [01;31m[K^~~~~~~~[m[K
+
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:50:81:[m[K [01;31m[Kerror: [m[Kvirt-specifiers in ‘[01m[Kexport_command_interfaces[m[K’ not allowed outside a class definition
+   50 | dware_interface::CommandInterface> export_command_interfaces() [01;31m[Koverride[m[K;
+      |                                                                [01;31m[K^~~~~~~~[m[K
+
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:54:53:[m[K [01;31m[Kerror: [m[Kvirt-specifiers in ‘[01m[Kon_activate[m[K’ not allowed outside a class definition
+   54 |     const rclcpp_lifecycle::State & previous_state) [01;31m[Koverride[m[K;
+      |                                                     [01;31m[K^~~~~~~~[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:58:53:[m[K [01;31m[Kerror: [m[Kvirt-specifiers in ‘[01m[Kon_deactivate[m[K’ not allowed outside a class definition
+   58 |     const rclcpp_lifecycle::State & previous_state) [01;31m[Koverride[m[K;
+      |                                                     [01;31m[K^~~~~~~~[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:62:65:[m[K [01;31m[Kerror: [m[Kvirt-specifiers in ‘[01m[Kread[m[K’ not allowed outside a class definition
+   62 |    const rclcpp::Time & time, const rclcpp::Duration & period) [01;31m[Koverride[m[K;
+      |                                                                [01;31m[K^~~~~~~~[m[K
+
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:66:65:[m[K [01;31m[Kerror: [m[Kvirt-specifiers in ‘[01m[Kwrite[m[K’ not allowed outside a class definition
+   66 |    const rclcpp::Time & time, const rclcpp::Duration & period) [01;31m[Koverride[m[K;
+      |                                                                [01;31m[K^~~~~~~~[m[K
+
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:68:1:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kprivate[m[K’
+   68 | [01;31m[Kprivate[m[K:
+      | [01;31m[K^~~~~~~[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:79:1:[m[K [01;31m[Kerror: [m[Kexpected declaration before ‘[01m[K}[m[K’ token
+   79 | [01;31m[K}[m[K  // namespace ros2_control_demo_example_2
+      | [01;31m[K^[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:30:48:[m[K [01;31m[Kerror: [m[Kinvalid use of incomplete type ‘[01m[Kclass ros2_control_demo_example_2::DiffBotSystemHardware[m[K’
+   30 |   const hardware_interface::HardwareInfo & info[01;31m[K)[m[K
+      |                                                [01;31m[K^[m[K
+In file included from [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:15[m[K:
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:37:7:[m[K [01;36m[Knote: [m[Kforward declaration of ‘[01m[Kclass ros2_control_demo_example_2::DiffBotSystemHardware[m[K’
+   37 | class [01;36m[KDiffBotSystemHardware[m[K : public hardware_interface::SystemInterface, public rclpcpp::Node
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:99:96:[m[K [01;31m[Kerror: [m[Kinvalid use of incomplete type ‘[01m[Kclass ros2_control_demo_example_2::DiffBotSystemHardware[m[K’
+   99 | erface::StateInterface> DiffBotSystemHardware::export_state_interfaces([01;31m[K)[m[K
+      |                                                                        [01;31m[K^[m[K
+
+In file included from [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:15[m[K:
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:37:7:[m[K [01;36m[Knote: [m[Kforward declaration of ‘[01m[Kclass ros2_control_demo_example_2::DiffBotSystemHardware[m[K’
+   37 | class [01;36m[KDiffBotSystemHardware[m[K : public hardware_interface::SystemInterface, public rclpcpp::Node
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:113:100:[m[K [01;31m[Kerror: [m[Kinvalid use of incomplete type ‘[01m[Kclass ros2_control_demo_example_2::DiffBotSystemHardware[m[K’
+  113 | ce::CommandInterface> DiffBotSystemHardware::export_command_interfaces([01;31m[K)[m[K
+      |                                                                        [01;31m[K^[m[K
+
+In file included from [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:15[m[K:
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:37:7:[m[K [01;36m[Knote: [m[Kforward declaration of ‘[01m[Kclass ros2_control_demo_example_2::DiffBotSystemHardware[m[K’
+   37 | class [01;36m[KDiffBotSystemHardware[m[K : public hardware_interface::SystemInterface, public rclpcpp::Node
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:126:53:[m[K [01;31m[Kerror: [m[Kinvalid use of incomplete type ‘[01m[Kclass ros2_control_demo_example_2::DiffBotSystemHardware[m[K’
+  126 |   const rclcpp_lifecycle::State & /*previous_state*/[01;31m[K)[m[K
+      |                                                     [01;31m[K^[m[K
+In file included from [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:15[m[K:
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:37:7:[m[K [01;36m[Knote: [m[Kforward declaration of ‘[01m[Kclass ros2_control_demo_example_2::DiffBotSystemHardware[m[K’
+   37 | class [01;36m[KDiffBotSystemHardware[m[K : public hardware_interface::SystemInterface, public rclpcpp::Node
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:156:53:[m[K [01;31m[Kerror: [m[Kinvalid use of incomplete type ‘[01m[Kclass ros2_control_demo_example_2::DiffBotSystemHardware[m[K’
+  156 |   const rclcpp_lifecycle::State & /*previous_state*/[01;31m[K)[m[K
+      |                                                     [01;31m[K^[m[K
+In file included from [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:15[m[K:
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:37:7:[m[K [01;36m[Knote: [m[Kforward declaration of ‘[01m[Kclass ros2_control_demo_example_2::DiffBotSystemHardware[m[K’
+   37 | class [01;36m[KDiffBotSystemHardware[m[K : public hardware_interface::SystemInterface, public rclpcpp::Node
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:175:65:[m[K [01;31m[Kerror: [m[Kinvalid use of incomplete type ‘[01m[Kclass ros2_control_demo_example_2::DiffBotSystemHardware[m[K’
+  175 |   const rclcpp::Time & /*time*/, const rclcpp::Duration & period[01;31m[K)[m[K
+      |                                                                 [01;31m[K^[m[K
+In file included from [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:15[m[K:
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:37:7:[m[K [01;36m[Knote: [m[Kforward declaration of ‘[01m[Kclass ros2_control_demo_example_2::DiffBotSystemHardware[m[K’
+   37 | class [01;36m[KDiffBotSystemHardware[m[K : public hardware_interface::SystemInterface, public rclpcpp::Node
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:196:69:[m[K [01;31m[Kerror: [m[Kinvalid use of incomplete type ‘[01m[Kclass ros2_control_demo_example_2::DiffBotSystemHardware[m[K’
+  196 |   const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/[01;31m[K)[m[K
+      |                                                                     [01;31m[K^[m[K
+In file included from [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:15[m[K:
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:37:7:[m[K [01;36m[Knote: [m[Kforward declaration of ‘[01m[Kclass ros2_control_demo_example_2::DiffBotSystemHardware[m[K’
+   37 | class [01;36m[KDiffBotSystemHardware[m[K : public hardware_interface::SystemInterface, public rclpcpp::Node
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/class_loader/class_loader/class_loader_core.hpp:57[m[K,
+                 from [01m[K/opt/ros/humble/include/class_loader/class_loader/class_loader.hpp:55[m[K,
+                 from [01m[K/opt/ros/humble/include/pluginlib/pluginlib/class_list_macros.hpp:40[m[K,
+                 from [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:217[m[K:
+/opt/ros/humble/include/class_loader/class_loader/meta_object.hpp: In instantiation of ‘[01m[KB* class_loader::impl::MetaObject<C, B>::create() const [with C = ros2_control_demo_example_2::DiffBotSystemHardware; B = hardware_interface::SystemInterface][m[K’:
+[01m[K/opt/ros/humble/include/class_loader/class_loader/meta_object.hpp:216:7:[m[K   required from here
+[01m[K/opt/ros/humble/include/class_loader/class_loader/meta_object.hpp:218:12:[m[K [01;31m[Kerror: [m[Kinvalid use of incomplete type ‘[01m[Kclass ros2_control_demo_example_2::DiffBotSystemHardware[m[K’
+  218 |     return [01;31m[Knew C[m[K;
+      |            [01;31m[K^~~~~[m[K
+In file included from [01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/diffbot_system.cpp:15[m[K:
+[01m[K/home/adam/Desktop/sdp-team-12/control_ws/src/ros2_control_demos/example_2/hardware/include/ros2_control_demo_example_2/diffbot_system.hpp:37:7:[m[K [01;36m[Knote: [m[Kforward declaration of ‘[01m[Kclass ros2_control_demo_example_2::DiffBotSystemHardware[m[K’
+   37 | class [01;36m[KDiffBotSystemHardware[m[K : public hardware_interface::SystemInterface, public rclpcpp::Node
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/ros2_control_demo_example_2.dir/build.make:76: CMakeFiles/ros2_control_demo_example_2.dir/hardware/diffbot_system.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/ros2_control_demo_example_2.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
