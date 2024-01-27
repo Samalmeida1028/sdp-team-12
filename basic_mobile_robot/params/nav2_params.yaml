@@ -228,6 +228,7 @@ local_costmap:
       publish_frequency: 2.0
       global_frame: odom
       robot_base_frame: base_link
+      lethal_cost_threshold: 100
       use_sim_time: False
       rolling_window: true
       width: 5
@@ -294,7 +295,7 @@ global_costmap:
         plugin: "nav2_costmap_2d::ObstacleLayer"
         enabled: True
         footprint_clearing_enabled: true
-        observation_sources: /scan
+        observation_sources: scan
         scan:
           topic: /scan
           max_obstacle_height: 2.0
@@ -395,14 +396,15 @@ behavior_server:
     global_costmap_topic: global_costmap/costmap_raw
     global_footprint_topic: global_costmap/published_footprint
     cycle_frequency: 10.0
-    recovery_plugins: ["spin", "backup", "wait"]
+    behavior_plugins: ["spin", "backup", "wait"]
     spin:
       plugin: "nav2_behaviors/Spin"
     backup:
       plugin: "nav2_behaviors/BackUp"
     wait:
       plugin: "nav2_behaviors/Wait"
-    global_frame: odom
+    global_frame: map
+    local_frame: odom
     robot_base_frame: base_link
     transform_timeout: 0.1
     use_sim_time: False
