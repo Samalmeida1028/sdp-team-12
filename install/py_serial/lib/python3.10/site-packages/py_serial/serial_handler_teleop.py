@@ -24,14 +24,14 @@ class SerHandlerTeleop(Node):
                     baudrate=115200,
                     timeout=0.01)
 
-        pygame.joystick.init()
-        pygame.init()
+        # pygame.joystick.init()
+        # pygame.init()
 
-        self.joysticks = []
+        # self.joysticks = []
 
-        for joy in range(pygame.joystick.get_count()):
-            self.joysticks.append(pygame.joystick.Joystick(joy))
-            self.joysticks[joy].init()
+        # for joy in range(pygame.joystick.get_count()):
+        #     self.joysticks.append(pygame.joystick.Joystick(joy))
+        #     self.joysticks[joy].init()
 
         self.encoder_publisher = self.create_publisher(Float32MultiArray, "/encoder_data", 1)
         self.imu_publisher = self.create_publisher(Float32MultiArray, "/imu_data", 1)
@@ -51,13 +51,13 @@ class SerHandlerTeleop(Node):
 
 
     def send_motor_commands(self):
-        pygame.event.get()
-        stick = self.joysticks[0]
-        x = stick.get_axis(0)
-        y = stick.get_axis(1)
-        angular = math.atan2(y,x)
-        print(y,angular)
-        self.ser.write(bytearray(json.dumps([y,x]) + "\n", encoding="utf-8"))
+        # pygame.event.get()
+        # stick = self.joysticks[0]
+        # x = stick.get_axis(0)
+        # y = stick.get_axis(1)
+        # angular = math.atan2(y,x)
+        # print(y,angular)
+        self.ser.write(bytearray(json.dumps([0.5,0]) + "\n", encoding="utf-8"))
 
     def get_encoder_info(self):
         msg = []

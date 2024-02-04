@@ -228,7 +228,7 @@ local_costmap:
       publish_frequency: 2.0
       global_frame: odom
       robot_base_frame: base_link
-      lethal_cost_threshold: 150
+      lethal_cost_threshold: 100
       use_sim_time: False
       rolling_window: true
       width: 5
