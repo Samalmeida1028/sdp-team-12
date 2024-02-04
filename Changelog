@@ -6,4 +6,14 @@
 
 3. Removed - math.pi / 4 from twist angular Z in encoder odom publisher because we are no longer using Mecanum wheels
 
-4. Update ceres loss function to HuberLoss in SLAM configuration
+4. Update ceres loss function to HuberLoss in SLAM configuration and change trust strategy to DOGLEG
+
+5. RPLiDAR direction switch so that the TF for it on URDF is facing front instead of back of robot. May cause map jump issue? -> Did not do anything
+
+6. Change encoder and IMU odom publisher period from 0.16 -> 0.016 and match with SLAM map transform publishing
+
+7. Add encoder position to /wheel/odom in EKF because we have better wheels. Odometry update is way better now
+
+8. Commented out LiDAR odometry for EKF
+
+9. Tried messing around on Pico code. The big issue now is the robot does not turn as we want it to. No point turn capability with  nav,and 90 degree turning is also bad. Need to figure out and fix the turning. Other than that, odometry is so much better and the updates have minor errors only. 

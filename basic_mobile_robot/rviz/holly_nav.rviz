@@ -6,13 +6,9 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /RobotModel1
-        - /Odometry1
         - /Odometry1/Shape1
         - /Odometry1/Covariance1/Position1
-        - /Wheel Odom1
         - /Wheel Odom1/Shape1
-        - /Lidar Odom1
         - /Lidar Odom1/Shape1
       Splitter Ratio: 0.5
     Tree Height: 797
@@ -461,6 +457,52 @@ Visualization Manager:
         Value: /global_costmap/costmap_updates
       Use Timestamp: false
       Value: true
+    - Class: rviz_default_plugins/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+        base_link:
+          Value: true
+        drivewhl_lb_link:
+          Value: true
+        drivewhl_lf_link:
+          Value: true
+        drivewhl_rb_link:
+          Value: true
+        drivewhl_rf_link:
+          Value: true
+        imu_link:
+          Value: true
+        lidar_link:
+          Value: true
+        map:
+          Value: true
+        odom:
+          Value: true
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: false
+      Tree:
+        map:
+          odom:
+            base_link:
+              drivewhl_lb_link:
+                {}
+              drivewhl_lf_link:
+                {}
+              drivewhl_rb_link:
+                {}
+              drivewhl_rf_link:
+                {}
+              imu_link:
+                {}
+              lidar_link:
+                {}
+      Update Interval: 0
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -507,7 +549,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 15.688484191894531
+      Distance: 3.6829888820648193
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -545,5 +587,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 925
-  X: 995
+  X: 1510
   Y: 27

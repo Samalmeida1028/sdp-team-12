@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan, Samuel Almeida
 # Date created: 11/17/23
-# Date last modified: 12/1/23
+# Date last modified: 2/4/24
 # Description: Use encoder values and turn into Odometry messages
 
 from nav_msgs.msg import Odometry
@@ -30,7 +30,7 @@ class Sensor2Odom(Node):
         self.encoder_sub = self.create_subscription(Float32MultiArray, "encoder_data", self.encoder_to_odom, 10)
         self.imu_sub = self.create_subscription(Float32MultiArray, "/imu_data", self.imu_to_odom, 10)
 
-        time_period = 0.16
+        time_period = 0.016
         self.timer = self.create_timer(time_period, self.timer_callback)
 
         self.encmsg = Odometry()
@@ -82,8 +82,8 @@ class Sensor2Odom(Node):
         dy = 0
 
         if(vel_xy != 0):
-            dx = vel_xy*math.cos(vel_th)*.1
-            dy = vel_xy*math.sin(vel_th)*.1
+            dx = vel_xy*math.cos(vel_th)
+            dy = vel_xy*math.sin(vel_th)
             px = pos_xy*math.sin(vel_th)
             py = pos_xy*math.cos(vel_th)
 
