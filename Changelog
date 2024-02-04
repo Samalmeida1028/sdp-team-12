@@ -1,0 +1,9 @@
+2/4/24:
+
+1. Differential parameter in EKF: For wheel encoders, get position and velocity. Then, differentiate the position and compare to velocity to provide better odometry of robot compared to just using velocity -- commented out at the moment
+
+2. Added extra level of averaging between front and back wheels before average left and right sides for both position and velocity
+
+3. Removed - math.pi / 4 from twist angular Z in encoder odom publisher because we are no longer using Mecanum wheels
+
+4. Update ceres loss function to HuberLoss in SLAM configuration

@@ -66,10 +66,16 @@ class Sensor2Odom(Node):
         lf_vel = encoder_array[4]*self.wheel_radius
         rf_vel = encoder_array[5]*self.wheel_radius
 
-        vel_xy = (lf_vel+rf_vel) / 2
-        pos_xy = (lf_pos + rf_pos) / 2
+        l_pos = (lb_pos + lf_pos) / 2
+        r_pos = rf_pos # (rb_pos + rf_pos) / 2
 
-        vel_th = (lf_vel-rf_vel) / self.wheel_sep
+        l_vel = (lb_vel + lf_vel) / 2
+        r_vel = rf_vel # (rb_vel + rf_vel) / 2
+
+        vel_xy = (l_vel + r_vel) / 2
+        pos_xy = (l_pos + r_pos) / 2
+
+        vel_th = (l_vel-r_vel) / self.wheel_sep
         
         self.phi -= vel_th
         dx = 0
@@ -90,7 +96,7 @@ class Sensor2Odom(Node):
         self.encmsg.pose.pose.orientation = Quaternion(x=rot_quat[0],y=rot_quat[1],z=rot_quat[2],w=rot_quat[3])
 
         self.encmsg.twist.twist.linear.x = vel_xy
-        self.encmsg.twist.twist.angular.z = vel_th - math.pi/4
+        self.encmsg.twist.twist.angular.z = vel_th # - math.pi/4
 
         self.count+=1
         
