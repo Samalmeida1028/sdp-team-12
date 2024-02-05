@@ -6,13 +6,12 @@
 
 # Import ROS specific packages
 import rclpy
-import math
 from rclpy.node import Node
 from std_msgs.msg import Float32MultiArray
+from geometry_msgs.msg import Twist
 import serial
 import json
 import pygame
-import std_msgs
 from std_msgs.msg import String
 
 class SerHandlerTeleop(Node):
@@ -35,11 +34,12 @@ class SerHandlerTeleop(Node):
 
         self.encoder_publisher = self.create_publisher(Float32MultiArray, "/encoder_data", 1)
         self.imu_publisher = self.create_publisher(Float32MultiArray, "/imu_data", 1)
+        self.keyboard_sub = self.create_subscription(Twist, "/cmd_vel", self.send_motor_commands, 10)
         # self.cmdvel_subscriber = self.create_subscription(Float32MultiArray, "cmd_vel_vectors", self.send_motor_commands, 10)
 
         timer_period = .05
         self.timer = self.create_timer(timer_period, self.get_encoder_info)
-        self.timer = self.create_timer(timer_period, self.send_motor_commands)
+        # self.timer = self.create_timer(timer_period, self.send_motor_commands)
 
         self.get_logger().info('Initialized timer')
 
@@ -48,16 +48,20 @@ class SerHandlerTeleop(Node):
         self.cmdvel_data = Float32MultiArray()
 
         self.wheel_radius = 0.0508
+        self.robot_radius = 0.18
 
-
-    def send_motor_commands(self):
+    def send_motor_commands(self, msg):
         # pygame.event.get()
         # stick = self.joysticks[0]
         # x = stick.get_axis(0)
         # y = stick.get_axis(1)
         # angular = math.atan2(y,x)
         # print(y,angular)
-        self.ser.write(bytearray(json.dumps([0.5,0]) + "\n", encoding="utf-8"))
+
+        x = msg.linear.x
+        z = msg.angular.z * self.robot_radius
+        print(x, z)
+        self.ser.write(bytearray(json.dumps([x,z]) + "\n", encoding="utf-8"))
 
     def get_encoder_info(self):
         msg = []

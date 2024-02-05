@@ -17,3 +17,11 @@
 8. Commented out LiDAR odometry for EKF
 
 9. Tried messing around on Pico code. The big issue now is the robot does not turn as we want it to. No point turn capability with  nav,and 90 degree turning is also bad. Need to figure out and fix the turning. Other than that, odometry is so much better and the updates have minor errors only. 
+
+2/5/24:
+
+1. Updated serial handler teleop to take in Twist messages from teleop_twist_keyboard to test out pico code
+
+2. Changed Pico code to match diff drive dynamics equations as per ros2_control. The Twist messages are being received a lot better, but robot is noticeably faster. 
+
+3. 
