@@ -76,8 +76,12 @@ class Sensor2Odom(Node):
         pos_xy = (l_pos + r_pos) / 2
 
         vel_th = (l_vel-r_vel) / self.wheel_sep
+        pos_th = (l_pos-r_pos) / self.wheel_sep
+
+        vel_ang = (l_vel-r_vel) / self.wheel_radius # dividing by correct number
         
         self.phi -= vel_th
+        self.phi = pos_th
         dx = 0
         dy = 0
 
@@ -96,7 +100,7 @@ class Sensor2Odom(Node):
         self.encmsg.pose.pose.orientation = Quaternion(x=rot_quat[0],y=rot_quat[1],z=rot_quat[2],w=rot_quat[3])
 
         self.encmsg.twist.twist.linear.x = vel_xy
-        self.encmsg.twist.twist.angular.z = vel_th # - math.pi/4
+        self.encmsg.twist.twist.angular.z = vel_ang
 
         self.count+=1
         

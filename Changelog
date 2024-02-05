@@ -25,3 +25,5 @@
 2. Changed Pico code to match diff drive dynamics equations as per ros2_control. The Twist messages are being received a lot better, but robot is noticeably faster
 
 3. Tried experimenting with ros2_control again but failed to fix serial issue
+
+4. When robot made a full 180 degree turn, it had turned less on RViz. This is because we are dividing by wheel separation instead of wheel radius in sens2odom.py. Fixing this number should cause the turn amount to be correct 
