@@ -22,6 +22,6 @@
 
 1. Updated serial handler teleop to take in Twist messages from teleop_twist_keyboard to test out pico code
 
-2. Changed Pico code to match diff drive dynamics equations as per ros2_control. The Twist messages are being received a lot better, but robot is noticeably faster. 
+2. Changed Pico code to match diff drive dynamics equations as per ros2_control. The Twist messages are being received a lot better, but robot is noticeably faster
 
-3. 
+3. Tried experimenting with ros2_control again but failed to fix serial issue
