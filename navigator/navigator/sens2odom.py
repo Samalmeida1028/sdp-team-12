@@ -20,7 +20,7 @@ class Sensor2Odom(Node):
         super().__init__('sens2odom')
         self.current_time = self.get_clock().now().to_msg().sec
 
-        self.wheel_sep = 0.41 # m
+        self.wheel_sep = 0.3683 # m
         self.wheel_radius = 0.0508 # m
         self.phi = 0
 
@@ -81,7 +81,7 @@ class Sensor2Odom(Node):
         vel_ang = (l_vel-r_vel) / self.wheel_radius # dividing by correct number
         
         self.phi -= vel_th
-        self.phi = pos_th
+        # self.phi = pos_th
         dx = 0
         dy = 0
 

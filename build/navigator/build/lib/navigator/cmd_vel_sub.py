@@ -18,15 +18,13 @@ class CmdVelSub(Node):
         timer_period = .01
         self.timer = self.create_timer(timer_period,self.vector_pub)
         self.v = Float32MultiArray()
-        
-        self.robot_radius = 0.18
 
     def cmdvel_callback(self, msg):
         print(msg)
         tvel = msg.linear.x
         rvel = msg.angular.z
 
-        self.v.data = [tvel, rvel * self.robot_radius]
+        self.v.data = [tvel, rvel]
     
     def vector_pub(self):
         self.vector_publisher.publish(self.v)
