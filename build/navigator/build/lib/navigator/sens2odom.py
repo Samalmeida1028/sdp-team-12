@@ -91,7 +91,7 @@ class Sensor2Odom(Node):
             px = pos_xy*math.sin(vel_th)
             py = pos_xy*math.cos(vel_th)
 
-        rot = Rotation.from_euler('xyz', [0,0, self.phi*10], degrees=True)
+        rot = Rotation.from_euler('xyz', [0,0, self.phi], degrees=True)
         rot_quat = rot.as_quat() # convert angle to quaternion format
 
         self.encmsg.pose.pose.position.x += dx
