@@ -15,10 +15,15 @@ from std_msgs.msg import String
 class SerHandler(Node):
     def __init__(self):
         super().__init__('ser_handle')
-        self.ser = serial.Serial(
+        self.motor_serial = serial.Serial(
                     '/dev/ttyACM1',
                     baudrate=115200,
                     timeout=0.01)
+        # self.ttracking_serial = serial.Serial(  #this is for later for full integration, right now serial is open on image_pub
+        #             '/dev/ttyACM3',
+        #             baudrate=115200,
+        #             timeout=0.01)
+        
 
         self.encoder_publisher = self.create_publisher(Float32MultiArray, "/encoder_data", 1)
         self.imu_publisher = self.create_publisher(Float32MultiArray, "/imu_data", 1)
@@ -38,12 +43,12 @@ class SerHandler(Node):
         self.debug_publisher = self.create_publisher(String, "/encoder_debug", 1)
 
     def send_motor_commands(self,msg):
-        self.ser.write(bytes(json.dumps(list(msg.data)) + "\n", "utf-8"))
+        self.motor_serial.write(bytes(json.dumps(list(msg.data)) + "\n", "utf-8"))
 
     def get_encoder_info(self):
         msg = []
-        while(self.ser.in_waiting): 
-            msg = self.ser.readline()
+        while(self.motor_serial.in_waiting): 
+            msg = self.motor_serial.readline()
         if msg:
             # print(msg.decode())
             info = json.loads(msg.decode())

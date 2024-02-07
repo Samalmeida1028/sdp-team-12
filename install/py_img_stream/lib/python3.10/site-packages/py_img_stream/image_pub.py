@@ -23,22 +23,26 @@ class ImagePublisher(Node):
   def __init__(self):
     super().__init__('image_pub')
     self.ser = serial.Serial(
-             '/dev/ttyACM1',
+             '/dev/ttyACM3',
              baudrate=115200,
              timeout=0.01)
     
     self.translation_publisher = self.create_publisher(Float32MultiArray, "translation_list", 1)
     self.rotation_publisher = self.create_publisher(Float32MultiArray, "rotation_list", 1)
     self.position_publisher = self.create_publisher(Float32MultiArray, "xyPos", 1)
+    self.target_location_publisher = self.create_publisher(Float32MultiArray, "target_position", 1)
     timer_period = .016
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
     self.camParams = sio.loadmat("./calibration/logi_camParams.mat")
     self.cameraMatrix = self.camParams['cameraMatrix']
     self.distCoeffs = self.camParams['distortionCoefficients']
-    self.angle = 0
+    self.angle = []
     self.marker_position = Float32MultiArray()
     self.translation = Float32MultiArray()
+    self.target_position = Float32MultiArray()
+    for i in range(4):
+      self.target_position.data.append(float(0.0))
 
     self.target_subscription = self.create_subscription(
       Int32, 
@@ -95,9 +99,10 @@ class ImagePublisher(Node):
           ids_array.data = self.currently_seen_ids
           marker_side = self.marker_side
 
-
           rvec, tvec, _ = aruco.estimatePoseSingleMarkers(marker_corner, marker_side, 
             self.cameraMatrix,self.distCoeffs)
+          self.target_position.data[0]= float(tvec[0][0][0])
+          self.target_position.data[1] = float(rvec[0][0][1])
           # translations.data = np.array(tvec[0][0]).astype(float)
           # rotations.data = np.array(rvec[0][0]).astype(float)
           
@@ -112,7 +117,8 @@ class ImagePublisher(Node):
           self.get_logger().warn("\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0]))
           stri = String()
           stri.data = "\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0])
-          self.translation.data = [float(tvec[0][0][0]),float(tvec[0][0][1]),float(tvec[0][0][2]), float(self.angle)]
+          print(self.angle)
+          self.translation.data = [float(tvec[0][0][0]),float(tvec[0][0][1]),float(tvec[0][0][2])]
           self.translation_publisher.publish(self.translation)
     return (corners,ids)
   
@@ -192,7 +198,13 @@ class ImagePublisher(Node):
             self.ser.write(bytearray(json.dumps(list(self.marker_position.data) + [self.translation.data[2]]) + "\n",encoding="utf-8"))
       serial_in = self.ser.readline()
       if serial_in:
-        self.angle = int(json.loads(serial_in.decode('utf-8')))
+        self.angle = list(json.loads(serial_in.decode('utf-8')))
+        print(self.angle)
+        self.target_position.data[2] = float(self.angle[0])
+        self.target_position.data[3] = float(self.angle[1]) 
+        self.target_location_publisher.publish(self.target_position)
+        
+        
       cv2.imshow('camera',self.frame)
       cv2.waitKey(16)
 
