@@ -1,3 +1,4 @@
+/home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/behavior_trees/navigate_to_pose_with_updates.xml
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/behavior_trees/calibrate_.xml
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/behavior_trees/navigate_to_pose_w_replanning_and_recovery.xml
 /home/adam/Desktop/sdp-team-12/install/basic_mobile_robot/share/basic_mobile_robot/config/doslam.yaml
