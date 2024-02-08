@@ -14,8 +14,8 @@
             <Sequence name="ComputeAndSmoothPath">
                 <GoalUpdater input_goal="{goal}" output_goal="{updated_goal}">
                     <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="GridBased"/>
-                    <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}"/>
                 </GoalUpdater>
+                <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}"/>
             </Sequence>
 
             <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>

@@ -36,8 +36,8 @@ class Nav2Pose(Node):
         print("Creating subscribers and callbacks...")
         self.coordsub = self.create_subscription(Float32MultiArray, '/target_position', self.setgoal, 10)
         self.odomsub = self.create_subscription(Odometry, '/odometry/filtered', self.set_current_pose, 10)
-        self.goalupdaterpub = self.create_publisher(PoseStamped, "/goal_update", 10)
-        
+        self.goalupdaterpub = self.create_publisher(PoseStamped, "/goal_pose", 10)
+
         time_period = 0.5
         self.timer = self.create_timer(time_period, self.nav2pose_callback)
 
@@ -45,7 +45,7 @@ class Nav2Pose(Node):
 
     def set_current_pose(self, odommsg):
         self.current_pose.header.frame_id = 'map'
-        self.current_pose.header.stamp = self.navigator.get_clock().now().to_msg()
+        self.current_pose.header.stamp = self.get_clock().now().to_msg()
 
         self.current_pose.pose.position = odommsg.pose.pose.position
         self.current_pose.pose.orientation = odommsg.pose.pose.orientation
@@ -55,7 +55,7 @@ class Nav2Pose(Node):
     def setgoal(self, goalmsg):
         # goalmsg = [dist, xangle, yangle]
         self.goal.header.frame_id = 'map'
-        self.goal.header.stamp = self.navigator.get_clock().now().to_msg()
+        self.goal.header.stamp = self.get_clock().now().to_msg()
 
         d = goalmsg.data[0]*math.cos(math.radians(goalmsg.data[2])) # true dist = seen dist * sin(yangle)
         print(goalmsg)

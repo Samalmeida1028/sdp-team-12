@@ -89,7 +89,7 @@ def generate_launch_description():
         package='rplidar_ros',
         executable='rplidar_composition',
         parameters=[{
-            'serial_port': '/dev/ttyUSB0',
+            'serial_port': '/dev/ttyUSB1',
             'serial_baudrate': 115200,
             'frame_id': 'lidar_link',
             'angle_compensate': True,
@@ -172,6 +172,6 @@ def generate_launch_description():
     ld.add_action(start_slam_cmd)
     ld.add_action(start_ros2_navigation_cmd)
     ld.add_action(start_rviz_cmd)
-    # ld.add_action(start_target_tracking_cmd)
+    ld.add_action(start_target_tracking_cmd)
 
     return ld
