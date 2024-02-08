@@ -40,4 +40,10 @@
 
 5. Confirmed there is an electrical issue. After switching drivers the issue still occurred in the front left wheel. So something is wrong from connection from driver to left front motor that is causing it go ham. Will need to take apart wiring and debug extensively 
 
-6. Added functionality for target tracking to integrate with publishing, just need to get correct values of tvec and rvec
+2/8/24:
+
+1. Tried integration of target tracking and navigation. Still needs a lot of work, but we got the goal pose publishing and the robot does move toward it 
+
+2. Create a launch file that launches target_pub, image_pub, nav2pose
+
+3. Changed lines 124 and 185 in nav2_params.yaml to make robot turn less violently

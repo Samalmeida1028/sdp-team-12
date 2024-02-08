@@ -16,6 +16,9 @@ import busio
 # select the serial Data port
 ################################################################
 TOP_SPEED = 65536
+WHEEL_SEP = 0.3683
+WHEEL_RADIUS = 0.0508
+
 serial = usb_cdc.data
 serial.write_timeout = 1
 
@@ -79,29 +82,17 @@ while True:
         # print(teleop)
         if teleop:
             #print(teleop)
-            K = 40000
+            K = 30000
             lin_x = teleop[0]
             ang_z = teleop[1]
 
-            # mag = -math.sqrt(lin_x**2 + ang_z**2)
-            # phase = math.atan2(ang_z, lin_x)
-            # print(mag, phase)
-
-            # v1 = int(40000* (mag * math.sin(phase))) # FL
-            # v2 = int(40000* (mag * math.cos(phase))) # FR
-            # v3 = int(40000* (mag * math.sin(phase))) # BL
-            # v4 = int(40000* (mag * math.cos(phase))) # BR
-
-            # if lin_x == 0:
-            #     ang_z *= 3
-
-            v1 = int(-K * (lin_x + ang_z*10))
-            v2 = int(-K * (lin_x - ang_z*10))
+            v1 = int(-K * (lin_x + (ang_z * (WHEEL_SEP / 2))))
+            v2 = int(-K * (lin_x - (ang_z * (WHEEL_SEP / 2))))
             v3 = v1
             v4 = v2
 
             motors = [v1, v2, v3, v4]
-            print(motors)
+            print(teleop, motors)
 
             chassis.set_fl_wheel(v1)
             chassis.set_fr_wheel(v2)

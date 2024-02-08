@@ -121,7 +121,7 @@ smoother_server:
       path_upsampling_factor: 1     # 0 - path remains downsampled, 1 - path is upsampled back to original granularity using cubic bezier, 2... - more upsampling
       keep_start_orientation: true  # whether to prevent the start orientation from being smoothed
       keep_goal_orientation: true   # whether to prevent the gpal orientation from being smoothed
-      minimum_turning_radius: 0.40  # minimum turning radius the robot can perform. Can be set to 0.0 (or w_curve can be set to 0.0 with the same effect) for diff-drive/holonomic robots
+      minimum_turning_radius: 0.00  # minimum turning radius the robot can perform. Can be set to 0.0 (or w_curve can be set to 0.0 with the same effect) for diff-drive/holonomic robots
       w_curve: 30.0                 # weight to enforce minimum_turning_radius
       w_dist: 0.0                   # weight to bind path to original as optional replacement for cost weight
       w_smooth: 2000000.0           # weight to maximize smoothness of path
@@ -182,7 +182,7 @@ controller_server:
       min_vel_y: 0.0
       max_vel_x: 0.6
       max_vel_y: 0.6
-      max_vel_theta: 0.7
+      max_vel_theta: 1.5
       min_speed_xy: 0.0
       max_speed_xy: 0.5
       min_speed_theta: 0.0

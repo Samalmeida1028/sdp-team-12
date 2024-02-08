@@ -1,12 +1,8 @@
 # SDP Team 12
 # Date created: 11/9/23
-# Date last modified: 12/9/23
+# Date last modified: 2/8/24
 # Author: Arjun Viswanathan
 # Description: launch file to launch all necessary components for physical navigation
-
-# TODO: 
-# 1. Calibrate the odometry using the xml file in behavior_trees
-# 2. Fix odometry drifting and innacuracy over time
 
 import os
 from ament_index_python.packages import get_package_share_directory
@@ -132,6 +128,10 @@ def generate_launch_description():
                             'autostart': autostart}.items()
     )
 
+    start_target_tracking_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(os.path.join(pkg_path, 'launch', 'target_tracking.launch.py'))
+    )
+
     start_cmdvel_pub_cmd = Node(
         package='navigator',
         executable='cmdvelsub',
@@ -172,5 +172,6 @@ def generate_launch_description():
     ld.add_action(start_slam_cmd)
     ld.add_action(start_ros2_navigation_cmd)
     ld.add_action(start_rviz_cmd)
+    # ld.add_action(start_target_tracking_cmd)
 
     return ld

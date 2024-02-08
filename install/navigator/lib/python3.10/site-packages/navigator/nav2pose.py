@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 11/5/23
-# Date last modified: 11/18/23
+# Date last modified: 2/8/24
 # Description: Using Nav2 to navigate to a given pose
 
 from geometry_msgs.msg import PoseStamped
@@ -25,7 +25,8 @@ class Nav2Pose(Node):
         self.goal = PoseStamped()
 
         self.init_navigator(0.0, 0.0, 1.0)
-        self.prev_pose = self.initial_pose
+        self.prev_goal = self.initial_pose
+        self.publisher = self.create_publisher(PoseStamped, "/goal_pose", 10)
 
         # Wait for navigation to fully activate, since autostarting nav2
         #self.navigator.lifecycleStartup()
@@ -37,7 +38,7 @@ class Nav2Pose(Node):
         #self.navigator.changeMap('basic_mobile_robot/maps/slam_map.yaml')
 
         print("Creating subscribers and callbacks...")
-        self.coordsub = self.create_subscription(Float32MultiArray, '/translation_list', self.setgoal, 10)
+        self.coordsub = self.create_subscription(Float32MultiArray, '/target_position', self.setgoal, 10)
         
         time_period = 0.5
         self.timer = self.create_timer(time_period, self.nav2pose_callback)
@@ -62,35 +63,27 @@ class Nav2Pose(Node):
         # global_costmap = navigator.getGlobalCostmap()
         # local_costmap = navigator.getLocalCostmap()
 
-    def example_nav2pose(self):
-        goal_pose = PoseStamped()
-        goal_pose.header.frame_id = 'map'
-        goal_pose.header.stamp = self.navigator.get_clock().now().to_msg()
-        goal_pose.pose.position.x = -2.0
-        goal_pose.pose.position.y = -0.5
-        goal_pose.pose.orientation.w = 1.0
-
-        self.navigator.goToPose(goal_pose)
-
     def setgoal(self, goalmsg):
         # goalmsg = [xpos, ypos, dist, xangle, yangle]
         self.goal.header.frame_id = 'map'
         self.goal.header.stamp = self.navigator.get_clock().now().to_msg()
 
-        d = goalmsg.data[2]*math.cos(goalmsg.data[4]) # true dist = seen dist * sin(yangle)
+        d = goalmsg.data[0]*math.cos(math.radians(goalmsg.data[2])) # true dist = seen dist * sin(yangle)
+        print(goalmsg)
         
-        self.goal.pose.position.x = self.prev_pose.pose.position.x + (d*math.sin(goalmsg.data[3]))/100 # xf = xi + dsin(phi)
-        self.goal.pose.position.y = self.prev_pose.pose.position.y + (d*math.cos(goalmsg.data[3]))/100 # yf = yi + dcos(phi)
+        self.goal.pose.position.x = self.prev_goal.pose.position.x + (d*math.cos(math.radians(goalmsg.data[1])))/1000 # xf = xi + dsin(phi)
+        self.goal.pose.position.y = self.prev_goal.pose.position.y + (d*math.sin(math.radians(goalmsg.data[1])))/1000 # yf = yi + dcos(phi)
+        print(self.goal.pose.position)
 
-        rot = Rotation.from_euler('xyz', [0, 0, goalmsg.data[3]], degrees=True)
+        rot = Rotation.from_euler('xyz', [0, 0, goalmsg.data[1]], degrees=True)
         rot_quat = rot.as_quat() # convert angle to quaternion format
 
-        self.goal.pose.orientation.x = self.prev_pose.pose.orientation.x + rot_quat[0] # set the orientation to be looking at the marker at the end of navigation
-        self.goal.pose.orientation.y = self.prev_pose.pose.orientation.x + rot_quat[1]
-        self.goal.pose.orientation.z = self.prev_pose.pose.orientation.x + rot_quat[2]
-        self.goal.pose.orientation.w = self.prev_pose.pose.orientation.x + rot_quat[3]
+        self.goal.pose.orientation.x = self.prev_goal.pose.orientation.x + rot_quat[0] # set the orientation to be looking at the marker at the end of navigation
+        self.goal.pose.orientation.y = self.prev_goal.pose.orientation.x + rot_quat[1]
+        self.goal.pose.orientation.z = self.prev_goal.pose.orientation.x + rot_quat[2]
+        self.goal.pose.orientation.w = self.prev_goal.pose.orientation.x + rot_quat[3]
 
-        if self.goal != self.prev_pose:
+        if self.goal != self.prev_goal:
             self.startnav = True
             print("Updated goal pose!")
 
@@ -101,9 +94,11 @@ class Nav2Pose(Node):
             # smooth_path = self.navigator.smoothPath(path)
             # self.navigator.followPath(smooth_path)
 
-            if self.goal != self.prev_pose:
+            if self.goal != self.prev_goal:
+                # self.publisher.publish(self.goal)
+                # self.prev_goal = self.goal
                 self.navigator.goToPose(self.goal, behavior_tree='/home/adam/Desktop/sdp-team-12/basic_mobile_robot/behavior_trees/navigate_to_pose_w_replanning_and_recovery.xml')
-                self.prev_pose = self.goal
+                self.prev_goal = self.goal
 
             if not self.navigator.isTaskComplete():
                 # Do something with the feedback

@@ -30,7 +30,7 @@ class ImagePublisher(Node):
     self.translation_publisher = self.create_publisher(Float32MultiArray, "translation_list", 1)
     self.rotation_publisher = self.create_publisher(Float32MultiArray, "rotation_list", 1)
     self.position_publisher = self.create_publisher(Float32MultiArray, "xyPos", 1)
-    self.target_location_publisher = self.create_publisher(Float32MultiArray, "target_position", 1)
+    self.target_location_publisher = self.create_publisher(Float32MultiArray, "/target_position", 1)
     timer_period = .016
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
@@ -41,7 +41,7 @@ class ImagePublisher(Node):
     self.marker_position = Float32MultiArray()
     self.translation = Float32MultiArray()
     self.target_position = Float32MultiArray()
-    for i in range(4):
+    for i in range(3):
       self.target_position.data.append(float(0.0))
 
     self.target_subscription = self.create_subscription(
@@ -101,8 +101,8 @@ class ImagePublisher(Node):
 
           rvec, tvec, _ = aruco.estimatePoseSingleMarkers(marker_corner, marker_side, 
             self.cameraMatrix,self.distCoeffs)
-          self.target_position.data[0]= float(tvec[0][0][0])
-          self.target_position.data[1] = float(rvec[0][0][1])
+          self.target_position.data[0]= float(tvec[0][0][2])
+          # self.target_position.data[1] = float(rvec[0][0][1])
           # translations.data = np.array(tvec[0][0]).astype(float)
           # rotations.data = np.array(rvec[0][0]).astype(float)
           
@@ -114,10 +114,10 @@ class ImagePublisher(Node):
           # Pose estimation for each marker
 
           # if not self.search_for_grid or marker_id[0] not in self.grid_overall_ids:
-          self.get_logger().warn("\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0]))
+          # self.get_logger().warn("\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0]))
           stri = String()
           stri.data = "\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0])
-          print(self.angle)
+          # print(self.angle,"\n", tvec,"\n",rvec)
           self.translation.data = [float(tvec[0][0][0]),float(tvec[0][0][1]),float(tvec[0][0][2])]
           self.translation_publisher.publish(self.translation)
     return (corners,ids)
@@ -138,7 +138,8 @@ class ImagePublisher(Node):
         cY = int((topLeft[1] + bottomRight[1]) / 2.0)
         self.marker_position.data = [float(cX-(self.resolutionX//2)),float(cY-(self.resolutionY/2))]
         if(markerID == int(self.target)):
-          self.get_logger().info("target stuff")
+          pass
+          # self.get_logger().info("target stuff")
               
 
   def aruco_display(self, corners, ids):
@@ -194,14 +195,15 @@ class ImagePublisher(Node):
         self.get_pixel_pos(corners,ids)
         for (markerCorner, markerID) in zip(corners, ids):
           if(markerID == self.target):
-            self.get_logger().info("%s" % json.dumps(list(self.marker_position.data) + [self.translation.data[2]]))
+            # self.get_logger().info("%s" % json.dumps(list(self.marker_position.data) + [self.translation.data[2]]))
             self.ser.write(bytearray(json.dumps(list(self.marker_position.data) + [self.translation.data[2]]) + "\n",encoding="utf-8"))
       serial_in = self.ser.readline()
       if serial_in:
         self.angle = list(json.loads(serial_in.decode('utf-8')))
-        print(self.angle)
-        self.target_position.data[2] = float(self.angle[0])
-        self.target_position.data[3] = float(self.angle[1]) 
+        # print(self.angle)
+        self.target_position.data[1] = float(self.angle[0])
+        self.target_position.data[2] = float(self.angle[1]) 
+        print(self.target_position)
         self.target_location_publisher.publish(self.target_position)
         
         
