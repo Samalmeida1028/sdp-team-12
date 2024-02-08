@@ -47,3 +47,5 @@
 2. Create a launch file that launches target_pub, image_pub, nav2pose
 
 3. Changed lines 124 and 185 in nav2_params.yaml to make robot turn less violently
+
+4. Tested out integration. TODO in nav_physical.launch.py
