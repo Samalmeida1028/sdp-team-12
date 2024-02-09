@@ -93,7 +93,7 @@ def generate_launch_description():
         package='rplidar_ros',
         executable='rplidar_composition',
         parameters=[{
-            'serial_port': '/dev/ttyUSB1',
+            'serial_port': '/dev/ttyUSB0',
             'serial_baudrate': 115200,
             'frame_id': 'lidar_link',
             'angle_compensate': True,
