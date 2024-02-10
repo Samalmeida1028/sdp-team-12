@@ -61,3 +61,13 @@
 4. Changed current_pose updates from Odometry to TFMessage from the transform tree because the goal poses were not publishing correctly. Testing found a bunch of new errors in odometry
 
 5. Pushed to nav_unstable. Turning is the biggest issue right now that needs to be fixed in odometry
+
+2/10/24:
+
+1. Fixed odometry to be really good. It was a divide by pi in velocity of each wheel that needed to happen to fix it
+
+2. Updated robot footprint for costmaps in nav2_params.yaml so paths planned will be further away from collision
+
+3. Changed goal pose publishing from transform to odometry because the odometry is on point. Needs testing
+
+4. 

@@ -6,7 +6,7 @@
 
 from geometry_msgs.msg import PoseStamped,TransformStamped
 from tf2_msgs.msg import TFMessage
-from std_msgs.msg import Float32MultiArray
+from std_msgs.msg import Float32MultiArray,String
 from nav_msgs.msg import Odometry
 import rclpy
 from rclpy.node import Node
@@ -34,24 +34,28 @@ class Nav2Pose(Node):
 
         # print("Creating subscribers and callbacks...")
         self.coordsub = self.create_subscription(Float32MultiArray, '/target_position', self.setgoal, 10)
-        self.tfsub = self.create_subscription(TFMessage, '/tf', self.set_current_pose, 10)
+        self.tfsub = self.create_subscription(Odometry, '/odometry/filtered', self.set_current_pose, 10)
         self.goalupdaterpub = self.create_publisher(PoseStamped, "/goal_pose", 10)
         self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
+        self.currentdebugpub = self.create_publisher(String, "/rot_debug", 10)
 
         time_period = 0.5
         self.timer = self.create_timer(time_period, self.nav2pose_callback)
         # print("Ready!")
 
-    def set_current_pose(self, tfmsg : TFMessage):
-        self.current_pose.header.frame_id = 'map'
+    def set_current_pose(self, tfmsg : Odometry):
+        self.current_pose.header.frame_id = 'odom'
         self.current_pose.header.stamp = self.get_clock().now().to_msg()
+        self.current_pose.pose.position = tfmsg.pose.pose.position
+        self.current_pose.pose.orientation = tfmsg.pose.pose.orientation
 
-        tf_stamped : TransformStamped = tfmsg.transforms[0]
-        if(tf_stamped.header.frame_id == "odom"):
-            self.current_pose.pose.position.x = tf_stamped.transform.translation.x
-            self.current_pose.pose.position.y = tf_stamped.transform.translation.y
-            self.current_pose.pose.position.z = tf_stamped.transform.translation.z
-            self.current_pose.pose.orientation = tf_stamped.transform.rotation
+
+        # tf_stamped : TransformStamped = tfmsg.transforms[0]
+        # if(tf_stamped.header.frame_id == "odom"):
+        #     self.current_pose.pose.position.x = tf_stamped.transform.translation.x
+        #     self.current_pose.pose.position.y = tf_stamped.transform.translation.y
+        #     self.current_pose.pose.position.z = tf_stamped.transform.translation.z
+        #     self.current_pose.pose.orientation = tf_stamped.transform.rotation
 
         # print("Updated current pose!")
 
@@ -68,6 +72,9 @@ class Nav2Pose(Node):
         self.goal.pose.position.x = self.current_pose.pose.position.x + (d*math.cos(true_rot))/1000 # xf = xi + dsin(phi)
         self.goal.pose.position.y = self.current_pose.pose.position.y + (d*math.sin(true_rot))/1000 # yf = yi + dcos(phi)
         print(self.goal.pose.position)
+        boob = String()
+        boob.data = str(true_rot)
+        self.currentdebugpub.publish(boob)
 
         rot = Rotation.from_euler('xyz', [0, 0, true_rot], degrees=False)
         rot_quat = rot.as_quat() # convert angle to quaternion format

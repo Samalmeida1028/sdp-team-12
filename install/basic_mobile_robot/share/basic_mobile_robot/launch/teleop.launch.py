@@ -145,7 +145,7 @@ def generate_launch_description():
     ld.add_action(start_joint_state_publisher_cmd)
     ld.add_action(start_lidar_cmd)
     ld.add_action(start_slam_cmd)
-    # ld.add_action(start_target_tracking_cmd)
+    ld.add_action(start_target_tracking_cmd)
     ld.add_action(start_rviz_cmd)
 
     return ld
