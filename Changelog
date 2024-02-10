@@ -58,4 +58,6 @@
 
 3. Updated sens2odom.py with self.phi*10 to fix odom orientation updates
 
-4. Changed current_pose updates from Odometry to TFMessage from the transform tree because the goal poses were not publishing correctly. Testing to be done
+4. Changed current_pose updates from Odometry to TFMessage from the transform tree because the goal poses were not publishing correctly. Testing found a bunch of new errors in odometry
+
+5. Pushed to nav_unstable. Turning is the biggest issue right now that needs to be fixed in odometry
