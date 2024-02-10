@@ -49,3 +49,13 @@
 3. Changed lines 124 and 185 in nav2_params.yaml to make robot turn less violently
 
 4. Tested out integration. TODO in nav_physical.launch.py
+
+2/9/24:
+
+1. Some changes to nav2pose.py to update goal pose accordingly. The robot orientation was not being taken into consideration while the goal pose was published, causing error in navigation. Did not work
+
+2. Updated teleop.launch.py to have target_tracking.launch.py so we can see the goal poses being published according to the robot location while teleoperating (debugging)
+
+3. Updated sens2odom.py with self.phi*10 to fix odom orientation updates
+
+4. Changed current_pose updates from Odometry to TFMessage from the transform tree because the goal poses were not publishing correctly. Testing to be done

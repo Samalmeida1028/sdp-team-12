@@ -21,7 +21,7 @@ class Sensor2Odom(Node):
         self.current_time = self.get_clock().now().to_msg().sec
 
         self.wheel_sep = 0.3683 # m
-        self.wheel_radius = 0.0508 # m
+        self.wheel_radius = 0.0476 # m
         self.phi = 0
 
         self.odompub = self.create_publisher(Odometry, '/wheel/odom', 10)
@@ -81,22 +81,23 @@ class Sensor2Odom(Node):
         vel_ang = (l_vel-r_vel) / self.wheel_radius # dividing by correct number
         
         self.phi -= vel_th
-        # self.phi = pos_th
+        # self.phi = -pos_th
         dx = 0
         dy = 0
+
+        px = pos_xy*math.cos(pos_th)
+        py = pos_xy*math.sin(pos_th)
 
         if(vel_xy != 0):
             dx = vel_xy*math.cos(vel_th)
             dy = vel_xy*math.sin(vel_th)
-            px = pos_xy*math.sin(vel_th)
-            py = pos_xy*math.cos(vel_th)
 
         rot = Rotation.from_euler('xyz', [0,0, self.phi], degrees=True)
         rot_quat = rot.as_quat() # convert angle to quaternion format
 
         self.encmsg.pose.pose.position.x += dx
         self.encmsg.pose.pose.position.y += dy
-        self.encmsg.pose.pose.position.z = 0.0508 # 0.1008
+        self.encmsg.pose.pose.position.z = 0.0476 # 0.1008
         self.encmsg.pose.pose.orientation = Quaternion(x=rot_quat[0],y=rot_quat[1],z=rot_quat[2],w=rot_quat[3])
 
         self.encmsg.twist.twist.linear.x = vel_xy
@@ -108,9 +109,10 @@ class Sensor2Odom(Node):
         rot_str.data = str(self.phi)
         self.debug_pub.publish(rot_str)
 
-        ephi = String()
-        ephi.data = str(self.phi)
-        self.debug_pub.publish(ephi)
+        debug_data = String()
+        debug_data.data = "Rot:" + str(self.phi) + "Pos (Actual):" + str(px) + str(py) + \
+        "Pos (Integrated):" + str(self.encmsg.pose.pose.position.x) + str(self.encmsg.pose.pose.position.y)
+        self.debug_pub.publish(debug_data)
         # print(self.msg.pose)
 
     def imu_to_odom(self, msg):

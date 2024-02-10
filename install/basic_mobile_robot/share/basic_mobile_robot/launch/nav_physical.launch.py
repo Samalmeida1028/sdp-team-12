@@ -12,10 +12,6 @@ from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 
-# TODO:
-# 1. GoalUpdater behavior updates goal accordingly, but still needs an initial goal to trigger. Figure out how to do this
-# 2. Still some issues in how goal is published from camera (sometimes it is further than actually is). Figure that out too. 
-
 def generate_launch_description():
     pkg_path = os.path.join(get_package_share_directory('basic_mobile_robot'))
     nav2_dir = get_package_share_directory('nav2_bringup')
