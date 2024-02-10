@@ -68,6 +68,6 @@
 
 2. Updated robot footprint for costmaps in nav2_params.yaml so paths planned will be further away from collision
 
-3. Changed goal pose publishing from transform to odometry because the odometry is on point. Needs testing
+3. Changed goal pose publishing from transform to odometry because the odometry is on point. It is offset by some amount but it is changing with the robot movement. Needs more work
 
-4. 
+4. Merged nav_unstable into nav_physical 
