@@ -27,22 +27,25 @@ class SerHandler(Node):
                     timeout=0.01)
         
         self.serial1.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
-        while self.serial1.out_waiting > 0:
-            pass
-        # print(self.serial1)
-        response = json.loads(self.serial1.readline().decode())
-        # print(response)
-        for i in range(100):
-            print(response)
+        # while self.serial1.out_waiting > 0:
+        #     pass
+        # # print(self.serial1)
+        response = self.serial1.readline()
+        # # print(response)
+        # for i in range(100):
+            # print(response)
         if response:
-            if response == "nav":
+            if json.loads(response.decode()) == "nav":
+                print("NAV")
                 self.nav_serial = self.serial1
                 self.target_serial = self.serial2
             elif response == "tracking":
                 self.nav_serial = self.serial2
                 self.target_serial = self.serial1
-        
 
+        # self.nav_serial = self.serial1
+        # self.target_serial = self.serial2
+        
         self.encoder_publisher = self.create_publisher(Float32MultiArray, "/encoder_data", 1)
         self.imu_publisher = self.create_publisher(Float32MultiArray, "/imu_data", 1)
         self.servo_xy_publisher = self.create_publisher(Float32MultiArray, "servoxy_angle", 1)
@@ -80,7 +83,8 @@ class SerHandler(Node):
             msg = self.nav_serial.readline()
         if msg:
             # print(msg.decode())
-            info = json.loads(msg.decode())
+            info = dict(json.loads(msg.decode()))
+            # info = json.loads(info_ser)
             self.encoder_data.data = [info['Encoder']['BL']['Pos'], 
                                     info['Encoder']['FL']['Pos'], 
                                     info['Encoder']['FR']['Pos'], 

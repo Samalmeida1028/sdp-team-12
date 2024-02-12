@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan, Samuel Almeida
 # Date created: 11/28/23
-# Date last modified: 11/30/23
+# Date last modified: 2/12/24
 # Description: The serial handler node. Reads and writes to serial only here
 
 # Import ROS specific packages
@@ -19,7 +19,7 @@ class SerHandlerTeleop(Node):
         super().__init__('ser_handle_teleop')
         
         self.ser = serial.Serial(
-                    '/dev/ttyACM3',
+                    '/dev/ttyACM1',
                     baudrate=115200,
                     timeout=0.01)
 

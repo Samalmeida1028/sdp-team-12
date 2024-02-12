@@ -94,4 +94,12 @@
 
 10. Fixed power bus 
 
+2/12/24:
 
+1. One of the encoders is returning 0.0 when robot is in motion. This could be the cause of phi drifting so much
+
+2. Orientation is incorrect at times and correct at times for goal pose. Position is always correct. Fixed by tuning the encoder velocity thresholds to reject slight drifts accumulating. Odometry is back to being really good
+
+3. Updated robot URDF. LiDAR sits on the laptop now
+
+4. Integration testing -- nav2pose goal pose set to odom frame, matching current pose. Now the goal publishes correctly

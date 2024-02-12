@@ -75,13 +75,15 @@ class Sensor2Odom(Node):
         vel_xy = (l_vel + r_vel) / 2
         pos_xy = (l_pos + r_pos) / 2
 
-        vel_th = (l_vel-r_vel)/(self.wheel_sep) # radians
+        vel_th = (l_vel-r_vel)/(2*self.wheel_sep) # radians
+        if abs(vel_th) < .001:
+            vel_th = 0.0
+
         pos_th = (l_pos-r_pos)/self.wheel_sep
 
         vel_ang = (l_vel-r_vel)/self.wheel_radius # dividing by correct number
         
-        self.phi -= vel_th/2
-
+        self.phi -= vel_th
         # self.phi = -pos_th
 
         self.phi_deg = math.degrees(self.phi)
@@ -108,9 +110,9 @@ class Sensor2Odom(Node):
 
         self.count+=1
         
-        # rot_str = String()
-        # rot_str.data = str(self.phi/2)
-        # self.debug_pub.publish(rot_str)
+        # velth_str = String()
+        # velth_str.data = str(vel_th)
+        # self.debug_pub.publish(velth_str)
 
         debug_data = String()
         debug_data.data = 'Pos (Integrated): X: ' + str(round(self.encmsg.pose.pose.position.x,2)) + " Y: " + str(round(self.encmsg.pose.pose.position.y,2)) + '    Phi: ' + str(round(self.phi,2))
