@@ -53,7 +53,7 @@ class Sensor2Odom(Node):
         except Exception as e:
             debug_msg = String()
             debug_msg.data = str(e)
-            self.debug_pub.publish(debug_msg)
+            self.debug_pub.publish(debug_msg) 
 
     def encoder_to_odom(self,msg):
         encoder_array = msg.data # receiving position and velocity
@@ -75,12 +75,13 @@ class Sensor2Odom(Node):
         vel_xy = (l_vel + r_vel) / 2
         pos_xy = (l_pos + r_pos) / 2
 
-        vel_th = (l_vel-r_vel)/self.wheel_sep # radians
+        vel_th = (l_vel-r_vel)/(self.wheel_sep) # radians
         pos_th = (l_pos-r_pos)/self.wheel_sep
 
         vel_ang = (l_vel-r_vel)/self.wheel_radius # dividing by correct number
         
-        self.phi -= vel_th
+        self.phi -= vel_th/2
+
         # self.phi = -pos_th
 
         self.phi_deg = math.degrees(self.phi)
@@ -107,9 +108,9 @@ class Sensor2Odom(Node):
 
         self.count+=1
         
-        rot_str = String()
-        rot_str.data = str(self.phi)
-        self.debug_pub.publish(rot_str)
+        # rot_str = String()
+        # rot_str.data = str(self.phi/2)
+        # self.debug_pub.publish(rot_str)
 
         debug_data = String()
         debug_data.data = 'Pos (Integrated): X: ' + str(round(self.encmsg.pose.pose.position.x,2)) + " Y: " + str(round(self.encmsg.pose.pose.position.y,2)) + '    Phi: ' + str(round(self.phi,2))

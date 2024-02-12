@@ -11,7 +11,7 @@ import rclpy
 from rclpy.node import Node
 import std_msgs.msg as std_m
 from std_msgs.msg import String
-from std_msgs.msg import Int32
+from std_msgs.msg import Int32, Float32
 from std_msgs.msg import Float32MultiArray
 from std_msgs.msg import Int32MultiArray
 import serial
@@ -22,15 +22,16 @@ class ImagePublisher(Node):
 
   def __init__(self):
     super().__init__('image_pub')
-    self.ser = serial.Serial(
-             '/dev/ttyACM3',
-             baudrate=115200,
-             timeout=0.01)
+    # self.ser = serial.Serial(
+    #          '/dev/ttyACM3',
+    #          baudrate=115200,
+    #          timeout=0.01)
     
-    self.translation_publisher = self.create_publisher(Float32MultiArray, "translation_list", 1)
-    self.rotation_publisher = self.create_publisher(Float32MultiArray, "rotation_list", 1)
-    self.position_publisher = self.create_publisher(Float32MultiArray, "xyPos", 1)
-    self.target_location_publisher = self.create_publisher(Float32MultiArray, "/target_position", 1)
+    # self.translation_publisher = self.create_publisher(Float32MultiArray, "translation_list", 1)
+    # self.rotation_publisher = self.create_publisher(Float32MultiArray, "rotation_list", 1)
+    self.marker_location_publisher = self.create_publisher(Float32MultiArray, "/marker_position", 1)
+    self.target_distance_publisher = self.create_publisher(Float32, "/target_distance", 1)
+    self.target_spotted_publisher = self.create_publisher(Int32, "/target_spotted", 1)
     timer_period = .016
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
@@ -40,9 +41,9 @@ class ImagePublisher(Node):
     self.angle = []
     self.marker_position = Float32MultiArray()
     self.translation = Float32MultiArray()
-    self.target_position = Float32MultiArray()
-    for i in range(3):
-      self.target_position.data.append(float(0.0))
+    self.target_distance = Float32()
+    self.target_spotted = Int32()
+    self.target_spotted.data = 0
 
     self.target_subscription = self.create_subscription(
       Int32, 
@@ -55,13 +56,12 @@ class ImagePublisher(Node):
     self.resolutionX = 1920
     self.resolutionY = 1080
     self.target = 9999
-    # self.aruco_params = cv2.arbytearray(datastring,encoding="utf-8")uco.DetectorParameters()
-    # self.detector = cv2.aruco.ArucoDetector(self.aruco_dict, self.aruco_params)
-    self.markerLength = 60 # mm
+
+    self.markerLength = 55 # mm
     self.marker_side = self.markerLength
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')
-    self.cam = cv2.VideoCapture(0,cv2.CAP_V4L2)
+    self.cam = cv2.VideoCapture(2,cv2.CAP_V4L2)
     self.cam.set(cv2.CAP_PROP_MODE,0)
     self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolutionX)
     self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolutionY)
@@ -71,28 +71,18 @@ class ImagePublisher(Node):
     self.marker_ids_seen = set()
     self.custom_marker_sides = dict()
     self.marker_pose = []
-    # self.br = CvBridge()
 
   def target_acquire(self,msg):
     self.target = msg.data
-    # self.get_logger().info("%d" %msg.data)
 
   def get_pose(self):
     corners, ids, rejected = aruco.detectMarkers(self.frame, self.aruco_dict, parameters = self.aruco_params)
 
-    # self.get_logger().warn("ids: {0}".format(ids))
     self.currently_seen_ids = set()
     
-    # self.get_logger().info("here")
     if ids is not None and len(ids) > 0: 
-      # self.aruco_display(corners,ids)
-      # self.get_logger().info("now here")
 
-      # if self.publish_image_feedback:
-      #   self.aruco_display(corners, ids)
       ids_array = Int32MultiArray()
-      translations = Float32MultiArray()
-      rotations = Float32MultiArray()
       for (marker_corner, marker_id) in zip(corners, ids):
         if(marker_id == self.target):
           self.currently_seen_ids.add(int(marker_id[0]))
@@ -101,25 +91,12 @@ class ImagePublisher(Node):
 
           rvec, tvec, _ = aruco.estimatePoseSingleMarkers(marker_corner, marker_side, 
             self.cameraMatrix,self.distCoeffs)
-          self.target_position.data[0]= float(tvec[0][0][2])
-          # self.target_position.data[1] = float(rvec[0][0][1])
-          # translations.data = np.array(tvec[0][0]).astype(float)
-          # rotations.data = np.array(rvec[0][0]).astype(float)
-          
 
-
-          # if self.use_custom_marker_side_dict and marker_id[0] in self.custom_marker_sides:
-          #   marker_side = self.custom_marker_sides[marker_id[0]]
-
-          # Pose estimation for each marker
-
-          # if not self.search_for_grid or marker_id[0] not in self.grid_overall_ids:
-          # self.get_logger().warn("\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0]))
           stri = String()
           stri.data = "\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0])
-          # print(self.angle,"\n", tvec,"\n",rvec)
           self.translation.data = [float(tvec[0][0][0]),float(tvec[0][0][1]),float(tvec[0][0][2])]
-          self.translation_publisher.publish(self.translation)
+          self.target_distance.data = float(tvec[0][0][2])
+        #   self.translation_publisher.publish(self.translation)
     return (corners,ids)
   
 
@@ -127,19 +104,11 @@ class ImagePublisher(Node):
 
   def get_pixel_pos(self,corners,ids):
     for (markerCorner, markerID) in zip(corners, ids):
-
-        # Draw the axis on the aruco markers        print(tvecoord)
-
-        # extract the marker corners (which are always returned in
-        # top-left, top-right, bottom-right, and bottom-left order)
         corners = markerCorner.reshape((4, 2))
         (topLeft, topRight, bottomRight, bottomLeft) = corners
         cX = int((topLeft[0] + bottomRight[0]) / 2.0)
         cY = int((topLeft[1] + bottomRight[1]) / 2.0)
         self.marker_position.data = [float(cX-(self.resolutionX//2)),float(cY-(self.resolutionY/2))]
-        if(markerID == int(self.target)):
-          pass
-          # self.get_logger().info("target stuff")
               
 
   def aruco_display(self, corners, ids):
@@ -159,12 +128,11 @@ class ImagePublisher(Node):
         # top-left, top-right, bottom-right, and bottom-left order)
         corners = markerCorner.reshape((4, 2))
         (topLeft, topRight, bottomRight, bottomLeft) = corners
-        # convert each of the (x, y)-coordinate pairs to integers
+        # convert each of the (x, y)-co          # print(self.angle,"\n", tvec,"\n",rvec)ordinate pairs to integers
         topRight = (int(topRight[0]), int(topRight[1]))
         bottomRight = (int(bottomRight[0]), int(bottomRight[1]))
         bottomLeft = (int(bottomLeft[0]), int(bottomLeft[1]))
         topLeft = (int(topLeft[0]), int(topLeft[1]))
-        tvecoord = (int(tvec[0][0][0]),int(tvec[0][0][1]))
         cv2.line(self.frame, topLeft, topRight, (0, 255, 0), 2)
         cv2.line(self.frame, topRight, bottomRight, (0, 255, 0), 2)
         cv2.line(self.frame, bottomRight, bottomLeft, (0, 255, 0), 2)
@@ -185,6 +153,7 @@ class ImagePublisher(Node):
     Callback function.
     This function gets called every 0.016 seconds.
     """
+    self.target_spotted.data = 0
     ret, self.frame = self.cam.read()
     if ret == True:
       (corners,ids) = self.get_pose()
@@ -196,19 +165,19 @@ class ImagePublisher(Node):
         for (markerCorner, markerID) in zip(corners, ids):
           if(markerID == self.target):
             # self.get_logger().info("%s" % json.dumps(list(self.marker_position.data) + [self.translation.data[2]]))
-            self.ser.write(bytearray(json.dumps(list(self.marker_position.data) + [self.translation.data[2]]) + "\n",encoding="utf-8"))
-      serial_in = self.ser.readline()
-      if serial_in:
-        self.angle = list(json.loads(serial_in.decode('utf-8')))
-        # print(self.angle)
-        self.target_position.data[1] = float(self.angle[0])
-        self.target_position.data[2] = float(self.angle[1]) 
-        print(self.target_position)
-        self.target_location_publisher.publish(self.target_position)
-        
-        
+            marker_information = Float32MultiArray()
+            marker_information.data.append(self.marker_position.data[0])
+            marker_information.data.append(self.marker_position.data[1])
+
+            self.marker_location_publisher.publish(marker_information)
+            self.target_distance_publisher.publish(self.target_distance) 
+          if(markerID == self.target):
+              self.target_spotted.data = 1 
+          else:
+            self.target_spotted.data = 0
       cv2.imshow('camera',self.frame)
-      cv2.waitKey(16)
+      cv2.waitKey(1)
+    self.target_spotted_publisher.publish(self.target_spotted)
 
     # Display the message on the console
     # self.get_logger().info('Publishing video frame')

@@ -113,7 +113,7 @@ def generate_launch_description():
 
     start_serial_pub_cmd = Node(
         package='py_serial',
-        executable='serial_handler_teleop',
+        executable='serial_handler',
         name='serial_handler',
     )
 

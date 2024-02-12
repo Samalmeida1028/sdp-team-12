@@ -19,7 +19,7 @@ class SerHandlerTeleop(Node):
         super().__init__('ser_handle_teleop')
         
         self.ser = serial.Serial(
-                    '/dev/ttyACM1',
+                    '/dev/ttyACM3',
                     baudrate=115200,
                     timeout=0.01)
 

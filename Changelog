@@ -71,3 +71,27 @@
 3. Changed goal pose publishing from transform to odometry because the odometry is on point. It is offset by some amount but it is changing with the robot movement. Needs more work
 
 4. Merged nav_unstable into nav_physical 
+
+2/11/24:
+
+1. Made serial_handler more robust
+
+2. Fixed small errors in pico code to more accurately reflect differential drive kinematics in motor control
+
+3. Added some code to servos to make target tracking reporting of angles smoother
+
+4. Removed image_pub from the main provider of servo information, now in serial handler
+
+5.  Tweaked phi to make it more accurate to rotation
+
+6. Tweaked odometry to make it fit teleop better
+
+7. Improved target publishing wrt orientation, now it is about 90% there, it rotates with the target correctly
+
+8. IMPORTANT-- Found several more issues witth turning impacting odometry, more testing is needed because at this stage 90 degree and above turns still significantly impact odometry unfortunately - will probably need significantly more time, tweaking of nav parameters, and phi still drifts over a period of time
+
+9. Changed location of motor drivers and determined funky driving must be electrical
+
+10. Fixed power bus 
+
+
