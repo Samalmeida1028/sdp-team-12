@@ -1,6 +1,6 @@
 # SDP Team 12
 # Date created: 2/8/24
-# Date last modified: 2/8/24
+# Date last modified: 2/13/24
 # Author: Arjun Viswanathan
 # Description: launch file to launch all necessary components for target tracking integration with navigation
 
@@ -29,8 +29,8 @@ def generate_launch_description():
     # Launch!
     ld = LaunchDescription()
 
-    ld.add_action(start_target_pub_cmd)
+    # ld.add_action(start_target_pub_cmd)
     ld.add_action(start_image_pub_cmd)
-    # ld.add_action(start_nav2pose_cmd)
+    ld.add_action(start_nav2pose_cmd)
 
     return ld

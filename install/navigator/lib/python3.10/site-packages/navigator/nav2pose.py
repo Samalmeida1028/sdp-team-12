@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 11/5/23
-# Date last modified: 2/9/24
+# Date last modified: 2/13/24
 # Description: Using Nav2 to navigate to a given pose
 
 from geometry_msgs.msg import PoseStamped,TransformStamped
@@ -29,7 +29,7 @@ class Nav2Pose(Node):
 
         self.goalupdaterpub = self.create_publisher(PoseStamped, "/goal_pose", 10)
         self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
-        self.currentdebugpub = self.create_publisher(String, "/rot_debug", 10)
+
 
         self.angles = [0,0]
         self.distance = 0
@@ -44,15 +44,6 @@ class Nav2Pose(Node):
         self.current_pose.header.stamp = self.get_clock().now().to_msg()
         self.current_pose.pose.position = odommsg.pose.pose.position
         self.current_pose.pose.orientation = odommsg.pose.pose.orientation
-
-        # tf_stamped : TransformStamped = tfmsg.transforms[0]
-        # if(tf_stamped.header.frame_id == "odom"):
-        #     self.current_pose.pose.position.x = tf_stamped.transform.translation.x
-        #     self.current_pose.pose.position.y = tf_stamped.transform.translation.y
-        #     self.current_pose.pose.position.z = tf_stamped.transform.translation.z
-        #     self.current_pose.pose.orientation = tf_stamped.transform.rotation
-
-        # print("Updated current pose!")
 
     def set_goal(self, check : Int32):
         # goalmsg = [dist, xangle, yangle]
@@ -95,11 +86,11 @@ class Nav2Pose(Node):
         self.distance = msg.data
 
     def in_range(self, oldgoal : PoseStamped, newgoal : PoseStamped):
-        print(oldgoal.pose.position.x, newgoal.pose.position.x, oldgoal.pose.position.y, newgoal.pose.position.y)
+        # print(oldgoal.pose.position.x, newgoal.pose.position.x, oldgoal.pose.position.y, newgoal.pose.position.y)
 
-        test = String()
-        test.data = "xdiff: " + str(oldgoal.pose.position.x - newgoal.pose.position.x) + ", ydiff: " + str(oldgoal.pose.position.y - newgoal.pose.position.y)
-        self.currentdebugpub.publish(test)
+        # test = String()
+        # test.data = "xdiff: " + str(oldgoal.pose.position.x - newgoal.pose.position.x) + ", ydiff: " + str(oldgoal.pose.position.y - newgoal.pose.position.y)
+        # self.currentdebugpub.publish(test)
         
         if abs(oldgoal.pose.position.x - newgoal.pose.position.x) < 1.0 and abs(oldgoal.pose.position.y - newgoal.pose.position.y) < 1.0:
             return True

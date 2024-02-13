@@ -1,9 +1,11 @@
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/__init__.py
+/home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/search_targets.py
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/sens2odom.py
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/coord_pub_test.py
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/cmd_vel_sub.py
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/nav2pose.py
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/__pycache__/__init__.cpython-310.pyc
+/home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/__pycache__/search_targets.cpython-310.pyc
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/__pycache__/sens2odom.cpython-310.pyc
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/__pycache__/coord_pub_test.cpython-310.pyc
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/python3.10/site-packages/navigator/__pycache__/cmd_vel_sub.cpython-310.pyc
@@ -20,4 +22,5 @@
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator/cmdvelsub
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator/coordpub
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator/nav2pose
+/home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator/searchtargets
 /home/adam/Desktop/sdp-team-12/install/navigator/lib/navigator/sens2odom

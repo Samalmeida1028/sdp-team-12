@@ -26,8 +26,11 @@ class TargetPublisher(Node):
         self.target_id = Int32()
         self.target_id.data = self.get_parameter('marker_id').get_parameter_value().integer_value
 
+
     def timer_callback(self):
-        self.target_id.data = self.get_parameter('marker_id').get_parameter_value().integer_value
+        newtarget = input("Enter new target: ")
+        # self.target_id.data = self.get_parameter('marker_id').get_parameter_value().integer_value
+        self.target_id.data = int(newtarget)
         self.publisher.publish(self.target_id)
         # self.get_logger().info("Published %s" %self.target_id)
 

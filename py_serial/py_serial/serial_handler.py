@@ -26,31 +26,28 @@ class SerHandler(Node):
                     baudrate=115200,
                     timeout=0.01)
         
-        # self.serial1.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
-        # self.serial2.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
+        self.serial1.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
+        self.serial2.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
         # # while self.serial1.out_waiting > 0:
         # #     pass
         # # # print(self.serial1)
-        # response = self.serial1.readline()
-        # _ = self.serial2.readline()
-        # # # print(response)
-        # # for i in range(100):
-        #     # print(response)
-        # if response:
-        #     if json.loads(response.decode()) == "nav":
-        #         print("NAV")
-        #         self.nav_serial = self.serial1
-        #         self.target_serial = self.serial2
-        #     elif response == "tracking":
-        #         self.nav_serial = self.serial2
-        #         self.target_serial = self.serial1
+        response = self.serial1.readline()
+        _ = self.serial2.readline()
+        # # print(response)
+        # for i in range(100):
+            # print(response)
+        if response:
+            if json.loads(response.decode()) == "nav":
+                print("NAV")
+                self.nav_serial = self.serial1
+                self.target_serial = self.serial2
+            elif json.loads(response.decode()) == "tracking":
+                self.nav_serial = self.serial2
+                self.target_serial = self.serial1
 
-        self.nav_serial = self.serial2
-        self.target_serial = self.serial1
-        
         self.encoder_publisher = self.create_publisher(Float32MultiArray, "/encoder_data", 1)
         self.imu_publisher = self.create_publisher(Float32MultiArray, "/imu_data", 1)
-        self.servo_xy_publisher = self.create_publisher(Float32MultiArray, "servoxy_angle", 1)
+        self.servo_xy_publisher = self.create_publisher(Float32MultiArray, "/servoxy_angle", 1)
         # self.cmdvel_subscriber = self.create_subscription(Float32MultiArray, "cmd_vel_vectors", self.send_motor_commands, 10)
         self.marker_subscriber = self.create_subscription(Float32MultiArray, '/marker_position', self.send_marker_position,10)
         self.keyboard_sub = self.create_subscription(Twist, "/cmd_vel", self.send_teleop_commands, 10)

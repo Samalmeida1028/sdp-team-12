@@ -115,3 +115,5 @@
 2. Removed some leftover truncation in nav2pose that should not have been there
 
 3. Planner path -- needs to not plan outside the map to goal. Fix params in nav2_params.yaml (TODO)
+
+4. Search algorithm -- Wrote a node to publish random goals in a search radius if no target is spotted for 10 seconds. Need to add redefine() function using LiDAR data (TODO)
