@@ -22,6 +22,7 @@ class Nav2Pose(Node):
 
         self.current_pose = PoseStamped()
         self.goal = PoseStamped()
+        self.prev_goal = PoseStamped()
 
         # Wait for navigation to fully activate, since autostarting nav2
         #self.navigator.lifecycleStartup()
@@ -65,7 +66,7 @@ class Nav2Pose(Node):
 
         # print("Updated current pose!")
 
-    def set_goal(self, check):
+    def set_goal(self, check : Int32):
         # goalmsg = [dist, xangle, yangle]
         # print("hi",check.data)
         if(check.data and self.target_goal):
@@ -73,7 +74,7 @@ class Nav2Pose(Node):
             self.goal.header.frame_id = 'odom'
             self.goal.header.stamp = self.get_clock().now().to_msg()
 
-            d = self.target_goal[0]*math.cos(math.radians(self.target_goal[2])) # true dist = seen dist * sin(yangle)
+            d = self.target_goal[0]*math.cos(math.radians(self.target_goal[2])) - 2.5 # true dist = seen dist * sin(yangle)
             # print(self.target_goal)
             pos_deg = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
                                           self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w])
@@ -83,9 +84,9 @@ class Nav2Pose(Node):
             self.goal.pose.position.x = self.current_pose.pose.position.x + (d*math.cos(true_rot))/1000 # xf = xi + dsin(phi)
             self.goal.pose.position.y = self.current_pose.pose.position.y + (d*math.sin(true_rot))/1000 # yf = yi + dcos(phi)
             # print(self.goal.pose.position)
-            boob = String()
-            boob.data = str(true_rot)
-            self.currentdebugpub.publish(boob)
+            # boob = String()
+            # boob.data = str(true_rot)
+            # self.currentdebugpub.publish(boob)
 
             rot = Rotation.from_euler('xyz', [0, 0, true_rot], degrees=False)
             rot_quat = rot.as_quat() # convert angle to quaternion format
@@ -101,23 +102,36 @@ class Nav2Pose(Node):
             else:
                 self.startnav = False
 
-    def update_angle(self,msg):
+    def update_angle(self,msg : Float32MultiArray):
+        self.angles = [0,0]
         self.angles[0] = msg.data[0]
         self.angles[1] = msg.data[1]
     
-    def update_distance(self,msg):
+    def update_distance(self,msg : Float32):
+        self.distance = 0
         self.distance = msg.data
+
+    def in_range(self, oldgoal : PoseStamped, newgoal : PoseStamped):
+        test = String()
+        test.data = "xdiff: " + str(oldgoal.pose.position.x - newgoal.pose.position.x) + ", ydiff: " + str(oldgoal.pose.position.y - newgoal.pose.position.y)
+        self.currentdebugpub.publish(test)
+        
+        if abs(oldgoal.pose.position.x - newgoal.pose.position.x) < 1.0 and abs(oldgoal.pose.position.y - newgoal.pose.position.y) < 1.0:
+            return True
+        else:
+            self.prev_goal = self.goal
+            return False
 
     def nav2pose_callback(self):
         if(self.angles and self.distance):
             self.target_goal = [self.distance] + self.angles
-            
+            self.distance = None
+            self.angles = None
         
         self.currentposepub.publish(self.current_pose)
 
         if self.startnav:
-
-            if self.current_pose != self.goal:
+            if self.current_pose != self.goal and not self.in_range(self.prev_goal, self.goal):
                 self.goalupdaterpub.publish(self.goal)
 
 def main(args=None):

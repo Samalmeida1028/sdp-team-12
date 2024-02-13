@@ -12,6 +12,8 @@ from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 
+# To check laptop battery from RDP: upower -i /org/freedesktop/UPower/devices/battery_BAT0
+
 def generate_launch_description():
     pkg_path = os.path.join(get_package_share_directory('basic_mobile_robot'))
     nav2_dir = get_package_share_directory('nav2_bringup')

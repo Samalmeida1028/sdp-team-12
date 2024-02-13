@@ -57,7 +57,7 @@ class ImagePublisher(Node):
     self.resolutionY = 1080
     self.target = 9999
 
-    self.markerLength = 55 # mm
+    self.markerLength = 127 # mm
     self.marker_side = self.markerLength
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')

@@ -27,10 +27,12 @@ class SerHandler(Node):
                     timeout=0.01)
         
         self.serial1.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
+        self.serial2.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
         # while self.serial1.out_waiting > 0:
         #     pass
         # # print(self.serial1)
         response = self.serial1.readline()
+        _ = self.serial2.readline()
         # # print(response)
         # for i in range(100):
             # print(response)
@@ -107,7 +109,7 @@ class SerHandler(Node):
       serial_in = self.target_serial.readline()
       if serial_in:
         self.angle = list(json.loads(serial_in.decode('utf-8')))
-        # print(self.angle)
+        print(self.angle)
         print(self.angle[0])
         self.current_angle.data[0] = float(self.angle[0])
         self.current_angle.data[1] = float(self.angle[1]) 
