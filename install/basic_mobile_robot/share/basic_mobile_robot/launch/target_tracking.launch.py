@@ -31,6 +31,6 @@ def generate_launch_description():
 
     ld.add_action(start_target_pub_cmd)
     ld.add_action(start_image_pub_cmd)
-    ld.add_action(start_nav2pose_cmd)
+    # ld.add_action(start_nav2pose_cmd)
 
     return ld

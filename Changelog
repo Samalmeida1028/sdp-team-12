@@ -107,3 +107,11 @@
 5. Preemptive goal -- if goal keeps changing very little a lot then it takes previous goal instead of the new one then we do not publish the new one and take the old one. We only take new one when we have significant goal pose change
 
 6. We cannot see any differences between old and new goal in in_range() function. Needs to be looked at tomorrow
+
+2/13/24:
+
+1. Fixed goal pose thresholding issue we had in 6. from yesterday. The variables were set to the same reference instead of copying over to new references
+
+2. Removed some leftover truncation in nav2pose that should not have been there
+
+3. Planner path -- needs to not plan outside the map to goal. Fix params in nav2_params.yaml (TODO)

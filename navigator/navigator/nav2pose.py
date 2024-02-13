@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 11/5/23
-# Date last modified: 2/9/24
+# Date last modified: 2/13/24
 # Description: Using Nav2 to navigate to a given pose
 
 from geometry_msgs.msg import PoseStamped,TransformStamped
@@ -16,22 +16,10 @@ from scipy.spatial.transform import Rotation
 class Nav2Pose(Node):
     def __init__(self):
         super().__init__('nav2pose')
-        # print("Initializing Nav Simple Commander...")
-
-        # self.navigator = BasicNavigator()
 
         self.current_pose = PoseStamped()
         self.goal = PoseStamped()
         self.prev_goal = PoseStamped()
-
-        # Wait for navigation to fully activate, since autostarting nav2
-        #self.navigator.lifecycleStartup()
-        # self.navigator.waitUntilNav2Active(localizer='bt_navigator')
-
-        self.i = 0
-        self.startnav = False
-
-        #self.navigator.changeMap('basic_mobile_robot/maps/slam_map.yaml')
 
         # print("Creating subscribers and callbacks...")
         self.angsub = self.create_subscription(Float32MultiArray, '/servoxy_angle', self.update_angle, 10)
@@ -74,7 +62,7 @@ class Nav2Pose(Node):
             self.goal.header.frame_id = 'odom'
             self.goal.header.stamp = self.get_clock().now().to_msg()
 
-            d = self.target_goal[0]*math.cos(math.radians(self.target_goal[2])) - 2.5 # true dist = seen dist * sin(yangle)
+            d = self.target_goal[0]*math.cos(math.radians(self.target_goal[2])) # true dist = seen dist * sin(yangle)
             # print(self.target_goal)
             pos_deg = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
                                           self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w])
@@ -83,6 +71,7 @@ class Nav2Pose(Node):
 
             self.goal.pose.position.x = self.current_pose.pose.position.x + (d*math.cos(true_rot))/1000 # xf = xi + dsin(phi)
             self.goal.pose.position.y = self.current_pose.pose.position.y + (d*math.sin(true_rot))/1000 # yf = yi + dcos(phi)
+            self.goal.pose.position.z = 0.0497
             # print(self.goal.pose.position)
             # boob = String()
             # boob.data = str(true_rot)
@@ -96,12 +85,6 @@ class Nav2Pose(Node):
             self.goal.pose.orientation.z = self.current_pose.pose.orientation.z + rot_quat[2]
             self.goal.pose.orientation.w = self.current_pose.pose.orientation.w + rot_quat[3]
 
-            if self.goal != self.current_pose:
-                self.startnav = True
-                # print("Updated goal pose!")
-            else:
-                self.startnav = False
-
     def update_angle(self,msg : Float32MultiArray):
         self.angles = [0,0]
         self.angles[0] = msg.data[0]
@@ -112,14 +95,23 @@ class Nav2Pose(Node):
         self.distance = msg.data
 
     def in_range(self, oldgoal : PoseStamped, newgoal : PoseStamped):
-        test = String()
-        test.data = "xdiff: " + str(oldgoal.pose.position.x - newgoal.pose.position.x) + ", ydiff: " + str(oldgoal.pose.position.y - newgoal.pose.position.y)
-        self.currentdebugpub.publish(test)
+        # print(oldgoal.pose.position.x, newgoal.pose.position.x, oldgoal.pose.position.y, newgoal.pose.position.y)
+
+        # test = String()
+        # test.data = "xdiff: " + str(oldgoal.pose.position.x - newgoal.pose.position.x) + ", ydiff: " + str(oldgoal.pose.position.y - newgoal.pose.position.y)
+        # self.currentdebugpub.publish(test)
         
         if abs(oldgoal.pose.position.x - newgoal.pose.position.x) < 1.0 and abs(oldgoal.pose.position.y - newgoal.pose.position.y) < 1.0:
             return True
         else:
-            self.prev_goal = self.goal
+            self.prev_goal.pose.position.x = self.goal.pose.position.x
+            self.prev_goal.pose.position.y = self.goal.pose.position.y
+            self.prev_goal.pose.position.z = self.goal.pose.position.z
+
+            self.prev_goal.pose.orientation.x = self.goal.pose.orientation.x
+            self.prev_goal.pose.orientation.y = self.goal.pose.orientation.y
+            self.prev_goal.pose.orientation.z = self.goal.pose.orientation.z
+            self.prev_goal.pose.orientation.w = self.goal.pose.orientation.w
             return False
 
     def nav2pose_callback(self):
@@ -130,9 +122,8 @@ class Nav2Pose(Node):
         
         self.currentposepub.publish(self.current_pose)
 
-        if self.startnav:
-            if self.current_pose != self.goal and not self.in_range(self.prev_goal, self.goal):
-                self.goalupdaterpub.publish(self.goal)
+        if self.goal != self.current_pose and not self.in_range(self.prev_goal, self.goal):
+            self.goalupdaterpub.publish(self.goal)
 
 def main(args=None):
     rclpy.init(args=args)

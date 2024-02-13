@@ -1,6 +1,6 @@
 # SDP Team 12
 # Date created: 2/6/24
-# Date last modified: 2/9/24
+# Date last modified: 2/13/24
 # Author: Arjun Viswanathan
 # Description: launch file to launch all necessary components for teleoperation
 
@@ -84,7 +84,7 @@ def generate_launch_description():
             'frame_id': 'lidar_link',
             'angle_compensate': True,
             'auto_standby': True,
-            'scan_mode': 'Standard'
+            'scan_mode': 'Boost'
         }],
     )
 

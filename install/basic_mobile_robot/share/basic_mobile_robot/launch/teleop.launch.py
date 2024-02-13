@@ -84,7 +84,7 @@ def generate_launch_description():
             'frame_id': 'lidar_link',
             'angle_compensate': True,
             'auto_standby': True,
-            'scan_mode': 'Standard'
+            'scan_mode': 'Boost'
         }],
     )
 
