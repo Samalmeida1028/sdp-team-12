@@ -30,7 +30,6 @@ class Nav2Pose(Node):
         self.goalupdaterpub = self.create_publisher(PoseStamped, "/goal_pose", 10)
         self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
 
-
         self.angles = [0,0]
         self.distance = 0
         self.target_goal = None
@@ -71,10 +70,10 @@ class Nav2Pose(Node):
             rot = Rotation.from_euler('xyz', [0, 0, true_rot], degrees=False)
             rot_quat = rot.as_quat() # convert angle to quaternion format
 
-            self.goal.pose.orientation.x = self.current_pose.pose.orientation.x + rot_quat[0] # set the orientation to be looking at the marker at the end of navigation
-            self.goal.pose.orientation.y = self.current_pose.pose.orientation.y + rot_quat[1]
-            self.goal.pose.orientation.z = self.current_pose.pose.orientation.z + rot_quat[2]
-            self.goal.pose.orientation.w = self.current_pose.pose.orientation.w + rot_quat[3]
+            self.goal.pose.orientation.x = rot_quat[0] # set the orientation to be looking at the marker at the end of navigation
+            self.goal.pose.orientation.y = rot_quat[1]
+            self.goal.pose.orientation.z = rot_quat[2]
+            self.goal.pose.orientation.w = rot_quat[3]
 
     def update_angle(self,msg : Float32MultiArray):
         self.angles = [0,0]
