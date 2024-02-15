@@ -19,7 +19,7 @@ class TargetPublisher(Node):
 
     def __init__(self):
         super().__init__('target_pub')
-        self.publisher = self.create_publisher(Int32, "target_id", 10)
+        self.publisher = self.create_publisher(Int32, "/target_id", 10)
         timer_period = .25
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.declare_parameter('marker_id', 0)
@@ -28,9 +28,10 @@ class TargetPublisher(Node):
 
 
     def timer_callback(self):
-        newtarget = input("Enter new target: ")
-        # self.target_id.data = self.get_parameter('marker_id').get_parameter_value().integer_value
-        self.target_id.data = int(newtarget)
+        # newtarget = input("Enter new target: ")
+        print("publishing new target")
+        self.target_id.data = self.get_parameter('marker_id').get_parameter_value().integer_value
+        # self.target_id.data = int(newtarget)
         self.publisher.publish(self.target_id)
         # self.get_logger().info("Published %s" %self.target_id)
 

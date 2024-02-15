@@ -47,7 +47,7 @@ class ImagePublisher(Node):
 
     self.target_subscription = self.create_subscription(
       Int32, 
-      'target_id', 
+      '/target_id', 
       self.target_acquire,
       10)
 
@@ -73,6 +73,7 @@ class ImagePublisher(Node):
     self.marker_pose = []
 
   def target_acquire(self,msg):
+    print("target acquired")
     self.target = msg.data
 
   def get_pose(self):

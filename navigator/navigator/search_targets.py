@@ -37,11 +37,11 @@ class SearchTargets(Node):
         self.current_pose = PoseStamped()
         self.goal = PoseStamped()
         self.prev_goal = PoseStamped()
+        self.scanmsg = LaserScan()
 
         self.odomsub = self.create_subscription(Odometry, '/odometry/filtered', self.set_current_pose, 10)
         self.target_spotted_sub = self.create_subscription(Int32, '/target_spotted', self.wait_timed_out, 10)
-        self.scansub = self.create_subscription(LaserScan, "/scan", self.redefine_search, 10)
-        self.correctionsub = self.create_subscription(LaserScan, "/scan", self.correct_goal, 10)
+        self.scansub = self.create_subscription(LaserScan, "/scan", self.set_laser_scan, 10)
 
         self.goalupdaterpub = self.create_publisher(PoseStamped, "/goal_pose", 10)
         self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
@@ -58,10 +58,8 @@ class SearchTargets(Node):
         self.search_radius = 1.0
         self.d = 0.5
         self.move_search_area = False
-        self.redefine_once = False
-        self.validate_goal = False
 
-        time_period = 0.5
+        time_period = 1.0
         self.timer1 = self.create_timer(time_period, self.set_search_goal)
 
         self.get_logger().info('Search Node Ready!')
@@ -77,7 +75,7 @@ class SearchTargets(Node):
 
     # Sets the center of the search radius
     def set_center(self):
-        self.get_logger().info("Setting center of search radius")
+        # self.get_logger().info("Setting center of search radius")
 
         self.center.pose.position.x = self.current_pose.pose.position.x
         self.center.pose.position.y = self.current_pose.pose.position.y
@@ -87,6 +85,9 @@ class SearchTargets(Node):
         self.center.pose.orientation.y = self.current_pose.pose.orientation.y
         self.center.pose.orientation.z = self.current_pose.pose.orientation.z
         self.center.pose.orientation.w = self.current_pose.pose.orientation.w
+
+    def set_laser_scan(self, scanmsg : LaserScan):
+        self.scanmsg = scanmsg
 
     # Checks to see if 10 seconds has been waited and returns a boolean
     def wait_timed_out(self, spotted : Int32):
@@ -149,30 +150,33 @@ class SearchTargets(Node):
             self.goal.pose.orientation.w = rot_quat[3]
 
             if self.d <= self.search_radius:
-                self.get_logger().info("Setting new goal...")
-                # self.validate_goal = True
-                # time.sleep(2.0)
+                self.get_logger().info("Setting new goal to {} at angle {}".format(self.d, phi))
+                self.correct_goal()
+
                 self.nav_start_time = time.time()
                 self.goalupdaterpub.publish(self.goal)
-                # self.validate_goal = False
 
                 self.d += 0.25
                 self.move_search_area = False
             else:
                 self.d = 0.5
                 self.move_search_area = True
-                self.redefine_once = True
+                self.redefine_search()
         elif self.time_passed < self.wait_time: # only go in when target is seen
             self.set_center()
 
     # Publishes ONE goal when redefining search space using LiDAR data
-    def redefine_search(self, scanmsg : LaserScan):
-        if self.move_search_area and self.redefine_once:
-            self.get_logger().info("Redefining search space...")
+    def redefine_search(self):
+        if self.move_search_area:
+            pos_rads = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
+                                          self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w])
+            phi_robot = pos_rads.as_euler("xyz", degrees=False)[2]
 
-            range_max = max(filter(lambda x: not math.isinf(x) and not math.isnan(x), scanmsg.ranges))
-            max_ind = scanmsg.ranges.index(range_max) # index where max scan range occurs
-            phi_max = max_ind * scanmsg.angle_increment # angle at which max scan range occurs
+            range_max = max(filter(lambda x: not math.isinf(x) and not math.isnan(x), self.scanmsg.ranges))
+            max_ind = self.scanmsg.ranges.index(range_max) # index where max scan range occurs
+            phi_max = phi_robot + self.scanmsg.angle_min + (max_ind * self.scanmsg.angle_increment) # angle at which max scan range occurs
+
+            self.get_logger().info("Redefining search space to {} at angle {}".format(range_max/2, phi_max))
 
             self.goal.header.frame_id = 'odom'
             self.goal.header.stamp = self.get_clock().now().to_msg()
@@ -192,21 +196,21 @@ class SearchTargets(Node):
 
             self.nav_start_time = time.time()
             self.goalupdaterpub.publish(self.goal)
-            self.redefine_once = False
 
-    def correct_goal(self, scanmsg : LaserScan):
-        if self.validate_goal:
-            self.get_logger().info("Checking goal validity with LiDAR scans...")
+    def correct_goal(self):
+        self.get_logger().info("Checking distance validity with LiDAR scans...")
 
-            initial_dist = math.atan2(self.goal.pose.position.y, self.goal.pose.position.x)
-            scanned_dist = scanmsg.ranges[int(self.true_rot / scanmsg.angle_increment)]
-            corrected_dist = scanned_dist - 0.25 # add some padding so robot does not go into the wall
+        initial_dist = math.atan2(self.goal.pose.position.y, self.goal.pose.position.x)
+        scanned_dist = self.scanmsg.ranges[int((self.true_rot + self.scanmsg.angle_min) / self.scanmsg.angle_increment)]
+        corrected_dist = scanned_dist - 0.25 # add some padding so robot does not go into the wall
 
-            if scanned_dist < initial_dist:
-                self.get_logger().info("Invalid goal given. Correcting...")
+        if scanned_dist < initial_dist:
+            self.get_logger().info("Invalid distance. Correcting {} to {}".format(initial_dist, corrected_dist))
 
-                self.goal.pose.position.x = self.center.pose.position.x + (corrected_dist*math.cos(self.true_rot)) # xf = xc + dcos(phi)
-                self.goal.pose.position.y = self.center.pose.position.y + (corrected_dist*math.sin(self.true_rot)) # yf = yc + dsin(phi)
+            self.goal.pose.position.x = self.center.pose.position.x + (corrected_dist*math.cos(self.true_rot)) # xf = xc + dcos(phi)
+            self.goal.pose.position.y = self.center.pose.position.y + (corrected_dist*math.sin(self.true_rot)) # yf = yc + dsin(phi)
+        else:
+            self.get_logger().info("Distance is valid")
     
 def main(args=None):
     rclpy.init(args=args)

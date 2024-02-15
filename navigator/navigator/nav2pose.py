@@ -52,7 +52,7 @@ class Nav2Pose(Node):
             self.goal.header.frame_id = 'odom'
             self.goal.header.stamp = self.get_clock().now().to_msg()
 
-            d = self.target_goal[0]*math.cos(math.radians(self.target_goal[2])) # true dist = seen dist * sin(yangle)
+            d = self.target_goal[0]*math.cos(math.radians(self.target_goal[2])) - 2.0 # true dist = seen dist * sin(yangle)
             # print(self.target_goal)
             pos_deg = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
                                           self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w])

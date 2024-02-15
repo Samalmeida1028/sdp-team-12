@@ -3,8 +3,8 @@
   recovery actions specific to planning / control as well as general system issues.
   This will be continuous if a kinematically valid planner is selected.
 -->
-<root main_tree_to_execute="TargetNavTree">
-  <BehaviorTree ID="TargetNavTree">
+<root main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
     <RecoveryNode number_of_retries="6" name="NavigateRecovery">
 
       <PipelineSequence name="NavigateWithReplanning">
@@ -16,7 +16,7 @@
                     <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="GridBased"/>
                 </GoalUpdater>
                 <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}"/>
-                <TruncatePath distance=".5" input_path="{path}" output_path="{truncated_path}"/>
+                <!-- <TruncatePath distance=".5" input_path="{path}" output_path="{truncated_path}"/> -->
             </Sequence>
 
             <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
@@ -24,7 +24,7 @@
         </RateController>
 
         <RecoveryNode number_of_retries="1" name="FollowPath">
-          <FollowPath path="{truncated_path}" controller_id="FollowPath"/>
+          <FollowPath path="{path}" controller_id="FollowPath"/>
           <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
         </RecoveryNode>
 

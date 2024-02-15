@@ -7,12 +7,13 @@
 # Import ROS specific packages
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Float32MultiArray
+from std_msgs.msg import Float32MultiArray,Int32
 import serial
 import json
 from std_msgs.msg import String
 from geometry_msgs.msg import Twist
 import threading
+import time
 
 class SerHandler(Node):
     def __init__(self):
@@ -29,16 +30,16 @@ class SerHandler(Node):
         self.serial1.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
         self.serial2.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
         # # while self.serial1.out_waiting > 0:
-        # #     pass
-        # # # print(self.serial1)
+        #y     pass
+        # # # # print(self.serial1)
         response = self.serial1.readline()
         _ = self.serial2.readline()
-        # # print(response)
+        # # # print(response)
         # for i in range(100):
-            # print(response)
+            # # print(response)
         if response:
             if json.loads(response.decode()) == "nav":
-                print("NAV")
+                # print("NAV")
                 self.nav_serial = self.serial1
                 self.target_serial = self.serial2
             elif json.loads(response.decode()) == "tracking":
@@ -51,9 +52,13 @@ class SerHandler(Node):
         # self.cmdvel_subscriber = self.create_subscription(Float32MultiArray, "cmd_vel_vectors", self.send_motor_commands, 10)
         self.marker_subscriber = self.create_subscription(Float32MultiArray, '/marker_position', self.send_marker_position,10)
         self.keyboard_sub = self.create_subscription(Twist, "/cmd_vel", self.send_teleop_commands, 10)
+        self.target_seen = self.create_subscription(Int32, "/target_spotted", self.check_target, 10)
+        self.is_centered = True
 
         timer_period = .05
-        self.timer = self.create_timer(timer_period, self.get_encoder_info)
+        self.timer = self.create_timer(timer_period, self.run_serial)
+        self.last_time = time.time()
+        self.current_time = time.time()
 
         self.get_logger().info('Initialized timer')
 
@@ -76,12 +81,17 @@ class SerHandler(Node):
         z = msg.angular.z
         self.nav_serial.write(bytearray(json.dumps([x,z]) + "\n", encoding="utf-8"))
 
+
+    def run_serial(self):
+        self.get_encoder_info()
+        
+
     def get_encoder_info(self):
         msg = []
         while(self.nav_serial.in_waiting): 
             msg = self.nav_serial.readline()
         if msg:
-            # print(msg.decode())
+            # # pring(msg.decode())
             info = dict(json.loads(msg.decode()))
             # info = json.loads(info_ser)
             self.encoder_data.data = [info['Encoder']['BL']['Pos'], 
@@ -98,20 +108,32 @@ class SerHandler(Node):
             self.imu_publisher.publish(self.imu_data)
 
     def send_marker_position(self,msg):
-        print(msg)
+        # # print(msg)
         self.target_serial.write(bytearray(json.dumps(list(msg.data)) + "\n",encoding="utf-8"))
+        self.is_centered = False
         self.publish_servo_angles()
 
     def publish_servo_angles(self):
       serial_in = self.target_serial.readline()
       if serial_in:
         self.angle = list(json.loads(serial_in.decode('utf-8')))
-        print(self.angle)
-        print(self.angle[0])
+        # # print(self.angle)
+        # # print(self.angle[0])
         self.current_angle.data[0] = float(self.angle[0])
         self.current_angle.data[1] = float(self.angle[1]) 
-        print(self.current_angle)
+        # # print(self.current_angle)
         self.servo_xy_publisher.publish(self.current_angle)
+
+    def check_target(self,msg):
+        self.current_time = time.time()
+        result : int = msg.data
+        print("checking",result)
+
+        if(result == 0 and self.current_time-self.last_time > 5 and not self.is_centered):
+            self.target_serial.write(bytearray(json.dumps("center")+ "\n",encoding="utf-8"))
+            self.last_time = self.current_time
+        elif(result == 1):
+            self.last_time = self.current_time
 
 def main(args=None):
     rclpy.init(args=args)
