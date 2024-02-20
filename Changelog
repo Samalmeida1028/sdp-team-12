@@ -128,6 +128,16 @@
 
 1. correct_goal() works properly now. Made some changes to how the topic are subscribed to in SearchTargets node
 
-2. I think redefine is fixed. Distance is calculated correctly and the angle is also correct that it does not publish off the map. More extensive testing will be necessary to conclude search behaviors (TODO)
+2. I think redefine is fixed. Distance is calculated correctly and the angle is also correct that it does not publish off the map. More extensive testing will be necessary to conclude search behaviors
 
-3. Planner -- turning and backup costs are not the best, so robot does not do its navigation very well in tight spaces. Need to tweak nav2_params.yaml to make it better (TODO)
+3. Planner -- turning and backup costs are not the best, so robot does not do its navigation very well in tight spaces. Need to tweak nav2_params.yaml to make it better
+
+2/20/24:
+
+1. Reduced reverse cost from 2.1 -> 1.0 in planner server in nav2_params.yaml 
+
+2. Increased cost_travel_multiplier from 2.0 -> 3.5 in planner server in nav2_params.yaml
+
+3. Updated distance to be correct so goals are published behind the robot. Need to tweak nav2_params.yaml to make robot reverse to goal
+
+4. CHanged DWB to MPPI controller. Path following is much better and the robot backs up. Just need it to backup even further now (TODO)

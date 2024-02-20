@@ -30,12 +30,15 @@ class Nav2Pose(Node):
         self.goalupdaterpub = self.create_publisher(PoseStamped, "/goal_pose", 10)
         self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
 
+        self.truncate_dist = 2.0
         self.angles = [0,0]
         self.distance = 0
         self.target_goal = None
 
         time_period = 0.5
         self.timer = self.create_timer(time_period, self.nav2pose_callback)
+
+        self.currentdebugpub = self.create_publisher(String, '/nav2pose_debug', 10)
         # print("Ready!")
 
     def set_current_pose(self, odommsg : Odometry):
@@ -52,20 +55,21 @@ class Nav2Pose(Node):
             self.goal.header.frame_id = 'odom'
             self.goal.header.stamp = self.get_clock().now().to_msg()
 
-            d = self.target_goal[0]*math.cos(math.radians(self.target_goal[2])) - 2.0 # true dist = seen dist * sin(yangle)
+            d = self.target_goal[0]*math.cos(math.radians(self.target_goal[2])) # true dist = seen dist * sin(yangle)
+            d = (d/1000) - self.truncate_dist
             # print(self.target_goal)
             pos_deg = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
                                           self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w])
 
             true_rot = (math.radians(self.target_goal[1]) + (pos_deg.as_euler("xyz",degrees=False)[2])) #+math.pi))-math.pi
 
-            self.goal.pose.position.x = self.current_pose.pose.position.x + (d*math.cos(true_rot))/1000 # xf = xi + dsin(phi)
-            self.goal.pose.position.y = self.current_pose.pose.position.y + (d*math.sin(true_rot))/1000 # yf = yi + dcos(phi)
+            self.goal.pose.position.x = self.current_pose.pose.position.x + (d*math.cos(true_rot)) # xf = xi + dsin(phi)
+            self.goal.pose.position.y = self.current_pose.pose.position.y + (d*math.sin(true_rot)) # yf = yi + dcos(phi)
             self.goal.pose.position.z = 0.0497
-            # print(self.goal.pose.position)
-            # boob = String()
-            # boob.data = str(true_rot)
-            # self.currentdebugpub.publish(boob)
+
+            test = String()
+            test.data = "X: " + str(self.goal.pose.position.x) + ", Y: " + str(self.goal.pose.position.y) + ", d: " + str(d) + ", true_rot: " + str(true_rot)
+            self.currentdebugpub.publish(test)
 
             rot = Rotation.from_euler('xyz', [0, 0, true_rot], degrees=False)
             rot_quat = rot.as_quat() # convert angle to quaternion format
