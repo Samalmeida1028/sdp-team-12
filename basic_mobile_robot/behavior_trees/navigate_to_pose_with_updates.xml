@@ -24,7 +24,7 @@
         </RateController>
 
         <RecoveryNode number_of_retries="1" name="FollowPath">
-          <FollowPath path="{smoothed_path}" controller_id="FollowPath"/>
+          <FollowPath path="{smoothed_path}" controller_id="MPPI"/>
           <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
         </RecoveryNode>
 
