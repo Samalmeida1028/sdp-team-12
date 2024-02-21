@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-# Author: Arjun Viswanathan
+# Author: SDP Team 12
 # Date created: 11/5/23
-# Date last modified: 2/13/24
+# Date last modified: 2/20/24
 # Description: Using Nav2 to navigate to a given pose
 
 from geometry_msgs.msg import PoseStamped,TransformStamped

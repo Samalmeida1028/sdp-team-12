@@ -140,4 +140,12 @@
 
 3. Updated distance to be correct so goals are published behind the robot. Need to tweak nav2_params.yaml to make robot reverse to goal
 
-4. CHanged DWB to MPPI controller. Path following is much better and the robot backs up. Just need it to backup even further now (TODO)
+4. CHanged DWB to MPPI controller. Path following is much better and the robot backs up
+
+2/21/24:
+
+1. Changed PreferForwardCritic to be false, and set threshold to stop preferring forward to be 1 meter
+
+2. Increased LiDAR correct_goal() padding to 0.5 from 0.25 
+
+3. 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 2/13/24
-# Date last modified: 2/14/24
+# Date last modified: 2/21/24
 # Description: Searches for targets by publishing random goals 
 
 '''
@@ -202,7 +202,7 @@ class SearchTargets(Node):
 
         initial_dist = math.atan2(self.goal.pose.position.y, self.goal.pose.position.x)
         scanned_dist = self.scanmsg.ranges[int((self.true_rot + self.scanmsg.angle_min) / self.scanmsg.angle_increment)]
-        corrected_dist = scanned_dist - 0.25 # add some padding so robot does not go into the wall
+        corrected_dist = scanned_dist - 0.5 # add some padding so robot does not go into the wall
 
         if scanned_dist < initial_dist:
             self.get_logger().info("Invalid distance. Correcting {} to {}".format(initial_dist, corrected_dist))
