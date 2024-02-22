@@ -148,4 +148,10 @@
 
 2. Increased LiDAR correct_goal() padding to 0.5 from 0.25 
 
-3. 
+3. Updated controller_server to have multiple controller plugins. These can be selected in the behavior tree
+
+4. Nav2 takes long time to fully initialize now after MPPI controller was added in
+
+5. Used NavFn planner with MPPI controller and set prefer forward critic to true and stop preferring for distances over 2 meters from robot. Robot does a backup more consistently now and does not switch directions when it doesnt have to
+
+6. Set ackermann constraint min_turning_r to 0.35 from 0.2 m based on URDF
