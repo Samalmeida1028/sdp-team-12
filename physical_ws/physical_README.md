@@ -1,9 +1,11 @@
 # Senior Design Project 2023
 This is the repository for Team 12's Senior Design Project (SDP)
 
+Installation scripts for ROS2 Humble and Nav2 in ```rospkginstall``` directory.
+
 ## Physical Navigation using ROS2 Navigation Stack
 This branch contains a number of packages:
-- ```basic_mobile_robot``` : all the navigation necessities. Contains installation scripts for ROS2 Humble and Nav2 in ```rospkginstall``` directory. Contains URDF file for the robot, SLAM and EKF configuration files, and navigation launch script
+- ```basic_mobile_robot``` : all the navigation necessities. Contains URDF file for the robot, SLAM and EKF configuration files, and navigation launch script
 - ```navigator```: to be finished. Will take goal pose and relay wheel velocity commands to motors
 - ```py_img_pub```: contains the target tracking code
 - ```serial_handler```: contains a node that handles all serial communication between ROS and our Pico
