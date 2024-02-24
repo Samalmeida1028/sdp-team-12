@@ -1,14 +1,14 @@
 # SDP Team 12
 # Date created: 11/9/23
-# Date last modified: 2/8/24
-# Author: Arjun Viswanathan
+# Date last modified: 2/22/24
 # Description: launch file to launch all necessary components for physical navigation
 
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.substitutions import LaunchConfiguration, Command
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, RegisterEventHandler
+from launch.event_handlers import OnExecutionComplete
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 
@@ -123,17 +123,6 @@ def generate_launch_description():
         ],
     )
 
-    start_ros2_navigation_cmd = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'navigation_launch.py')),
-        launch_arguments = {'use_sim_time': use_sim_time,
-                            'params_file': params_file,
-                            'autostart': autostart}.items()
-    )
-
-    start_target_tracking_cmd = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(pkg_path, 'launch', 'target_tracking.launch.py'))
-    )
-
     start_cmdvel_pub_cmd = Node(
         package='navigator',
         executable='cmdvelsub',
@@ -154,6 +143,44 @@ def generate_launch_description():
         arguments=['-d', rviz_config_file]
     ) 
 
+    start_search_node = Node(
+        package='navigator',
+        executable='searchtargets',
+        name='search_targets'
+    )
+
+    start_ros2_navigation_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(os.path.join(pkg_path, 'launch', 'navigation_launch.py')),
+        launch_arguments = {'use_sim_time': use_sim_time,
+                            'params_file': params_file,
+                            'autostart': autostart}.items()
+    )
+
+    start_target_pub_cmd = Node(
+        package='py_img_stream',
+        executable='target_pub',
+        name='target_pub',
+    )
+
+    start_image_pub_cmd = Node(
+        package='py_img_stream',
+        executable='pub',
+        name='image_pub',
+    )
+
+    start_nav2pose_cmd = Node(
+        package='navigator',
+        executable='nav2pose',
+        name='nav2pose'
+    ) 
+
+    delay_search_cmd = RegisterEventHandler(
+        event_handler=OnExecutionComplete(
+            target_action=start_target_pub_cmd,
+            on_completion=[start_search_node],
+        )
+    )
+
     # Launch!
     ld = LaunchDescription()
 
@@ -162,18 +189,24 @@ def generate_launch_description():
     ld.add_action(declare_params_file_cmd)
     ld.add_action(declare_model_path_cmd)
     ld.add_action(declare_rviz_config_file_cmd)
+
+    ld.add_action(start_robot_state_publisher_cmd)
+    ld.add_action(start_joint_state_publisher_cmd)
     ld.add_action(start_lidar_cmd)
+
     ld.add_action(start_lidar_odom_pub_cmd)
     ld.add_action(start_encoder_odom_pub_cmd)
-
     ld.add_action(start_cmdvel_pub_cmd)
     ld.add_action(start_serial_pub_cmd)
     ld.add_action(start_robot_localization_cmd)
-    ld.add_action(start_robot_state_publisher_cmd)
-    ld.add_action(start_joint_state_publisher_cmd)
+    ld.add_action(start_search_node)
+
     ld.add_action(start_slam_cmd)
     ld.add_action(start_ros2_navigation_cmd)
+    ld.add_action(start_target_pub_cmd)
+    ld.add_action(start_image_pub_cmd)
+    ld.add_action(start_nav2pose_cmd)
+    ld.add_action(start_search_node)
     ld.add_action(start_rviz_cmd)
-    ld.add_action(start_target_tracking_cmd)
 
     return ld

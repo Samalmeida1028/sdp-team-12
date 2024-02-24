@@ -47,7 +47,7 @@ def generate_launch_description():
         'behavior_server',
         'bt_navigator',
         'waypoint_follower',
-        'velocity_smoother',
+        'velocity_smoother'
         #'amcl'
     ]
 
@@ -306,5 +306,5 @@ def generate_launch_description():
     # Add the actions to launch all of the navigation nodes
     ld.add_action(load_nodes)
     ld.add_action(load_composable_nodes)
-
+    
     return ld
