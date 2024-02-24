@@ -4,11 +4,11 @@ This is the repository for Team 12's Senior Design Project (SDP)
 ## Simulated Navigation using ROS2 Humble Navigation Stack
 
 In this branch:
-- basic_mobile_robot
+- sim_bot
 
 Before running, make sure to run both ```ros_humble_setup.sh``` and ```ros_humble_nav2_setup.sh``` scripts in ```basic_mobile_robot/rospkginstall``` directory, if you do not have ROS2 Humble and/or Nav2 installed
 
-## basic_mobile_robot Package
+## sim_bot Package
 
 There are a bunch of launch files that all do different things. Below is an overview. 
 
