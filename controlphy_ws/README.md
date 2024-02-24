@@ -1,4 +1,4 @@
-# ROS2 Control -- Simulated
+# ROS2 Control -- Physical Robot
 
 ROS2 Control provides a quick and easy way to control robots with different drivetrains, like differential drive, holonomic drive, etc. There are a lot of demos on the official control github repository. 
 
