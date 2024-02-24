@@ -1,0 +1,9 @@
+/home/adam/Desktop/sdp-team-12/navsim_ws/build/sim_bot/CMakeFiles/uninstall.dir
+/home/adam/Desktop/sdp-team-12/navsim_ws/build/sim_bot/CMakeFiles/sim_bot_uninstall.dir
+/home/adam/Desktop/sdp-team-12/navsim_ws/build/sim_bot/CMakeFiles/test.dir
+/home/adam/Desktop/sdp-team-12/navsim_ws/build/sim_bot/CMakeFiles/edit_cache.dir
+/home/adam/Desktop/sdp-team-12/navsim_ws/build/sim_bot/CMakeFiles/rebuild_cache.dir
+/home/adam/Desktop/sdp-team-12/navsim_ws/build/sim_bot/CMakeFiles/list_install_components.dir
+/home/adam/Desktop/sdp-team-12/navsim_ws/build/sim_bot/CMakeFiles/install.dir
+/home/adam/Desktop/sdp-team-12/navsim_ws/build/sim_bot/CMakeFiles/install/local.dir
+/home/adam/Desktop/sdp-team-12/navsim_ws/build/sim_bot/CMakeFiles/install/strip.dir
