@@ -155,3 +155,11 @@
 5. Used NavFn planner with MPPI controller and set prefer forward critic to true and stop preferring for distances over 2 meters from robot. Robot does a backup more consistently now and does not switch directions when it doesnt have to
 
 6. Set ackermann constraint min_turning_r to 0.35 from 0.2 m based on URDF
+
+2/24/24:
+
+1. Built new chassis
+
+2. URDF updated to match new chassis
+
+3. Increased time to start publishing for search targets since I cannot find a way to delay it after everything is running (10->30 seconds)
