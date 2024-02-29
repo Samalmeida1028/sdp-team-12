@@ -150,7 +150,7 @@ def generate_launch_description():
     )
 
     start_ros2_navigation_cmd = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(pkg_path, 'launch', 'navigation_launch.py')),
+        PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'navigation_launch.py')),
         launch_arguments = {'use_sim_time': use_sim_time,
                             'params_file': params_file,
                             'autostart': autostart}.items()
@@ -205,7 +205,7 @@ def generate_launch_description():
     ld.add_action(start_target_pub_cmd)
     ld.add_action(start_image_pub_cmd)
     ld.add_action(start_nav2pose_cmd)
-    ld.add_action(start_search_node)
+    # ld.add_action(start_search_node)
     ld.add_action(start_rviz_cmd)
 
     return ld

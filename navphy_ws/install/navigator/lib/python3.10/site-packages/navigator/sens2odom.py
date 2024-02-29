@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan, Samuel Almeida
 # Date created: 11/17/23
-# Date last modified: 2/4/23
+# Date last modified: 2/29/23
 # Description: Use encoder values and turn into Odometry messages
 
 from nav_msgs.msg import Odometry
@@ -20,7 +20,7 @@ class Sensor2Odom(Node):
         super().__init__('sens2odom')
         self.current_time = self.get_clock().now().to_msg().sec
 
-        self.wheel_sep = 0.3683 # m
+        self.wheel_sep = 0.56 # m
         self.wheel_radius = 0.0476 # m
         self.phi = 0 # radians
 
