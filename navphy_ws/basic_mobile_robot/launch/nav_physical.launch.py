@@ -1,14 +1,13 @@
 # SDP Team 12
 # Date created: 11/9/23
-# Date last modified: 2/23/24
+# Date last modified: 3/4/24
 # Description: launch file to launch all necessary components for physical navigation
 
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.substitutions import LaunchConfiguration, Command
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, RegisterEventHandler
-from launch.event_handlers import OnExecutionComplete
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 
@@ -100,6 +99,18 @@ def generate_launch_description():
         }],
     )
 
+    start_lidar_range_filter = Node(
+        package='range_sensor_layer',
+        executable='range_filter_layer',
+        name='range_filter_layer',
+        parameters=[
+            {'use_sim_time': False, 'layered_costmap': False},
+            {'topics': ['/scan']},
+            {'min_angle': -3.14159, 'max_angle': 3.14159},
+            {'min_range': 0.1, 'max_range': 12.0}
+        ]
+    )
+
     start_lidar_odom_pub_cmd = Node(
         package='basic_mobile_robot',
         executable='lidar_odometry_node',
@@ -174,13 +185,6 @@ def generate_launch_description():
         name='nav2pose'
     ) 
 
-    delay_search_cmd = RegisterEventHandler(
-        event_handler=OnExecutionComplete(
-            target_action=start_target_pub_cmd,
-            on_completion=[start_search_node],
-        )
-    )
-
     # Launch!
     ld = LaunchDescription()
 
@@ -193,6 +197,7 @@ def generate_launch_description():
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)
     ld.add_action(start_lidar_cmd)
+    ld.add_action(start_lidar_range_filter)
 
     ld.add_action(start_lidar_odom_pub_cmd)
     ld.add_action(start_encoder_odom_pub_cmd)
