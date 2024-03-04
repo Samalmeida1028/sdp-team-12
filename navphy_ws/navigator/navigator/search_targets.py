@@ -53,7 +53,7 @@ class SearchTargets(Node):
         self.time_passed = time.time()
 
         self.true_rot = 0.0
-        self.wait_time = 30.0
+        self.wait_time = 60.0
         self.redefine_time = 20.0
         self.search_radius = 1.0
         self.d = 0.5
