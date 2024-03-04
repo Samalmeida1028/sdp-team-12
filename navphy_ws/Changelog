@@ -163,3 +163,15 @@
 2. URDF updated to match new chassis
 
 3. Increased time to start publishing for search targets since I cannot find a way to delay it after everything is running (10->30 seconds)
+
+3/4/24:
+
+1. New upgrades to chassis
+
+2. URDF re-updated
+
+3. Costmap footprint updated
+
+4. Using SmacHybrid planner, Constrained smoother, and MPPI controller to get best navigation
+
+5. Increased wait time to 60 seconds in search_targets()

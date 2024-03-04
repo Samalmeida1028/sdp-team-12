@@ -13,7 +13,7 @@
           <RecoveryNode number_of_retries="1" name="ComputePathToPose">
             <Sequence name="ComputeAndSmoothPath">
                 <GoalUpdater input_goal="{goal}" output_goal="{updated_goal}">
-                    <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="NavFn"/>
+                    <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="SmacHybrid"/>
                 </GoalUpdater>
                 <SmoothPath unsmoothed_path="{path}" smoothed_path="{smoothed_path}"/>
                 <!-- <TruncatePath distance=".5" input_path="{path}" output_path="{truncated_path}"/> -->

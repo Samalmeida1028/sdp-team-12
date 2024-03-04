@@ -99,18 +99,6 @@ def generate_launch_description():
         }],
     )
 
-    start_lidar_range_filter = Node(
-        package='range_sensor_layer',
-        executable='range_filter_layer',
-        name='range_filter_layer',
-        parameters=[
-            {'use_sim_time': False, 'layered_costmap': False},
-            {'topics': ['/scan']},
-            {'min_angle': -3.14159, 'max_angle': 3.14159},
-            {'min_range': 0.1, 'max_range': 12.0}
-        ]
-    )
-
     start_lidar_odom_pub_cmd = Node(
         package='basic_mobile_robot',
         executable='lidar_odometry_node',
@@ -197,8 +185,7 @@ def generate_launch_description():
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)
     ld.add_action(start_lidar_cmd)
-    ld.add_action(start_lidar_range_filter)
-
+    
     ld.add_action(start_lidar_odom_pub_cmd)
     ld.add_action(start_encoder_odom_pub_cmd)
     ld.add_action(start_cmdvel_pub_cmd)
