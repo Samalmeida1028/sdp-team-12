@@ -16,7 +16,7 @@ import busio
 # select the serial Data port
 ################################################################
 TOP_SPEED = 65536
-WHEEL_SEP = 0.3683
+WHEEL_SEP = 0.56
 WHEEL_RADIUS = 0.0476
 
 serial = usb_cdc.data
@@ -58,9 +58,9 @@ driver2 = DFR0601(PWM3, INB3, INA3, PWM4, INB4, INA4, 5000)
 
 chassis = ChassisController(driver1, driver2)
 
-enc1 = Encoder(D1, D2, 1)
-enc2 = Encoder(D3, D4, 1)
-enc3 = Encoder(D5, D6, 1)
+enc1 = Encoder(D1, D2, 1) # BL
+enc2 = Encoder(D3, D4, 1) # FL
+enc3 = Encoder(D5, D6, 1) # FR
 # enc4 = rotaryio.IncrementalEncoder(D7, D8)
 encoder_data = {}
 
@@ -69,6 +69,49 @@ encoders = [enc1, enc2, enc3]
 last_position = None
 
 data_in = []
+
+def debug():
+    K_p = 35000
+    K_z = 5
+    K_l = 1.25
+
+    lin_x = 0.5
+    ang_z = 0.0
+
+    v1 = int(-K_p * ((lin_x*K_l) - ((ang_z*K_z) * (WHEEL_SEP / 2))))
+    v2 = int(-K_p * ((lin_x*K_l) + ((ang_z*K_z) * (WHEEL_SEP / 2))))
+    v3 = v1
+    v4 = v2
+
+    motors = [v1, v2, v3, v4]
+    # print(motors)
+
+    chassis.set_fl_wheel(v1)
+    chassis.set_fr_wheel(v2)
+    chassis.set_bl_wheel(v3)
+    chassis.set_br_wheel(v4)
+
+    # time.sleep(0.5)
+
+    # chassis.set_fl_wheel(0)
+    # chassis.set_fr_wheel(0)
+    # chassis.set_bl_wheel(0)
+    # chassis.set_br_wheel(0)
+
+    # time.sleep(0.5)
+
+    encoder_data.update({"BL": enc1.get_data(time.monotonic_ns())})
+    encoder_data.update({"FL": enc2.get_data(time.monotonic_ns())})
+    encoder_data.update({"FR": enc3.get_data(time.monotonic_ns())})
+
+    # print(sensor_data["Encoder"])
+    print(encoder_data["BL"]["Vel"], 
+        encoder_data["FL"]["Vel"], 
+        encoder_data["FR"]["Vel"])
+    
+# while True:
+#     debug()
+
 while True:
     #print(chassis.motor_controller_1.INA1.value, chassis.motor_controller_1.INB1.value)
     if serial.in_waiting > 0:
@@ -96,13 +139,13 @@ while True:
                     lin_x = teleop[0]
                     ang_z = teleop[1]
 
-                    v1 = (int(-K_p * ((lin_x*K_l) + ((ang_z*K_z) * (WHEEL_SEP / 2)))))
-                    v2 = int(-K_p * ((lin_x*K_l) - ((ang_z*K_z) * (WHEEL_SEP / 2))))
+                    v1 = int(-K_p * ((lin_x*K_l) - ((ang_z*K_z) * (WHEEL_SEP / 2))))
+                    v2 = int(-K_p * ((lin_x*K_l) + ((ang_z*K_z) * (WHEEL_SEP / 2))))
                     v3 = v1
                     v4 = v2
 
                     motors = [v1, v2, v3, v4]
-                    # print(teleop, motors)
+                    #print(teleop, motors)
 
                     chassis.set_fl_wheel(v1)
                     chassis.set_fr_wheel(v2)
@@ -135,9 +178,9 @@ while True:
                 }
                 remaining = bytes(json.dumps(sensor_data) + "\n", "utf-8")
                 # print(sensor_data["Encoder"])
-                print(sensor_data["Encoder"]["BL"]["Pos"], 
-                    sensor_data["Encoder"]["FL"]["Pos"], 
-                    sensor_data["Encoder"]["FR"]["Pos"])
+                print(sensor_data["Encoder"]["BL"]["Vel"], 
+                    sensor_data["Encoder"]["FL"]["Vel"], 
+                    sensor_data["Encoder"]["FR"]["Vel"])
 
                 n = serial.write(remaining)
                 #print(n)

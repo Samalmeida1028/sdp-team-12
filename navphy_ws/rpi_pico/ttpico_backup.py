@@ -30,33 +30,37 @@ offset = 0
 
 start_time = time.monotonic_ns()
 while True:
-    print("hi")
+    # print("hi")
     if serial.in_waiting > 0:
         count = 0
         data_in = serial.readline()
-        if(data_in):
-            translation = json.loads(data_in.decode('utf-8'))
-            # print(translation)
-            desired_angle = (translation[0]*(1080/1920),translation[1]*(1080/1920))
-            print(desired_angle)
-            # error_x = (desired_angle[0]-my_servox.angle)
-            # error_y = (desired_angle[1]-my_servoy.angle)
-            # data_inx += translation[0] * (180/1920)
-            # data_iny -= translation[1] * (180/1080)
-            # data_inx = min(180,max(-180,data_inx))
-            # data_iny = min(180,max(-180,data_iny))
-            # print(my_servox.angle,my_servoy.angle, "data:",data_inx,data_iny)
-            data_inx += desired_angle[0]*.01
-            data_iny -= desired_angle[1]*.01
+        if data_in:
+            if json.loads(data_in.decode()) == "Type":
+                serial.write(bytearray(json.dumps("tracking") + "\n"))
+                serial.flush()
+            else:
+                translation = json.loads(data_in.decode('utf-8'))
+                print(translation)
+                desired_angle = (float(translation[0])*(1080/1920),float(translation[1])*(1080/1920))
+                # print(desired_angle)
+                # error_x = (desired_angle[0]-my_servox.angle)
+                # error_y = (desired_angle[1]-my_servoy.angle)
+                # data_inx += translation[0] * (180/1920)
+                # data_iny -= translation[1] * (180/1080)
+                # data_inx = min(180,max(-180,data_inx))
+                # data_iny = min(180,max(-180,data_iny))
+                # print(my_servox.angle,my_servoy.angle, "data:",data_inx,data_iny)
+                data_inx += desired_angle[0]*.01
+                data_iny -= desired_angle[1]*.01
 
-            my_servox.angle = min(180,max(0,int(data_inx)))
-            my_servoy.angle = min(120,max(0,int(data_iny)))  
-        
-            myangle = [90-my_servox.angle,my_servoy.angle-90]
+                my_servox.angle = min(180,max(0,int(data_inx)))
+                my_servoy.angle = min(120,max(0,int(data_iny)))  
+            
+                myangle = [90-my_servox.angle,my_servoy.angle-90]
 
-        serial.write(bytearray(json.dumps(myangle) + "\n", "utf-8"))
+                serial.write(bytearray(json.dumps(myangle) + "\n", "utf-8"))
         
-        while(serial.out_waiting):
+                while(serial.out_waiting):
                     pass
                 
     tempx = my_servox.angle
