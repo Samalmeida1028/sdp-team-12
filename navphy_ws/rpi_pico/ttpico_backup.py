@@ -14,7 +14,7 @@ pwm1 = pwmio.PWMOut(board.GP0, duty_cycle=2 ** 15, frequency=50)
 pwm2 = pwmio.PWMOut(board.GP1, duty_cycle=2 ** 12, frequency=50)
 my_servoy = servo.Servo(pwm2)
 my_servox = servo.Servo(pwm1)
-center = 90
+center = 80
 my_servox.angle = center
 my_servoy.angle = center
 
@@ -36,13 +36,18 @@ while True:
         data_in = serial.readline()
         if data_in:
             if json.loads(data_in.decode()) == "Type":
+                # print("Asking type")
                 serial.write(bytearray(json.dumps("tracking") + "\n"))
-                serial.flush()
             else:
                 translation = json.loads(data_in.decode('utf-8'))
-                print(translation)
-                desired_angle = (float(translation[0])*(1080/1920),float(translation[1])*(1080/1920))
-                # print(desired_angle)
+
+                if translation == "center":
+                    my_servox.angle = (float(center)*(1080/1920),float(center)*(1080/1920))
+                    my_servoy.angle = (float(center)*(1080/1920),float(center)*(1080/1920))
+                else:
+                    desired_angle = (float(translation[0])*(1080/1920),float(translation[1])*(1080/1920))
+                
+                print(desired_angle)
                 # error_x = (desired_angle[0]-my_servox.angle)
                 # error_y = (desired_angle[1]-my_servoy.angle)
                 # data_inx += translation[0] * (180/1920)
@@ -62,6 +67,7 @@ while True:
         
                 while(serial.out_waiting):
                     pass
+            serial.flush()
                 
     tempx = my_servox.angle
     tempy = my_servoy.angle

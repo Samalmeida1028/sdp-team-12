@@ -26,11 +26,18 @@ def generate_launch_description():
         name='nav2pose'
     ) 
 
+    start_search_node = Node(
+        package='navigator',
+        executable='searchtargets',
+        name='search_targets'
+    )
+
     # Launch!
     ld = LaunchDescription()
 
     ld.add_action(start_target_pub_cmd)
     ld.add_action(start_image_pub_cmd)
     ld.add_action(start_nav2pose_cmd)
+    ld.add_action(start_search_node)
 
     return ld

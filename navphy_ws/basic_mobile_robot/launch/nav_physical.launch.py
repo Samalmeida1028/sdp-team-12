@@ -142,12 +142,6 @@ def generate_launch_description():
         arguments=['-d', rviz_config_file]
     ) 
 
-    start_search_node = Node(
-        package='navigator',
-        executable='searchtargets',
-        name='search_targets'
-    )
-
     start_ros2_navigation_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'navigation_launch.py')),
         launch_arguments = {'use_sim_time': use_sim_time,
@@ -155,15 +149,13 @@ def generate_launch_description():
                             'autostart': autostart}.items()
     )
 
-    start_target_pub_cmd = Node(
-        package='py_img_stream',
-        executable='target_pub',
-        name='target_pub',
+    start_target_tracking_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(os.path.join(pkg_path, 'launch', 'target_tracking.launch.py'))
     )
 
     start_image_pub_cmd = Node(
         package='py_img_stream',
-        executable='pub',
+        executable='img_pub',
         name='image_pub',
     )
 
@@ -197,7 +189,7 @@ def generate_launch_description():
     ld.add_action(start_target_pub_cmd)
     ld.add_action(start_image_pub_cmd)
     ld.add_action(start_nav2pose_cmd)
-    # ld.add_action(start_search_node)
+    ld.add_action(start_search_node)
     ld.add_action(start_rviz_cmd)
 
     return ld
