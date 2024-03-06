@@ -190,7 +190,7 @@
 
 1. Fixed commit tree 
 
-2. Made target_pub separate with keyboard input on which target to track
+2. Made target_pub separate with keyboard input on which target to track.
 
 3. Tuned nav2pose threshold values for considering new goal to publish (AND becomes OR because we want to publish when EITHER x OR y change beyond a value
 
