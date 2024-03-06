@@ -32,7 +32,8 @@ import numpy as np
 class SearchTargets(Node):
     def __init__(self):
         super().__init__('search_targets')
-        self.delay_exec() # delay node 30 seconds before starting
+
+        time.sleep(30)
 
         self.center = PoseStamped()
         self.current_pose = PoseStamped()
@@ -54,7 +55,7 @@ class SearchTargets(Node):
         self.time_passed = time.time()
 
         self.true_rot = 0.0
-        self.wait_time = 60.0
+        self.wait_time = 10.0
         self.redefine_time = 20.0
         self.search_radius = 1.0
         self.d = 0.5
@@ -64,15 +65,6 @@ class SearchTargets(Node):
         self.timer1 = self.create_timer(time_period, self.set_search_goal)
 
         self.get_logger().info('Search Node Ready!')
-
-    def delay_exec(self):
-        t = time.time()
-        tf = t + 30
-
-        while t < tf:
-            t = time.time()
-
-        return
 
     # Sets the current pose of the robot from fused odometry messages given by EKF
     def set_current_pose(self, odommsg : Odometry):
