@@ -151,18 +151,6 @@ def generate_launch_description():
 
     start_target_tracking_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(pkg_path, 'launch', 'target_tracking.launch.py'))
-    )
-
-    start_image_pub_cmd = Node(
-        package='py_img_stream',
-        executable='img_pub',
-        name='image_pub',
-    )
-
-    start_nav2pose_cmd = Node(
-        package='navigator',
-        executable='nav2pose',
-        name='nav2pose'
     ) 
 
     # Launch!
@@ -186,10 +174,7 @@ def generate_launch_description():
 
     ld.add_action(start_slam_cmd)
     ld.add_action(start_ros2_navigation_cmd)
-    ld.add_action(start_target_pub_cmd)
-    ld.add_action(start_image_pub_cmd)
-    ld.add_action(start_nav2pose_cmd)
-    ld.add_action(start_search_node)
+    ld.add_action(start_target_tracking_cmd)
     ld.add_action(start_rviz_cmd)
 
     return ld

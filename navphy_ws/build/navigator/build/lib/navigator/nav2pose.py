@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: SDP Team 12
 # Date created: 11/5/23
-# Date last modified: 2/20/24
+# Date last modified: 3/6/24
 # Description: Using Nav2 to navigate to a given pose
 
 from geometry_msgs.msg import PoseStamped,TransformStamped
@@ -95,9 +95,7 @@ class Nav2Pose(Node):
         # test.data = "xdiff: " + str(oldgoal.pose.position.x - newgoal.pose.position.x) + ", ydiff: " + str(oldgoal.pose.position.y - newgoal.pose.position.y)
         # self.currentdebugpub.publish(test)
         
-        if abs(oldgoal.pose.position.x - newgoal.pose.position.x) < 1.0 and abs(oldgoal.pose.position.y - newgoal.pose.position.y) < 1.0:
-            return True
-        else:
+        if abs(oldgoal.pose.position.x - newgoal.pose.position.x) > 0.5 or abs(oldgoal.pose.position.y - newgoal.pose.position.y) > 0.2:
             self.prev_goal.pose.position.x = self.goal.pose.position.x
             self.prev_goal.pose.position.y = self.goal.pose.position.y
             self.prev_goal.pose.position.z = self.goal.pose.position.z
@@ -107,6 +105,8 @@ class Nav2Pose(Node):
             self.prev_goal.pose.orientation.z = self.goal.pose.orientation.z
             self.prev_goal.pose.orientation.w = self.goal.pose.orientation.w
             return False
+        else:
+            return True
 
     def nav2pose_callback(self):
         if(self.angles and self.distance):

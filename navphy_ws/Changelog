@@ -175,3 +175,23 @@
 4. Using SmacHybrid planner, Constrained smoother, and MPPI controller to get best navigation
 
 5. Increased wait time to 60 seconds in search_targets()
+
+3/5/24:
+
+1. Tested out for CDR. Serial side had some issues with buffer that stopped execution but once that was fixed it was all fine
+
+2. Another encoder is bugging -> bad connection on protoboard (I think). Now the left and right are lb and rf encoder values respectively
+
+3. Got first video for integration and searching 
+
+4. Messed up commit tree because I was trying to push large files into repository
+
+3/6/24:
+
+1. Fixed commit tree 
+
+2. Made target_pub separate with keyboard input on which target to track
+
+3. Tuned nav2pose threshold values for considering new goal to publish (AND becomes OR because we want to publish when EITHER x OR y change beyond a value
+
+4. Tuned search behavior node to delay 30 seconds before starting up for nav
