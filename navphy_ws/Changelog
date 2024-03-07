@@ -195,3 +195,7 @@
 3. Tuned nav2pose threshold values for considering new goal to publish (AND becomes OR because we want to publish when EITHER x OR y change beyond a value
 
 4. Tuned search behavior node to delay 30 seconds before starting up for nav
+
+5. Conducted full rigorous testing and noticed every time robot collides it kills serial (OSError: Input/output error) -> prob some loose connection
+
+6. Noticed spark from motor to ground -> chassis is picking up static due to spray paint?
