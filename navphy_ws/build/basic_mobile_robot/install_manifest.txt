@@ -15,9 +15,11 @@
 /home/adam/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot/share/basic_mobile_robot/launch/rplidar.launch.py
 /home/adam/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot/share/basic_mobile_robot/maps/slam_map.pgm
 /home/adam/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot/share/basic_mobile_robot/maps/slam_map.yaml
+/home/adam/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot/share/basic_mobile_robot/models/test.urdf
 /home/adam/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot/share/basic_mobile_robot/models/robo_holly.urdf
 /home/adam/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot/share/basic_mobile_robot/params/nav2_params.yaml
 /home/adam/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot/share/basic_mobile_robot/rviz/urdf_config.rviz
+/home/adam/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot/share/basic_mobile_robot/rviz/test.rviz
 /home/adam/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot/share/basic_mobile_robot/rviz/teleop.rviz
 /home/adam/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot/share/basic_mobile_robot/rviz/holly_nav.rviz
 /home/adam/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot/share/basic_mobile_robot/src/lidar_odometry_node.cpp

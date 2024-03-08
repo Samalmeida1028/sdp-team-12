@@ -16,7 +16,7 @@ from std_msgs.msg import Float32MultiArray
 from std_msgs.msg import Int32MultiArray
 import serial
 import json
-
+import time
 
 class ImagePublisher(Node):
 
@@ -71,6 +71,10 @@ class ImagePublisher(Node):
     self.marker_ids_seen = set()
     self.custom_marker_sides = dict()
     self.marker_pose = []
+
+    self.output = cv2.VideoWriter("RECORDING.avi",cv2.VideoWriter_fourcc(*"XVID"),30,(1920,1080))
+    self.isRecording = False
+    self.target_spotted_time = time.time()
 
   def target_acquire(self,msg):
     print("target acquired")
@@ -153,9 +157,10 @@ class ImagePublisher(Node):
     """
     Callback function.
     This function gets called every 0.016 seconds.
-    """
+    """   
     self.target_spotted.data = 0
     ret, self.frame = self.cam.read()
+
     if ret == True:
       (corners,ids) = self.get_pose()
       # self.get_logger().info("getting stuff")
@@ -163,8 +168,9 @@ class ImagePublisher(Node):
       if(corners is not None and ids is not None):
         self.aruco_display(corners,ids)
         self.get_pixel_pos(corners,ids)
+
         for (markerCorner, markerID) in zip(corners, ids):
-          if(markerID == self.target):
+          if(markerID == self.target):         
             # self.get_logger().info("%s" % json.dumps(list(self.marker_position.data) + [self.translation.data[2]]))
             marker_information = Float32MultiArray()
             marker_information.data.append(self.marker_position.data[0])
@@ -172,10 +178,22 @@ class ImagePublisher(Node):
 
             self.marker_location_publisher.publish(marker_information)
             self.target_distance_publisher.publish(self.target_distance) 
-          if(markerID == self.target):
-              self.target_spotted.data = 1 
+            self.target_spotted.data = 1 
           else:
             self.target_spotted.data = 0
+
+      if self.target_spotted.data:
+        self.isRecording = True
+        self.target_spotted_time = time.time()
+
+      if(time.time()-self.target_spotted_time) > 5:
+        self.get_logger().info('Stopping recording')
+        self.isRecording = False
+
+      if self.isRecording:
+        self.get_logger().info('Recording...')
+        self.output.write(self.frame)
+
       cv2.imshow('camera',self.frame)
       cv2.waitKey(1)
     self.target_spotted_publisher.publish(self.target_spotted)
