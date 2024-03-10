@@ -31,6 +31,11 @@ def generate_launch_description():
         executable='searchtargets',
         name='search_targets'
     )
+    start_serial_pub_cmd = Node(
+        package='py_serial',
+        executable='serial_handler',
+        name='serial_handler',
+    )
 
     # Launch!
     ld = LaunchDescription()
@@ -38,6 +43,7 @@ def generate_launch_description():
     # ld.add_action(start_target_pub_cmd)
     ld.add_action(start_image_pub_cmd)
     ld.add_action(start_nav2pose_cmd)
+    ld.add_action(start_serial_pub_cmd)
     # ld.add_action(start_search_node)
 
     return ld

@@ -14,26 +14,37 @@ from std_msgs.msg import String
 from geometry_msgs.msg import Twist
 import threading
 import time
+from pathlib import Path
 
 class SerHandler(Node):
     def __init__(self):
+        exists = True
         super().__init__('ser_handle')
         self.serial1 = serial.Serial(
                     '/dev/ttyACM1',
                     baudrate=115200,
                     timeout=0.01)
-        self.serial2 = serial.Serial(
-                    '/dev/ttyACM3',
-                    baudrate=115200,
-                    timeout=0.01)
-        
+        my_file = Path("/dev/ttyACM3")
+
+        if(not my_file.is_file()):
+            print("No second device, not running")
+            exists = False
+        if(exists):
+            self.serial2 = serial.Serial(
+                        '/dev/ttyACM3',
+                        baudrate=115200,
+                        timeout=0.01)
+
+            
         self.serial1.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
-        self.serial2.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
+        if exists:
+            self.serial2.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
         # # while self.serial1.out_waiting > 0:
         #y     pass
         # # # # print(self.serial1)
         response = self.serial1.readline()
-        _ = self.serial2.readline()
+        if exists:
+            _ = self.serial2.readline()
         # # # print(response)
         # for i in range(100):
             # # print(response)
@@ -41,9 +52,15 @@ class SerHandler(Node):
             if json.loads(response.decode()) == "nav":
                 # print("NAV")
                 self.nav_serial = self.serial1
-                self.target_serial = self.serial2
+                if(exists):
+                    self.target_serial = self.serial2
+                else:
+                    self.target_serial = None
             elif json.loads(response.decode()) == "tracking":
-                self.nav_serial = self.serial2
+                if(exists):
+                    self.nav_serial = self.serial2
+                else:
+                    self.nav_serial = None
                 self.target_serial = self.serial1
 
         self.encoder_publisher = self.create_publisher(Float32MultiArray, "/encoder_data", 1)
@@ -88,8 +105,9 @@ class SerHandler(Node):
 
     def get_encoder_info(self):
         msg = []
-        while(self.nav_serial.in_waiting): 
-            msg = self.nav_serial.readline()
+        if(self.nav_serial):
+            while(self.nav_serial.in_waiting): 
+                msg = self.nav_serial.readline()
         if msg:
             # # pring(msg.decode())
             info = dict(json.loads(msg.decode()))

@@ -188,11 +188,11 @@ class ImagePublisher(Node):
         self.target_spotted_time = time.time()
 
       if(time.time()-self.target_spotted_time) > 5:
-        self.get_logger().info('Stopping recording')
+        # self.get_logger().info('Stopping recording')
         self.isRecording = False
 
       if self.isRecording:
-        self.get_logger().info('Recording...')
+        # self.get_logger().info('Recording...')
         self.output.write(self.frame)
 
       cv2.imshow('camera',self.frame)
