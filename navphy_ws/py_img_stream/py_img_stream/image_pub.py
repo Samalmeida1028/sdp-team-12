@@ -32,7 +32,7 @@ class ImagePublisher(Node):
     self.marker_location_publisher = self.create_publisher(Float32MultiArray, "/marker_position", 1)
     self.target_distance_publisher = self.create_publisher(Float32, "/target_distance", 1)
     self.target_spotted_publisher = self.create_publisher(Int32, "/target_spotted", 1)
-    timer_period = .01
+    timer_period = .02
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
     self.camParams = sio.loadmat("./calibration/logi_camParams.mat")
@@ -57,7 +57,7 @@ class ImagePublisher(Node):
     self.resolutionY = 1080
     self.target = 9999
 
-    self.markerLength = 50.8 # mm
+    self.markerLength = 127 # mm
     self.marker_side = self.markerLength
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')
@@ -166,15 +166,14 @@ class ImagePublisher(Node):
       # self.get_logger().info("getting stuff")
       # cv2.imshow('camera', self.frame)
       if(corners is not None and ids is not None):
-        self.aruco_display(corners,ids)
+        # self.aruco_display(corners,ids)
         self.get_pixel_pos(corners,ids)
 
         for (markerCorner, markerID) in zip(corners, ids):
           if(markerID == self.target):         
             # self.get_logger().info("%s" % json.dumps(list(self.marker_position.data) + [self.translation.data[2]]))
             marker_information = Float32MultiArray()
-            marker_information.data.append(self.marker_position.data[0])
-            marker_information.data.append(self.marker_position.data[1])
+            marker_information.data =[self.marker_position.data[0],self.marker_position.data[1]]
 
             self.marker_location_publisher.publish(marker_information)
             self.target_distance_publisher.publish(self.target_distance) 
@@ -196,7 +195,7 @@ class ImagePublisher(Node):
         self.output.write(self.frame)
 
       cv2.imshow('camera',self.frame)
-      cv2.waitKey(1)
+      cv2.waitKey(20)
     self.target_spotted_publisher.publish(self.target_spotted)
 
     # Display the message on the console

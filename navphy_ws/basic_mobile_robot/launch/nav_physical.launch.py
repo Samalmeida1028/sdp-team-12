@@ -1,15 +1,16 @@
 # SDP Team 12
 # Date created: 11/9/23
-# Date last modified: 3/4/24
+# Date last modified: 3/12/24
 # Description: launch file to launch all necessary components for physical navigation
 
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.substitutions import LaunchConfiguration, Command
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.substitutions import LaunchConfiguration, Command, PythonExpression
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, GroupAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
+from launch.conditions import IfCondition
 
 # To check laptop battery from RDP: upower -i /org/freedesktop/UPower/devices/battery_BAT0
 
@@ -28,6 +29,7 @@ def generate_launch_description():
     model = LaunchConfiguration('model')
     rviz_config_file = LaunchConfiguration('rviz_config_file')
     use_sim_time = LaunchConfiguration('use_sim_time')
+    use_rviz = LaunchConfiguration('rviz')
 
     remappings = [('/tf', 'tf'),
                 ('/tf_static', 'tf_static')]
@@ -60,6 +62,12 @@ def generate_launch_description():
         name='rviz_config_file',
         default_value=default_rviz_config_path,
         description='Full path to the RVIZ config file to use'
+    )
+
+    declare_use_rviz_cmd = DeclareLaunchArgument(
+        name='rviz',
+        default_value='True',
+        description='Whether to use RViz or not'
     )
 
     start_robot_localization_cmd = Node(
@@ -134,13 +142,18 @@ def generate_launch_description():
         name='serial_handler',
     )
 
-    start_rviz_cmd = Node(
+    rviz_node = Node(
         package='rviz2',
         executable='rviz2',
         name='rviz2',
         output='screen',
         arguments=['-d', rviz_config_file]
     ) 
+
+    start_rviz_cmd = GroupAction(
+        condition=IfCondition(PythonExpression([use_rviz])),
+        actions = [rviz_node]
+    )
 
     start_ros2_navigation_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'navigation_launch.py')),
@@ -161,6 +174,7 @@ def generate_launch_description():
     ld.add_action(declare_params_file_cmd)
     ld.add_action(declare_model_path_cmd)
     ld.add_action(declare_rviz_config_file_cmd)
+    ld.add_action(declare_use_rviz_cmd)
 
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)
@@ -175,6 +189,6 @@ def generate_launch_description():
     ld.add_action(start_slam_cmd)
     ld.add_action(start_ros2_navigation_cmd)
     ld.add_action(start_target_tracking_cmd)
-    # ld.add_action(start_rviz_cmd)
+    ld.add_action(start_rviz_cmd)
 
     return ld

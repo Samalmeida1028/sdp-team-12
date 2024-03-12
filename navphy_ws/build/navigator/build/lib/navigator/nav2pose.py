@@ -39,7 +39,7 @@ class Nav2Pose(Node):
         self.timer = self.create_timer(time_period, self.nav2pose_callback)
 
         self.currentdebugpub = self.create_publisher(String, '/nav2pose_debug', 10)
-        # print("Ready!")
+        self.get_logger().info('Nav2Pose Node Ready!')
 
     def set_current_pose(self, odommsg : Odometry):
         self.current_pose.header.frame_id = 'odom'

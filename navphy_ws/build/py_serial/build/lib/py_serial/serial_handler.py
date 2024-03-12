@@ -72,7 +72,7 @@ class SerHandler(Node):
         self.target_seen = self.create_subscription(Int32, "/target_spotted", self.check_target, 10)
         self.is_centered = True
 
-        timer_period = .05
+        timer_period = .02
         self.timer = self.create_timer(timer_period, self.run_serial)
         self.last_time = time.time()
         self.current_time = time.time()
