@@ -32,7 +32,7 @@ class ImagePublisher(Node):
     self.marker_location_publisher = self.create_publisher(Float32MultiArray, "/marker_position", 1)
     self.target_distance_publisher = self.create_publisher(Float32, "/target_distance", 1)
     self.target_spotted_publisher = self.create_publisher(Int32, "/target_spotted", 1)
-    timer_period = .016
+    timer_period = .01
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
     self.camParams = sio.loadmat("./calibration/logi_camParams.mat")
@@ -61,7 +61,7 @@ class ImagePublisher(Node):
     self.marker_side = self.markerLength
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')
-    self.cam = cv2.VideoCapture(2,cv2.CAP_V4L2)
+    self.cam = cv2.VideoCapture(0,cv2.CAP_V4L2)
     self.cam.set(cv2.CAP_PROP_MODE,0)
     self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolutionX)
     self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolutionY)
@@ -72,7 +72,7 @@ class ImagePublisher(Node):
     self.custom_marker_sides = dict()
     self.marker_pose = []
 
-    self.output = cv2.VideoWriter("RECORDING.avi",cv2.VideoWriter_fourcc(*"XVID"),30,(1920,1080))
+    self.output = cv2.VideoWriter("RECORDING.avi",cv2.VideoWriter_fourcc(*"XVID"),24,(1920,1080))
     self.isRecording = False
     self.target_spotted_time = time.time()
 
@@ -97,8 +97,8 @@ class ImagePublisher(Node):
           rvec, tvec, _ = aruco.estimatePoseSingleMarkers(marker_corner, marker_side, 
             self.cameraMatrix,self.distCoeffs)
 
-          stri = String()
-          stri.data = "\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0])
+          # stri = String()
+          # stri.data = "\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0])
           self.translation.data = [float(tvec[0][0][0]),float(tvec[0][0][1]),float(tvec[0][0][2])]
           self.target_distance.data = float(tvec[0][0][2])
         #   self.translation_publisher.publish(self.translation)
@@ -187,7 +187,7 @@ class ImagePublisher(Node):
         self.isRecording = True
         self.target_spotted_time = time.time()
 
-      if(time.time()-self.target_spotted_time) > 5:
+      if(time.time()-self.target_spotted_time) > 5 and self.isRecording == True:
         # self.get_logger().info('Stopping recording')
         self.isRecording = False
 

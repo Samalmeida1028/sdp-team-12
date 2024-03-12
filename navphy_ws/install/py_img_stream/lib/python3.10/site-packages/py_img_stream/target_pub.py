@@ -32,7 +32,8 @@ class TargetPublisher(Node):
 
         # self.target_id.data = self.get_parameter('marker_id').get_parameter_value().integer_value
         self.target_id.data = int(newtarget)
-        self.publisher.publish(self.target_id)
+        for i in range(10):
+            self.publisher.publish(self.target_id)
         # self.get_logger().info("Published %s" %self.target_id)
 
 def main():

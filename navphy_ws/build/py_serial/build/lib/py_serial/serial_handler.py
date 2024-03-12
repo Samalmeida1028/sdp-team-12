@@ -26,7 +26,7 @@ class SerHandler(Node):
                     timeout=0.01)
         my_file = Path("/dev/ttyACM3")
 
-        if(not my_file.is_file()):
+        if(not my_file.exists()):
             print("No second device, not running")
             exists = False
         if(exists):
@@ -134,6 +134,7 @@ class SerHandler(Node):
     def publish_servo_angles(self):
       serial_in = self.target_serial.readline()
       if serial_in:
+        print(json.loads(serial_in.decode('utf-8')))
         self.angle = list(json.loads(serial_in.decode('utf-8')))
         # # print(self.angle)
         # # print(self.angle[0])
@@ -148,9 +149,12 @@ class SerHandler(Node):
         print("checking",result)
 
         if(result == 0 and self.current_time-self.last_time > 5 and not self.is_centered):
+            print("centering")
             self.target_serial.write(bytearray(json.dumps("center")+ "\n",encoding="utf-8"))
             self.last_time = self.current_time
+            self.is_centered = True
         elif(result == 1):
+            self.is_centered = False
             self.last_time = self.current_time
 
 def main(args=None):
