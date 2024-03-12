@@ -12,18 +12,11 @@ from launch.conditions import IfCondition
 
 def generate_launch_description():
     run_serial = LaunchConfiguration('serial')
-    run_search = LaunchConfiguration('search')
 
     declare_run_serial_cmd = DeclareLaunchArgument(
         name='serial',
         default_value='False',
         description='Whether to use serial handler or not'
-    )
-
-    declare_run_search_cmd = DeclareLaunchArgument(
-        name='search',
-        default_value='False',
-        description='Whether to use search node or not'
     )
 
     start_image_pub_cmd = Node(
@@ -38,20 +31,10 @@ def generate_launch_description():
         name='nav2pose'
     ) 
 
-    search_node = Node(
-        package='navigator',
-        executable='searchtargets',
-        name='search_targets'
-    )
     serial_pub_node = Node(
         package='py_serial',
         executable='serial_handler',
         name='serial_handler',
-    )
-
-    start_search_cmd = GroupAction(
-        condition=IfCondition(PythonExpression([run_search])),
-        actions=[search_node]
     )
 
     start_serial_cmd = GroupAction(
@@ -62,11 +45,9 @@ def generate_launch_description():
     # Launch!
     ld = LaunchDescription()
     ld.add_action(declare_run_serial_cmd)
-    ld.add_action(declare_run_search_cmd)
 
     ld.add_action(start_image_pub_cmd)
     ld.add_action(start_nav2pose_cmd)
     ld.add_action(start_serial_cmd)
-    ld.add_action(start_search_cmd)
 
     return ld

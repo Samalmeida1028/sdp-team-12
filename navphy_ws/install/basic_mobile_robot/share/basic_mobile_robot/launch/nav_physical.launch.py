@@ -30,6 +30,7 @@ def generate_launch_description():
     rviz_config_file = LaunchConfiguration('rviz_config_file')
     use_sim_time = LaunchConfiguration('use_sim_time')
     use_rviz = LaunchConfiguration('rviz')
+    run_search = LaunchConfiguration('search')
 
     remappings = [('/tf', 'tf'),
                 ('/tf_static', 'tf_static')]
@@ -68,6 +69,12 @@ def generate_launch_description():
         name='rviz',
         default_value='True',
         description='Whether to use RViz or not'
+    )
+
+    declare_run_search_cmd = DeclareLaunchArgument(
+        name='search',
+        default_value='True',
+        description='Whether to use search node or not'
     )
 
     start_robot_localization_cmd = Node(
@@ -150,6 +157,17 @@ def generate_launch_description():
         arguments=['-d', rviz_config_file]
     ) 
 
+    search_node = Node(
+        package='navigator',
+        executable='searchtargets',
+        name='search_targets'
+    )
+
+    start_search_cmd = GroupAction(
+        condition=IfCondition(PythonExpression([run_search])),
+        actions=[search_node]
+    )
+
     start_rviz_cmd = GroupAction(
         condition=IfCondition(PythonExpression([use_rviz])),
         actions = [rviz_node]
@@ -175,6 +193,7 @@ def generate_launch_description():
     ld.add_action(declare_model_path_cmd)
     ld.add_action(declare_rviz_config_file_cmd)
     ld.add_action(declare_use_rviz_cmd)
+    ld.add_action(declare_run_search_cmd)
 
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)
@@ -189,6 +208,7 @@ def generate_launch_description():
     ld.add_action(start_slam_cmd)
     ld.add_action(start_ros2_navigation_cmd)
     ld.add_action(start_target_tracking_cmd)
+    ld.add_action(start_search_cmd)
     ld.add_action(start_rviz_cmd)
 
     return ld
