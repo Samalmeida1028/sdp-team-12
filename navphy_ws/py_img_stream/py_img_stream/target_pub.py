@@ -57,7 +57,7 @@ class TargetPublisher(Node):
                     self.set_target()
                     self.index += 1
                     self.record_start_time = time.time() # current time
-            elif not msg.data and self.d > 3.0:
+            else:
                 self.record_start_time = time.time() # current time
 
 def main():
