@@ -19,6 +19,12 @@ def generate_launch_description():
         description='Whether to use serial handler or not'
     )
 
+    start_target_pub_cmd = Node(
+        package='py_img_stream',
+        executable='target_pub',
+        name='target_pub',
+    )
+
     start_image_pub_cmd = Node(
         package='py_img_stream',
         executable='pub',
@@ -46,6 +52,7 @@ def generate_launch_description():
     ld = LaunchDescription()
     ld.add_action(declare_run_serial_cmd)
 
+    ld.add_action(start_target_pub_cmd)
     ld.add_action(start_image_pub_cmd)
     ld.add_action(start_nav2pose_cmd)
     ld.add_action(start_serial_cmd)

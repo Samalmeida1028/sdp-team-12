@@ -182,7 +182,7 @@ class ImagePublisher(Node):
             self.target_spotted.data = 0
 
       # For recording
-      if self.target_spotted.data:
+      if self.target_spotted.data and (self.target_distance.data / 1000.0) <= 3.0:
         self.isRecording = True
         self.target_spotted_time = time.time()
 
