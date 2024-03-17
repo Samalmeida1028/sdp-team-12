@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 2/13/24
-# Date last modified: 3/6/24
+# Date last modified: 3/17/24
 # Description: Searches for targets by publishing random goals 
 
 '''
+0. Only start working if a target is received. No target, no search!
 1. When target is spotted, keep setting center of search area to robot position 
 2. When target is lost, wait 10 seconds before publishing a goal
     Goal published relative to center of search space
+    If nav2pose published goal, search within that area 3 times. Then, do random search if that fails
 3. Give 10 seconds to navigate to goal within search space, 20 for redefine goal
 4. Give new search space goal once navigate to goal is timed out within search space
 5. If at search radius limit, then redefine search space using LiDAR 
@@ -18,7 +20,7 @@
 '''
 
 from geometry_msgs.msg import PoseStamped
-from std_msgs.msg import Float32MultiArray,String,Float32,Int32
+from std_msgs.msg import String, Int32
 from nav_msgs.msg import Odometry
 from sensor_msgs.msg import LaserScan
 import rclpy
@@ -27,23 +29,23 @@ import math
 from scipy.spatial.transform import Rotation
 import time
 import random
-import numpy as np
 
 class SearchTargets(Node):
     def __init__(self):
         super().__init__('search_targets')
 
-        time.sleep(30)
+        # time.sleep(30)
 
         self.center = PoseStamped()
         self.current_pose = PoseStamped()
         self.goal = PoseStamped()
-        self.prev_goal = PoseStamped()
         self.scanmsg = LaserScan()
 
         self.odomsub = self.create_subscription(Odometry, '/odometry/filtered', self.set_current_pose, 10)
         self.target_spotted_sub = self.create_subscription(Int32, '/target_spotted', self.wait_timed_out, 10)
         self.scansub = self.create_subscription(LaserScan, "/scan", self.set_laser_scan, 10)
+        self.targetsub = self.create_subscription(Int32, "/target_id", self.set_target, 10)
+        self.goalsub = self.create_subscription(PoseStamped, "/nav2pose_goal", self.set_nav2pose_goal, 10)
 
         self.goalupdaterpub = self.create_publisher(PoseStamped, "/goal_pose", 10)
         self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
@@ -54,12 +56,15 @@ class SearchTargets(Node):
         self.nav_start_time = time.time()
         self.time_passed = time.time()
 
-        self.true_rot = 0.0
-        self.wait_time = 10.0
+        self.gpose_orient = 0.0
+        self.existinggoal_orient = 0.0
+        self.trials = 0
+        self.wait_time = 3.0
         self.redefine_time = 20.0
         self.search_radius = 1.0
         self.d = 0.5
         self.move_search_area = False
+        self.target_received = False
 
         time_period = 1.0
         self.timer1 = self.create_timer(time_period, self.set_search_goal)
@@ -91,6 +96,9 @@ class SearchTargets(Node):
     def set_laser_scan(self, scanmsg : LaserScan):
         self.scanmsg = scanmsg
 
+    def set_target(self, tmsg: Int32):
+        self.target_received = True
+
     # Checks to see if 10 seconds has been waited and returns a boolean
     def wait_timed_out(self, spotted : Int32):
         time_now = time.time()
@@ -110,40 +118,43 @@ class SearchTargets(Node):
 
         if not self.move_search_area:
             if nav_time >= self.wait_time:
-                self.get_logger().info("Nav to search timed out!")
+                # self.get_logger().info("Nav to search timed out!")
                 return True
         else:
             if nav_time >= self.redefine_time:
-                self.get_logger().info("Nav to redefine timed out!")
+                # self.get_logger().info("Nav to redefine timed out!")
                 self.move_search_area = False # publish one goal and stop publishing after that
                 self.set_center() # reset the center of search space now that it has timed out
                 return True
 
         return False
 
+    def set_nav2pose_goal(self, nav2posemsg: PoseStamped):
+        self.existinggoal_orient = Rotation.from_quat([nav2posemsg.pose.orientation.x,nav2posemsg.pose.orientation.y,
+                                                        nav2posemsg.pose.orientation.z,nav2posemsg.pose.orientation.w]).as_euler("xyz", degrees=False)[2]
+        self.trials = 0
+        
     # Given we have waited more than 10 seconds and navigation timer has expired and we are not redefining, 
     # publish new goal. Increment distance and pick a random angle to publish a goal in search area
     def set_search_goal(self):
-        if self.time_passed >= self.wait_time and self.nav_timed_out() and not self.move_search_area:
+        if self.time_passed >= self.wait_time and self.nav_timed_out() and not self.move_search_area and self.target_received:
             self.goal.header.frame_id = 'odom'
             self.goal.header.stamp = self.get_clock().now().to_msg()
 
-            phi = random.random() * 2*math.pi
+            cpose_orient = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
+                                          self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w]).as_euler("xyz", degrees=False)[2]
+            
+            if self.existinggoal_orient == 0.0 or self.trials >= 3:
+                self.gpose_orient = random.uniform(0.0, 2*math.pi) + cpose_orient
+            else:
+                self.trials += 1
+                self.gpose_orient = random.uniform(self.existinggoal_orient - 0.5, self.existinggoal_orient + 0.5)
 
-            test = String()
-            test.data = "Dist: " + str(self.d) + ", Phi: " + str(phi)
-            self.debug.publish(test)
-
-            pos_rads = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
-                                          self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w])
-
-            self.true_rot = phi + pos_rads.as_euler("xyz", degrees=False)[2]
-
-            self.goal.pose.position.x = self.center.pose.position.x + (self.d*math.cos(self.true_rot)) # xf = xc + dcos(phi)
-            self.goal.pose.position.y = self.center.pose.position.y + (self.d*math.sin(self.true_rot)) # yf = yc + dsin(phi)
+            self.goal.pose.position.x = self.center.pose.position.x + (self.d*math.cos(self.gpose_orient)) # xf = xc + dcos(phi)
+            self.goal.pose.position.y = self.center.pose.position.y + (self.d*math.sin(self.gpose_orient)) # yf = yc + dsin(phi)
             self.goal.pose.position.z = 0.0497
 
-            rot = Rotation.from_euler('xyz', [0, 0, self.true_rot], degrees=False)
+            rot = Rotation.from_euler('xyz', [0, 0, self.gpose_orient], degrees=False)
             rot_quat = rot.as_quat() # convert angle to quaternion format
 
             self.goal.pose.orientation.x = rot_quat[0] # set the orientation to be looking at the marker at the end of navigation
@@ -152,7 +163,7 @@ class SearchTargets(Node):
             self.goal.pose.orientation.w = rot_quat[3]
 
             if self.d <= self.search_radius:
-                self.get_logger().info("Setting new goal to {} at angle {}".format(self.d, phi))
+                self.get_logger().info("Setting new goal to {} at angle {}".format(self.d, self.gpose_orient))
                 self.correct_goal()
 
                 self.nav_start_time = time.time()
@@ -164,6 +175,10 @@ class SearchTargets(Node):
                 self.d = 0.5
                 self.move_search_area = True
                 self.redefine_search()
+
+            test = String()
+            test.data = "Dist: " + str(self.d) + ", Goal Orient: " + str(self.gpose_orient)
+            self.debug.publish(test)
         elif self.time_passed < self.wait_time: # only go in when target is seen
             self.set_center()
 
@@ -203,14 +218,14 @@ class SearchTargets(Node):
         self.get_logger().info("Checking distance validity with LiDAR scans...")
 
         initial_dist = math.atan2(self.goal.pose.position.y, self.goal.pose.position.x)
-        scanned_dist = self.scanmsg.ranges[int((self.true_rot + self.scanmsg.angle_min) / self.scanmsg.angle_increment)]
+        scanned_dist = self.scanmsg.ranges[int((self.gpose_orient + self.scanmsg.angle_min) / self.scanmsg.angle_increment)]
         corrected_dist = scanned_dist - 0.5 # add some padding so robot does not go into the wall
 
         if scanned_dist < initial_dist:
             self.get_logger().info("Invalid distance. Correcting {} to {}".format(initial_dist, corrected_dist))
 
-            self.goal.pose.position.x = self.center.pose.position.x + (corrected_dist*math.cos(self.true_rot)) # xf = xc + dcos(phi)
-            self.goal.pose.position.y = self.center.pose.position.y + (corrected_dist*math.sin(self.true_rot)) # yf = yc + dsin(phi)
+            self.goal.pose.position.x = self.center.pose.position.x + (corrected_dist*math.cos(self.gpose_orient)) # xf = xc + dcos(phi)
+            self.goal.pose.position.y = self.center.pose.position.y + (corrected_dist*math.sin(self.gpose_orient)) # yf = yc + dsin(phi)
         else:
             self.get_logger().info("Distance is valid")
     

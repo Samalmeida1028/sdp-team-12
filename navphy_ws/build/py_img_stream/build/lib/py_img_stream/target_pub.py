@@ -1,3 +1,12 @@
+'''
+Authors: Arjun Viswanathan, Samuel Almeida
+Target Publisher:
+- Gives equal amount of time before publishing new targets
+- Targets can be read in from a .txt file
+- .txt file can be updated without killing the node
+- Wait until within range of target and seeing target in camera frame to tick timer
+'''
+
 import numpy as np
 import time
 
@@ -6,8 +15,6 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Int32
 from std_msgs.msg import Float32
-
-# TODO: pause timer when target not seen but in range still in cycle_targets()
 class TargetPublisher(Node):
 
     def __init__(self):
@@ -21,6 +28,7 @@ class TargetPublisher(Node):
         self.index = 0
         self.d = 9999
         self.numtargets = 0
+        self.trunc_dist = 2.0
 
         self.target_id = Int32()
         self.record_timeout = 10
@@ -50,24 +58,20 @@ class TargetPublisher(Node):
             self.set_target()
             self.index += 1
         elif self.index < self.numtargets: # give every subsequent target from file equal time in recording
-            if msg.data and self.d <= 3.0: # wait until within steady state distance and target is spotted
+            if msg.data and self.d <= self.trunc_dist: # wait until within steady state distance and target is spotted
                 time_now = time.time()
                 self.recording_time = time_now - self.record_start_time
-                self.get_logger().info('Time recorded {}'.format(self.recording_time))
 
                 if self.recording_time >= self.record_timeout: # after timeout, then change target
                     self.target_id.data = int(self.targets[self.index])
                     self.get_logger().info('Got new target {}'.format(self.target_id.data))
                     self.set_target()
                     self.index += 1
-                    self.d = 9999
                     self.record_start_time = time.time() # reset timer
-            elif not msg.data and self.d <= 3.0:
+            elif not msg.data and self.d <= self.trunc_dist:
                 self.record_start_time = time.time() - self.recording_time # pause timer
-                self.get_logger().info('Paused timer at {}'.format(self.record_start_time))
             else:
                 self.record_start_time = time.time() # reset timer
-                self.get_logger().info('Reset timer to {}'.format(self.record_start_time))
 
 def main():
     rclpy.init()

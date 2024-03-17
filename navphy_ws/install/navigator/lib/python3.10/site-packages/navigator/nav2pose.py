@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # Author: SDP Team 12
 # Date created: 11/5/23
-# Date last modified: 3/6/24
+# Date last modified: 3/17/24
 # Description: Using Nav2 to navigate to a given pose
 
-from geometry_msgs.msg import PoseStamped,TransformStamped
+from geometry_msgs.msg import PoseStamped
 from tf2_msgs.msg import TFMessage
 from std_msgs.msg import Float32MultiArray,String,Float32,Int32
 from nav_msgs.msg import Odometry
@@ -29,6 +29,7 @@ class Nav2Pose(Node):
 
         self.goalupdaterpub = self.create_publisher(PoseStamped, "/goal_pose", 10)
         self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
+        self.nav2posegoalpub = self.create_publisher(PoseStamped, "/nav2pose_goal", 10)
 
         self.truncate_dist = 2.0
         self.angles = [0,0]
@@ -118,6 +119,7 @@ class Nav2Pose(Node):
 
         if self.goal != self.current_pose and not self.in_range(self.prev_goal, self.goal):
             self.goalupdaterpub.publish(self.goal)
+            self.nav2posegoalpub.publish(self.goal)
 
 def main(args=None):
     rclpy.init(args=args)
