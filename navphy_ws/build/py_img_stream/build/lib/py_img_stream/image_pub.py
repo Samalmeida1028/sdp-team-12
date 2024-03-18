@@ -32,12 +32,15 @@ class ImagePublisher(Node):
     self.marker_location_publisher = self.create_publisher(Float32MultiArray, "/marker_position", 1)
     self.target_distance_publisher = self.create_publisher(Float32, "/target_distance", 1)
     self.target_spotted_publisher = self.create_publisher(Int32, "/target_spotted", 1)
+
     timer_period = .02
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
+
     self.camParams = sio.loadmat("./calibration/logi_camParams.mat")
     self.cameraMatrix = self.camParams['cameraMatrix']
     self.distCoeffs = self.camParams['distortionCoefficients']
+
     self.angle = []
     self.marker_position = Float32MultiArray()
     self.translation = Float32MultiArray()
@@ -59,6 +62,7 @@ class ImagePublisher(Node):
 
     self.markerLength = 127 # mm
     self.marker_side = self.markerLength
+
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')
     self.cam = cv2.VideoCapture(0,cv2.CAP_V4L2)
@@ -73,8 +77,10 @@ class ImagePublisher(Node):
     self.marker_pose = []
 
     self.output = cv2.VideoWriter("RECORDING.avi",cv2.VideoWriter_fourcc(*"XVID"),24,(1920,1080))
-    self.isRecording = False
+    self.isRecording = Int32()
     self.target_spotted_time = time.time()
+
+    self.recordingpub = self.create_publisher(Int32, "/recording", 1)
 
   def target_acquire(self,msg):
     print("target acquired")
@@ -183,20 +189,21 @@ class ImagePublisher(Node):
 
       # For recording
       if self.target_spotted.data and (self.target_distance.data / 1000.0) <= 3.0:
-        self.isRecording = True
+        self.isRecording.data = 1
         self.target_spotted_time = time.time()
 
-      if(time.time()-self.target_spotted_time) > 5 and self.isRecording == True:
+      if(time.time()-self.target_spotted_time) > 5 and self.isRecording.data:
         # self.get_logger().info('Stopping recording')
-        self.isRecording = False
+        self.isRecording.data = 0
 
-      if self.isRecording:
+      if self.isRecording.data:
         # self.get_logger().info('Recording...')
         self.output.write(self.frame)
 
       cv2.imshow('camera',self.frame)
       cv2.waitKey(20)
     self.target_spotted_publisher.publish(self.target_spotted)
+    self.recordingpub.publish(self.isRecording)
 
     # Display the message on the console
     # self.get_logger().info('Publishing video frame')
