@@ -72,10 +72,10 @@ class TargetPublisher(Node):
             else:
                 if isRecording.data and self.spotted: # for recording or not
                     self.recording_time = time.time() - self.record_start_time
-                    self.get_logger().info('Recording target {} for {} seconds'.format(self.target_id.data, self.recording_time))
+                    # self.get_logger().info('Recording target {} for {} seconds'.format(self.target_id.data, self.recording_time))
                 else:
                     self.record_start_time = time.time() - self.recording_time # pause timer
-                    self.get_logger().info('Paused recording time at {} seconds'.format(self.recording_time))
+                    # self.get_logger().info('Paused recording time at {} seconds'.format(self.recording_time))
 
 def main():
     rclpy.init()

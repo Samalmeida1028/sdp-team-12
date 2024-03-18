@@ -97,6 +97,7 @@ class SearchTargets(Node):
         self.scanmsg = scanmsg
 
     def set_target(self, tmsg: Int32):
+        self.existinggoal_orient = 0.0
         self.target_received = True
 
     # Checks to see if 10 seconds has been waited and returns a boolean
@@ -149,6 +150,7 @@ class SearchTargets(Node):
             else:
                 self.trials += 1
                 self.gpose_orient = random.uniform(self.existinggoal_orient - 0.5, self.existinggoal_orient + 0.5)
+                self.d = 0.5
 
             self.goal.pose.position.x = self.center.pose.position.x + (self.d*math.cos(self.gpose_orient)) # xf = xc + dcos(phi)
             self.goal.pose.position.y = self.center.pose.position.y + (self.d*math.sin(self.gpose_orient)) # yf = yc + dsin(phi)
