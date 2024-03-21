@@ -7,14 +7,17 @@ import json
 def launch(arg: int, target_list: list = []):
     match arg:
         case 0:
-            subprocess.run("./run_target_tracking.sh")
+            p = subprocess.Popen("./run_target_tracking.sh")
             print("Running target tracking")
+            p.wait()
         case 1:
-            subprocess.run("./run_navigation.sh")
+            p = subprocess.Popen("./run_navigation.sh")
             print("Running nav")
+            p.wait()
         case 2:
-            subprocess.run("./run_test.sh")
+            p = subprocess.Popen("./run_test.sh")
             print("Test")
+            p.wait()
         case 3:
             # just make this case update the text file that you have or change the node with the input "target_list"
             fd = open("targets.txt", 'w+')
