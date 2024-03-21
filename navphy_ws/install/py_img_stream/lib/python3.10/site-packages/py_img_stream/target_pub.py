@@ -55,7 +55,7 @@ class TargetPublisher(Node):
         self.recording_time = time.time() - self.record_start_time
 
     def cycle_targets(self, isRecording: Int32):
-        if self.index <= self.numtargets: # give every subsequent target from file equal time in recording
+        if self.index <= self.numtargets and self.numtargets != 0: # give every subsequent target from file equal time in recording
             if self.index == 0 and not self.init_target_set: # send first target if it is in file
                 self.target_id.data = int(self.targets[self.index])
                 self.get_logger().info('Got initial target {}'.format(self.target_id.data))
