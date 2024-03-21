@@ -9,15 +9,12 @@ def launch(arg: int, target_list: list = []):
         case 0:
             p = subprocess.Popen("./run_target_tracking.sh")
             print("Running target tracking")
-            p.wait()
         case 1:
             p = subprocess.Popen("./run_navigation.sh")
             print("Running nav")
-            p.wait()
         case 2:
             p = subprocess.Popen("./run_test.sh")
             print("Test")
-            p.wait()
         case 3:
             # just make this case update the text file that you have or change the node with the input "target_list"
             fd = open("targets.txt", 'w+')
