@@ -199,3 +199,13 @@
 5. Conducted full rigorous testing and noticed every time robot collides it kills serial (OSError: Input/output error) -> prob some loose connection
 
 6. Noticed spark from motor to ground -> chassis is picking up static due to spray paint?
+
+3/16/24-3/21/24:
+
+1. Updated search algorithm to be better
+
+2. Updated target publisher to take from a text file and give every target the same time period. Time period can be changed 
+
+3. Made a GUI that will run the different part of our system so it is user friendly
+
+4. Trying to see how NLP would work and how to put that in 
