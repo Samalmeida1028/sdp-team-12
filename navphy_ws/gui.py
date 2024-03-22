@@ -1,3 +1,17 @@
+# Authors: Samuel Almeida, Arjun Viswanathan
+# Date created: 3/16/24
+# Date last modified: 3/22/24
+
+'''
+How to pipe GUI over SSH
+Install Xming software from source forge for free and set defaults
+Make sure Xming is running on local machine
+Connect NUC on hostspot 
+ssh -Y sdpteam12@ipaddr
+source ~/.bashrc once logged in and in correct directory
+python3 gui.py
+'''
+
 import tkinter as tk
 from tkinter import ttk
 from tkinter.ttk import *
