@@ -1,6 +1,6 @@
 # Authors: Samuel Almeida, Arjun Viswanathan
 # Date created: 3/16/24
-# Date last modified: 3/22/24
+# Date last modified: 3/23/24
 
 '''
 How to pipe GUI over SSH
@@ -31,11 +31,14 @@ def launch(arg: int, target_list: list = []):
             print("Test")
         case 3:
             # just make this case update the text file that you have or change the node with the input "target_list"
-            fd = open("targets.txt", 'w+')
+            fd = open("targets.txt", 'a')
             for i in target_list:
                 fd.write(str(i) + "\n")
 
             print("Updated list", target_list, type(target_list))
+        case 4:
+            p = subprocess.Popen("./mic.sh")
+            print("Using microphone input")
 
 def main():
     window = tk.Tk()
@@ -55,6 +58,9 @@ def main():
     inputL.insert(0,string="Enter list of targets like this => [1,59,2]")
     btn3 = ttk.Button(text="Update Targets", command=lambda:launch(3,json.loads(inputL.get())))
     btn3.pack()
+
+    btn4 = ttk.Button(text="Use Mic", command=lambda:launch(4))
+    btn4.pack()
 
     # Add widgets here (e.g., labels, buttons, etc.)
 
