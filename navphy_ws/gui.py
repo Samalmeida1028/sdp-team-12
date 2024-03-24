@@ -65,7 +65,12 @@ def main():
     # Add widgets here (e.g., labels, buttons, etc.)
 
     # Start the GUI event loop
-    # subprocess.run("./system_init.sh")
+    print("Initializing permissions and system...")
+    subprocess.run("./system_init.sh")
+
+    print("Clearing old targets from log file...")
+    open("targets.txt", "w").close() # clear text file
+
     window.mainloop()
 
 if __name__ == "__main__":

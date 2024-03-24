@@ -37,7 +37,7 @@ class ImagePublisher(Node):
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
 
-    self.camParams = sio.loadmat("./calibration/logi_camParams.mat")
+    self.camParams = sio.loadmat("./calibration/sam_camParams.mat")
     self.cameraMatrix = self.camParams['cameraMatrix']
     self.distCoeffs = self.camParams['distortionCoefficients']
 

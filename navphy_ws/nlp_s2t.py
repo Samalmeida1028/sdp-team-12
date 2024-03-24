@@ -28,7 +28,7 @@ English = True      # Use English-only model?
 Translate = False   # Translate non-English to English?
 SampleRate = 44100  # Stream device recording frequency
 BlockSize = 20      # Block size in milliseconds
-Threshold = 0.0     # Minimum volume threshold to activate listening
+Threshold = 0.01     # Minimum volume threshold to activate listening
 Vocals = [50, 1000] # Frequency range to detect sounds that could be speech
 EndBlocks = 10      # Number of blocks to wait before sending to Whisper
 

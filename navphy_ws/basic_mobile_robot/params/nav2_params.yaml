@@ -203,7 +203,7 @@ controller_server:
     MPPI:
       plugin: "nav2_mppi_controller::MPPIController"
       time_steps: 56
-      model_dt: 0.1
+      model_dt: 0.2
       batch_size: 2000
       vx_std: 0.2
       vy_std: 0.2
