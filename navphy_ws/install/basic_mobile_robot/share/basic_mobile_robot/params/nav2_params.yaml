@@ -202,8 +202,8 @@ controller_server:
       
     MPPI:
       plugin: "nav2_mppi_controller::MPPIController"
-      time_steps: 56
-      model_dt: 0.2
+      time_steps: 60
+      model_dt: 0.1
       batch_size: 2000
       vx_std: 0.2
       vy_std: 0.2
@@ -215,11 +215,11 @@ controller_server:
       iteration_count: 1
       enforce_path_inversion: false
       prune_distance: 1.5
-      transform_tolerance: 0.1
+      transform_tolerance: 0.5
       temperature: 0.3
       gamma: 0.015
       motion_model: "DiffDrive"
-      visualize: True
+      visualize: False
       reset_period: 1.0 # (only in Humble)
       regenerate_noises: false
       TrajectoryVisualizer:
