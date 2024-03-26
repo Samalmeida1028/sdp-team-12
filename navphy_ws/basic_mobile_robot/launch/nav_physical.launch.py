@@ -1,6 +1,6 @@
 # SDP Team 12
 # Date created: 11/9/23
-# Date last modified: 3/12/24
+# Date last modified: 3/25/24
 # Description: launch file to launch all necessary components for physical navigation
 
 import os
@@ -120,6 +120,12 @@ def generate_launch_description():
         name='lidar_odometry_node'
     )
 
+    start_lidar_filter_cmd = Node(
+        package='navigator',
+        executable='filterlidar',
+        name='filterlidar'
+    )
+
     start_encoder_odom_pub_cmd = Node(
         package='navigator',
         executable='sens2odom',
@@ -198,6 +204,7 @@ def generate_launch_description():
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)
     ld.add_action(start_lidar_cmd)
+    ld.add_action(start_lidar_filter_cmd)
     
     # ld.add_action(start_lidar_odom_pub_cmd)
     ld.add_action(start_encoder_odom_pub_cmd)
