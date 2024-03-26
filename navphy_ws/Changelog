@@ -215,3 +215,13 @@
 1. Testing yields nav2_params.yaml MPPI controller needs to be tuned to not exceed behavior tree tick rate and controller frequency
 
 2. targets.txt needs to be reset at ever gui start so old targets do not get taken in by publisher
+
+3/25/24-3/26/24:
+
+1. Reduced controller frequency to 5 Hz and model_dt to 0.25. Control does not miss its loop duration anymore
+
+2. Disabling RViz does not tick behavior tree over 100 Hz. Any enablement of RViz causes ticking to go too fast
+
+3. LiDAR filter is working correctly. Robot navigates with top platform rods in place
+
+4. NUC might be too weak to support all the processing we are doing. Target Tracking servos are moving too slow. Need to run NUC in performance mode in BIOS and check if that solves problem. 
