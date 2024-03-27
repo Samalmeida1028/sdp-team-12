@@ -225,3 +225,11 @@
 3. LiDAR filter is working correctly. Robot navigates with top platform rods in place
 
 4. NUC might be too weak to support all the processing we are doing. Target Tracking servos are moving too slow. Need to run NUC in performance mode in BIOS and check if that solves problem. 
+
+3/27/24:
+
+1. Testing on NUC reveals removing RViz and Camera feed makes tracking faster and does not tick behavior tree faster than 100 Hz. Both work well
+
+2. Added clear targets button to GUI, and added functionality to target pub to make it work with clearing of targets
+
+3. More chassis upgrades machining

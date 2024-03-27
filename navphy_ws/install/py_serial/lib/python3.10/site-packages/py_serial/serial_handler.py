@@ -134,7 +134,7 @@ class SerHandler(Node):
     def publish_servo_angles(self):
       serial_in = self.target_serial.readline()
       if serial_in:
-        print(json.loads(serial_in.decode('utf-8')))
+        # print(json.loads(serial_in.decode('utf-8')))
         self.angle = list(json.loads(serial_in.decode('utf-8')))
         # # print(self.angle)
         # # print(self.angle[0])
@@ -146,7 +146,7 @@ class SerHandler(Node):
     def check_target(self,msg):
         self.current_time = time.time()
         result : int = msg.data
-        print("checking",result)
+        # print("checking",result)
 
         if(result == 0 and self.current_time-self.last_time > 5 and not self.is_centered):
             print("centering")

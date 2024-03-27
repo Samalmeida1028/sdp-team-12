@@ -37,6 +37,9 @@ def launch(arg: int, target_list: list = []):
 
             print("Updated list", target_list, type(target_list))
         case 4:
+            print("Clearing all targets from log file...")
+            open("targets.txt", "w").close() # clear text file
+        case 5:
             p = subprocess.Popen("./mic.sh")
             print("Using microphone input")
 
@@ -56,19 +59,20 @@ def main():
     inputL = ttk.Entry(textvariable="enter list of targets",width=50)
     inputL.pack()
     inputL.insert(0,string="Enter list of targets like this => [1,59,2]")
-    btn3 = ttk.Button(text="Update Targets", command=lambda:launch(3,json.loads(inputL.get())))
+    btn3 = ttk.Button(text="Add Targets", command=lambda:launch(3,json.loads(inputL.get())))
     btn3.pack()
 
-    btn4 = ttk.Button(text="Use Mic", command=lambda:launch(4))
+    btn4 = ttk.Button(text="Clear targets", command=lambda:launch(4))
     btn4.pack()
+
+    btn5 = ttk.Button(text="Use Mic", command=lambda:launch(5))
+    btn5.pack()
 
     # Add widgets here (e.g., labels, buttons, etc.)
 
     # Start the GUI event loop
-    print("Initializing permissions and system...")
+    print("Initializing system...")
     subprocess.run("./system_init.sh")
-
-    print("Clearing old targets from log file...")
     open("targets.txt", "w").close() # clear text file
 
     window.mainloop()

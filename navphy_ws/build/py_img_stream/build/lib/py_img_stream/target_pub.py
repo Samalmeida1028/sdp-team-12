@@ -1,6 +1,6 @@
 '''
 Authors: Arjun Viswanathan, Samuel Almeida
-Date last modified: 3/18/24
+Date last modified: 3/27/24
 Target Publisher:
 - Gives equal amount of time before publishing new targets
 - Targets can be read in from a .txt file
@@ -42,6 +42,12 @@ class TargetPublisher(Node):
         with open("targets.txt") as f:
             self.targets = [int(x) for x in f.read().split()]
         self.numtargets = len(self.targets)
+
+        if self.numtargets < self.index: # to reset the list of targets
+            self.index = 0
+            self.recording_time = self.record_timeout
+            self.init_target_set = False
+            self.get_logger().info('Targets cleared. Resetting...')
 
     def set_spotted(self, spottedmsg: Int32):
         self.spotted = spottedmsg.data

@@ -1,6 +1,6 @@
 # SDP Team 12
 # Date created: 11/9/23
-# Date last modified: 3/25/24
+# Date last modified: 3/27/24
 # Description: launch file to launch all necessary components for physical navigation
 
 import os
@@ -155,6 +155,24 @@ def generate_launch_description():
         name='serial_handler',
     )
 
+    start_target_pub_cmd = Node(
+        package='py_img_stream',
+        executable='target_pub',
+        name='target_pub',
+    )
+
+    start_image_pub_cmd = Node(
+        package='py_img_stream',
+        executable='pub',
+        name='image_pub',
+    )
+
+    start_nav2pose_cmd = Node(
+        package='navigator',
+        executable='nav2pose',
+        name='nav2pose'
+    )
+
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
@@ -186,10 +204,6 @@ def generate_launch_description():
                             'autostart': autostart}.items()
     )
 
-    start_target_tracking_cmd = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(pkg_path, 'launch', 'target_tracking.launch.py'))
-    ) 
-
     # Launch!
     ld = LaunchDescription()
 
@@ -214,8 +228,12 @@ def generate_launch_description():
 
     ld.add_action(start_slam_cmd)
     ld.add_action(start_ros2_navigation_cmd)
-    ld.add_action(start_target_tracking_cmd)
     ld.add_action(start_search_cmd)
+
+    ld.add_action(start_target_pub_cmd)
+    ld.add_action(start_image_pub_cmd)
+    ld.add_action(start_nav2pose_cmd)
+
     ld.add_action(start_rviz_cmd)
 
     return ld

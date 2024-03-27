@@ -191,7 +191,7 @@ class ImagePublisher(Node):
       # self.get_logger().info("getting stuff")
       # cv2.imshow('camera', self.frame)
       if(corners is not None and ids is not None):
-        self.aruco_display(corners,ids)
+        # self.aruco_display(corners,ids)
         self.get_pixel_pos(corners,ids)
         for (markerCorner, markerID) in zip(corners, ids):
           if(markerID == self.target):
@@ -203,12 +203,12 @@ class ImagePublisher(Node):
         # print(self.angle)
         self.target_position.data[1] = float(self.angle[0])
         self.target_position.data[2] = float(self.angle[1]) 
-        print(self.target_position)
+        # print(self.target_position)
         self.target_location_publisher.publish(self.target_position)
         
         
-      cv2.imshow('camera',self.frame)
-      cv2.waitKey(16)
+      # cv2.imshow('camera',self.frame)
+      cv2.waitKey(0)
 
     # Display the message on the console
     # self.get_logger().info('Publishing video frame')

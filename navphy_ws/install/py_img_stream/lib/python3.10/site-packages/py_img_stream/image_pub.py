@@ -18,6 +18,7 @@ import serial
 import json
 import time
 
+marker_information = Float32MultiArray()
 class ImagePublisher(Node):
 
   def __init__(self):
@@ -33,7 +34,7 @@ class ImagePublisher(Node):
     self.target_distance_publisher = self.create_publisher(Float32, "/target_distance", 1)
     self.target_spotted_publisher = self.create_publisher(Int32, "/target_spotted", 1)
 
-    timer_period = .02
+    timer_period = .016
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
 
@@ -178,7 +179,7 @@ class ImagePublisher(Node):
         for (markerCorner, markerID) in zip(corners, ids):
           if(markerID == self.target):         
             # self.get_logger().info("%s" % json.dumps(list(self.marker_position.data) + [self.translation.data[2]]))
-            marker_information = Float32MultiArray()
+            global marker_information
             marker_information.data =[self.marker_position.data[0],self.marker_position.data[1]]
 
             self.marker_location_publisher.publish(marker_information)
@@ -200,8 +201,8 @@ class ImagePublisher(Node):
         # self.get_logger().info('Recording...')
         self.output.write(self.frame)
 
-      cv2.imshow('camera',self.frame)
-      cv2.waitKey(20)
+      # cv2.imshow('camera',self.frame)
+      # cv2.waitKey(10)
     self.target_spotted_publisher.publish(self.target_spotted)
     self.recordingpub.publish(self.isRecording)
 
