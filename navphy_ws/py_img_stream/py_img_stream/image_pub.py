@@ -1,4 +1,5 @@
 import time
+import argparse
 import cv2
 from cv2 import aruco
 import scipy.io as sio
@@ -8,15 +9,23 @@ import numpy as np
 # Import ROS specific packages
 import rclpy
 from rclpy.node import Node
+import std_msgs.msg as std_m
+from std_msgs.msg import String
 from std_msgs.msg import Int32, Float32
 from std_msgs.msg import Float32MultiArray
 from std_msgs.msg import Int32MultiArray
+import serial
+import json
 import time
 
 class ImagePublisher(Node):
 
   def __init__(self):
     super().__init__('image_pub')
+    # self.ser = serial.Serial(
+    #          '/dev/ttyACM3',
+    #          baudrate=115200,
+    #          timeout=0.01)
     
     # self.translation_publisher = self.create_publisher(Float32MultiArray, "translation_list", 1)
     # self.rotation_publisher = self.create_publisher(Float32MultiArray, "rotation_list", 1)
@@ -56,7 +65,7 @@ class ImagePublisher(Node):
 
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')
-    self.cam = cv2.VideoCapture(2,cv2.CAP_V4L2)
+    self.cam = cv2.VideoCapture(0,cv2.CAP_V4L2)
     self.cam.set(cv2.CAP_PROP_MODE,0)
     self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolutionX)
     self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolutionY)

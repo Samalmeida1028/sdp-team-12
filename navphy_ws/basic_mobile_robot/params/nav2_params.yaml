@@ -208,12 +208,10 @@ controller_server:
       vx_std: 0.2
       vy_std: 0.2
       wz_std: 0.2
-      ############################## TUNING PARAMS FOR SPEED ##############################
-      vx_max: 0.35
-      vx_min: -0.35
-      vy_max: 0.35
+      vx_max: 0.3
+      vx_min: -0.3
+      vy_max: 0.3
       wz_max: 0.4
-      #####################################################################################
       iteration_count: 1
       enforce_path_inversion: false
       prune_distance: 1.5
