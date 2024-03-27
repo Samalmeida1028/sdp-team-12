@@ -3,7 +3,7 @@ bt_navigator:
     use_sim_time: False
     global_frame: map
     robot_base_frame: base_link
-    odom_topic: odom
+    odom_topic: /odometry/filtered
     bt_loop_duration: 10
     default_server_timeout: 20
     enable_groot_monitoring: True
@@ -98,7 +98,7 @@ planner_server:
 
     SmacHybrid:
       plugin: "nav2_smac_planner/SmacPlannerHybrid"
-      tolerance: 0.5                      # tolerance for planning if unable to reach exact pose, in meters
+      tolerance: 0.2                      # tolerance for planning if unable to reach exact pose, in meters
       downsample_costmap: false           # whether or not to downsample the map
       downsampling_factor: 1              # multiplier for the resolution of the costmap layer (e.g. 2 on a 5cm costmap would be 10cm)
       allow_unknown: true                # allow traveling in unknown space
@@ -197,8 +197,8 @@ controller_server:
     general_goal_checker:
       stateful: True
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.40
-      yaw_goal_tolerance: 0.40
+      xy_goal_tolerance: 0.1
+      yaw_goal_tolerance: 0.1
       
     MPPI:
       plugin: "nav2_mppi_controller::MPPIController"
@@ -215,7 +215,7 @@ controller_server:
       iteration_count: 1
       enforce_path_inversion: false
       prune_distance: 1.5
-      transform_tolerance: 0.5
+      transform_tolerance: 1.5
       temperature: 0.3
       gamma: 0.015
       motion_model: "DiffDrive"
@@ -319,7 +319,7 @@ local_costmap:
         plugin: "nav2_costmap_2d::InflationLayer"
         footprint_clearing_enabled: true
         cost_scaling_factor: 1.0
-        inflation_radius: 0.2
+        inflation_radius: 0.3
         inflate_unknown: false
         inflate_around_unknown: true
       voxel_layer:
@@ -390,7 +390,7 @@ global_costmap:
         plugin: "nav2_costmap_2d::InflationLayer"
         footprint_clearing_enabled: true
         cost_scaling_factor: 1.0
-        inflation_radius: 0.2
+        inflation_radius: 0.3
         inflate_unknown: false
         inflate_around_unknown: true
       always_send_full_costmap: True
