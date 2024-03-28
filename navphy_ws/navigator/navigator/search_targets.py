@@ -59,7 +59,7 @@ class SearchTargets(Node):
         self.gpose_orient = 0.0
         self.existinggoal_orient = 0.0
         self.trials = 0
-        self.wait_time = 3.0
+        self.wait_time = 5.0
         self.redefine_time = 20.0
         self.search_radius = 1.0
         self.d = 0.5
@@ -145,7 +145,7 @@ class SearchTargets(Node):
             cpose_orient = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
                                           self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w]).as_euler("xyz", degrees=False)[2]
             
-            if self.existinggoal_orient == 0.0 or self.trials >= 3:
+            if self.existinggoal_orient == 0.0 or self.trials >= 6:
                 self.gpose_orient = random.uniform(0.0, 2*math.pi) + cpose_orient
             else:
                 self.trials += 1

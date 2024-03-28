@@ -16,6 +16,8 @@ import threading
 import time
 from pathlib import Path
 
+
+
 class SerHandler(Node):
     def __init__(self):
         exists = True
@@ -62,6 +64,8 @@ class SerHandler(Node):
                 else:
                     self.nav_serial = None
                 self.target_serial = self.serial1
+        
+        # self.tracking_dict = {"centering":0,"offset":[0.0,0.0]}
 
         self.encoder_publisher = self.create_publisher(Float32MultiArray, "/encoder_data", 1)
         self.imu_publisher = self.create_publisher(Float32MultiArray, "/imu_data", 1)

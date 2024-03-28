@@ -136,7 +136,7 @@ def generate_launch_description():
     start_slam_cmd = Node(
         package='slam_toolbox',
         executable='async_slam_toolbox_node',
-        name='slam_toolbox',
+        name='async_slam_toolbox_node',
         parameters=[
             slam_params_file,
             {'use_sim_time': use_sim_time}
@@ -146,7 +146,7 @@ def generate_launch_description():
     start_cmdvel_pub_cmd = Node(
         package='navigator',
         executable='cmdvelsub',
-        name='cmdvel_pub',
+        name='cmdvelsub',
     )
 
     start_serial_pub_cmd = Node(
@@ -164,7 +164,7 @@ def generate_launch_description():
     start_image_pub_cmd = Node(
         package='py_img_stream',
         executable='pub',
-        name='image_pub',
+        name='pub',
     )
 
     start_nav2pose_cmd = Node(
@@ -184,7 +184,7 @@ def generate_launch_description():
     search_node = Node(
         package='navigator',
         executable='searchtargets',
-        name='search_targets'
+        name='searchtargets'
     )
 
     start_search_cmd = GroupAction(
@@ -201,7 +201,8 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'navigation_launch.py')),
         launch_arguments = {'use_sim_time': use_sim_time,
                             'params_file': params_file,
-                            'autostart': autostart}.items()
+                            'autostart': autostart,
+                            'log_level': 'info'}.items()
     )
 
     # Launch!

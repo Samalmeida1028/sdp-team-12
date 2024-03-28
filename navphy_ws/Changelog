@@ -233,3 +233,7 @@
 2. Added clear targets button to GUI, and added functionality to target pub to make it work with clearing of targets
 
 3. More chassis upgrades machining
+
+4. Updating search algorithm. Giving more tries for initial last known location search and more time before new search is published
+
+5. Removed nav2 server verbosity 
