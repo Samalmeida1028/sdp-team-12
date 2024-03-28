@@ -4,14 +4,17 @@ import board
 import pwmio
 from adafruit_motor import servo
 import json
+import digitalio
 
 ################################################################
 # select the serial Data port
 ################################################################
 
 serial = usb_cdc.data
-pwm1 = pwmio.PWMOut(board.GP0, duty_cycle=2 ** 15, frequency=50)
-pwm2 = pwmio.PWMOut(board.GP1, duty_cycle=2 ** 12, frequency=50)
+pwm1 = pwmio.PWMOut(board.GP1, duty_cycle=2 ** 15, frequency=50)
+pwm2 = pwmio.PWMOut(board.GP0, duty_cycle=2 ** 12, frequency=50)
+led = digitalio.DigitalInOut(board.LED)
+led.direction = digitalio.Direction.OUTPUT
 my_servoy = servo.Servo(pwm2)
 my_servox = servo.Servo(pwm1)
 center = 90
@@ -21,33 +24,52 @@ my_servoy.angle = center
 tempx = center
 tempy = center
 data_inx,data_iny = center,center
+k_x = 2
+k_y = 1.5
 integral_x = 0
 integral_y = 0
-desired_angle = (0, 0)
+d_x = 8
+d_y = 6
+vel = (0, 0)
 
 # flag = 1
-count = 0
+prev_time = time.time()
 offset = 0
 
-start_time = time.monotonic_ns()
+dt = time.monotonic_ns()*1e-14
 while True:
+    dt = (time.monotonic_ns()*1e-14)-dt
     # print("hi")
+
+    ###################### DEBUG ######################
+    # t = time.time() - prev_time
+    # if t > 0.5:
+    #     led.value ^= 1
+    #     prev_time = time.time()
+    ###################################################
+    
     if serial.in_waiting > 0:
-        count = 0
         data_in = serial.readline()
+        prev_time = time.time()
         if data_in:
             if json.loads(data_in.decode()) == "Type":
                 # print("Asking type")
                 serial.write(bytearray(json.dumps("tracking") + "\n"))
             else:
+                t = time.time() - prev_time
+                if t > 0.5:
+                    led.value ^= 1
+                    prev_time = time.time()
+
                 translation = json.loads(data_in.decode('utf-8'))
                 print(translation)
 
                 if translation == "center":
                     my_servox.angle = center
-                    my_servoy.angle = center
+                    my_servoy.angle = center + 10
+
                 else:
-                    desired_angle = (float(translation[0])*(1080/1920),float(translation[1])*(1080/1920))
+                    vel = (float(translation[0])*(1080/1920),float(translation[1])*(1080/1920))
                 
                 # print(desired_angle)
                 # error_x = (desired_angle[0]-my_servox.angle)
@@ -57,20 +79,23 @@ while True:
                 # data_inx = min(180,max(-180,data_inx))
                 # data_iny = min(180,max(-180,data_iny))
                 # print(my_servox.angle,my_servoy.angle, "data:",data_inx,data_iny)
-                    data_inx += desired_angle[0]*.01
-                    data_iny -= desired_angle[1]*.01
+                    data_inx += vel[0]*dt*k_x + d_x*dt*9
+                    data_iny -= vel[1]*dt*k_y + d_y*dt*6
 
                     my_servox.angle = min(180,max(0,int(data_inx)))
                     my_servoy.angle = min(120,max(0,int(data_iny)))  
                 
                     myangle = [90-my_servox.angle,my_servoy.angle-90]
+                    # print(dt,myangle)
 
                     serial.write(bytearray(json.dumps(myangle) + "\n", "utf-8"))
         
                 while(serial.out_waiting):
                     pass
             serial.flush()
-                
+
+    d_x = my_servox.angle - tempx
+    d_y = my_servoy.angle - tempy
+
     tempx = my_servox.angle
     tempy = my_servoy.angle
-

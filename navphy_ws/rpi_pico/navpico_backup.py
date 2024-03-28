@@ -117,12 +117,11 @@ while True:
     if serial.in_waiting > 0:
         data_in = serial.readline()
         if data_in:
-            print(data_in.decode())
+            # print(data_in.decode())
             if json.loads(data_in.decode()) == "Type":
                 # print(data_in)
                 # print("nav")
                 serial.write(bytearray(json.dumps("nav")+"\n"))
-                serial.flush()
             else:
                 teleop = json.loads(data_in.decode("utf-8"))
                 #print(teleop)
@@ -178,11 +177,12 @@ while True:
                 }
                 remaining = bytes(json.dumps(sensor_data) + "\n", "utf-8")
                 # print(sensor_data["Encoder"])
-                print(sensor_data["Encoder"]["BL"]["Vel"], 
-                    sensor_data["Encoder"]["FL"]["Vel"], 
-                    sensor_data["Encoder"]["FR"]["Vel"])
+                # print(sensor_data["Encoder"]["BL"]["Vel"], 
+                #     sensor_data["Encoder"]["FL"]["Vel"], 
+                #     sensor_data["Encoder"]["FR"]["Vel"])
 
                 n = serial.write(remaining)
                 #print(n)
                 while serial.out_waiting:
                     pass
+            serial.flush()

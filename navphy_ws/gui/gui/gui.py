@@ -1,3 +1,9 @@
+# SDP Team 12
+# Author: Samuel Almeida
+# Date created: 3/28/24
+# Date last modified: 3/28/24
+# A ROS node which runs the GUI for our robot
+
 import rclpy
 from rclpy.node import Node
 
@@ -70,7 +76,7 @@ def main(args=None):
     t1 = Thread(target=start_ros,args=[gui]).start()
     t2 = Thread(target=create_gui,args=[gui]).start()
 
-    print("DONE")
+    print("GUI startup completed successfully!")
 
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically

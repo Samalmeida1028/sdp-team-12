@@ -237,3 +237,9 @@
 4. Updating search algorithm. Giving more tries for initial last known location search and more time before new search is published
 
 5. Removed nav2 server verbosity 
+
+3/28/24:
+
+1. Put top platform on and got everything working with it
+
+2. Updated pico code on repo side
