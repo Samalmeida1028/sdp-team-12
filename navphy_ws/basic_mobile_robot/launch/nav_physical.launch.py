@@ -1,6 +1,6 @@
 # SDP Team 12
 # Date created: 11/9/23
-# Date last modified: 3/27/24
+# Date last modified: 3/29/24
 # Description: launch file to launch all necessary components for physical navigation
 
 import os
@@ -30,7 +30,7 @@ def generate_launch_description():
     rviz_config_file = LaunchConfiguration('rviz_config_file')
     use_sim_time = LaunchConfiguration('use_sim_time')
     use_rviz = LaunchConfiguration('rviz')
-    run_search = LaunchConfiguration('search')
+    serial_mode = LaunchConfiguration('serial_mode')
 
     remappings = [('/tf', 'tf'),
                 ('/tf_static', 'tf_static')]
@@ -39,6 +39,12 @@ def generate_launch_description():
         name='autostart', 
         default_value='True',
         description='Automatically startup the nav2 stack'
+    )
+
+    declare_serial_mode_cmd = DeclareLaunchArgument(
+        'serial_mode',
+        default_value='navigation',
+        description='What mode to run serial in (nav or teleop)'
     )
 
     declare_params_file_cmd = DeclareLaunchArgument(
@@ -69,12 +75,6 @@ def generate_launch_description():
         name='rviz',
         default_value='True',
         description='Whether to use RViz or not'
-    )
-
-    declare_run_search_cmd = DeclareLaunchArgument(
-        name='search',
-        default_value='True',
-        description='Whether to use search node or not'
     )
 
     start_robot_localization_cmd = Node(
@@ -153,6 +153,9 @@ def generate_launch_description():
         package='py_serial',
         executable='serial_handler',
         name='serial_handler',
+        parameters=[
+            {'serial_mode': serial_mode}
+        ],
     )
 
     start_target_pub_cmd = Node(
@@ -181,15 +184,10 @@ def generate_launch_description():
         arguments=['-d', rviz_config_file]
     ) 
 
-    search_node = Node(
+    start_search_cmd = Node(
         package='navigator',
         executable='searchtargets',
         name='searchtargets'
-    )
-
-    start_search_cmd = GroupAction(
-        condition=IfCondition(PythonExpression([run_search])),
-        actions=[search_node]
     )
 
     start_rviz_cmd = GroupAction(
@@ -214,7 +212,7 @@ def generate_launch_description():
     ld.add_action(declare_model_path_cmd)
     ld.add_action(declare_rviz_config_file_cmd)
     ld.add_action(declare_use_rviz_cmd)
-    ld.add_action(declare_run_search_cmd)
+    ld.add_action(declare_serial_mode_cmd)
 
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)

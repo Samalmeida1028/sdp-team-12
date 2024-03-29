@@ -160,20 +160,21 @@ class GUI:
     def launch(self, arg: int, target_list: list = []):
         match arg:
             case 0:
-                global tracking_pid
-                tracking_cmd_list = ["ros2", "launch", "basic_mobile_robot", "target_tracking.launch.py"]
+                # global tracking_pid
+                # tracking_cmd_list = ["ros2", "launch", "basic_mobile_robot", "target_tracking.launch.py"]
                 tracking_pid = subprocess.Popen("./run_target_tracking.sh")
+                print("Running target tracking")
                 # p2 = subprocess.run(["pgrep", "pub"])
             case 1:
-                global nav_pid
+                # global nav_pid
                 nav_pid = subprocess.Popen("./run_navigation.sh")
                 print("Running nav")
-                nav_pid = p.pid
+                # nav_pid = p.pid
             case 2:
-                global test_pid
+                # global test_pid
                 test_pid= subprocess.Popen("./run_test.sh")
-                print("Test")
-                test_pid = p.pid
+                print("Running teleop testing with SLAM")
+                # test_pid = p.pid
             case 3:
                 # just make this case update the text file that you have or change the node with the input "target_list"
                 fd = open("targets.txt", 'a')

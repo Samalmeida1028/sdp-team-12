@@ -2,4 +2,4 @@
 
 source ~/.bashrc
 colcon build
-ros2 launch basic_mobile_robot teleop.launch.py
+ros2 launch basic_mobile_robot slam.launch.py

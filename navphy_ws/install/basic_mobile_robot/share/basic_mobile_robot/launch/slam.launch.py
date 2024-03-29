@@ -15,12 +15,13 @@ def generate_launch_description():
     pkg_path = os.path.join(get_package_share_directory('basic_mobile_robot'))
     model_file = os.path.join(pkg_path, 'models', 'robo_holly.urdf')
     robot_localization_file_path = os.path.join(pkg_path, 'config', 'ekf.yaml')
-    default_rviz_config_path = os.path.join(pkg_path, 'rviz', 'holly.rviz')
+    default_rviz_config_path = os.path.join(pkg_path, 'rviz', 'teleop.rviz')
     slam_params_file = os.path.join(pkg_path, 'config', 'doslam.yaml')
 
     model = LaunchConfiguration('model')
     rviz_config_file = LaunchConfiguration('rviz_config_file')
     use_sim_time = LaunchConfiguration('use_sim_time')
+    serial_mode = LaunchConfiguration('serial_mode')
 
     remappings = [('/tf', 'tf'),
                 ('/tf_static', 'tf_static')]
@@ -29,6 +30,12 @@ def generate_launch_description():
         'use_sim_time',
         default_value='False',
         description='Use sim time if true'
+    )
+
+    declare_serial_mode_cmd = DeclareLaunchArgument(
+        'serial_mode',
+        default_value='teleop',
+        description='What mode to run serial in (nav or teleop)'
     )
 
     declare_model_path_cmd = DeclareLaunchArgument(
@@ -77,21 +84,31 @@ def generate_launch_description():
             'frame_id': 'lidar_link',
             'angle_compensate': True,
             'auto_standby': True,
-            'scan_mode': 'Standard'
+            'scan_mode': 'Boost'
         }],
         output='screen'
     )
 
-    start_lidar_odom_pub_cmd = Node(
-        package='basic_mobile_robot',
-        executable='lidar_odometry_node',
-        name='lidar_odom_pub'
+    start_serial_pub_cmd = Node(
+        package='py_serial',
+        executable='serial_handler',
+        name='serial_handler',
+        parameters=[
+            {'serial_mode': serial_mode}
+        ],
     )
 
-    start_odom2baselink_tf_broadcaster_cmd = Node(
+    start_lidar_filter_cmd = Node(
         package='navigator',
-        executable='tfbr',
-        name='odom_tf_broadcaster'
+        executable='filterlidar',
+        name='filterlidar'
+    )
+
+    start_encoder_odom_pub_cmd = Node(
+        package='navigator',
+        executable='sens2odom',
+        name='sens2odom',
+        output='screen'
     )
 
     start_slam_cmd = Node(
@@ -119,13 +136,15 @@ def generate_launch_description():
     ld.add_action(declare_use_sim_time_cmd)
     ld.add_action(declare_model_path_cmd)
     ld.add_action(declare_rviz_config_file_cmd)
+    ld.add_action(declare_serial_mode_cmd)
 
     ld.add_action(start_robot_localization_cmd)
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)
     ld.add_action(start_lidar_cmd)
-    ld.add_action(start_lidar_odom_pub_cmd)
-    ld.add_action(start_odom2baselink_tf_broadcaster_cmd)
+    ld.add_action(start_lidar_filter_cmd)
+    ld.add_action(start_encoder_odom_pub_cmd)
+    ld.add_action(start_serial_pub_cmd)
     ld.add_action(start_slam_cmd)
     ld.add_action(start_rviz_cmd)
 

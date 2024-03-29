@@ -18,7 +18,7 @@ class FilterLiDAR(Node):
         self.scansub = self.create_subscription(LaserScan, '/scan', self.filter_scans, 10)
         self.filteredscanpub = self.create_publisher(LaserScan, '/scan_filtered', 10)
 
-        self.threshold = 0.2286 # m
+        self.threshold = 0.27 # m
         self.filteredmsg = LaserScan()
 
         self.get_logger().info('Filter LiDAR Node Ready!')
