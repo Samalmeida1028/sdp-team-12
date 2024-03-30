@@ -109,9 +109,9 @@ class GUI:
         btn3 = ttk.Button(text="Launch Test", command=lambda:self.launch(2))
         btn3.grid(row=4,column=0)
 
-        inputL = ttk.Entry(textvariable="enter list of targets",width=50)
+        inputL = ttk.Entry(textvariable="Enter list of targets like this => [1,59,2]",width=50)
         inputL.grid(row=6,column=1,columnspan=2)
-        inputL.insert(0,string="Enter list of targets like this => [1,59,2]")
+        # inputL.insert(0,string="Enter list of targets like this => [1,59,2]")
 
         btn3 = ttk.Button(text="Add Targets", command=lambda:self.launch(3,json.loads(inputL.get())))
         btn3.grid(row=6,column=0)
@@ -173,7 +173,7 @@ class GUI:
             case 2:
                 # global test_pid
                 test_pid= subprocess.Popen("./run_test.sh")
-                print("Running teleop testing")
+                print("Running teleop testing with SLAM")
                 # test_pid = p.pid
             case 3:
                 # just make this case update the text file that you have or change the node with the input "target_list"

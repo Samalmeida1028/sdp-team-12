@@ -1,6 +1,6 @@
 # SDP Team 12
 # Date created: 11/9/23
-# Date last modified: 3/27/24
+# Date last modified: 3/30/24
 # Description: launch file to launch all necessary components for physical navigation
 
 import os
@@ -13,6 +13,7 @@ from launch_ros.actions import Node
 from launch.conditions import IfCondition
 
 # To check laptop battery from RDP: upower -i /org/freedesktop/UPower/devices/battery_BAT0
+# To use assisted teleop, in a new terminal, type: ./run_teleop_keyboard.sh
 
 def generate_launch_description():
     pkg_path = os.path.join(get_package_share_directory('basic_mobile_robot'))
@@ -30,7 +31,6 @@ def generate_launch_description():
     rviz_config_file = LaunchConfiguration('rviz_config_file')
     use_sim_time = LaunchConfiguration('use_sim_time')
     use_rviz = LaunchConfiguration('rviz')
-    serial_mode = LaunchConfiguration('serial_mode')
 
     remappings = [('/tf', 'tf'),
                 ('/tf_static', 'tf_static')]
@@ -39,12 +39,6 @@ def generate_launch_description():
         name='autostart', 
         default_value='True',
         description='Automatically startup the nav2 stack'
-    )
-
-    declare_serial_mode_cmd = DeclareLaunchArgument(
-        'serial_mode',
-        default_value='navigation',
-        description='What mode to run serial in (nav or teleop)'
     )
 
     declare_params_file_cmd = DeclareLaunchArgument(
@@ -114,12 +108,6 @@ def generate_launch_description():
         }],
     )
 
-    start_lidar_odom_pub_cmd = Node(
-        package='basic_mobile_robot',
-        executable='lidar_odometry_node',
-        name='lidar_odometry_node'
-    )
-
     start_lidar_filter_cmd = Node(
         package='navigator',
         executable='filterlidar',
@@ -136,26 +124,17 @@ def generate_launch_description():
     start_slam_cmd = Node(
         package='slam_toolbox',
         executable='async_slam_toolbox_node',
-        name='async_slam_toolbox_node',
+        name='slam_toolbox',
         parameters=[
             slam_params_file,
             {'use_sim_time': use_sim_time}
         ],
     )
 
-    start_cmdvel_pub_cmd = Node(
-        package='navigator',
-        executable='cmdvelsub',
-        name='cmdvelsub',
-    )
-
     start_serial_pub_cmd = Node(
         package='py_serial',
         executable='serial_handler',
-        name='serial_handler',
-        parameters=[
-            {'serial_mode': serial_mode}
-        ],
+        name='serial_handler'
     )
 
     start_target_pub_cmd = Node(
@@ -212,16 +191,13 @@ def generate_launch_description():
     ld.add_action(declare_model_path_cmd)
     ld.add_action(declare_rviz_config_file_cmd)
     ld.add_action(declare_use_rviz_cmd)
-    ld.add_action(declare_serial_mode_cmd)
 
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_joint_state_publisher_cmd)
     ld.add_action(start_lidar_cmd)
     ld.add_action(start_lidar_filter_cmd)
     
-    # ld.add_action(start_lidar_odom_pub_cmd)
     ld.add_action(start_encoder_odom_pub_cmd)
-    ld.add_action(start_cmdvel_pub_cmd)
     ld.add_action(start_serial_pub_cmd)
     ld.add_action(start_robot_localization_cmd)
 

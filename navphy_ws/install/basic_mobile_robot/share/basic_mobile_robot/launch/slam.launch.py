@@ -21,7 +21,6 @@ def generate_launch_description():
     model = LaunchConfiguration('model')
     rviz_config_file = LaunchConfiguration('rviz_config_file')
     use_sim_time = LaunchConfiguration('use_sim_time')
-    serial_mode = LaunchConfiguration('serial_mode')
 
     remappings = [('/tf', 'tf'),
                 ('/tf_static', 'tf_static')]
@@ -30,12 +29,6 @@ def generate_launch_description():
         'use_sim_time',
         default_value='False',
         description='Use sim time if true'
-    )
-
-    declare_serial_mode_cmd = DeclareLaunchArgument(
-        'serial_mode',
-        default_value='teleop',
-        description='What mode to run serial in (nav or teleop)'
     )
 
     declare_model_path_cmd = DeclareLaunchArgument(
@@ -92,10 +85,7 @@ def generate_launch_description():
     start_serial_pub_cmd = Node(
         package='py_serial',
         executable='serial_handler',
-        name='serial_handler',
-        parameters=[
-            {'serial_mode': serial_mode}
-        ],
+        name='serial_handler'
     )
 
     start_lidar_filter_cmd = Node(
@@ -136,7 +126,6 @@ def generate_launch_description():
     ld.add_action(declare_use_sim_time_cmd)
     ld.add_action(declare_model_path_cmd)
     ld.add_action(declare_rviz_config_file_cmd)
-    ld.add_action(declare_serial_mode_cmd)
 
     ld.add_action(start_robot_localization_cmd)
     ld.add_action(start_robot_state_publisher_cmd)

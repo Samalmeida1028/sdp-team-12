@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan, Samuel Almeida
 # Date created: 11/28/23
-# Date last modified: 2/13/24
+# Date last modified: 3/30/24
 # Description: The serial handler node. Reads and writes to serial only here
 
 # Import ROS specific packages
@@ -64,18 +64,8 @@ class SerHandler(Node):
                 self.target_serial = self.serial1
         
         # self.tracking_dict = {"centering":0,"offset":[0.0,0.0]}
-        self.declare_parameter('serial_mode', 'navigation')
-        mode = self.get_parameter('serial_mode').get_parameter_value().string_value
 
-        self.get_logger().info('Using mode {}'.format(mode))
-        timer_period = .02
-        
-        if mode == 'navigation':
-            self.cmdvel_subscriber = self.create_subscription(Float32MultiArray, "cmd_vel_vectors", self.send_motor_commands, 10)
-        elif mode == 'teleop':
-            self.keyboard_sub = self.create_subscription(Twist, "/cmd_vel", self.set_teleop, 10)
-            self.timer2 = self.create_timer(timer_period, self.send_teleop_commands)
-
+        self.cmdvel_subscriber = self.create_subscription(Twist, "/cmd_vel_nav", self.set_teleop, 10)
         self.encoder_publisher = self.create_publisher(Float32MultiArray, "/encoder_data", 1)
         self.imu_publisher = self.create_publisher(Float32MultiArray, "/imu_data", 1)
         self.servo_xy_publisher = self.create_publisher(Float32MultiArray, "/servoxy_angle", 1)
@@ -83,7 +73,9 @@ class SerHandler(Node):
         self.target_seen = self.create_subscription(Int32, "/target_spotted", self.check_target, 10)
         self.is_centered = True
 
+        timer_period = .02        
         self.timer = self.create_timer(timer_period, self.run_serial)
+        self.timer2 = self.create_timer(timer_period, self.send_motor_commands)
         self.last_time = time.time()
         self.current_time = time.time()
 
@@ -102,11 +94,8 @@ class SerHandler(Node):
 
         self.debug_publisher = self.create_publisher(String, "/encoder_debug", 1)
 
-    def send_motor_commands(self,msg):
-        self.nav_serial.write(bytes(json.dumps(list(msg.data)) + "\n", "utf-8"))
-
-    def send_teleop_commands(self):
-        self.nav_serial.write(bytearray(json.dumps([self.x, self.z]) + "\n", encoding="utf-8"))
+    def send_motor_commands(self):
+        self.nav_serial.write(bytes(json.dumps([self.x, self.z]) + "\n", "utf-8"))
 
     def run_serial(self):
         self.get_encoder_info()

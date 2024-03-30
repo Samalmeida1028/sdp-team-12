@@ -21,8 +21,6 @@ setup(
     entry_points={
         'console_scripts': [
             'nav2pose = navigator.nav2pose:main',
-            'cmdvelsub = navigator.cmd_vel_sub:main',
-            'coordpub = navigator.coord_pub_test:main',
             'sens2odom = navigator.sens2odom:main',
             'searchtargets = navigator.search_targets:main',
             'filterlidar = navigator.filter_lidar:main'

@@ -212,7 +212,7 @@ controller_server:
       vx_max: 0.3
       vx_min: -0.3
       vy_max: 0.3
-      wz_max: 0.5
+      wz_max: 0.45
       ########################################################################
       iteration_count: 1
       enforce_path_inversion: false

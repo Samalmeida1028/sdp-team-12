@@ -105,12 +105,6 @@ def generate_launch_description():
         output='screen'
     )
 
-    start_cmdvel_pub_cmd = Node(
-        package='navigator',
-        executable='cmdvelsub',
-        name='cmdvel_pub',
-    )
-
     start_serial_pub_cmd = Node(
         package='py_serial',
         executable='serial_handler',
@@ -138,7 +132,6 @@ def generate_launch_description():
     ld.add_action(declare_rviz_config_file_cmd)
 
     ld.add_action(start_encoder_odom_pub_cmd)
-    ld.add_action(start_cmdvel_pub_cmd)
     ld.add_action(start_serial_pub_cmd)
     # ld.add_action(start_robot_localization_cmd)
     ld.add_action(start_robot_state_publisher_cmd)
