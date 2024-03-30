@@ -243,3 +243,11 @@
 1. Put top platform on and got everything working with it
 
 2. Updated pico code on repo side
+
+3/30/24:
+
+1. Fixed SLAM issue that was there from yesterday
+
+2. Got new camera and USB hub, so put those in
+
+3. Added assisted teleop functionality to robot during navigation. Still, the issue of everything being reset when it hits an obstacle needs to figured out and solved. Maybe rubber bumpers?
