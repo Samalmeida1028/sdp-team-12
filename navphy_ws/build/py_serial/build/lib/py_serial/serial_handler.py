@@ -65,7 +65,8 @@ class SerHandler(Node):
         
         # self.tracking_dict = {"centering":0,"offset":[0.0,0.0]}
 
-        self.cmdvel_subscriber = self.create_subscription(Twist, "/cmd_vel_nav", self.set_teleop, 10)
+        self.cmdvel_subscriber = self.create_subscription(Twist, "/cmd_vel_nav", self.set_nav, 10)
+        self.teleop_sub = self.create_subscription(Twist, "/teleop_vel", self.set_teleop, 10)
         self.encoder_publisher = self.create_publisher(Float32MultiArray, "/encoder_data", 1)
         self.imu_publisher = self.create_publisher(Float32MultiArray, "/imu_data", 1)
         self.servo_xy_publisher = self.create_publisher(Float32MultiArray, "/servoxy_angle", 1)
@@ -78,6 +79,7 @@ class SerHandler(Node):
         self.timer2 = self.create_timer(timer_period, self.send_motor_commands)
         self.last_time = time.time()
         self.current_time = time.time()
+        self.teleop_time = time.time()
 
         self.get_logger().info('Initialized timer')
 
@@ -97,12 +99,23 @@ class SerHandler(Node):
     def send_motor_commands(self):
         self.nav_serial.write(bytes(json.dumps([self.x, self.z]) + "\n", "utf-8"))
 
+        if time.time() - self.teleop_time > 3.0:
+            self.allow_nav = True
+
     def run_serial(self):
         self.get_encoder_info()
 
-    def set_teleop(self, msg : Twist):
-        self.x = msg.linear.x
-        self.z = msg.angular.z
+    def set_teleop(self, teleop_msg : Twist):
+        self.teleop_time = time.time()
+        self.allow_nav = False
+        
+        self.x = teleop_msg.linear.x
+        self.z = teleop_msg.angular.z
+
+    def set_nav(self, nav_msg : Twist):
+        if self.allow_nav:
+            self.x = nav_msg.linear.x
+            self.z = nav_msg.linear.z
 
     def get_encoder_info(self):
         msg = []
