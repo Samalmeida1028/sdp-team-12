@@ -38,7 +38,7 @@ class ImagePublisher(Node):
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
 
-    self.camParams = sio.loadmat("./calibration/dopeCam.mat")
+    self.camParams = sio.loadmat("./calibration/sam_camParams.mat")
     self.cameraMatrix = self.camParams['cameraMatrix']
     self.distCoeffs = self.camParams['distortionCoefficients']
 
@@ -55,13 +55,13 @@ class ImagePublisher(Node):
       self.target_acquire,
       10)
 
-    self.aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_5X5_1000)
+    self.aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_1000)
     self.aruco_params = aruco.DetectorParameters_create()
     self.resolutionX = 1920
     self.resolutionY = 1080
     self.target = 9999
 
-    self.markerLength = 127 # mm
+    self.markerLength = 88.9 # mm
     self.marker_side = self.markerLength
 
     if self.cameraMatrix is not None:
@@ -71,13 +71,13 @@ class ImagePublisher(Node):
     self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolutionX)
     self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolutionY)
     self.cam.set(cv2.CAP_PROP_FOURCC,cv2.VideoWriter_fourcc('M','J','P','G'))
-    self.cam.set(cv2.CAP_PROP_FPS,30)
+    self.cam.set(cv2.CAP_PROP_FPS,60)
     self.frame = []
     self.marker_ids_seen = set()
     self.custom_marker_sides = dict()
     self.marker_pose = []
 
-    self.output = cv2.VideoWriter("RECORDING.avi",cv2.VideoWriter_fourcc(*"XVID"),24,(1920,1080))
+    self.output = cv2.VideoWriter("RECORDING.avi",cv2.VideoWriter_fourcc(*"XVID"),60,(1920,1080))
     self.isRecording = Int32()
     self.target_spotted_time = time.time()
 
