@@ -115,7 +115,7 @@ class SerHandler(Node):
     def set_nav(self, nav_msg : Twist):
         if self.allow_nav:
             self.x = nav_msg.linear.x
-            self.z = nav_msg.linear.z
+            self.z = nav_msg.angular.z
 
     def get_encoder_info(self):
         msg = []
