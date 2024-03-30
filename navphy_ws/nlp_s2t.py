@@ -1,21 +1,16 @@
 # Author: Arjun Viswanathan
 # Credit: SDP Team 11, Alice Hung
 # Date created: 3/22/24
-# Date last modified: 3/23/24
+# Date last modified: 3/30/24
 
 '''
 How to run:
 1. Connect bluetooth device
     First time: connect HDMI in to NUC and manually connect from bluetooth menu. Note down Address of device
-    Every other time: turn on bluetooth earpiece. In the terminal, type the following:
-        bluetooth ctl connect ADDRESS
-    To disconnect or if that command gives error:
-        bluetooth ctl disconnect ADDRESS
-        bluetooth ctl connect ADDRESS
-    For our case, ADDRESS = 64:72:D8:49:95:D9
-2. Verify connected device using bt-device -l 
-3. Source the bashrc file
-4. Run python3 nlp_s2t.py file and enjoy :D
+    Every other time: turn on bluetooth earpiece. In the terminal, run:
+        ./connect_bluetooth.sh
+2. Source the bashrc file: source ~/.bashrc
+3. Run python3 nlp_s2t.py file and enjoy :D. Can also be triggered from the GUI
 '''
 
 import whisper
@@ -28,7 +23,7 @@ English = True      # Use English-only model?
 Translate = False   # Translate non-English to English?
 SampleRate = 44100  # Stream device recording frequency
 BlockSize = 20      # Block size in milliseconds
-Threshold = 0.01     # Minimum volume threshold to activate listening
+Threshold = 0.05     # Minimum volume threshold to activate listening
 Vocals = [50, 1000] # Frequency range to detect sounds that could be speech
 EndBlocks = 10      # Number of blocks to wait before sending to Whisper
 

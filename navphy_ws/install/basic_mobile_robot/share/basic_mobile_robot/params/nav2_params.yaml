@@ -197,8 +197,8 @@ controller_server:
     general_goal_checker:
       stateful: True
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.2
-      yaw_goal_tolerance: 0.2
+      xy_goal_tolerance: 0.25
+      yaw_goal_tolerance: 0.25
       
     MPPI:
       plugin: "nav2_mppi_controller::MPPIController"
@@ -209,10 +209,10 @@ controller_server:
       vy_std: 0.2
       wz_std: 0.2
       ########################### TUNING FOR SPEED ###########################
-      vx_max: 0.35
-      vx_min: -0.35
-      vy_max: 0.35
-      wz_max: 0.5
+      vx_max: 0.3
+      vx_min: -0.3
+      vy_max: 0.3
+      wz_max: 0.45
       ########################################################################
       iteration_count: 1
       enforce_path_inversion: false
