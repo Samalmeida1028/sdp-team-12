@@ -20,7 +20,7 @@ def speech_to_text():
 
         try:
             # Use Google Speech Recognition
-            text = recognizer.recognize_whisper(audio)
+            text = recognizer.recognize_sphinx(audio)
             print("You said:", text)
         except sr.UnknownValueError:
             print("Could not understand audio")
