@@ -17,6 +17,7 @@ from std_msgs.msg import Int32MultiArray
 import serial
 import json
 import time
+from datetime import datetime
 
 marker_information = Float32MultiArray()
 class ImagePublisher(Node):
@@ -76,8 +77,8 @@ class ImagePublisher(Node):
     self.marker_ids_seen = set()
     self.custom_marker_sides = dict()
     self.marker_pose = []
-
-    self.output = cv2.VideoWriter("RECORDING.avi",cv2.VideoWriter_fourcc(*"XVID"),60,(1920,1080))
+    recording_loc= f"recordings/RECORDING{datetime.now()}.avi"
+    self.output = cv2.VideoWriter(recording_loc,cv2.VideoWriter_fourcc(*"XVID"),60,(1920,1080))
     self.isRecording = Int32()
     self.target_spotted_time = time.time()
 
@@ -173,7 +174,7 @@ class ImagePublisher(Node):
       # self.get_logger().info("getting stuff")
       # cv2.imshow('camera', self.frame)
       if(corners is not None and ids is not None):
-        # self.aruco_display(corners,ids)
+        self.aruco_display(corners,ids)
         self.get_pixel_pos(corners,ids)
 
         for (markerCorner, markerID) in zip(corners, ids):

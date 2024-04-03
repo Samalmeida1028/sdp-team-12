@@ -27,7 +27,7 @@ class SerHandler(Node):
         my_file = Path("/dev/ttyACM3")
 
         if(not my_file.exists()):
-            print("No second device, not running")
+            self.get_logger().info("No second device, not running")
             exists = False
         if(exists):
             self.serial2 = serial.Serial(
@@ -39,9 +39,9 @@ class SerHandler(Node):
         self.serial1.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
         if exists:
             self.serial2.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
-        # # while self.serial1.out_waiting > 0:
-        #y     pass
-        # # # # print(self.serial1)
+        while self.serial1.out_waiting > 0:
+            pass
+        # # # print(self.serial1)
         response = self.serial1.readline()
         if exists:
             _ = self.serial2.readline()
@@ -49,6 +49,8 @@ class SerHandler(Node):
         # for i in range(100):
             # # print(response)
         if response:
+            # print("Hi")
+            # print(response.decode())
             if json.loads(response.decode()) == "nav":
                 # print("NAV")
                 self.nav_serial = self.serial1
@@ -163,7 +165,7 @@ class SerHandler(Node):
         # print("checking",result)
 
         if(result == 0 and self.current_time-self.last_time > 5 and not self.is_centered):
-            print("centering")
+            self.get_logger().info("centering")
             self.target_serial.write(bytearray(json.dumps("center")+ "\n",encoding="utf-8"))
             self.last_time = self.current_time
             self.is_centered = True

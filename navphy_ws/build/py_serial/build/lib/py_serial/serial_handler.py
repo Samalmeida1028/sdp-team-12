@@ -39,9 +39,9 @@ class SerHandler(Node):
         self.serial1.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
         if exists:
             self.serial2.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
-        # # while self.serial1.out_waiting > 0:
-        #y     pass
-        # # # # print(self.serial1)
+        while self.serial1.out_waiting > 0:
+            pass
+        # # # print(self.serial1)
         response = self.serial1.readline()
         if exists:
             _ = self.serial2.readline()
@@ -49,6 +49,8 @@ class SerHandler(Node):
         # for i in range(100):
             # # print(response)
         if response:
+            print("Hi")
+            print(response.decode())
             if json.loads(response.decode()) == "nav":
                 # print("NAV")
                 self.nav_serial = self.serial1
