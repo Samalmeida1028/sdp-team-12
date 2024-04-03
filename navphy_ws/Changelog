@@ -251,3 +251,15 @@
 2. Got new camera and USB hub, so put those in
 
 3. Added assisted teleop functionality to robot during navigation. Still, the issue of everything being reset when it hits an obstacle needs to figured out and solved. Maybe rubber bumpers?
+
+4/1/24-4/3/24:
+
+1. Adding the new servos into robot
+
+2. Updating target tracking to work with new servos. It works now
+
+3. Tweaked nav2pose to have a goal correction function like search_targets
+
+4. Changed LiDAR scan topic to /scan_filtered from /scan in nav2pose and search_targets
+
+5. Adding 
