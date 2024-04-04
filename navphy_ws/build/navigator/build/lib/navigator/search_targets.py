@@ -43,7 +43,7 @@ class SearchTargets(Node):
 
         self.odomsub = self.create_subscription(Odometry, '/odometry/filtered', self.set_current_pose, 10)
         self.target_spotted_sub = self.create_subscription(Int32, '/target_spotted', self.wait_timed_out, 10)
-        self.scansub = self.create_subscription(LaserScan, "/scan", self.set_laser_scan, 10)
+        self.scansub = self.create_subscription(LaserScan, "/scan_filtered", self.set_laser_scan, 10)
         self.targetsub = self.create_subscription(Int32, "/target_id", self.set_target, 10)
         self.goalsub = self.create_subscription(PoseStamped, "/nav2pose_goal", self.set_nav2pose_goal, 10)
 

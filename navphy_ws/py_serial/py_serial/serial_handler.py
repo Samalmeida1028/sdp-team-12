@@ -7,7 +7,7 @@
 # Import ROS specific packages
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Float32MultiArray,Int32
+from std_msgs.msg import Float32MultiArray,Int32,Float32
 import serial
 import json
 from std_msgs.msg import String
@@ -34,6 +34,7 @@ class SerHandler(Node):
                         '/dev/ttyACM3',
                         baudrate=115200,
                         timeout=0.01)
+        print("WESTARTING UP BABY AAAHHHHHH")
 
             
         self.serial1.write(bytearray(json.dumps("Type") + "\n",encoding="utf-8"))
@@ -72,7 +73,10 @@ class SerHandler(Node):
         self.encoder_publisher = self.create_publisher(Float32MultiArray, "/encoder_data", 1)
         self.imu_publisher = self.create_publisher(Float32MultiArray, "/imu_data", 1)
         self.servo_xy_publisher = self.create_publisher(Float32MultiArray, "/servoxy_angle", 1)
-        self.marker_subscriber = self.create_subscription(Float32MultiArray, '/marker_position', self.send_marker_position,10)
+        self.marker_subscriber = self.create_subscription(Float32MultiArray, '/marker_position', self.update_tracking,10)
+        self.recording_time_subscriber = self.create_subscription(Float32, '/recording_time', self.update_recording_time,1)
+        self.recording_max_time_subscriber = self.create_subscription(Int32, '/recording_max_time', self.update_max_recording_time,1)
+        self.recording_state_subscriber = self.create_subscription(Int32, '/recording', self.update_recording_state,1)
         self.target_seen = self.create_subscription(Int32, "/target_spotted", self.check_target, 10)
         self.is_centered = True
 
@@ -82,6 +86,9 @@ class SerHandler(Node):
         self.last_time = time.time()
         self.current_time = time.time()
         self.teleop_time = time.time()
+        self.recording_time = 1
+        self.recording_max_time = 1
+        self.recording_state = 0
 
         self.get_logger().info('Initialized timer')
 
@@ -97,6 +104,13 @@ class SerHandler(Node):
         self.z = 0.0
 
         self.debug_publisher = self.create_publisher(String, "/encoder_debug", 1)
+
+    def update_recording_time(self,msg):
+        self.recording_time = msg.data
+    def update_max_recording_time(self,msg):
+        self.recording_max_time = msg.data
+    def update_recording_state(self,msg):
+        self.recording_state = msg.data
 
     def send_motor_commands(self):
         self.nav_serial.write(bytes(json.dumps([self.x, self.z]) + "\n", "utf-8"))
@@ -141,9 +155,19 @@ class SerHandler(Node):
             self.encoder_publisher.publish(self.encoder_data)
             self.imu_publisher.publish(self.imu_data)
 
-    def send_marker_position(self,msg):
-        # # print(msg)
-        self.target_serial.write(bytearray(json.dumps(list(msg.data)) + "\n",encoding="utf-8"))
+    def update_tracking(self,msg):
+        print(msg)
+        led_state = 0
+        print(self.recording_state)
+        if(self.recording_state == 1):
+            print(self.recording_time/float(self.recording_max_time))
+            if(self.recording_time/float(self.recording_max_time)) > .7:
+                led_state = 2
+            else:
+                print("AAAAAAHHHHHHHHHHH")
+                led_state = 1
+
+        self.target_serial.write(bytearray(json.dumps(list(msg.data)+[led_state]) + "\n",encoding="utf-8"))
         self.is_centered = False
         self.publish_servo_angles()
 

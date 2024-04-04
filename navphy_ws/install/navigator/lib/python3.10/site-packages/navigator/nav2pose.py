@@ -7,6 +7,7 @@
 from geometry_msgs.msg import PoseStamped
 from tf2_msgs.msg import TFMessage
 from std_msgs.msg import Float32MultiArray,String,Float32,Int32
+from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import Odometry
 import rclpy
 from rclpy.node import Node
@@ -20,12 +21,14 @@ class Nav2Pose(Node):
         self.current_pose = PoseStamped()
         self.goal = PoseStamped()
         self.prev_goal = PoseStamped()
+        self.scanmsg = LaserScan()
 
         # print("Creating subscribers and callbacks...")
         self.angsub = self.create_subscription(Float32MultiArray, '/servoxy_angle', self.update_angle, 10)
         self.distancesub = self.create_subscription(Float32, '/target_distance', self.update_distance, 10)
         self.odomsub = self.create_subscription(Odometry, '/odometry/filtered', self.set_current_pose, 10)
         self.target_spotted_sub = self.create_subscription(Int32, '/target_spotted', self.set_goal, 10)
+        self.scansub = self.create_subscription(LaserScan, "/scan_filtered", self.set_laser_scan, 10)
 
         self.goalupdaterpub = self.create_publisher(PoseStamped, "/goal_pose", 10)
         self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
@@ -35,6 +38,7 @@ class Nav2Pose(Node):
         self.angles = [0,0]
         self.distance = 0
         self.target_goal = None
+        self.gpose_orient = 0.0
 
         time_period = 0.5
         self.timer = self.create_timer(time_period, self.nav2pose_callback)
@@ -48,6 +52,9 @@ class Nav2Pose(Node):
         self.current_pose.pose.position = odommsg.pose.pose.position
         self.current_pose.pose.orientation = odommsg.pose.pose.orientation
 
+    def set_laser_scan(self, scanmsg : LaserScan):
+        self.scanmsg = scanmsg
+
     def set_goal(self, check : Int32):
         # goalmsg = [dist, xangle, yangle]
         # print("hi",check.data)
@@ -59,26 +66,41 @@ class Nav2Pose(Node):
             d = self.target_goal[0]*math.cos(math.radians(self.target_goal[2])) # true dist = seen dist * sin(yangle)
             d = (d/1000) - self.truncate_dist
             # print(self.target_goal)
-            pos_deg = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
-                                          self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w])
+            cpose_orient = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
+                                          self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w]).as_euler("xyz",degrees=False)[2]
 
-            true_rot = (math.radians(self.target_goal[1]) + (pos_deg.as_euler("xyz",degrees=False)[2])) #+math.pi))-math.pi
+            self.gpose_orient = math.radians(self.target_goal[1]) + cpose_orient #+math.pi))-math.pi
 
-            self.goal.pose.position.x = self.current_pose.pose.position.x + (d*math.cos(true_rot)) # xf = xi + dsin(phi)
-            self.goal.pose.position.y = self.current_pose.pose.position.y + (d*math.sin(true_rot)) # yf = yi + dcos(phi)
+            self.goal.pose.position.x = self.current_pose.pose.position.x + (d*math.cos(self.gpose_orient)) # xf = xi + dsin(phi)
+            self.goal.pose.position.y = self.current_pose.pose.position.y + (d*math.sin(self.gpose_orient)) # yf = yi + dcos(phi)
             self.goal.pose.position.z = 0.0497
 
             test = String()
-            test.data = "X: " + str(self.goal.pose.position.x) + ", Y: " + str(self.goal.pose.position.y) + ", d: " + str(d) + ", true_rot: " + str(true_rot)
+            test.data = "X: " + str(self.goal.pose.position.x) + ", Y: " + str(self.goal.pose.position.y) + ", d: " + str(d) + ", self.gpose_orient: " + str(self.gpose_orient)
             self.currentdebugpub.publish(test)
 
-            rot = Rotation.from_euler('xyz', [0, 0, true_rot], degrees=False)
+            rot = Rotation.from_euler('xyz', [0, 0, self.gpose_orient], degrees=False)
             rot_quat = rot.as_quat() # convert angle to quaternion format
 
             self.goal.pose.orientation.x = rot_quat[0] # set the orientation to be looking at the marker at the end of navigation
             self.goal.pose.orientation.y = rot_quat[1]
             self.goal.pose.orientation.z = rot_quat[2]
             self.goal.pose.orientation.w = rot_quat[3]
+
+    def correct_goal(self):
+        self.get_logger().info("Checking goal validity with LiDAR scans...")
+
+        initial_dist = math.atan2(self.goal.pose.position.y, self.goal.pose.position.x)
+        scanned_dist = self.scanmsg.ranges[int((self.gpose_orient + self.scanmsg.angle_min) / self.scanmsg.angle_increment)]
+        corrected_dist = scanned_dist - 0.5 # add some padding so robot does not go into the wall
+
+        if scanned_dist < initial_dist:
+            self.get_logger().info("Invalid distance. Correcting {} to {}".format(initial_dist, corrected_dist))
+
+            self.goal.pose.position.x = self.current_pose.pose.position.x + (corrected_dist*math.cos(self.gpose_orient)) # xf = xc + dcos(phi)
+            self.goal.pose.position.y = self.current_pose.pose.position.y + (corrected_dist*math.sin(self.gpose_orient)) # yf = yc + dsin(phi)
+        else:
+            self.get_logger().info("Distance is valid")
 
     def update_angle(self,msg : Float32MultiArray):
         self.angles = [0,0]
@@ -118,6 +140,7 @@ class Nav2Pose(Node):
         self.currentposepub.publish(self.current_pose)
 
         if self.goal != self.current_pose and not self.in_range(self.prev_goal, self.goal):
+            self.correct_goal()
             self.goalupdaterpub.publish(self.goal)
             self.nav2posegoalpub.publish(self.goal)
 
