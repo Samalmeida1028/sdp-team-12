@@ -10,9 +10,9 @@ setup.py
 ../build/py_img_stream/py_img_stream.egg-info/zip-safe
 py_img_stream/__init__.py
 py_img_stream/image_pub.py
+py_img_stream/image_pub_audio.py
 py_img_stream/image_pub_old.py
 py_img_stream/image_test_sub.py
-py_img_stream/img_pub_w_audio.py
 py_img_stream/target_pub.py
 resource/py_img_stream
 test/test_copyright.py
