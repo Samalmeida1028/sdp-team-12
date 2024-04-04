@@ -1,2 +1,3 @@
 *.log
 navphy_ws/recordings/*.avi
+navphy_ws/recordings/*.wav
