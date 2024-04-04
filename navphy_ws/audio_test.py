@@ -17,7 +17,7 @@ def start_recording_audio(): # record the audio
 recording_loc= f"recordings/RECORDING{datetime.now()}"
 
 rate = 44100
-frames_per_buffer = 1024
+frames_per_buffer = 4096
 channels = 1
 format = 'int16'
 audio_filename = recording_loc + ".wav"
