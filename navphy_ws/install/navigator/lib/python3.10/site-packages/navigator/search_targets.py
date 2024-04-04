@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 2/13/24
-# Date last modified: 3/17/24
+# Date last modified: 4/4/24
 # Description: Searches for targets by publishing random goals 
 
 '''
@@ -61,7 +61,7 @@ class SearchTargets(Node):
         self.trials = 0
         self.wait_time = 5.0
         self.redefine_time = 20.0
-        self.search_radius = 1.0
+        self.search_radius = 1.5
         self.d = 0.5
         self.move_search_area = False
         self.target_received = False
@@ -100,10 +100,10 @@ class SearchTargets(Node):
         self.existinggoal_orient = 0.0
         self.target_received = True
 
-    # Checks to see if 10 seconds has been waited and returns a boolean
+    # Checks to see if x seconds has been waited and returns a boolean
     def wait_timed_out(self, spotted : Int32):
         time_now = time.time()
-        if spotted.data:
+        if spotted.data or not self.target_received:
             self.wait_start_time = time.time()
 
         self.time_passed = time_now - self.wait_start_time

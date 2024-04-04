@@ -25,7 +25,9 @@ setup(
             'sub = '
             'py_img_stream.image_test_sub:main',
             'target_pub = '
-            'py_img_stream.target_pub:main'
+            'py_img_stream.target_pub:main',
+            'img_pub_audio = '
+            'py_img_stream.image_pub_audio:main'
         ],
     },
 )

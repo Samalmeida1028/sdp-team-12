@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: SDP Team 12
 # Date created: 11/5/23
-# Date last modified: 3/17/24
+# Date last modified: 4/3/24
 # Description: Using Nav2 to navigate to a given pose
 
 from geometry_msgs.msg import PoseStamped
@@ -91,6 +91,9 @@ class Nav2Pose(Node):
         self.get_logger().info("Checking goal validity with LiDAR scans...")
 
         initial_dist = math.atan2(self.goal.pose.position.y, self.goal.pose.position.x)
+
+        # self.get_logger().info("{} {} {}".format(self.gpose_orient, self.scanmsg.angle_min, self.scanmsg.angle_increment))
+
         scanned_dist = self.scanmsg.ranges[int((self.gpose_orient + self.scanmsg.angle_min) / self.scanmsg.angle_increment)]
         corrected_dist = scanned_dist - 0.5 # add some padding so robot does not go into the wall
 
