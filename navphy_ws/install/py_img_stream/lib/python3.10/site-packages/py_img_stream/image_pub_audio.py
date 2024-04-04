@@ -3,10 +3,12 @@ import cv2
 from cv2 import aruco
 import scipy.io as sio
 import time
-import pyaudio
+import sounddevice as sd
+import numpy as np
 import wave
 import threading
 from datetime import datetime
+import subprocess
 
 # Import ROS specific packages
 import rclpy
@@ -69,8 +71,11 @@ class ImagePublisherAudio(Node):
     self.custom_marker_sides = dict()
     self.marker_pose = []
 
-    recording_loc= f"recordings/RECORDING{datetime.now()}"
-    self.output = cv2.VideoWriter(recording_loc + ".avi", cv2.VideoWriter_fourcc(*"XVID"),60,(1920,1080))
+    self.dtnow = datetime.now()
+    recording_loc= f"recordings/RECORDING{self.dtnow}"
+
+    self.video_filename = recording_loc + ".avi"
+    self.output = cv2.VideoWriter(self.video_filename, cv2.VideoWriter_fourcc(*"XVID"),60,(1920,1080))
     self.get_logger().info('Created video writer')
 
     self.isRecording = Int32()
@@ -79,23 +84,13 @@ class ImagePublisherAudio(Node):
     self.rate = 44100
     self.frames_per_buffer = 1024
     self.channels = 1
-    self.format = pyaudio.paInt16
+    self.format = 'int16'
     self.audio_filename = recording_loc + ".wav"
-    self.audio = pyaudio.PyAudio()
-
-    #################### Regular Option ####################
-    self.stream = self.audio.open(format=self.format,
-                                    channels=self.channels,
-                                    rate=self.rate,
-                                    input=True,
-                                    frames_per_buffer = self.frames_per_buffer)
-    self.stream.start_stream()
-    ########################################################
-    self.stream_started = True
+    self.stream_started = False
     
     self.waveFile = wave.open(self.audio_filename, 'wb')
     self.waveFile.setnchannels(self.channels)
-    self.waveFile.setsampwidth(self.audio.get_sample_size(self.format))
+    self.waveFile.setsampwidth(2)
     self.waveFile.setframerate(self.rate)
 
     self.get_logger().info('Created audio writer')
@@ -214,14 +209,6 @@ class ImagePublisherAudio(Node):
           audio_thread = threading.Thread(target=self.start_recording_audio)
           audio_thread.start()
           audio_thread.join()
-          #################### Optimized Option ####################
-          # self.stream = self.audio.open(format=self.format,
-          #                           channels=self.channels,
-          #                           rate=self.rate,
-          #                           input=True,
-          #                           frames_per_buffer = self.frames_per_buffer)
-          # self.stream.start_stream()
-          ##########################################################
 
       if(time.time()-self.target_spotted_time) > 5 and self.isRecording.data:
         # self.get_logger().info('Stopping recording')
@@ -243,18 +230,19 @@ class ImagePublisherAudio(Node):
   def start_recording_audio(self): # record the audio 
       self.get_logger().info('Starting audio recording thread')
       while self.stream_started:
-        data = self.stream.read(self.frames_per_buffer)
-        self.waveFile.writeframes(data)
+        data = sd.rec(self.frames_per_buffer, samplerate=self.rate, channels=self.channels, dtype='int16')
+        sd.wait()
+        self.waveFile.writeframes(data.tobytes())
 
   def stop_recording_audio(self):
       self.get_logger().info('Pausing audio recording thread')
       if self.stream_started:
         self.stream_started = False
 
-        #################### Optimized Option ####################
-        # self.stream.stop_stream()
-        # self.stream.close()
-        ##########################################################
+        self.get_logger().info('Quick merging video and audio')
+        recording_loc= f"recordings/RECORDING_MERGED{self.dtnow}.avi"
+        cmd = "ffmpeg -ac 2 -channel_layout stereo -i " + self.audio_filename + " -i " + self.video_filename + " -pix_fmt yuv420p " + recording_loc
+        subprocess.call(cmd, shell=True)
   
 def main(args=None):
   
