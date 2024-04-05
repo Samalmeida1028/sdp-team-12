@@ -64,19 +64,27 @@ class ImagePublisher(Node):
       
     self.cam = cv2.VideoCapture(0,cv2.CAP_V4L2)
     self.cam.set(cv2.CAP_PROP_MODE,0)
-    self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolutionX)
-    self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolutionY)
+    # self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolutionX)
+    # self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolutionY)
     self.cam.set(cv2.CAP_PROP_FOURCC,cv2.VideoWriter_fourcc('M','J','P','G'))
     self.cam.set(cv2.CAP_PROP_FPS,60)
+    self.cam.set(cv2.CAP_PROP_EXPOSURE,-20.0)
+    self.cam.set(28,0)
     self.frame = []
-    self.ret = False
+    self.ret = False      
+    # threadout2 = threading.Thread(target=self.cv2_show)
+    # threadout2.start()
+    # threadout2.join()
     self.marker_ids_seen = set()
     self.custom_marker_sides = dict()
     self.marker_pose = []
-    recording_loc= f"recordings/RECORDING{datetime.now()}.avi"
-    self.output = cv2.VideoWriter(recording_loc,cv2.VideoWriter_fourcc(*"XVID"),60,(1920,1080))
+    self.recording_loc= f"/run/user/1000/gvfs/google-drive:host=yahoo.com,user=sdpteam12.2023/GVfsSharedWithMe/1vVJEmEOf5WBflh5dtDjcaZt9LaQs4gp1/RECORDING-{datetime.now()}.avi"
     self.isRecording = Int32()
-    self.target_spotted_time = time.time()
+    self.target_spotted_time = time.time()      
+    self.output = None
+    # threadout2 = threading.Thread(target=self.cv2_show)
+    # threadout2.start()
+    # threadout2.join()
 
     self.recordingpub = self.create_publisher(Int32, "/recording", 1)
 
@@ -91,8 +99,10 @@ class ImagePublisher(Node):
   def get_pose(self):
     corners, ids, rejected = aruco.detectMarkers(self.frame, self.aruco_dict, parameters = self.aruco_params)
 
-    self.currently_seen_ids = set()
-    
+    self.currently_seen_ids = set()      
+    # threadout2 = threading.Thread(target=self.cv2_show)
+    # threadout2.start()
+    # threadout2.join()
     if ids is not None and len(ids) > 0: 
 
       ids_array = Int32MultiArray()
@@ -109,7 +119,7 @@ class ImagePublisher(Node):
           # stri.data = "\n ID: {0} \n T (X,Y,Z): {1} \n R:{2}".format(marker_id[0], tvec[0][0], rvec[0][0])
           self.translation.data = [float(tvec[0][0][0]),float(tvec[0][0][1]),float(tvec[0][0][2])]
           self.target_distance.data = float(tvec[0][0][2])
-        #   self.translation_publisher.publish(self.translation)
+        #   self.translation_pubMJPGlisher.publish(self.translation)
     return (corners,ids)
   
   def get_pixel_pos(self,corners,ids):
@@ -123,12 +133,11 @@ class ImagePublisher(Node):
   def cv2_capture(self):
     while True:
       self.ret, self.frame = self.cam.read()
-      # cv2.imshow('camera',self.frame)
-      # cv2.waitKey(1)
 
       if self.target_spotted.data and (self.target_distance.data / 1000.0) <= 3.0:
         self.isRecording.data = 1
         self.target_spotted_time = time.time()
+        self.output = cv2.VideoWriter(self.recording_loc,cv2.VideoWriter_fourcc(*"XVID"),60,(1280,720))
 
       if(time.time()-self.target_spotted_time) > 5 and self.isRecording.data:
         # self.get_logger().info('Stopping recording')
@@ -136,10 +145,23 @@ class ImagePublisher(Node):
 
       if self.isRecording.data:
         # self.get_logger().info('Recording...')
-        self.output.write(self.frame)
-        self.output.write(self.frame)
-        self.output.write(self.frame)
-              
+        threadout = threading.Thread(target=self.cv2_record)
+        threadout.start()
+        threadout.join()
+      elif self.output:
+        print("releasing")
+        self.output.release()
+
+      # threadout2 = threading.Thread(target=self.cv2_show)
+      # threadout2.start()
+      # threadout2.join()
+
+  def cv2_record(self):
+    self.output.write(self.frame)
+
+  def cv2_show(self):
+    pass
+  
   def aruco_display(self, corners, ids):
     if len(corners) > 0:
         # flatten the ArUco IDs list

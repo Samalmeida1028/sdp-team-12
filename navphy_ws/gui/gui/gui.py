@@ -19,6 +19,7 @@ import json
 import time
 import threading
 from threading import Thread
+import os
 
 class RosGUI(Node):
     def __init__(self):
@@ -113,7 +114,7 @@ class GUI:
         inputL.grid(row=6,column=1,columnspan=2)
         # inputL.insert(0,string="Enter list of targets like this => [1,59,2]")
 
-        btn3 = ttk.Button(text="Add Targets", command=lambda:self.launch(3,json.loads(inputL.get())))
+        btn3 = ttk.Button(text="Add Targets", command=lambda:self.launch(3,inputL.get()))
         btn3.grid(row=6,column=0)
 
         btn4 = ttk.Button(text="Clear targets", command=lambda:self.launch(4))
@@ -157,7 +158,7 @@ class GUI:
         self.progress_label_var.set(f"Recording progress at: {progress*100}% for target: {self.node.target_id}",)
         self.window.after(1000, self.update_progress)
 
-    def launch(self, arg: int, target_list: list = []):
+    def launch(self, arg: int, target_list = [9999]):
         match arg:
             case 0:
                 # global tracking_pid
@@ -177,11 +178,33 @@ class GUI:
                 # test_pid = p.pid
             case 3:
                 # just make this case update the text file that you have or change the node with the input "target_list"
-                fd = open("targets.txt", 'a')
-                for i in target_list:
-                    fd.write(str(i) + "\n")
+                t_list = None
+                try: t_list = json.loads(target_list)
+                except json.decoder.JSONDecodeError as E:
+                    print("Update failed: incorrect list format, please type in list notation. EX: [1,2]")
+                if type(t_list) == list:
+                    if os.stat("targets.txt").st_size == 0:
+                            try:
+                                with open("targets.txt", "+w") as f:
+                                    # print('AAAH')
+                                    json.dump(t_list,f)
+                            except json.decoder.JSONDecodeError as j:
+                                print("Update failed: incorrect list format, please type in list notation. EX: [1,2]")
+                    else:
+                        with open("targets.txt") as f:
+                            targetL = json.load(f)
+                            temp = targetL.copy()
+                            targetL += t_list
+                        try:
+                            with open("targets.txt","+w") as f:
+                                json.dump(targetL,f)
+                        except json.decoder.JSONDecodeError as j:
+                            json.dump(temp)
+                            print("Update failed: incorrect list format, please type in list notation. EX: [1,2]")
 
-                print("Updated list", target_list, type(target_list))
+                    print("Updated list", t_list, type(t_list))
+                else:
+                    print("Update failed: incorrect list format, please type in list notation. EX: [1,2]")
             case 4:
                 print("Clearing all targets from log file...")
                 open("targets.txt", "w").close() # clear text file
