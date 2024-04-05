@@ -2,7 +2,6 @@
 
 source ~/.bashrc
 colcon build
-
 sudo chmod ao+rwx /dev/ttyACM*
 sudo chmod ao+rwx /dev/video*
 sudo chmod ao+rwx *py

@@ -82,7 +82,7 @@ class ImagePublisherAudio(Node):
     self.target_spotted_time = time.time()
 
     self.rate = 44100
-    self.frames_per_buffer = 1024
+    self.frames_per_buffer = 4096
     self.channels = 1
     self.format = 'int16'
     self.audio_filename = recording_loc + ".wav"

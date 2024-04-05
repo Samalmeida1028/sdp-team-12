@@ -1,4 +1,4 @@
 {
     "cmake.configureOnOpen": true,
-    "cmake.sourceDirectory": "/home/adam/Desktop/sdp-team-12/basic_mobile_robot"
+    "cmake.sourceDirectory": "/home/sdpteam12/Desktop/sdp-team-12/controlphy_ws/diffdrive_arduino"
 }

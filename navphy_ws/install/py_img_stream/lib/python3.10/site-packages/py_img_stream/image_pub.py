@@ -5,6 +5,7 @@ from cv2 import aruco
 import scipy.io as sio
 # import pyrealsense2 as rs
 import numpy as np
+from imutils.video import FileVideoStream
 
 # Import ROS specific packages
 import rclpy
@@ -18,24 +19,17 @@ import serial
 import json
 import time
 from datetime import datetime
-
+import threading
 marker_information = Float32MultiArray()
 class ImagePublisher(Node):
 
   def __init__(self):
     super().__init__('image_pub')
-    # self.ser = serial.Serial(
-    #          '/dev/ttyACM3',
-    #          baudrate=115200,
-    #          timeout=0.01)
-    
-    # self.translation_publisher = self.create_publisher(Float32MultiArray, "translation_list", 1)
-    # self.rotation_publisher = self.create_publisher(Float32MultiArray, "rotation_list", 1)
     self.marker_location_publisher = self.create_publisher(Float32MultiArray, "/marker_position", 1)
     self.target_distance_publisher = self.create_publisher(Float32, "/target_distance", 1)
     self.target_spotted_publisher = self.create_publisher(Int32, "/target_spotted", 1)
 
-    timer_period = .016
+    timer_period = .1
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
 
@@ -67,6 +61,7 @@ class ImagePublisher(Node):
 
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')
+      
     self.cam = cv2.VideoCapture(0,cv2.CAP_V4L2)
     self.cam.set(cv2.CAP_PROP_MODE,0)
     self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolutionX)
@@ -74,6 +69,7 @@ class ImagePublisher(Node):
     self.cam.set(cv2.CAP_PROP_FOURCC,cv2.VideoWriter_fourcc('M','J','P','G'))
     self.cam.set(cv2.CAP_PROP_FPS,60)
     self.frame = []
+    self.ret = False
     self.marker_ids_seen = set()
     self.custom_marker_sides = dict()
     self.marker_pose = []
@@ -83,6 +79,10 @@ class ImagePublisher(Node):
     self.target_spotted_time = time.time()
 
     self.recordingpub = self.create_publisher(Int32, "/recording", 1)
+
+    capture_thread = threading.Thread(target=self.cv2_capture)
+    capture_thread.daemon = True
+    capture_thread.start()
 
   def target_acquire(self,msg):
     print("target acquired")
@@ -112,9 +112,6 @@ class ImagePublisher(Node):
         #   self.translation_publisher.publish(self.translation)
     return (corners,ids)
   
-
-
-
   def get_pixel_pos(self,corners,ids):
     for (markerCorner, markerID) in zip(corners, ids):
         corners = markerCorner.reshape((4, 2))
@@ -122,8 +119,27 @@ class ImagePublisher(Node):
         cX = int((topLeft[0] + bottomRight[0]) / 2.0)
         cY = int((topLeft[1] + bottomRight[1]) / 2.0)
         self.marker_position.data = [float(cX-(self.resolutionX//2)),float(cY-(self.resolutionY/2))]
-              
 
+  def cv2_capture(self):
+    while True:
+      self.ret, self.frame = self.cam.read()
+      # cv2.imshow('camera',self.frame)
+      # cv2.waitKey(1)
+
+      if self.target_spotted.data and (self.target_distance.data / 1000.0) <= 3.0:
+        self.isRecording.data = 1
+        self.target_spotted_time = time.time()
+
+      if(time.time()-self.target_spotted_time) > 5 and self.isRecording.data:
+        # self.get_logger().info('Stopping recording')
+        self.isRecording.data = 0
+
+      if self.isRecording.data:
+        # self.get_logger().info('Recording...')
+        self.output.write(self.frame)
+        self.output.write(self.frame)
+        self.output.write(self.frame)
+              
   def aruco_display(self, corners, ids):
     if len(corners) > 0:
         # flatten the ArUco IDs list
@@ -159,7 +175,6 @@ class ImagePublisher(Node):
         # draw the ArUco marker ID on the image          # self.publisher.publish(stri)
         cv2.putText(self.frame, str(markerID),(topLeft[0], topLeft[1] - 10), cv2.FONT_HERSHEY_SIMPLEX,
             0.5, (0, 255, 0), 2)
-
    
   def timer_callback(self):
     """
@@ -167,9 +182,8 @@ class ImagePublisher(Node):
     This function gets called every 0.016 seconds.
     """   
     self.target_spotted.data = 0
-    ret, self.frame = self.cam.read()
 
-    if ret == True:
+    if self.ret == True:
       (corners,ids) = self.get_pose()
       # self.get_logger().info("getting stuff")
       # cv2.imshow('camera', self.frame)
@@ -190,20 +204,6 @@ class ImagePublisher(Node):
             self.target_spotted.data = 0
 
       # For recording
-      if self.target_spotted.data and (self.target_distance.data / 1000.0) <= 3.0:
-        self.isRecording.data = 1
-        self.target_spotted_time = time.time()
-
-      if(time.time()-self.target_spotted_time) > 5 and self.isRecording.data:
-        # self.get_logger().info('Stopping recording')
-        self.isRecording.data = 0
-
-      if self.isRecording.data:
-        # self.get_logger().info('Recording...')
-        self.output.write(self.frame)
-
-      # cv2.imshow('camera',self.frame)
-      # cv2.waitKey(10)
     self.target_spotted_publisher.publish(self.target_spotted)
     self.recordingpub.publish(self.isRecording)
 
