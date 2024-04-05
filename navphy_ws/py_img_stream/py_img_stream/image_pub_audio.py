@@ -28,7 +28,7 @@ class ImagePublisherAudio(Node):
     self.target_distance_publisher = self.create_publisher(Float32, "/target_distance", 1)
     self.target_spotted_publisher = self.create_publisher(Int32, "/target_spotted", 1)
 
-    timer_period = .016
+    timer_period = .1
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
 
@@ -67,14 +67,14 @@ class ImagePublisherAudio(Node):
     self.cam.set(cv2.CAP_PROP_FOURCC,cv2.VideoWriter_fourcc('M','J','P','G'))
     self.cam.set(cv2.CAP_PROP_FPS,60)
     self.frame = []
+    self.ret = False
     self.marker_ids_seen = set()
     self.custom_marker_sides = dict()
     self.marker_pose = []
 
     self.dtnow = datetime.now()
-    recording_loc= f"recordings/RECORDING{self.dtnow}"
+    self.video_filename = f"recordings/RECORDING{self.dtnow}.avi"
 
-    self.video_filename = recording_loc + ".avi"
     self.output = cv2.VideoWriter(self.video_filename, cv2.VideoWriter_fourcc(*"XVID"),60,(1920,1080))
     self.get_logger().info('Created video writer')
 
@@ -85,7 +85,7 @@ class ImagePublisherAudio(Node):
     self.frames_per_buffer = 4096
     self.channels = 1
     self.format = 'int16'
-    self.audio_filename = recording_loc + ".wav"
+    self.audio_filename = f"recordings/RECORDING{self.dtnow}.wav"
     self.stream_started = False
     
     self.waveFile = wave.open(self.audio_filename, 'wb')
@@ -96,6 +96,10 @@ class ImagePublisherAudio(Node):
     self.get_logger().info('Created audio writer')
 
     self.recordingpub = self.create_publisher(Int32, "/recording", 1)
+
+    capture_thread = threading.Thread(target=self.cv2_capture)
+    capture_thread.daemon = True
+    capture_thread.start()
 
   def target_acquire(self,msg):
     print("target acquired")
@@ -168,16 +172,46 @@ class ImagePublisherAudio(Node):
         # draw the ArUco marker ID on the image          # self.publisher.publish(stri)
         cv2.putText(self.frame, str(markerID),(topLeft[0], topLeft[1] - 10), cv2.FONT_HERSHEY_SIMPLEX,
             0.5, (0, 255, 0), 2)
-   
+  
+  def cv2_capture(self):
+    while True:
+      self.ret, self.frame = self.cam.read()
+      # cv2.imshow('camera',self.frame)
+      # cv2.waitKey(1)
+
+      # For recording
+      if self.target_spotted.data and (self.target_distance.data / 1000.0) <= 3.0:
+        self.isRecording.data = 1
+        self.target_spotted_time = time.time()
+
+        # start audio recording thread ONCE
+        if not self.stream_started:
+          self.stream_started = True
+
+          audio_thread = threading.Thread(target=self.start_recording_audio)
+          audio_thread.daemon = True
+          audio_thread.start()
+          # audio_thread.join()
+
+      if(time.time()-self.target_spotted_time) > 5 and self.isRecording.data:
+        # self.get_logger().info('Stopping recording')
+        self.isRecording.data = 0
+        self.stop_recording_audio() # pause audio recording
+
+      if self.isRecording.data:
+        # self.get_logger().info('Recording...')
+        self.output.write(self.frame)
+        self.output.write(self.frame)
+        self.output.write(self.frame)
+        
   def timer_callback(self):
     """
     Callback function.
     This function gets called every 0.016 seconds.
     """   
     self.target_spotted.data = 0
-    ret, self.frame = self.cam.read()
 
-    if ret == True:
+    if self.ret == True:
       (corners,ids) = self.get_pose()
       # self.get_logger().info("getting stuff")
       # cv2.imshow('camera', self.frame)
@@ -197,30 +231,6 @@ class ImagePublisherAudio(Node):
           else:
             self.target_spotted.data = 0
 
-      # For recording
-      if self.target_spotted.data and (self.target_distance.data / 1000.0) <= 3.0:
-        self.isRecording.data = 1
-        self.target_spotted_time = time.time()
-
-        # start audio recording thread ONCE
-        if not self.stream_started:
-          self.stream_started = True
-
-          audio_thread = threading.Thread(target=self.start_recording_audio)
-          audio_thread.start()
-          audio_thread.join()
-
-      if(time.time()-self.target_spotted_time) > 5 and self.isRecording.data:
-        # self.get_logger().info('Stopping recording')
-        self.isRecording.data = 0
-        self.stop_recording_audio() # pause audio recording
-
-      if self.isRecording.data:
-        # self.get_logger().info('Recording...')
-        self.output.write(self.frame)
-
-      # cv2.imshow('camera',self.frame)
-      # cv2.waitKey(10)
     self.target_spotted_publisher.publish(self.target_spotted)
     self.recordingpub.publish(self.isRecording)
 
@@ -239,10 +249,11 @@ class ImagePublisherAudio(Node):
       if self.stream_started:
         self.stream_started = False
 
-        self.get_logger().info('Quick merging video and audio')
-        recording_loc= f"recordings/RECORDING_MERGED{self.dtnow}.avi"
-        cmd = "ffmpeg -ac 2 -channel_layout stereo -i " + self.audio_filename + " -i " + self.video_filename + " -pix_fmt yuv420p " + recording_loc
-        subprocess.call(cmd, shell=True)
+        # TODO: fix merging
+        # self.get_logger().info('Quick merging video and audio')
+        # merged_filename = f"recordings/RECORDING_MERGED{self.dtnow}.avi"
+        # cmd = "ffmpeg -ac 2 -channel_layout stereo -i " + self.audio_filename + " -i " + self.video_filename + " -pix_fmt yuv420p " + merged_filename
+        # subprocess.call(cmd, shell=True)
   
 def main(args=None):
   
