@@ -158,7 +158,7 @@ class ImagePublisherAudio(Node):
       if self.target_spotted.data and (self.target_distance.data / 1000.0) <= 3.0:
         self.isRecording.data = 1
         self.target_spotted_time = time.time()
-        self.output = cv2.VideoWriter(self.recording_loc,cv2.VideoWriter_fourcc(*"XVID"),60,(1280,720))
+        self.output = cv2.VideoWriter(self.video_filename,cv2.VideoWriter_fourcc(*"XVID"),60,(1280,720))
 
         # start audio recording thread ONCE
         if not self.stream_started:
