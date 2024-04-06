@@ -66,6 +66,7 @@ class TargetPublisher(Node):
         # Clearing targets
         if self.numtargets < self.file_index: # to reset the list of targets
             self.file_index = 0
+            self.padding_time = 5.0
             self.recording_time.data = float(self.get_parameter('recording_timeout').get_parameter_value().integer_value)
             self.get_logger().info('Targets cleared. Resetting...')
             
@@ -132,11 +133,6 @@ class TargetPublisher(Node):
         elif self.recording_time.data < self.get_parameter('recording_timeout').get_parameter_value().integer_value:
             if self.is_recording: # for recording or not
                 # self.get_logger().info('Recording target {} for {} seconds'.format(self.target_id.data, self.recording_time))
-
-                if self.padding_time >= 5.0:
-                    self.start_padding_counter = False
-                    self.padding_time = 0.0
-
                 if not self.start_padding_counter:
                     self.recording_time.data += 0.5
                 else:
@@ -146,6 +142,10 @@ class TargetPublisher(Node):
                 self.target_id.data = 9999
                 self.get_logger().warn('Reached EOF! Waiting for new targets...')
                 self.set_dummy_target()
+
+        if self.start_padding_counter and self.padding_time >= 5.0:
+            self.start_padding_counter = False
+            self.padding_time = 0.0
 
 def main():
     rclpy.init()

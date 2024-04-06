@@ -1,6 +1,6 @@
 '''
 Authors: Arjun Viswanathan, Samuel Almeida
-Date last modified: 4/5/24
+Date last modified: 4/6/24
 Target Publisher:
 - Gives equal amount of time before publishing new targets
 - Targets can be read in from a .txt file
@@ -66,6 +66,7 @@ class TargetPublisher(Node):
         # Clearing targets
         if self.numtargets < self.file_index: # to reset the list of targets
             self.file_index = 0
+            self.padding_time = 5.0
             self.recording_time.data = float(self.get_parameter('recording_timeout').get_parameter_value().integer_value)
             self.get_logger().info('Targets cleared. Resetting...')
             
@@ -103,23 +104,17 @@ class TargetPublisher(Node):
     def is_eof(self):
         return self.file_index == self.numtargets
     
-    def modulo_is_0(self):
-        if self.file_index != 0:
-            if (self.recording_time.data % self.get_parameter('recording_timeout').get_parameter_value()) == 0:
-                self.start_padding_counter = True
-    
     def cycle_targets(self):
-        # New logic from 4/5/24
+        # Old logic from 4/5/24
         # self.file_index = int(self.recording_time.data / (self.get_parameter('recording_timeout').get_parameter_value().integer_value))
         # if self.file_index == self.numtargets:
         #     self.target_id.data = 9999
         # else:
+        #     self.start_padding_counter = True
         #     self.target_id.data = self.targets[self.file_index]
         #     self.publisher.publish(self.target_id)
 
         # if self.is_recording and self.recording_time.data < self.numtargets*self.get_parameter('recording_timeout').get_parameter_value().integer_value:
-        #     self.modulo_is_0()
-
         #     if self.padding_time >= 5.0:
         #         self.start_padding_counter = False
         #         self.padding_time = 0.0
@@ -129,7 +124,7 @@ class TargetPublisher(Node):
         #     else:
         #         self.padding_time += 0.5
 
-        # Old logic that now works 4/6/24
+        # New logic that now works 4/6/24
         if self.recording_time.data >= self.get_parameter('recording_timeout').get_parameter_value().integer_value and not self.is_eof(): # after timeout, then change target
             self.start_padding_counter = True
             self.target_id.data = int(self.targets[self.file_index])
@@ -137,13 +132,7 @@ class TargetPublisher(Node):
             self.set_target()
         elif self.recording_time.data < self.get_parameter('recording_timeout').get_parameter_value().integer_value:
             if self.is_recording: # for recording or not
-                # self.recording_time.data += 0.5
                 # self.get_logger().info('Recording target {} for {} seconds'.format(self.target_id.data, self.recording_time))
-
-                if self.padding_time >= 5.0:
-                    self.start_padding_counter = False
-                    self.padding_time = 0.0
-
                 if not self.start_padding_counter:
                     self.recording_time.data += 0.5
                 else:
@@ -153,6 +142,10 @@ class TargetPublisher(Node):
                 self.target_id.data = 9999
                 self.get_logger().warn('Reached EOF! Waiting for new targets...')
                 self.set_dummy_target()
+
+        if self.start_padding_counter and self.padding_time >= 5.0:
+            self.start_padding_counter = False
+            self.padding_time = 0.0
 
 def main():
     rclpy.init()
