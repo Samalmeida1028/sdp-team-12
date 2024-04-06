@@ -82,7 +82,10 @@ class ImagePublisherAudio(Node):
     self.marker_pose = []
 
     self.dtnow = datetime.now()
-    self.video_filename= f"/run/user/1000/gvfs/google-drive:host=yahoo.com,user=sdpteam12.2023/GVfsSharedWithMe/1vVJEmEOf5WBflh5dtDjcaZt9LaQs4gp1/RECORDING-{self.dtnow}.avi"
+    recording_path = "/run/user/1000/gvfs/google-drive:host=yahoo.com,user=sdpteam12.2023/GVfsSharedWithMe/1vVJEmEOf5WBflh5dtDjcaZt9LaQs4gp1/"
+
+    self.video_filename = recording_path + f"RECORDING-{self.dtnow}.avi"
+    self.audio_filename = recording_path + f"RECORDING-{self.dtnow}.wav"
     # self.output = cv2.VideoWriter(self.video_filename, cv2.VideoWriter_fourcc(*"XVID"),60,(1920,1080))
     # self.get_logger().info('Created video writer')
 
@@ -94,7 +97,6 @@ class ImagePublisherAudio(Node):
     self.frames_per_buffer = 4096
     self.channels = 1
     self.format = 'int16'
-    self.audio_filename = f"/run/user/1000/gvfs/google-drive:host=yahoo.com,user=sdpteam12.2023/GVfsSharedWithMe/1vVJEmEOf5WBflh5dtDjcaZt9LaQs4gp1/RECORDING-{self.dtnow}.wav"
     self.stream_started = False
     
     self.waveFile = wave.open(self.audio_filename, 'wb')
