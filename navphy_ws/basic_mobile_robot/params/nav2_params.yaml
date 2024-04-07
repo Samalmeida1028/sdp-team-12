@@ -209,9 +209,9 @@ controller_server:
       vy_std: 0.2
       wz_std: 0.2
       ########################### TUNING FOR SPEED ###########################
-      vx_max: 0.3
-      vx_min: -0.3
-      vy_max: 0.3
+      vx_max: 0.35
+      vx_min: -0.35
+      vy_max: 0.35
       wz_max: 0.45
       ########################################################################
       iteration_count: 1
@@ -321,7 +321,7 @@ local_costmap:
         plugin: "nav2_costmap_2d::InflationLayer"
         footprint_clearing_enabled: true
         cost_scaling_factor: 1.0
-        inflation_radius: 0.25
+        inflation_radius: 0.3
         inflate_unknown: false
         inflate_around_unknown: true
       voxel_layer:
@@ -392,7 +392,7 @@ global_costmap:
         plugin: "nav2_costmap_2d::InflationLayer"
         footprint_clearing_enabled: true
         cost_scaling_factor: 1.0
-        inflation_radius: 0.25
+        inflation_radius: 0.3
         inflate_unknown: false
         inflate_around_unknown: true
       always_send_full_costmap: True
