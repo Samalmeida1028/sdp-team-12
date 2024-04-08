@@ -126,26 +126,28 @@ class TargetPublisher(Node):
 
         # New logic that now works 4/6/24
         if self.recording_time.data >= self.get_parameter('recording_timeout').get_parameter_value().integer_value and not self.is_eof(): # after timeout, then change target
-            self.start_padding_counter = True
+            # self.start_padding_counter = True
             self.target_id.data = int(self.targets[self.file_index])
             self.get_logger().info('Got new target {}'.format(self.target_id.data))
             self.set_target()
         elif self.recording_time.data < self.get_parameter('recording_timeout').get_parameter_value().integer_value:
             if self.is_recording: # for recording or not
                 # self.get_logger().info('Recording target {} for {} seconds'.format(self.target_id.data, self.recording_time))
-                if not self.start_padding_counter:
-                    self.recording_time.data += 0.5
-                else:
-                    self.padding_time += 0.5
+                self.recording_time.data += 0.5
+
+                # if not self.start_padding_counter:
+                #     self.recording_time.data += 0.5
+                # else:
+                #     self.padding_time += 0.5
         else:
             if self.publish_dummy_once: # only publish EOF target once so console is not bombarded with warn statements
                 self.target_id.data = 9999
                 self.get_logger().warn('Reached EOF! Waiting for new targets...')
                 self.set_dummy_target()
 
-        if self.start_padding_counter and self.padding_time >= 5.0:
-            self.start_padding_counter = False
-            self.padding_time = 0.0
+        # if self.start_padding_counter and self.padding_time >= 5.0:
+        #     self.start_padding_counter = False
+        #     self.padding_time = 0.0
 
 def main():
     rclpy.init()

@@ -144,10 +144,12 @@ class SerHandler(Node):
             # info = json.loads(info_ser)
             self.encoder_data.data = [info['Encoder']['BL']['Pos'], 
                                     info['Encoder']['FL']['Pos'], 
-                                    info['Encoder']['FR']['Pos'], 
+                                    info['Encoder']['FR']['Pos'],
+                                    info['Encoder']['BR']['Pos'], 
                                     info['Encoder']['BL']['Vel'], 
                                     info['Encoder']['FL']['Vel'], 
-                                    info['Encoder']['FR']['Vel']]
+                                    info['Encoder']['FR']['Vel'],
+                                    info['Encoder']['BR']['Vel'],]
             
             self.imu_data.data = [info['IMU']['Accel']['x'], info['IMU']['Accel']['y'], info['IMU']['Accel']['z'],
                                     info['IMU']['Gyro']['r'], info['IMU']['Gyro']['p'], info['IMU']['Gyro']['y']]
@@ -164,7 +166,7 @@ class SerHandler(Node):
             if(self.recording_time/float(self.recording_max_time)) > .7:
                 led_state = 2
             else:
-                print("AAAAAAHHHHHHHHHHH")
+                # print("AAAAAAHHHHHHHHHHH")
                 led_state = 1
 
         self.target_serial.write(bytearray(json.dumps(list(msg.data)+[led_state]) + "\n",encoding="utf-8"))

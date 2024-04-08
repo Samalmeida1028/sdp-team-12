@@ -49,6 +49,7 @@ class ImagePublisher(Node):
       '/target_id', 
       self.target_acquire,
       10)
+    self.target_prev = 9999
 
     self.aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_1000)
     self.aruco_params = aruco.DetectorParameters_create()
@@ -94,7 +95,11 @@ class ImagePublisher(Node):
 
   def target_acquire(self,msg):
     print("target acquired")
+
     self.target = msg.data
+    if self.target != self.target_prev:
+      self.isRecording.data = 0
+      self.target_prev = self.target
 
   def get_pose(self):
     corners, ids, rejected = aruco.detectMarkers(self.frame, self.aruco_dict, parameters = self.aruco_params)

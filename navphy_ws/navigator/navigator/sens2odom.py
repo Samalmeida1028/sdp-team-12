@@ -27,7 +27,7 @@ class Sensor2Odom(Node):
         self.odompub = self.create_publisher(Odometry, '/wheel/odom', 10)
         self.imupub = self.create_publisher(Imu, "/imu_odom", 10)
 
-        self.encoder_sub = self.create_subscription(Float32MultiArray, "encoder_data", self.encoder_to_odom, 10)
+        self.encoder_sub = self.create_subscription(Float32MultiArray, "/encoder_data", self.encoder_to_odom, 10)
         self.imu_sub = self.create_subscription(Float32MultiArray, "/imu_data", self.imu_to_odom, 10)
 
         time_period = 0.016
@@ -61,18 +61,18 @@ class Sensor2Odom(Node):
         lb_pos = encoder_array[0]*2*math.pi*self.wheel_radius # m
         lf_pos = encoder_array[1]*2*math.pi*self.wheel_radius
         rf_pos = encoder_array[2]*2*math.pi*self.wheel_radius
+        rb_pos = encoder_array[3]*2*math.pi*self.wheel_radius
 
-        lb_vel = (encoder_array[3] / (math.pi))*self.wheel_radius # m/s
-        lf_vel = (encoder_array[4] / (math.pi))*self.wheel_radius
-        rf_vel = (encoder_array[5] / (math.pi))*self.wheel_radius
+        lb_vel = (encoder_array[4] / (math.pi))*self.wheel_radius # m/s
+        lf_vel = (encoder_array[5] / (math.pi))*self.wheel_radius
+        rf_vel = (encoder_array[6] / (math.pi))*self.wheel_radius
+        rb_vel = (encoder_array[7] / (math.pi))*self.wheel_radius
 
-        #l_pos = (lb_pos + lf_pos) / 2
-        l_pos = lb_pos
-        r_pos = rf_pos # (rb_pos + rf_pos) / 2
+        l_pos = (lb_pos + lf_pos) / 2
+        r_pos = (rb_pos + rf_pos) / 2
 
-        # l_vel = (lb_vel + lf_vel) / 2
-        l_vel = lb_vel
-        r_vel = rf_vel # (rb_vel + rf_vel) / 2
+        l_vel = (lb_vel + lf_vel) / 2
+        r_vel = (rb_vel + rf_vel) / 2
 
         vel_xy = (l_vel + r_vel) / 2
         pos_xy = (l_pos + r_pos) / 2
