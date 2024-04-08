@@ -262,4 +262,15 @@
 
 4. Changed LiDAR scan topic to /scan_filtered from /scan in nav2pose and search_targets
 
-5. Adding 
+4/4/24-4/8/24:
+
+1. New beams in chassis. Top platform is way more good looking
+
+2. PCB instead of protoboard. Everything works 
+
+3. Updated image pub with audio to have separate recordings of each target it receives. It now creates video, audio, and merged files from target ID and time so everything is unique
+    Releases old writers correctly (when new target received)
+    Creates new writers after releasing
+    When new target received, recording goes to 0 immediately, so target pub does not need a padding counter anymores
+
+4. Updated target pub based off new logic in image pub
