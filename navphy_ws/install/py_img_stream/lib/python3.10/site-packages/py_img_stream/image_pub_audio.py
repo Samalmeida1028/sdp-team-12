@@ -82,7 +82,8 @@ class ImagePublisherAudio(Node):
     self.marker_pose = []
 
     self.dtnow = datetime.now()
-    recording_path = "/run/user/1000/gvfs/google-drive:host=yahoo.com,user=sdpteam12.2023/GVfsSharedWithMe/1vVJEmEOf5WBflh5dtDjcaZt9LaQs4gp1/"
+    recording_path = "recordings/"
+    # recording_path = "/run/user/1000/gvfs/google-drive:host=yahoo.com,user=sdpteam12.2023/GVfsSharedWithMe/1vVJEmEOf5WBflh5dtDjcaZt9LaQs4gp1/"
 
     self.video_filename = recording_path + f"RECORDING-{self.dtnow}.avi"
     self.audio_filename = recording_path + f"RECORDING-{self.dtnow}.wav"

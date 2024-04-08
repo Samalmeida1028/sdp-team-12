@@ -17,19 +17,20 @@ led = digitalio.DigitalInOut(board.GP21)
 led.direction = digitalio.Direction.OUTPUT
 my_servoy = servo.Servo(pwm2)
 my_servox = servo.Servo(pwm1)
-center = 90
-my_servox.angle = center
-my_servoy.angle = 180-center
+centerX = 10
+centerY = 90
+my_servox.angle = centerX
+my_servoy.angle = centerY
 
-tempx = center
-tempy = center
-data_inx,data_iny = center,center
+tempx = centerX
+tempy = centerY
+data_inx,data_iny = centerX,centerY
 k_x = 2
 k_y = 1.5
 integral_x = 0
 integral_y = 0
-d_x = 12
-d_y = 10
+d_x = 2
+d_y = 2
 vel = (0, 0)
 
 # flag = 1
@@ -60,18 +61,18 @@ while True:
 
                 translation = json.loads(data_in.decode('utf-8'))
                 if translation == "center":
-                    my_servox.angle = center
-                    my_servoy.angle = center - 5
+                    my_servox.angle = centerX
+                    my_servoy.angle = centerY - 5
                     led.value = 0
 
                 else:
-                    vel = (float(translation[0])*(1080/1920),float(translation[1])*(1080/1920))
-                    led_state = int(translation[2])
+                    vel = (float(translation[0])*(1920),float(translation[1])*(1080)) # convert pixel offset to angle
+                    led_state = int(translation[2]) # get state of led to blink or not
                     print(translation)
                     if(led_state == 1):
                         led.value = True
                     elif led_state == 2:
-                        if(time.monotonic_ns() - current_time > .5):
+                        if(time.monotonic_ns() - current_time > .5): #blink code
                             current_time = time.monotonic_ns()
                             led.value = not led.value
 
@@ -84,23 +85,23 @@ while True:
                 # data_inx = min(180,max(-180,data_inx))
                 # data_iny = min(180,max(-180,data_iny))
                 # print(my_servox.angle,my_servoy.angle, "data:",data_inx,data_iny)
-                    data_inx -= vel[0]*dt*k_x + d_x*dt*10
+                    data_inx -= vel[0]*dt*k_x + d_x*dt*10 # running two pd loops for x and y (feedback control)
                     data_iny += vel[1]*dt*k_y + d_y*dt*8
 
-                    my_servox.angle = min(180,max(0,int(data_inx)))
+                    my_servox.angle = min(180,max(0,int(data_inx))) #these just prevent servo from going out of range
                     my_servoy.angle = min(120,max(0,int(data_iny)))  
                 
-                    myangle = [my_servox.angle-90,my_servoy.angle-90]
-                    # print(dt,myangle)
+                    myangle = [my_servox.angle-90,my_servoy.angle-90] #sends angle back to ros
+                    print(dt,myangle)
 
-                    serial.write(bytearray(json.dumps(myangle) + "\n", "utf-8"))
+                    serial.write(bytearray(json.dumps(myangle) + "\n", "utf-8")) #writes angles
         
                 while(serial.out_waiting):
                     pass
-            serial.flush()
+            serial.flush() #flushes buffer to prevent serial issues
 
-    d_x = my_servox.angle - tempx
+    d_x = my_servox.angle - tempx #gets derivative without dt 
     d_y = my_servoy.angle - tempy
 
-    tempx = my_servox.angle
+    tempx = my_servox.angle # for derivative
     tempy = my_servoy.angle
