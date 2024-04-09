@@ -88,7 +88,7 @@ class ImagePublisherAudio(Node):
     self.output = None
     self.waveFile = None
     self.output_released = True
-    self.rate = 20000
+    self.rate = 10000
     self.frames_per_buffer = 4096
     self.channels = 1
     self.format = 'int16'
