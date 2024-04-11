@@ -24,6 +24,7 @@ class SerHandler(Node):
                     '/dev/ttyACM1',
                     baudrate=115200,
                     timeout=0.01)
+        
         my_file = Path("/dev/ttyACM3")
 
         if(not my_file.exists()):
@@ -113,7 +114,8 @@ class SerHandler(Node):
         self.recording_state = msg.data
 
     def send_motor_commands(self):
-        self.nav_serial.write(bytes(json.dumps([self.x, self.z]) + "\n", "utf-8"))
+        if(self.nav_serial):
+            self.nav_serial.write(bytes(json.dumps([self.x, self.z]) + "\n", "utf-8"))
 
         if time.time() - self.teleop_time > 3.0:
             self.allow_nav = True

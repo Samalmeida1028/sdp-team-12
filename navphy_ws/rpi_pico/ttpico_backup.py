@@ -11,13 +11,13 @@ import digitalio
 ################################################################
 
 serial = usb_cdc.data
-pwm1 = pwmio.PWMOut(board.GP0, duty_cycle=2 ** 8, frequency=330)
-pwm2 = pwmio.PWMOut(board.GP1, duty_cycle=2 ** 8, frequency=330)
+pwm2 = pwmio.PWMOut(board.GP0, duty_cycle=2 ** 8, frequency=330)
+pwm1 = pwmio.PWMOut(board.GP1, duty_cycle=2 ** 8, frequency=330)
 led = digitalio.DigitalInOut(board.GP21)
 led.direction = digitalio.Direction.OUTPUT
 my_servoy = servo.Servo(pwm2)
 my_servox = servo.Servo(pwm1)
-centerX = 10
+centerX = 90
 centerY = 90
 my_servox.angle = centerX
 my_servoy.angle = centerY
@@ -25,8 +25,8 @@ my_servoy.angle = centerY
 tempx = centerX
 tempy = centerY
 data_inx,data_iny = centerX,centerY
-k_x = 2
-k_y = 1.5
+k_x = .1
+k_y = .1
 integral_x = 0
 integral_y = 0
 d_x = 2
@@ -66,7 +66,7 @@ while True:
                     led.value = 0
 
                 else:
-                    vel = (float(translation[0])*(1920),float(translation[1])*(1080)) # convert pixel offset to angle
+                    vel = (float(translation[0])*(1080/1920),float(translation[1])*(1080/1920)) # convert pixel offset to angle
                     led_state = int(translation[2]) # get state of led to blink or not
                     print(translation)
                     if(led_state == 1):
@@ -85,11 +85,11 @@ while True:
                 # data_inx = min(180,max(-180,data_inx))
                 # data_iny = min(180,max(-180,data_iny))
                 # print(my_servox.angle,my_servoy.angle, "data:",data_inx,data_iny)
-                    data_inx -= vel[0]*dt*k_x + d_x*dt*10 # running two pd loops for x and y (feedback control)
-                    data_iny += vel[1]*dt*k_y + d_y*dt*8
+                    data_inx -= vel[0]*dt*k_x + d_x*dt*.01 # running two pd loops for x and y (feedback control)
+                    data_iny += vel[1]*dt*k_y + d_y*dt*.01
 
-                    my_servox.angle = min(180,max(0,int(data_inx))) #these just prevent servo from going out of range
-                    my_servoy.angle = min(120,max(0,int(data_iny)))  
+                    my_servox.angle = min(100,max(0,int(data_inx))) #these just prevent servo from going out of range
+                    my_servoy.angle = min(100,max(0,int(data_iny)))  
                 
                     myangle = [my_servox.angle-90,my_servoy.angle-90] #sends angle back to ros
                     print(dt,myangle)
@@ -105,3 +105,4 @@ while True:
 
     tempx = my_servox.angle # for derivative
     tempy = my_servoy.angle
+

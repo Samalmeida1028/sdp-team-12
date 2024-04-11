@@ -196,10 +196,9 @@ class ImagePublisherAudio(Node):
           subprocess.call(cmd, shell=True)
 
           self.get_logger().info('Releasing writers for target {}'.format(self.prev_target))
-          self.output.release()
-          # time.sleep(0.1)
-          self.waveFile.close()
           self.output_released = True
+          self.output.release()
+          self.waveFile.close()
 
         # New names for new video writer
         video_filename = self.recording_path + f"video_{self.target}_{time.time()}.avi"
@@ -220,7 +219,8 @@ class ImagePublisherAudio(Node):
     pass
 
   def write_to_wav(self, audio):
-    self.waveFile.writeframes(audio.tobytes())
+    if not self.output_released: # write into file as long as it is open
+      self.waveFile.writeframes(audio.tobytes())
 
   def record_audio(self):
     while self.stream_started:
@@ -241,8 +241,7 @@ class ImagePublisherAudio(Node):
 
   def pause_recording_audio(self):
     self.get_logger().info('Pausing audio recording thread')
-    if self.stream_started:
-      self.stream_started = False
+    self.stream_started = False
   
   def aruco_display(self, corners, ids):
     if len(corners) > 0:
