@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-74e0d4efa0793bca7762.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "diffdrive_arduino",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "diffdrive_arduino::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-diffdrive_arduino-Debug-b6fd3b5a2e1746c8e3f4.json",
+					"name" : "diffdrive_arduino",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "diffdrive_arduino_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-diffdrive_arduino_uninstall-Debug-a7e7d421147df85ddaeb.json",
+					"name" : "diffdrive_arduino_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Debug-4cfba5413fede3705608.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/sdpteam12/Desktop/sdp-team-12/build",
+		"source" : "/home/sdpteam12/Desktop/sdp-team-12/controlphy_ws/diffdrive_arduino"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

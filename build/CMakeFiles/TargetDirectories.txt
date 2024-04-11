@@ -1,0 +1,10 @@
+/home/sdpteam12/Desktop/sdp-team-12/build/CMakeFiles/uninstall.dir
+/home/sdpteam12/Desktop/sdp-team-12/build/CMakeFiles/diffdrive_arduino_uninstall.dir
+/home/sdpteam12/Desktop/sdp-team-12/build/CMakeFiles/diffdrive_arduino.dir
+/home/sdpteam12/Desktop/sdp-team-12/build/CMakeFiles/test.dir
+/home/sdpteam12/Desktop/sdp-team-12/build/CMakeFiles/edit_cache.dir
+/home/sdpteam12/Desktop/sdp-team-12/build/CMakeFiles/rebuild_cache.dir
+/home/sdpteam12/Desktop/sdp-team-12/build/CMakeFiles/list_install_components.dir
+/home/sdpteam12/Desktop/sdp-team-12/build/CMakeFiles/install.dir
+/home/sdpteam12/Desktop/sdp-team-12/build/CMakeFiles/install/local.dir
+/home/sdpteam12/Desktop/sdp-team-12/build/CMakeFiles/install/strip.dir
