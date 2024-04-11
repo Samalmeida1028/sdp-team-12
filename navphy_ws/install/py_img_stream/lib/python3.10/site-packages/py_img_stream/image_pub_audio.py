@@ -88,7 +88,7 @@ class ImagePublisherAudio(Node):
     self.output = None
     self.waveFile = None
     self.output_released = True
-    self.rate = 4000
+    self.rate = 44100
     self.frames_per_buffer = 4096
     self.channels = 1
     self.format = 'int16'
@@ -218,13 +218,26 @@ class ImagePublisherAudio(Node):
 
   def cv2_show(self):
     pass
+
+  def write_to_wav(self, audio):
+    self.waveFile.writeframes(audio.tobytes())
+
+  def record_audio(self):
+    while self.stream_started:
+      audio_data = sd.rec(44100, samplerate=self.rate, channels=self.channels, dtype='int16')
+      sd.wait()
+      yield audio_data
   
   def start_recording_audio(self): # record the audio 
     self.get_logger().info('Starting audio recording thread')
     while self.stream_started:
-      data = sd.rec(self.frames_per_buffer, samplerate=self.rate, channels=self.channels, dtype='int16')
-      sd.wait()
-      self.waveFile.writeframes(data.tobytes())
+      # data = sd.rec(self.frames_per_buffer, samplerate=self.rate, channels=self.channels, dtype='int16')
+      # sd.wait()
+      # self.waveFile.writeframes(data.tobytes())
+      audio_data = next(self.record_audio())
+      write_thread = threading.Thread(target=self.write_to_wav, args=(audio_data,))
+      write_thread.start()
+      write_thread.join()
 
   def pause_recording_audio(self):
     self.get_logger().info('Pausing audio recording thread')

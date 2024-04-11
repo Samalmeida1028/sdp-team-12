@@ -1,22 +1,22 @@
 import sounddevice as sd
-import numpy as np
 import wave
 import threading
 from datetime import datetime
-import time
 
-stream_started = True
-
-def start_recording_audio(): # record the audio 
-    print('Starting audio recording thread')
-    while stream_started:
-        data = sd.rec(frames_per_buffer, samplerate=rate, channels=channels, dtype='int16')
+def record_audio():
+    while True:
+        audio_data = sd.rec(44100, samplerate=rate, channels=channels, dtype='int16')
         sd.wait()
-        waveFile.writeframes(data.tobytes())
+        yield audio_data
+
+def write_to_wav(audio_data):
+    waveFile.writeframes(audio_data.tobytes())
+
+audio_recorder = record_audio()
 
 recording_loc= f"recordings/RECORDING{datetime.now()}"
 
-rate = 10000
+rate = 44100
 frames_per_buffer = 4096
 channels = 1
 format = 'int16'
@@ -29,12 +29,11 @@ waveFile.setframerate(rate)
 
 print('Created audio writer')
 
-# start audio recording thread ONCE
-audio_thread = threading.Thread(target=start_recording_audio)
-audio_thread.daemon = True
-audio_thread.start()
-
-time.sleep(10)
-
-print('Pausing audio recording thread')
-stream_started = False
+try:
+    while True:
+        audio_data = next(record_audio())
+        write_thread = threading.Thread(target=write_to_wav, args=(audio_data,))
+        write_thread.start()
+        write_thread.join()
+except KeyboardInterrupt:
+    print("Recording stopped")
