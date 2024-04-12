@@ -29,7 +29,7 @@ class ImagePublisherAudio(Node):
     self.target_distance_publisher = self.create_publisher(Float32, "/target_distance", 1)
     self.target_spotted_publisher = self.create_publisher(Int32, "/target_spotted", 1)
 
-    timer_period = .1
+    timer_period = .05
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
 
@@ -93,6 +93,7 @@ class ImagePublisherAudio(Node):
     self.channels = 1
     self.format = 'int16'
     self.stream_started = False
+    self.closed_wavefile = True
 
     self.isRecording = Int32()
     self.target_spotted_time = time.time()
@@ -162,6 +163,7 @@ class ImagePublisherAudio(Node):
             self.waveFile.setnchannels(self.channels)
             self.waveFile.setsampwidth(2)
             self.waveFile.setframerate(self.rate)
+            self.closed_wavefile = False
 
             self.get_logger().info('Created audio writer for target {}'.format(self.target))
 
@@ -191,14 +193,15 @@ class ImagePublisherAudio(Node):
         if self.output and self.waveFile:
           self.pause_recording_audio()
 
-          self.get_logger().info('Quick merging video and audio for target {}'.format(self.prev_target))
-          cmd = "ffmpeg -ac 1 -i " + video_filename + " -i " + audio_filename + " -c:v copy -c:a aac -strict experimental " + merged_filename
-          subprocess.call(cmd, shell=True)
-
           self.get_logger().info('Releasing writers for target {}'.format(self.prev_target))
           self.output_released = True
           self.output.release()
-          self.waveFile.close()
+          while not self.closed_wavefile: pass
+
+          self.get_logger().info('Quick merging video and audio for target {}'.format(self.prev_target))
+          cmd = "ffmpeg -ac 1 -i " + video_filename + " -i " + audio_filename + " -c:v copy -c:a aac -strict experimental " + merged_filename
+          subprocess.call(cmd, shell=True)
+          # self.waveFile.close()
 
         # New names for new video writer
         video_filename = self.recording_path + f"video_{self.target}_{time.time()}.avi"
@@ -221,6 +224,10 @@ class ImagePublisherAudio(Node):
   def write_to_wav(self, audio):
     if not self.output_released: # write into file as long as it is open
       self.waveFile.writeframes(audio.tobytes())
+    else:
+      self.waveFile.writeframes(audio.tobytes())
+      self.waveFile.close()
+      self.closed_wavefile = True
 
   def record_audio(self):
     while self.stream_started:
@@ -230,14 +237,14 @@ class ImagePublisherAudio(Node):
   
   def start_recording_audio(self): # record the audio 
     self.get_logger().info('Starting audio recording thread')
-    while self.stream_started:
-      # data = sd.rec(self.frames_per_buffer, samplerate=self.rate, channels=self.channels, dtype='int16')
-      # sd.wait()
-      # self.waveFile.writeframes(data.tobytes())
-      audio_data = next(self.record_audio())
-      write_thread = threading.Thread(target=self.write_to_wav, args=(audio_data,))
-      write_thread.start()
-      write_thread.join()
+    try:
+      while True:
+        audio_data = next(self.record_audio()) # hangs when stream_started is False
+        write_thread = threading.Thread(target=self.write_to_wav, args=(audio_data,))
+        write_thread.start()
+        write_thread.join()
+    except StopIteration:
+      self.get_logger().info("Audio recording paused")
 
   def pause_recording_audio(self):
     self.get_logger().info('Pausing audio recording thread')

@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source ~/.bashrc
+source /opt/ros/humble/setup.bash
+source install/setup.bash
 colcon build
 sudo chmod ao+rwx /dev/ttyACM*
 sudo chmod ao+rwx /dev/video*
