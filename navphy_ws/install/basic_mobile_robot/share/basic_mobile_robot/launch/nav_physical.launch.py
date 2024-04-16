@@ -143,17 +143,17 @@ def generate_launch_description():
         name='target_pub',
     )
 
-    start_image_pub_cmd = Node(
-        package='py_img_stream',
-        executable='pub',
-        name='pub',
-    )
-
     # start_image_pub_cmd = Node(
     #     package='py_img_stream',
-    #     executable='img_pub_audio',
+    #     executable='pub',
     #     name='pub',
     # )
+
+    start_image_pub_cmd = Node(
+        package='py_img_stream',
+        executable='img_pub_audio',
+        name='pub',
+    )
 
     start_nav2pose_cmd = Node(
         package='navigator',
