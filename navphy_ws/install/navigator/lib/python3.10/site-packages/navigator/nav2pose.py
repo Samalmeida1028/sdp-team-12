@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: SDP Team 12
 # Date created: 11/5/23
-# Date last modified: 4/3/24
+# Date last modified: 4/16/24
 # Description: Using Nav2 to navigate to a given pose
 
 from geometry_msgs.msg import PoseStamped
@@ -79,6 +79,11 @@ class Nav2Pose(Node):
 
             self.gpose_orient = math.radians(self.target_goal[1]) + cpose_orient #+math.pi))-math.pi
 
+            if self.gpose_orient > math.pi: # sanity check to keep it within ROS bounds [-pi,pi]
+                self.gpose_orient -= (2*math.pi)
+            elif self.gpose_orient < -3.12: # min angle of LiDAR is not exactly -pi (-3.14159)
+                self.gpose_orient += 6.26
+
             self.goal.pose.position.x = self.current_pose.pose.position.x + (d*math.cos(self.gpose_orient)) # xf = xi + dsin(phi)
             self.goal.pose.position.y = self.current_pose.pose.position.y + (d*math.sin(self.gpose_orient)) # yf = yi + dcos(phi)
             self.goal.pose.position.z = 0.0497
@@ -102,7 +107,7 @@ class Nav2Pose(Node):
 
         # self.get_logger().info("{} {} {}".format(self.gpose_orient, self.scanmsg.angle_min, self.scanmsg.angle_increment))
 
-        scanned_dist = self.scanmsg.ranges[int((self.gpose_orient + self.scanmsg.angle_min) / self.scanmsg.angle_increment)]
+        scanned_dist = self.scanmsg.ranges[int(self.gpose_orient / self.scanmsg.angle_increment)]
         corrected_dist = scanned_dist - 0.5 # add some padding so robot does not go into the wall
 
         if scanned_dist < initial_dist:
@@ -129,7 +134,7 @@ class Nav2Pose(Node):
         # test.data = "xdiff: " + str(oldgoal.pose.position.x - newgoal.pose.position.x) + ", ydiff: " + str(oldgoal.pose.position.y - newgoal.pose.position.y)
         # self.currentdebugpub.publish(test)
         
-        if abs(oldgoal.pose.position.x - newgoal.pose.position.x) > 0.5 or abs(oldgoal.pose.position.y - newgoal.pose.position.y) > 0.2:
+        if abs(oldgoal.pose.position.x - newgoal.pose.position.x) > 0.35 or abs(oldgoal.pose.position.y - newgoal.pose.position.y) > 0.2:
             self.prev_goal.pose.position.x = self.goal.pose.position.x
             self.prev_goal.pose.position.y = self.goal.pose.position.y
             self.prev_goal.pose.position.z = self.goal.pose.position.z
@@ -148,12 +153,12 @@ class Nav2Pose(Node):
             self.distance = None
             self.angles = None
         
-        self.currentposepub.publish(self.current_pose)
-        cpose_orient = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
-                                          self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w]).as_euler("xyz",degrees=False)[2]
-        test = String()
-        test.data = "Current Orientation: " + str(cpose_orient)
-        self.currentdebugpub.publish(test)
+        # self.currentposepub.publish(self.current_pose)
+        # cpose_orient = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
+        #                                   self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w]).as_euler("xyz",degrees=False)[2]
+        # test = String()
+        # test.data = "Current Orientation: " + str(cpose_orient)
+        # self.currentdebugpub.publish(test)
         
         if self.goal != self.current_pose and not self.in_range(self.prev_goal, self.goal) and self.target_id != 9999:
             self.correct_goal()

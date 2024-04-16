@@ -47,7 +47,8 @@ class SerHandler(Node):
         response = self.serial1.readline()
         if exists:
             _ = self.serial2.readline()
-        # # # print(response)
+        
+        print(response)
         # for i in range(100):
             # # print(response)
         if response:
