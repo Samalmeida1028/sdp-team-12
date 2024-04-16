@@ -110,6 +110,8 @@ def debug():
 
     #print(sensor_data["IMU"])
 
+    # print(sensor_data["Encoder"]["FL"]["Vel"])
+
     print(sensor_data["Encoder"]["BL"]["Vel"], 
         sensor_data["Encoder"]["FL"]["Vel"], 
         sensor_data["Encoder"]["FR"]["Vel"],
@@ -144,8 +146,8 @@ while True:
                     lin_x = teleop[0]
                     ang_z = teleop[1]
 
-                    v1 = int(-K_p * ((lin_x*K_l) - ((ang_z*K_z) * (WHEEL_SEP / 2))))
-                    v2 = int(-K_p * ((lin_x*K_l) + ((ang_z*K_z) * (WHEEL_SEP / 2))))
+                    v1 = int(-K_p * ((lin_x*K_l) + ((ang_z*K_z) * (WHEEL_SEP / 2))))
+                    v2 = int(-K_p * ((lin_x*K_l) - ((ang_z*K_z) * (WHEEL_SEP / 2))))
                     v3 = v1
                     v4 = v2
 
