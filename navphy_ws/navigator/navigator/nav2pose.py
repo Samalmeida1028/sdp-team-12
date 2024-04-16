@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: SDP Team 12
 # Date created: 11/5/23
-# Date last modified: 4/3/24
+# Date last modified: 4/16/24
 # Description: Using Nav2 to navigate to a given pose
 
 from geometry_msgs.msg import PoseStamped
@@ -13,6 +13,7 @@ import rclpy
 from rclpy.node import Node
 import math
 from scipy.spatial.transform import Rotation
+import time
 
 class Nav2Pose(Node):
     def __init__(self):
@@ -29,6 +30,7 @@ class Nav2Pose(Node):
         self.odomsub = self.create_subscription(Odometry, '/odometry/filtered', self.set_current_pose, 10)
         self.target_spotted_sub = self.create_subscription(Int32, '/target_spotted', self.set_goal, 10)
         self.scansub = self.create_subscription(LaserScan, "/scan_filtered", self.set_laser_scan, 10)
+        self.idsub = self.create_subscription(Int32, "/target_id", self.set_target_id, 10)
 
         self.goalupdaterpub = self.create_publisher(PoseStamped, "/goal_pose", 10)
         self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
@@ -39,9 +41,12 @@ class Nav2Pose(Node):
         self.distance = 0
         self.target_goal = None
         self.gpose_orient = 0.0
+        self.target_id = 9999
 
         time_period = 0.5
         self.timer = self.create_timer(time_period, self.nav2pose_callback)
+
+        self.prev_goal_time = time.time()
 
         self.currentdebugpub = self.create_publisher(String, '/nav2pose_debug', 10)
         self.get_logger().info('Nav2Pose Node Ready!')
@@ -54,6 +59,9 @@ class Nav2Pose(Node):
 
     def set_laser_scan(self, scanmsg : LaserScan):
         self.scanmsg = scanmsg
+
+    def set_target_id(self, idmsg : Int32):
+        self.target_id = idmsg.data
 
     def set_goal(self, check : Int32):
         # goalmsg = [dist, xangle, yangle]
@@ -76,7 +84,7 @@ class Nav2Pose(Node):
             self.goal.pose.position.z = 0.0497
 
             test = String()
-            test.data = "X: " + str(self.goal.pose.position.x) + ", Y: " + str(self.goal.pose.position.y) + ", d: " + str(d) + ", self.gpose_orient: " + str(self.gpose_orient)
+            test.data = "Goal Orientation: " + str(self.gpose_orient)
             self.currentdebugpub.publish(test)
 
             rot = Rotation.from_euler('xyz', [0, 0, self.gpose_orient], degrees=False)
@@ -140,12 +148,23 @@ class Nav2Pose(Node):
             self.distance = None
             self.angles = None
         
-        self.currentposepub.publish(self.current_pose)
+        # self.currentposepub.publish(self.current_pose)
+        # cpose_orient = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
+        #                                   self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w]).as_euler("xyz",degrees=False)[2]
+        # test = String()
+        # test.data = "Current Orientation: " + str(cpose_orient)
+        # self.currentdebugpub.publish(test)
+        
+        # if self.goal != self.current_pose and not self.in_range(self.prev_goal, self.goal) and self.target_id != 9999:
+        #     self.correct_goal()
+        #     self.goalupdaterpub.publish(self.goal)
+        #     self.nav2posegoalpub.publish(self.goal)
 
-        if self.goal != self.current_pose and not self.in_range(self.prev_goal, self.goal):
+        if self.goal != self.current_pose and (time.time() - self.prev_goal_time) >= 5.0 and self.target_id != 9999:
             self.correct_goal()
             self.goalupdaterpub.publish(self.goal)
             self.nav2posegoalpub.publish(self.goal)
+            self.prev_goal_time = time.time()
 
 def main(args=None):
     rclpy.init(args=args)
