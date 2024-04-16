@@ -20,6 +20,7 @@ import time
 import threading
 from threading import Thread
 import os
+import signal
 
 class RosGUI(Node):
     def __init__(self):
@@ -137,6 +138,9 @@ class GUI:
         self.progress_var = DoubleVar()
         self.progress = ttk.Progressbar(variable=self.progress_var,maximum=1)
         self.progress.grid(row=14,column=1,columnspan=5)
+
+        btn6 = ttk.Button(text="Quit", command=lambda:os.kill(os.getpid(), signal.SIGINT))
+        btn6.grid(row=16,column=0)
 
         # Add widgets here (e.g., labels, buttons, etc.)
         

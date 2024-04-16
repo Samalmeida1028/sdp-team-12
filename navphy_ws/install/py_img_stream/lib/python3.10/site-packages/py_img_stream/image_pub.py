@@ -52,7 +52,8 @@ class ImagePublisher(Node):
     self.target_prev = 9999
 
     self.aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_1000)
-    self.aruco_params = aruco.DetectorParameters_create()
+    self.aruco_params = aruco.DetectorParameters_create(markerBorderBits=1, minMarkerPerimeterRate=.01)
+
     self.resolutionX = 1920
     self.resolutionY = 1080
     self.target = 9999

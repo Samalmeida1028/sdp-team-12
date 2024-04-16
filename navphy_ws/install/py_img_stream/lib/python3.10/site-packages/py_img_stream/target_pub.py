@@ -1,6 +1,6 @@
 '''
 Authors: Arjun Viswanathan, Samuel Almeida
-Date last modified: 4/6/24
+Date last modified: 4/8/24
 Target Publisher:
 - Gives equal amount of time before publishing new targets
 - Targets can be read in from a .txt file
@@ -105,26 +105,6 @@ class TargetPublisher(Node):
         return self.file_index == self.numtargets
     
     def cycle_targets(self):
-        # Old logic from 4/5/24
-        # self.file_index = int(self.recording_time.data / (self.get_parameter('recording_timeout').get_parameter_value().integer_value))
-        # if self.file_index == self.numtargets:
-        #     self.target_id.data = 9999
-        # else:
-        #     self.start_padding_counter = True
-        #     self.target_id.data = self.targets[self.file_index]
-        #     self.publisher.publish(self.target_id)
-
-        # if self.is_recording and self.recording_time.data < self.numtargets*self.get_parameter('recording_timeout').get_parameter_value().integer_value:
-        #     if self.padding_time >= 5.0:
-        #         self.start_padding_counter = False
-        #         self.padding_time = 0.0
-
-        #     if not self.start_padding_counter:
-        #         self.recording_time.data += 0.5
-        #     else:
-        #         self.padding_time += 0.5
-
-        # New logic that now works 4/6/24
         if self.recording_time.data >= self.get_parameter('recording_timeout').get_parameter_value().integer_value and not self.is_eof(): # after timeout, then change target
             # self.start_padding_counter = True
             self.target_id.data = int(self.targets[self.file_index])

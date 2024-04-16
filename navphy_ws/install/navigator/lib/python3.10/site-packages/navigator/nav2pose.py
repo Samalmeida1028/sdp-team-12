@@ -143,7 +143,7 @@ class Nav2Pose(Node):
         self.currentposepub.publish(self.current_pose)
 
         if self.goal != self.current_pose and not self.in_range(self.prev_goal, self.goal):
-            # self.correct_goal()
+            self.correct_goal()
             self.goalupdaterpub.publish(self.goal)
             self.nav2posegoalpub.publish(self.goal)
 

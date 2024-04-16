@@ -98,7 +98,11 @@ class SearchTargets(Node):
 
     def set_target(self, tmsg: Int32):
         self.existinggoal_orient = 0.0
-        self.target_received = True
+        
+        if tmsg.data != 9999:
+            self.target_received = True
+        else:
+            self.target_received = False
 
     # Checks to see if x seconds has been waited and returns a boolean
     def wait_timed_out(self, spotted : Int32):
