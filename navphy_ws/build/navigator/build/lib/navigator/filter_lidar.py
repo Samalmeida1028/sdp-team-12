@@ -29,8 +29,8 @@ class FilterLiDAR(Node):
         filterinds = [i for i in range(len(list(scanmsg.ranges))) if list(scanmsg.ranges)[i] <= self.threshold]
 
         for i in filterinds:
-            # self.get_logger().info('Setting range {} to inf'.format(i))
-            self.filteredmsg.ranges[i] = math.inf
+            # self.get_logger().info('Setting range {} to high value'.format(i))
+            self.filteredmsg.ranges[i] = 9999 # not infinity because we don't want Overflow Errors
 
         self.filteredscanpub.publish(self.filteredmsg)
 

@@ -150,11 +150,16 @@ class SearchTargets(Node):
                                           self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w]).as_euler("xyz", degrees=False)[2]
             
             if self.existinggoal_orient == 0.0 or self.trials >= 6:
-                self.gpose_orient = random.uniform(0.0, 2*math.pi) + cpose_orient
+                self.gpose_orient = random.uniform(-math.pi, math.pi) + cpose_orient
             else:
                 self.trials += 1
                 self.gpose_orient = random.uniform(self.existinggoal_orient - 0.5, self.existinggoal_orient + 0.5)
                 self.d = 0.5
+
+            if self.gpose_orient > math.pi: # sanity check to keep it within ROS bounds [-pi,pi]
+                self.gpose_orient -= (2*math.pi)
+            elif self.gpose_orient < -3.12: # min angle of LiDAR is not exactly -pi (-3.14159)
+                self.gpose_orient += 6.26
 
             self.goal.pose.position.x = self.center.pose.position.x + (self.d*math.cos(self.gpose_orient)) # xf = xc + dcos(phi)
             self.goal.pose.position.y = self.center.pose.position.y + (self.d*math.sin(self.gpose_orient)) # yf = yc + dsin(phi)
@@ -224,7 +229,7 @@ class SearchTargets(Node):
         self.get_logger().info("Checking distance validity with LiDAR scans...")
 
         initial_dist = math.atan2(self.goal.pose.position.y, self.goal.pose.position.x)
-        scanned_dist = self.scanmsg.ranges[int((self.gpose_orient + self.scanmsg.angle_min) / self.scanmsg.angle_increment)]
+        scanned_dist = self.scanmsg.ranges[int(self.gpose_orient / self.scanmsg.angle_increment)]
         corrected_dist = scanned_dist - 0.5 # add some padding so robot does not go into the wall
 
         if scanned_dist < initial_dist:

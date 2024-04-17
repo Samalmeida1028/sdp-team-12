@@ -1,0 +1,3 @@
+[console_scripts]
+camera_teleop = camera_controls.camera_teleop:main
+
