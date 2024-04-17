@@ -204,9 +204,10 @@ class ImagePublisherAudio(Node):
           # self.waveFile.close()
 
         # New names for new video writer
-        video_filename = self.recording_path + f"video_{self.target}_{time.time()}.avi"
-        audio_filename = self.recording_path + f"audio_{self.target}_{time.time()}.wav"
-        merged_filename = self.recording_path + f"RECORDING_MERGED_{self.target}_{time.time()}.avi"
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        video_filename = self.recording_path + f"video_{self.target}_{timestamp}.avi"
+        audio_filename = self.recording_path + f"audio_{self.target}_{timestamp}.wav"
+        merged_filename = self.recording_path + f"output_{self.target}_{timestamp}.avi"
 
         self.prev_target = self.target
         self.isRecording.data = 0
