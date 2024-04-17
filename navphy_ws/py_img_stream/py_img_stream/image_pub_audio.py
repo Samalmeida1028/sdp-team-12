@@ -104,6 +104,10 @@ class ImagePublisherAudio(Node):
     capture_thread.daemon = True
     capture_thread.start()
 
+    audio_thread = threading.Thread(target=self.start_recording_audio)
+    audio_thread.daemon = True
+    audio_thread.start()
+
   def target_acquire(self,msg):
     print("target acquired")
     self.target = msg.data
@@ -171,11 +175,8 @@ class ImagePublisherAudio(Node):
 
           # start audio recording thread ONCE
           if not self.stream_started:
+            self.get_logger().info('Starting audio recording')
             self.stream_started = True
-
-            audio_thread = threading.Thread(target=self.start_recording_audio)
-            audio_thread.daemon = True
-            audio_thread.start()
       #######################################################################################
 
       if(time.time()-self.target_spotted_time) > 5 and self.isRecording.data:
@@ -227,7 +228,8 @@ class ImagePublisherAudio(Node):
       self.waveFile.writeframes(audio.tobytes())
     else:
       self.waveFile.writeframes(audio.tobytes())
-      self.waveFile.close()
+      if self.waveFile: # another sanity check 
+        self.waveFile.close()
       self.closed_wavefile = True
 
   def record_audio(self):
@@ -236,19 +238,22 @@ class ImagePublisherAudio(Node):
       sd.wait()
       yield audio_data
   
-  def start_recording_audio(self): # record the audio 
-    self.get_logger().info('Starting audio recording thread')
-    try:
-      while True:
+  def start_recording_audio(self): # record the audio
+    print_once = True 
+    while True:
+      try:
         audio_data = next(self.record_audio()) # hangs when stream_started is False
         write_thread = threading.Thread(target=self.write_to_wav, args=(audio_data,))
         write_thread.start()
         write_thread.join()
-    except StopIteration:
-      self.get_logger().info("Audio recording paused")
+        print_once = True
+      except StopIteration: # does not stop the thread iteration
+        if print_once:
+          self.get_logger().info("Audio recording stopped")
+          print_once = False
 
   def pause_recording_audio(self):
-    self.get_logger().info('Pausing audio recording thread')
+    self.get_logger().info('Pausing audio recording')
     self.stream_started = False
   
   def aruco_display(self, corners, ids):

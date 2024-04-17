@@ -156,7 +156,9 @@ class SearchTargets(Node):
             else:
                 cam_msg = String()
                 cam_msg.data = self.cam_pan_controls[self.trials]
-                self.campanpub.publish(cam_msg)
+
+                for i in range(5):
+                    self.campanpub.publish(cam_msg)
             self.trials += 1
 
             if self.gpose_orient > math.pi: # sanity check to keep it within ROS bounds [-pi,pi]

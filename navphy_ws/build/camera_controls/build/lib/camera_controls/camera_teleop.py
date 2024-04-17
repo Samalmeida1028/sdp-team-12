@@ -1,4 +1,6 @@
 # Authors: Samuel Almeida, Arjun Viswanathan
+# Date created: 4/16/24
+# Date last modified: 4/17/24
 
 # Import ROS specific packages
 import rclpy
@@ -24,6 +26,8 @@ class CameraController(Node):
         # decay_and_print.start()
 
         self.message = Float32MultiArray()
+
+        self.get_logger().info("Camera control node ready!")
 
     def move_camera(self, cam_msg : String):
         # while True:

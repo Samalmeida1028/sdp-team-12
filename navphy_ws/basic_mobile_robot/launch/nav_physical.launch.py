@@ -175,6 +175,12 @@ def generate_launch_description():
         name='searchtargets'
     )
 
+    start_camera_control_cmd = Node(
+        package='camera_controls',
+        executable='camera_teleop',
+        name='camera_teleop',
+    )
+
     start_rviz_cmd = GroupAction(
         condition=IfCondition(PythonExpression([use_rviz])),
         actions = [rviz_node]
@@ -214,6 +220,7 @@ def generate_launch_description():
     ld.add_action(start_target_pub_cmd)
     ld.add_action(start_image_pub_cmd)
     ld.add_action(start_nav2pose_cmd)
+    ld.add_action(start_camera_control_cmd)
 
     ld.add_action(start_rviz_cmd)
 

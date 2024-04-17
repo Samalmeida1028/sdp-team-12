@@ -33,7 +33,7 @@ class TargetPublisher(Node):
         self.numtargets = 0
         self.spotted = 0
         self.is_recording = 0
-        self.padding_time = 5.0
+        # self.padding_time = 5.0
         self.publish_dummy_once = True
         self.start_padding_counter = False
 
@@ -66,9 +66,12 @@ class TargetPublisher(Node):
         # Clearing targets
         if self.numtargets < self.file_index: # to reset the list of targets
             self.file_index = 0
-            self.padding_time = 5.0
+            # self.padding_time = 5.0
             self.recording_time.data = float(self.get_parameter('recording_timeout').get_parameter_value().integer_value)
             self.get_logger().info('Targets cleared. Resetting...')
+
+        if self.target_id.data == 9999:
+            self.recording_time.data = float(self.get_parameter('recording_timeout').get_parameter_value().integer_value)
             
         # Parameter setting
         my_param = self.get_parameter('recording_timeout')

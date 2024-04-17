@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 2/13/24
-# Date last modified: 4/4/24
+# Date last modified: 4/17/24
 # Description: Searches for targets by publishing random goals 
 
 '''
@@ -49,7 +49,6 @@ class SearchTargets(Node):
 
         self.goalupdaterpub = self.create_publisher(PoseStamped, "/goal_pose", 10)
         self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
-        self.campanpub = self.create_publisher(String, "/camera_pan", 10)
 
         self.debug = self.create_publisher(String, "/search_debug", 10)
 
@@ -65,8 +64,6 @@ class SearchTargets(Node):
         self.d = 1.5
         self.move_search_area = False
         self.target_received = False
-
-        self.cam_pan_controls = ["a", "d", "d"] # pan left, come back to center, pan right
 
         time_period = 1.0
         self.timer1 = self.create_timer(time_period, self.set_search_goal)
@@ -154,11 +151,7 @@ class SearchTargets(Node):
             if self.existinggoal_orient == 0.0 or self.trials > 2:
                 self.gpose_orient = random.uniform(-math.pi, math.pi) + cpose_orient
             else:
-                cam_msg = String()
-                cam_msg.data = self.cam_pan_controls[self.trials]
-
-                for i in range(10):
-                    self.campanpub.publish(cam_msg)
+                self.gpose_orient = cpose_orient # first search goal is keep robot where it is so camera can pan
             self.trials += 1
 
             if self.gpose_orient > math.pi: # sanity check to keep it within ROS bounds [-pi,pi]

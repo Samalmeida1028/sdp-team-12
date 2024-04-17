@@ -27,6 +27,8 @@ class CameraController(Node):
 
         self.message = Float32MultiArray()
 
+        self.get_logger().info("Camera control node ready!")
+
     def move_camera(self, cam_msg : String):
         # while True:
         #     control = sys.stdin.readline()
@@ -40,13 +42,13 @@ class CameraController(Node):
         #         self.vector[0] +=.05*1080
 
         if cam_msg.data == "w":
-            self.vector[1] -=.05*1920
+            self.vector[1] -=.35*1920
         if cam_msg.data == "a":
-            self.vector[0] -=.05*1080
+            self.vector[0] -=.35*1080
         if cam_msg.data == "s":
-            self.vector[1] +=.05*1920
+            self.vector[1] +=.35*1920
         if cam_msg.data == "d":
-            self.vector[0] +=.05*1080
+            self.vector[0] +=.35*1080
 
     def timer_callback(self):
         self.vector[0] = self.vector[0]*.9
