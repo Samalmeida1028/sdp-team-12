@@ -9,6 +9,7 @@ setup.py
 ../build/navigator/navigator.egg-info/top_level.txt
 ../build/navigator/navigator.egg-info/zip-safe
 navigator/__init__.py
+navigator/camera_search.py
 navigator/filter_lidar.py
 navigator/nav2pose.py
 navigator/search_targets.py

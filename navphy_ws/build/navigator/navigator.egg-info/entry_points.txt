@@ -1,4 +1,5 @@
 [console_scripts]
+camerasearch = navigator.camera_search:main
 filterlidar = navigator.filter_lidar:main
 nav2pose = navigator.nav2pose:main
 searchtargets = navigator.search_targets:main

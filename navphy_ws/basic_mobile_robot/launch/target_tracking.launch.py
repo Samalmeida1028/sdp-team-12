@@ -32,10 +32,10 @@ def generate_launch_description():
         name='serial_handler',
     )
 
-    start_camera_teleop_cmd = Node(
-        package='camera_controls',
-        executable='camera_teleop',
-        name='camera_teleop',
+    start_camera_search_cmd = Node(
+        package='navigator',
+        executable='camerasearch',
+        name='camerasearch',
     )
 
     # Launch!
@@ -45,6 +45,6 @@ def generate_launch_description():
     ld.add_action(start_image_pub_cmd)
     ld.add_action(start_nav2pose_cmd)
     ld.add_action(start_serial_cmd)
-    ld.add_action(start_camera_teleop_cmd)
+    ld.add_action(start_camera_search_cmd)
 
     return ld

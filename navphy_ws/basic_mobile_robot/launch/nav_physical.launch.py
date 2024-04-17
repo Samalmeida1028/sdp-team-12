@@ -176,9 +176,9 @@ def generate_launch_description():
     )
 
     start_camera_control_cmd = Node(
-        package='camera_controls',
-        executable='camera_teleop',
-        name='camera_teleop',
+        package='navigator',
+        executable='camerasearch',
+        name='camerasearch',
     )
 
     start_rviz_cmd = GroupAction(

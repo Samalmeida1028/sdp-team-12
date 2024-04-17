@@ -23,7 +23,8 @@ setup(
             'nav2pose = navigator.nav2pose:main',
             'sens2odom = navigator.sens2odom:main',
             'searchtargets = navigator.search_targets:main',
-            'filterlidar = navigator.filter_lidar:main'
+            'filterlidar = navigator.filter_lidar:main',
+            'camerasearch = navigator.camera_search:main'
         ],
     },
 )
