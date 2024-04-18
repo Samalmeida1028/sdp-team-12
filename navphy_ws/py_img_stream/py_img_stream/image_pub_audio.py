@@ -94,6 +94,7 @@ class ImagePublisherAudio(Node):
     self.format = 'int16'
     self.stream_started = False
     self.closed_wavefile = True
+    self.stream = sd.InputStream(samplerate=self.rate, channels=self.channels, dtype=self.format, callback=self.write_to_wav)
 
     self.isRecording = Int32()
     self.target_spotted_time = time.time()
@@ -103,10 +104,6 @@ class ImagePublisherAudio(Node):
     capture_thread = threading.Thread(target=self.cv2_capture)
     capture_thread.daemon = True
     capture_thread.start()
-
-    audio_thread = threading.Thread(target=self.start_recording_audio)
-    audio_thread.daemon = True
-    audio_thread.start()
 
   def target_acquire(self,msg):
     print("target acquired")
@@ -176,6 +173,8 @@ class ImagePublisherAudio(Node):
           # start audio recording thread ONCE
           if not self.stream_started:
             self.get_logger().info('Starting audio recording')
+            audio_thread = threading.Thread(target=self.start_recording_audio)
+            audio_thread.start()
             self.stream_started = True
       #######################################################################################
 
@@ -223,38 +222,26 @@ class ImagePublisherAudio(Node):
   def cv2_show(self):
     pass
 
-  def write_to_wav(self, audio):
+  def write_to_wav(self, indata, frames, time, status):
     if not self.output_released: # write into file as long as it is open
-      self.waveFile.writeframes(audio.tobytes())
+      self.waveFile.writeframes(indata.tobytes())
     else:
-      self.waveFile.writeframes(audio.tobytes())
+      self.waveFile.writeframes(indata.tobytes())
       if self.waveFile: # another sanity check 
         self.waveFile.close()
       self.closed_wavefile = True
 
-  def record_audio(self):
-    while self.stream_started:
-      audio_data = sd.rec(44100, samplerate=self.rate, channels=self.channels, dtype='int16')
-      sd.wait()
-      yield audio_data
-  
-  def start_recording_audio(self): # record the audio
-    print_once = True 
-    while True:
-      try:
-        audio_data = next(self.record_audio()) # hangs when stream_started is False
-        write_thread = threading.Thread(target=self.write_to_wav, args=(audio_data,))
-        write_thread.start()
-        write_thread.join()
-        print_once = True
-      except StopIteration: # does not stop the thread iteration
-        if print_once:
-          self.get_logger().info("Audio recording stopped")
-          print_once = False
+  def start_recording_audio(self):
+    # with sd.InputStream(samplerate=self.rate, channels=self.channels, dtype=self.format, callback=self.write_to_wav):
+    #   while self.stream_started:
+    #     time.sleep(0.05)
+
+    self.stream.start()
 
   def pause_recording_audio(self):
     self.get_logger().info('Pausing audio recording')
     self.stream_started = False
+    self.stream.stop()
   
   def aruco_display(self, corners, ids):
     if len(corners) > 0:
