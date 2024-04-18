@@ -59,9 +59,9 @@ class SearchTargets(Node):
         self.gpose_orient = 0.0
         self.existinggoal_orient = 0.0
         self.trials = 0
-        self.wait_time = 20.0
+        self.wait_time = 15.0
         self.redefine_time = 20.0
-        self.d = 1.5
+        self.d = 1.25
         self.move_search_area = False
         self.target_received = False
 
