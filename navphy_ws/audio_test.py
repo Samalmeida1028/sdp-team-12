@@ -44,5 +44,14 @@ print('Created audio writer')
 def audio_callback(indata, frames, time, status):
     waveFile.writeframes(indata.tobytes())
 
-with sd.InputStream(samplerate=rate, channels=1, dtype=format, callback=audio_callback):
-    while True: time.sleep(0.05)
+stream = sd.InputStream(samplerate=rate, channels=1, dtype=format, callback=audio_callback)
+
+print("Stream starting")
+stream.start()
+
+while True:
+    try:
+        print("Recording")
+    except KeyboardInterrupt:
+        print("Stream stopped")
+        stream.stop()

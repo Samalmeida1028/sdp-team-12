@@ -67,7 +67,7 @@ class ImagePublisherAudio(Node):
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')
 
-    self.cam = cv2.VideoCapture(2,cv2.CAP_V4L2)
+    self.cam = cv2.VideoCapture(0,cv2.CAP_V4L2)
     self.cam.set(cv2.CAP_PROP_MODE,0)
     self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolutionX)
     self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolutionY)
@@ -173,15 +173,19 @@ class ImagePublisherAudio(Node):
           # start audio recording thread ONCE
           if not self.stream_started:
             self.get_logger().info('Starting audio recording')
-            audio_thread = threading.Thread(target=self.start_recording_audio)
-            audio_thread.start()
+            # audio_thread = threading.Thread(target=self.start_recording_audio)
+            # audio_thread.start()
+            self.stream.start()
             self.stream_started = True
       #######################################################################################
 
       if(time.time()-self.target_spotted_time) > 5 and self.isRecording.data:
         # self.get_logger().info('Stopping recording')
         self.isRecording.data = 0
-        self.pause_recording_audio() # pause audio recording
+        # self.pause_recording_audio() # pause audio recording
+        self.get_logger().info('Pausing audio recording')
+        self.stream_started = False
+        self.stream.stop()
 
       if self.target == self.prev_target:
         if self.isRecording.data:
@@ -191,7 +195,10 @@ class ImagePublisherAudio(Node):
           threadout.join()
       else:
         if self.output and self.waveFile:
-          self.pause_recording_audio()
+          # self.pause_recording_audio()
+          self.get_logger().info('Pausing audio recording')
+          self.stream_started = False
+          self.stream.stop()
 
           self.get_logger().info('Releasing writers for target {}'.format(self.prev_target))
           self.output_released = True
@@ -231,17 +238,15 @@ class ImagePublisherAudio(Node):
         self.waveFile.close()
       self.closed_wavefile = True
 
-  def start_recording_audio(self):
-    # with sd.InputStream(samplerate=self.rate, channels=self.channels, dtype=self.format, callback=self.write_to_wav):
-    #   while self.stream_started:
-    #     time.sleep(0.05)
+  # def start_recording_audio(self):
+  #   # with sd.InputStream(samplerate=self.rate, channels=self.channels, dtype=self.format, callback=self.write_to_wav):
+  #   #   while self.stream_started:
+  #   #     time.sleep(0.05)
 
-    self.stream.start()
-
-  def pause_recording_audio(self):
-    self.get_logger().info('Pausing audio recording')
-    self.stream_started = False
-    self.stream.stop()
+  # def pause_recording_audio(self):
+  #   self.get_logger().info('Pausing audio recording')
+  #   self.stream_started = False
+  #   self.stream.stop()
   
   def aruco_display(self, corners, ids):
     if len(corners) > 0:
