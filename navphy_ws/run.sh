@@ -1,10 +1,17 @@
 #!/bin/bash
 
 cd /home/sdpteam12/Desktop/sdp-team-12/navphy_ws
-source ~/.bashrc
-./system_init.sh
-obs --startstreaming &
-ros2 run gui gui
-# `ros2 run gui gui` &
 
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+sleep 3
+
+./system_init.sh
+
+#sleep 2
+#obs --startstreaming &
+
+ros2 run gui gui
+
+# `ros2 run gui gui` &
 # $SHELL
