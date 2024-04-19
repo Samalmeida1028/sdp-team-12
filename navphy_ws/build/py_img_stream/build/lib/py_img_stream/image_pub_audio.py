@@ -90,7 +90,6 @@ class ImagePublisherAudio(Node):
     self.format = 'int16'
     self.stream_started = False
     self.closed_wavefile = True
-    self.stream = sd.InputStream(samplerate=self.rate, channels=self.channels, dtype=self.format, callback=self.write_to_wav)
 
     self.isRecording = Int32()
     self.target_spotted_time = time.time()
@@ -163,6 +162,8 @@ class ImagePublisherAudio(Node):
             self.closed_wavefile = False
 
             self.get_logger().info('Created audio writer for target {}'.format(self.target))
+
+            self.stream = sd.InputStream(samplerate=self.rate, channels=self.channels, dtype=self.format, callback=self.write_to_wav)
 
             self.output_released = False
 

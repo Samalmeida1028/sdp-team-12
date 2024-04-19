@@ -163,7 +163,6 @@ class ImagePublisherAudio(Node):
             self.closed_wavefile = False
 
             self.get_logger().info('Created audio writer for target {}'.format(self.target))
-
             self.output_released = False
 
           # start audio recording thread ONCE
@@ -194,7 +193,7 @@ class ImagePublisherAudio(Node):
 
           self.get_logger().info('Releasing writers for target {}'.format(self.prev_target))
           self.output_released = True
-          self.stream.close()
+          # self.stream.close()
           self.output.release()
           self.waveFile.close()
 
