@@ -4,12 +4,10 @@ from cv2 import aruco
 import scipy.io as sio
 import time
 import sounddevice as sd
-import numpy as np
 import wave
 import threading
 from datetime import datetime
 import subprocess
-from imutils.video import FileVideoStream
 
 # Import ROS specific packages
 import rclpy
@@ -23,8 +21,6 @@ class ImagePublisherAudio(Node):
   def __init__(self):
     super().__init__('image_pub_audio')
 
-    # self.translation_publisher = self.create_publisher(Float32MultiArray, "translation_list", 1)
-    # self.rotation_publisher = self.create_publisher(Float32MultiArray, "rotation_list", 1)
     self.marker_location_publisher = self.create_publisher(Float32MultiArray, "/marker_position", 1)
     self.target_distance_publisher = self.create_publisher(Float32, "/target_distance", 1)
     self.target_spotted_publisher = self.create_publisher(Int32, "/target_spotted", 1)
@@ -173,8 +169,6 @@ class ImagePublisherAudio(Node):
           # start audio recording thread ONCE
           if not self.stream_started:
             self.get_logger().info('Starting audio recording')
-            # audio_thread = threading.Thread(target=self.start_recording_audio)
-            # audio_thread.start()
             self.stream.start()
             self.stream_started = True
       #######################################################################################
@@ -182,7 +176,6 @@ class ImagePublisherAudio(Node):
       if(time.time()-self.target_spotted_time) > 5 and self.isRecording.data:
         # self.get_logger().info('Stopping recording')
         self.isRecording.data = 0
-        # self.pause_recording_audio() # pause audio recording
         self.get_logger().info('Pausing audio recording')
         self.stream_started = False
         self.stream.stop()
@@ -195,15 +188,15 @@ class ImagePublisherAudio(Node):
           threadout.join()
       else:
         if self.output and self.waveFile:
-          # self.pause_recording_audio()
           self.get_logger().info('Pausing audio recording')
           self.stream_started = False
           self.stream.stop()
 
           self.get_logger().info('Releasing writers for target {}'.format(self.prev_target))
           self.output_released = True
+          self.stream.close()
           self.output.release()
-          while not self.closed_wavefile: pass
+          self.waveFile.close()
 
           self.get_logger().info('Quick merging video and audio for target {}'.format(self.prev_target))
           cmd = "ffmpeg -ac 1 -i " + video_filename + " -i " + audio_filename + " -c:v copy -c:a aac -strict experimental " + merged_filename
@@ -230,23 +223,7 @@ class ImagePublisherAudio(Node):
     pass
 
   def write_to_wav(self, indata, frames, time, status):
-    if not self.output_released: # write into file as long as it is open
-      self.waveFile.writeframes(indata.tobytes())
-    else:
-      self.waveFile.writeframes(indata.tobytes())
-      if self.waveFile: # another sanity check 
-        self.waveFile.close()
-      self.closed_wavefile = True
-
-  # def start_recording_audio(self):
-  #   # with sd.InputStream(samplerate=self.rate, channels=self.channels, dtype=self.format, callback=self.write_to_wav):
-  #   #   while self.stream_started:
-  #   #     time.sleep(0.05)
-
-  # def pause_recording_audio(self):
-  #   self.get_logger().info('Pausing audio recording')
-  #   self.stream_started = False
-  #   self.stream.stop()
+    self.waveFile.writeframes(indata.tobytes())
   
   def aruco_display(self, corners, ids):
     if len(corners) > 0:

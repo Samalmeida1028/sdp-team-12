@@ -100,7 +100,7 @@ class GUI:
     def __init__(self, node : Node):
         self.node = node
         self.window = tk.Tk()
-        self.window.geometry("800x600+10+20")
+        self.window.geometry("650x250")
 
         btn1 = ttk.Button(text="Launch Target Tracking", command=lambda:self.launch(0))
         btn1.grid(row=0,column=0)

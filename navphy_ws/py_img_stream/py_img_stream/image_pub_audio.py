@@ -194,8 +194,9 @@ class ImagePublisherAudio(Node):
 
           self.get_logger().info('Releasing writers for target {}'.format(self.prev_target))
           self.output_released = True
+          self.stream.close()
           self.output.release()
-          while not self.closed_wavefile: pass
+          self.waveFile.close()
 
           self.get_logger().info('Quick merging video and audio for target {}'.format(self.prev_target))
           cmd = "ffmpeg -ac 1 -i " + video_filename + " -i " + audio_filename + " -c:v copy -c:a aac -strict experimental " + merged_filename
@@ -222,13 +223,7 @@ class ImagePublisherAudio(Node):
     pass
 
   def write_to_wav(self, indata, frames, time, status):
-    if not self.output_released: # write into file as long as it is open
-      self.waveFile.writeframes(indata.tobytes())
-    else:
-      self.waveFile.writeframes(indata.tobytes())
-      if self.waveFile: # another sanity check 
-        self.waveFile.close()
-      self.closed_wavefile = True
+    self.waveFile.writeframes(indata.tobytes())
   
   def aruco_display(self, corners, ids):
     if len(corners) > 0:
