@@ -160,16 +160,16 @@ class Nav2Pose(Node):
         # test.data = "Current Orientation: " + str(cpose_orient)
         # self.currentdebugpub.publish(test)
         
-        if self.goal != self.current_pose and not self.in_range(self.prev_goal, self.goal) and self.target_id != 9999:
-            self.correct_goal()
-            self.goalupdaterpub.publish(self.goal)
-            self.nav2posegoalpub.publish(self.goal)
-
-        # if self.goal != self.current_pose and (time.time() - self.prev_goal_time) >= 5.0 and self.target_id != 9999:
+        # if self.goal != self.current_pose and not self.in_range(self.prev_goal, self.goal) and self.target_id != 9999:
         #     self.correct_goal()
         #     self.goalupdaterpub.publish(self.goal)
         #     self.nav2posegoalpub.publish(self.goal)
-        #     self.prev_goal_time = time.time()
+
+        if self.goal != self.current_pose and (time.time() - self.prev_goal_time) >= 5.0 and self.target_id != 9999:
+            self.correct_goal()
+            self.goalupdaterpub.publish(self.goal)
+            self.nav2posegoalpub.publish(self.goal)
+            self.prev_goal_time = time.time()
 
 def main(args=None):
     rclpy.init(args=args)
