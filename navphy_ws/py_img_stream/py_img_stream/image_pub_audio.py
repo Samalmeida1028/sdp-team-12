@@ -159,6 +159,10 @@ class ImagePublisherAudio(Node):
         self.prev_target = self.target
         self.isRecording.data = 0
 
+  def ffmpeg_record(self): # for demo day
+    return 0
+    # TODO: write this logic based off of video_test.py and refine
+
   def cv2_capture(self): # our general product for FPR
     video_filename = None # Initialization
     audio_filename = None
@@ -190,7 +194,9 @@ class ImagePublisherAudio(Node):
           # start audio recording thread ONCE
           if not self.stream_started:
             self.get_logger().info('Starting audio recording')
-            self.stream.start()
+            t1 = threading.Thread(target=self.start_stream)
+            t1.start()
+            # t1.join()
             self.stream_started = True
       #######################################################################################
 
@@ -199,25 +205,28 @@ class ImagePublisherAudio(Node):
         self.isRecording.data = 0
         self.get_logger().info('Pausing audio recording')
         self.stream_started = False
-        self.stream.stop()
+        t2 = threading.Thread(target=self.stop_stream)
+        t2.start()
+        # t2.join()
 
       if self.target == self.prev_target:
         if self.isRecording.data:
           # self.get_logger().info('Recording...')
-          threadout = threading.Thread(target=self.cv2_record)
-          threadout.start()
-          threadout.join()
+          t3 = threading.Thread(target=self.cv2_record)
+          t3.start()
+          t3.join()
       else:
         if self.output and self.waveFile:
           self.get_logger().info('Pausing audio recording')
           self.stream_started = False
-          self.stream.stop()
+          t4 = threading.Thread(target=self.close_stream)
+          t4.start()
 
           self.get_logger().info('Releasing writers for target {}'.format(self.prev_target))
           self.output_released = True
           # self.stream.close()
           self.output.release()
-          self.waveFile.close()
+          # self.waveFile.close()
 
           self.get_logger().info('Quick merging video and audio for target {}'.format(self.prev_target))
           cmd = "ffmpeg -ac 1 -i " + video_filename + " -i " + audio_filename + " -c:v copy -c:a aac -strict experimental " + merged_filename
@@ -239,6 +248,16 @@ class ImagePublisherAudio(Node):
         
   def cv2_record(self):
     self.output.write(self.frame)
+
+  def start_stream(self):
+    self.stream.start()
+
+  def stop_stream(self):
+    self.stream.stop()
+  
+  def close_stream(self):
+    self.stream.stop()
+    self.waveFile.close()
 
   def cv2_show(self):
     pass

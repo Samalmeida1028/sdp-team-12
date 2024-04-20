@@ -18,13 +18,17 @@ class CameraSearch(Node):
         self.target_spotted_sub = self.create_subscription(Int32, "/target_spotted", self.update_wait_time, 10)
 
         self.target_id = 9999
-        self.pixel_offsets = [0.75*1080, 0.75*1920] # how much we want to pan camera on maximum
+
         self.vector = Float32MultiArray()
         self.vector.data = [0.0, 0.0]
+
         self.wait_start_time = time.time()
         self.move_time = time.time()
-        self.wait_time = 7.5
+        self.wait_time = 5.5
         self.time_passed = 0.0
+
+        self.actions = [0.75*1080, -0.75*1080, -0.75*1080, 0.75*1080] # left, center, right, center
+        self.index = 0
 
         self.timer = self.create_timer(0.05, self.send_pan_commands)
 
@@ -44,10 +48,12 @@ class CameraSearch(Node):
     def send_pan_commands(self):
         if self.time_passed >= self.wait_time:
             if time.time() - self.move_time > 5:
-                if int(self.vector.data[0]) == 0.0:
-                    # self.get_logger().info("Offset reached 0")
-                    self.vector.data[0] = self.pixel_offsets[0] # keep alternating left and right commands
-                    self.pixel_offsets[0] *= -1
+                self.vector.data[0] = self.actions[self.index]
+                self.index += 1
+
+                if self.index == 4:
+                    self.index = 0
+
                 self.move_time = time.time()
 
             self.vector.data[0] = round(self.vector.data[0]*0.95, 3)

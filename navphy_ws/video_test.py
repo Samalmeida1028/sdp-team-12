@@ -1,34 +1,39 @@
-import cv2
+import subprocess
+import time
 
-def main():
-    # Create a VideoCapture object
-    cap = cv2.VideoCapture(2)  # 0 for the default camera, you can change it to the desired camera index if you have multiple cameras
+# Define the FFmpeg command
+ffmpeg_command = [
+    'ffmpeg',
+    '-f', 'v4l2',
+    '-input_format', 'mjpeg',
+    '-r', '60',
+    '-video_size', '1280x720',
+    '-i', '/dev/video0',
+    '-f', 'alsa',
+    '-i', 'default',
+    '-c:v', 'copy',
+    '-c:a', 'aac',
+    'recordings/ffmpeg_out.mp4'
+]
 
-    # Check if the camera is opened successfully
-    if not cap.isOpened():
-        print("Error: Couldn't open camera.")
-        return
+# Start the FFmpeg process as a subprocess
+process = subprocess.Popen(ffmpeg_command)
 
-    # Loop to capture and display frames from the camera
-    while True:
-        # Capture frame-by-frame
-        ret, frame = cap.read()
+while True:
+    time.sleep(5)
 
-        # Check if the frame is read correctly
-        if not ret:
-            print("Error: Couldn't read frame.")
-            break
+    print("Pausing FFmpeg process...")
+    process.send_signal(subprocess.signal.SIGSTOP)
 
-        # Display the captured frame
-        cv2.imshow('Video Capture', frame)
+    time.sleep(5)
 
-        # Wait for 'q' key to exit the loop
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+    print("Resuming FFmpeg process...")
+    process.send_signal(subprocess.signal.SIGCONT)
 
-    # Release the VideoCapture object and close the OpenCV windows
-    cap.release()
-    cv2.destroyAllWindows()
+    time.sleep(5)
 
-if __name__ == "__main__":
-    main()
+    print("Stopping recording and saving file...")
+    process.terminate()
+    process.wait()
+
+    break

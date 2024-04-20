@@ -209,9 +209,9 @@ controller_server:
       vy_std: 0.2
       wz_std: 0.2
       ########################### TUNING FOR SPEED ###########################
-      vx_max: 0.35
-      vx_min: -0.35
-      vy_max: 0.35
+      vx_max: 0.45
+      vx_min: -0.45
+      vy_max: 0.4
       wz_max: 0.4
       ########################################################################
       iteration_count: 1

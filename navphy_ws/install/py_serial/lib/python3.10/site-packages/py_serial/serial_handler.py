@@ -80,7 +80,7 @@ class SerHandler(Node):
         self.recording_max_time_subscriber = self.create_subscription(Int32, '/recording_max_time', self.update_max_recording_time,1)
         self.recording_state_subscriber = self.create_subscription(Int32, '/recording', self.update_recording_state,1)
         self.target_seen = self.create_subscription(Int32, "/target_spotted", self.check_target, 10)
-        self.is_centered = True
+        self.is_centered = False
 
         timer_period = .02        
         self.timer = self.create_timer(timer_period, self.run_serial)
@@ -173,7 +173,7 @@ class SerHandler(Node):
                 led_state = 1
 
         self.target_serial.write(bytearray(json.dumps(list(msg.data)+[led_state]) + "\n",encoding="utf-8"))
-        self.is_centered = False
+        # self.is_centered = False
         self.publish_servo_angles()
 
     def publish_servo_angles(self):
@@ -190,8 +190,9 @@ class SerHandler(Node):
 
     def check_target(self,msg):
         self.current_time = time.time()
-        result : int = msg.data
+        result = msg.data
         # print("checking",result)
+        # self.get_logger().info("Center value: {}, Msg: {}".format(self.is_centered, result))
 
         if(result == 0 and self.current_time-self.last_time > 5 and not self.is_centered):
             self.get_logger().info("centering")
