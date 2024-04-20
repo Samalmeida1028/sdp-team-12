@@ -28,7 +28,7 @@ class Nav2Pose(Node):
         self.angsub = self.create_subscription(Float32MultiArray, '/servoxy_angle', self.update_angle, 10)
         self.distancesub = self.create_subscription(Float32, '/target_distance', self.update_distance, 10)
         self.odomsub = self.create_subscription(Odometry, '/odometry/filtered', self.set_current_pose, 10)
-        self.target_spotted_sub = self.create_subscription(Int32, '/target_spotted', self.set_goal, 10)
+        self.target_spotted_sub = self.create_subscription(Int32, '/target_spotted', self.set_spotted, 10)
         self.scansub = self.create_subscription(LaserScan, "/scan_filtered", self.set_laser_scan, 10)
         self.idsub = self.create_subscription(Int32, "/target_id", self.set_target_id, 10)
 
@@ -39,12 +39,13 @@ class Nav2Pose(Node):
         self.truncate_dist = 2.0
         self.angles = [0,0]
         self.distance = 0
-        self.target_goal = None
+        self.servo_values = None
         self.gpose_orient = 0.0
         self.target_id = 9999
+        self.spotted = 0
 
-        time_period = 0.5
-        self.timer = self.create_timer(time_period, self.nav2pose_callback)
+        self.timer = self.create_timer(0.5, self.nav2pose_callback)
+        self.goalpubtimer = self.create_timer(5.0, self.set_goal)
 
         self.prev_goal_time = time.time()
 
@@ -63,21 +64,22 @@ class Nav2Pose(Node):
     def set_target_id(self, idmsg : Int32):
         self.target_id = idmsg.data
 
-    def set_goal(self, check : Int32):
-        # goalmsg = [dist, xangle, yangle]
-        # print("hi",check.data)
-        if(check.data and self.target_goal):
-            # print("hello")
+    def set_spotted(self, spottedmsg : Int32):
+        self.spotted = spottedmsg.data
+
+    def set_goal(self):
+        # self.servo_values = [dist, xangle, yangle]
+        if(self.spotted and self.servo_values and self.target_id != 9999):
             self.goal.header.frame_id = 'odom'
             self.goal.header.stamp = self.get_clock().now().to_msg()
 
-            d = self.target_goal[0]*math.cos(math.radians(self.target_goal[2])) # true dist = seen dist * sin(yangle)
+            d = self.servo_values[0]*math.cos(math.radians(self.servo_values[2])) # true dist = seen dist * sin(yangle)
             d = (d/1000) - self.truncate_dist
-            # print(self.target_goal)
+            # print(self.servo_values)
             cpose_orient = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
                                           self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w]).as_euler("xyz",degrees=False)[2]
 
-            self.gpose_orient = math.radians(self.target_goal[1]) + cpose_orient #+math.pi))-math.pi
+            self.gpose_orient = math.radians(self.servo_values[1]) + cpose_orient #+math.pi))-math.pi
 
             if self.gpose_orient > math.pi: # sanity check to keep it within ROS bounds [-pi,pi]
                 self.gpose_orient -= (2*math.pi)
@@ -99,6 +101,10 @@ class Nav2Pose(Node):
             self.goal.pose.orientation.y = rot_quat[1]
             self.goal.pose.orientation.z = rot_quat[2]
             self.goal.pose.orientation.w = rot_quat[3]
+
+            self.correct_goal()
+            self.goalupdaterpub.publish(self.goal)
+            self.nav2posegoalpub.publish(self.goal)
 
     def correct_goal(self):
         self.get_logger().info("Checking goal validity with LiDAR scans...")
@@ -127,49 +133,13 @@ class Nav2Pose(Node):
         self.distance = 0
         self.distance = msg.data
 
-    def in_range(self, oldgoal : PoseStamped, newgoal : PoseStamped):
-        # print(oldgoal.pose.position.x, newgoal.pose.position.x, oldgoal.pose.position.y, newgoal.pose.position.y)
-
-        # test = String()
-        # test.data = "xdiff: " + str(oldgoal.pose.position.x - newgoal.pose.position.x) + ", ydiff: " + str(oldgoal.pose.position.y - newgoal.pose.position.y)
-        # self.currentdebugpub.publish(test)
-        
-        if abs(oldgoal.pose.position.x - newgoal.pose.position.x) > 0.35 or abs(oldgoal.pose.position.y - newgoal.pose.position.y) > 0.2:
-            self.prev_goal.pose.position.x = self.goal.pose.position.x
-            self.prev_goal.pose.position.y = self.goal.pose.position.y
-            self.prev_goal.pose.position.z = self.goal.pose.position.z
-
-            self.prev_goal.pose.orientation.x = self.goal.pose.orientation.x
-            self.prev_goal.pose.orientation.y = self.goal.pose.orientation.y
-            self.prev_goal.pose.orientation.z = self.goal.pose.orientation.z
-            self.prev_goal.pose.orientation.w = self.goal.pose.orientation.w
-            return False
-        else:
-            return True
-
     def nav2pose_callback(self):
         if(self.angles and self.distance):
-            self.target_goal = [self.distance] + self.angles
+            self.servo_values = [self.distance] + self.angles
             self.distance = None
             self.angles = None
         
-        # self.currentposepub.publish(self.current_pose)
-        # cpose_orient = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
-        #                                   self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w]).as_euler("xyz",degrees=False)[2]
-        # test = String()
-        # test.data = "Current Orientation: " + str(cpose_orient)
-        # self.currentdebugpub.publish(test)
-        
-        # if self.goal != self.current_pose and not self.in_range(self.prev_goal, self.goal) and self.target_id != 9999:
-        #     self.correct_goal()
-        #     self.goalupdaterpub.publish(self.goal)
-        #     self.nav2posegoalpub.publish(self.goal)
-
-        if self.goal != self.current_pose and (time.time() - self.prev_goal_time) >= 5.0 and self.target_id != 9999:
-            self.correct_goal()
-            self.goalupdaterpub.publish(self.goal)
-            self.nav2posegoalpub.publish(self.goal)
-            self.prev_goal_time = time.time()
+        self.currentposepub.publish(self.current_pose)
 
 def main(args=None):
     rclpy.init(args=args)

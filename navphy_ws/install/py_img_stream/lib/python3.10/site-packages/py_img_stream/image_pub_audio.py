@@ -74,6 +74,8 @@ class ImagePublisherAudio(Node):
     self.frame = []
     self.ret = False
 
+    self.get_logger().info('Created video capture at {} FPS'.format(self.cam.get(cv2.CAP_PROP_FPS)))
+
     # threadout2 = threading.Thread(target=self.cv2_show)
     # threadout2.start()
     # threadout2.join()
@@ -159,23 +161,6 @@ class ImagePublisherAudio(Node):
         self.prev_target = self.target
         self.isRecording.data = 0
 
-  def ffmpeg_record(self): # for demo day
-    while True:
-      self.ret, self.frame = self.cam.read()
-
-      if self.target == self.prev_target and self.target != 9999:
-        if self.target_spotted.data and (self.target_distance.data / 1000.0) <= 3.0:
-          self.isRecording.data = 1
-          self.target_spotted_time = time.time()
-
-      if(time.time()-self.target_spotted_time) > 5 and self.isRecording.data:
-        # self.get_logger().info('Stopping recording')
-        self.isRecording.data = 0
-
-      if self.target != self.prev_target:
-        self.prev_target = self.target
-        self.isRecording.data = 0
-
   def cv2_capture(self): # our general product for FPR
     video_filename = None # Initialization
     audio_filename = None
@@ -192,8 +177,9 @@ class ImagePublisherAudio(Node):
 
           # Create video and audio writer ONCE for new target
           if self.output_released:
-            self.output = cv2.VideoWriter(video_filename,cv2.VideoWriter_fourcc(*"XVID"),60,(self.resolutionX,self.resolutionY))
-            self.get_logger().info('Created video writer for target {}'.format(self.target))
+            fps = self.cam.get(cv2.CAP_PROP_FPS)
+            self.output = cv2.VideoWriter(video_filename,cv2.VideoWriter_fourcc(*"XVID"),fps,(self.resolutionX,self.resolutionY))
+            self.get_logger().info('Created video writer for target {} at {} FPS'.format(self.target, fps))
 
             self.waveFile = wave.open(audio_filename, 'wb')
             self.waveFile.setnchannels(self.channels)
@@ -260,6 +246,7 @@ class ImagePublisherAudio(Node):
       # threadout2.join()
         
   def cv2_record(self):
+    # self.output.set(self.cam.get(cv2.CAP_PROP_FPS)) # keep fps in sync with capture and writer
     self.output.write(self.frame)
 
   def start_stream(self):

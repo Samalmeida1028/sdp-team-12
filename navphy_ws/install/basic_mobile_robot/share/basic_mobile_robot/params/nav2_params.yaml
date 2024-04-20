@@ -198,30 +198,29 @@ controller_server:
       stateful: True
       plugin: "nav2_controller::SimpleGoalChecker"
       xy_goal_tolerance: 0.3
-      yaw_goal_tolerance: 0.3
+      yaw_goal_tolerance: 0.2
       
     MPPI:
       plugin: "nav2_mppi_controller::MPPIController"
       time_steps: 60
       model_dt: 0.25
       batch_size: 2000
-      vx_std: 0.2
-      vy_std: 0.2
-      wz_std: 0.2
+      vx_std: 0.5
+      wz_std: 0.5
       ########################### TUNING FOR SPEED ###########################
-      vx_max: 0.45
-      vx_min: -0.45
-      vy_max: 0.4
-      wz_max: 0.4
+      vx_max: 0.65
+      vx_min: -0.65
+      wz_max: 0.75
       ########################################################################
       iteration_count: 1
       enforce_path_inversion: false
-      prune_distance: 1.5
+      prune_distance: 3.5
       transform_tolerance: 1.5
       temperature: 0.3
       gamma: 0.015
       motion_model: "DiffDrive"
-      visualize: False
+      visualize: false
+      retry_attempt_limit: 5
       reset_period: 1.0 # (only in Humble)
       regenerate_noises: false
       TrajectoryVisualizer:

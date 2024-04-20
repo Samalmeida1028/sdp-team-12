@@ -74,6 +74,8 @@ class ImagePublisherAudio(Node):
     self.frame = []
     self.ret = False
 
+    self.get_logger().info('Created video capture at {} FPS'.format(self.cam.get(cv2.CAP_PROP_FPS)))
+
     # threadout2 = threading.Thread(target=self.cv2_show)
     # threadout2.start()
     # threadout2.join()
@@ -159,10 +161,6 @@ class ImagePublisherAudio(Node):
         self.prev_target = self.target
         self.isRecording.data = 0
 
-  def ffmpeg_record(self): # for demo day
-    return 0
-    # TODO: write this logic based off of video_test.py and refine
-
   def cv2_capture(self): # our general product for FPR
     video_filename = None # Initialization
     audio_filename = None
@@ -179,8 +177,9 @@ class ImagePublisherAudio(Node):
 
           # Create video and audio writer ONCE for new target
           if self.output_released:
-            self.output = cv2.VideoWriter(video_filename,cv2.VideoWriter_fourcc(*"XVID"),60,(self.resolutionX,self.resolutionY))
-            self.get_logger().info('Created video writer for target {}'.format(self.target))
+            fps = self.cam.get(cv2.CAP_PROP_FPS)
+            self.output = cv2.VideoWriter(video_filename,cv2.VideoWriter_fourcc(*"XVID"),fps,(self.resolutionX,self.resolutionY))
+            self.get_logger().info('Created video writer for target {} at {} FPS'.format(self.target, fps))
 
             self.waveFile = wave.open(audio_filename, 'wb')
             self.waveFile.setnchannels(self.channels)
@@ -247,6 +246,7 @@ class ImagePublisherAudio(Node):
       # threadout2.join()
         
   def cv2_record(self):
+    # self.output.set(self.cam.get(cv2.CAP_PROP_FPS)) # keep fps in sync with capture and writer
     self.output.write(self.frame)
 
   def start_stream(self):
