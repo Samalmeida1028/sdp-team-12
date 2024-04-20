@@ -49,7 +49,7 @@ class ImagePublisherAudio(Node):
     self.aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_1000)
     self.aruco_params = aruco.DetectorParameters_create()
     self.resolutionX = 1280
-    self.resolutionY = 720
+    self.resolutionY = 720 # for recording, this is the only resolution that gives 60 fps outputs 
     self.target = 9999
     self.prev_target = 9999
 
@@ -85,7 +85,6 @@ class ImagePublisherAudio(Node):
     self.waveFile = None
     self.output_released = True
     self.rate = 44100
-    self.frames_per_buffer = 4096
     self.channels = 1
     self.format = 'int16'
     self.stream_started = False
@@ -96,9 +95,16 @@ class ImagePublisherAudio(Node):
 
     self.recordingpub = self.create_publisher(Int32, "/recording", 1)
 
+    ############## COMMENT OUT FOR DEMO DAY ##############
+    self.stream = sd.InputStream(samplerate=self.rate, channels=self.channels, dtype=self.format, callback=self.write_to_wav)
     capture_thread = threading.Thread(target=self.cv2_capture)
     capture_thread.daemon = True
     capture_thread.start()
+
+    ############## COMMENT IN FOR DEMO DAY ##############
+    # livestream_thread = threading.Thread(target=self.livestream_func)
+    # livestream_thread.daemon = True
+    # livestream_thread.start()
 
   def target_acquire(self,msg):
     print("target acquired")
@@ -136,7 +142,24 @@ class ImagePublisherAudio(Node):
         cY = int((topLeft[1] + bottomRight[1]) / 2.0)
         self.marker_position.data = [float(cX-(self.resolutionX//2)),float(cY-(self.resolutionY/2))]
 
-  def cv2_capture(self):
+  def livestream_func(self): # for demo day
+    while True:
+      self.ret, self.frame = self.cam.read()
+
+      if self.target == self.prev_target and self.target != 9999:
+        if self.target_spotted.data and (self.target_distance.data / 1000.0) <= 3.0:
+          self.isRecording.data = 1
+          self.target_spotted_time = time.time()
+
+      if(time.time()-self.target_spotted_time) > 5 and self.isRecording.data:
+        # self.get_logger().info('Stopping recording')
+        self.isRecording.data = 0
+
+      if self.target != self.prev_target:
+        self.prev_target = self.target
+        self.isRecording.data = 0
+
+  def cv2_capture(self): # our general product for FPR
     video_filename = None # Initialization
     audio_filename = None
     merged_filename = None
@@ -162,9 +185,6 @@ class ImagePublisherAudio(Node):
             self.closed_wavefile = False
 
             self.get_logger().info('Created audio writer for target {}'.format(self.target))
-
-            self.stream = sd.InputStream(samplerate=self.rate, channels=self.channels, dtype=self.format, callback=self.write_to_wav)
-
             self.output_released = False
 
           # start audio recording thread ONCE
@@ -195,7 +215,7 @@ class ImagePublisherAudio(Node):
 
           self.get_logger().info('Releasing writers for target {}'.format(self.prev_target))
           self.output_released = True
-          self.stream.close()
+          # self.stream.close()
           self.output.release()
           self.waveFile.close()
 
