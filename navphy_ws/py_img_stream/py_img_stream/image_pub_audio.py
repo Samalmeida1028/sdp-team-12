@@ -25,7 +25,7 @@ class ImagePublisherAudio(Node):
     self.target_distance_publisher = self.create_publisher(Float32, "/target_distance", 1)
     self.target_spotted_publisher = self.create_publisher(Int32, "/target_spotted", 1)
 
-    timer_period = .05
+    timer_period = .5
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
 
@@ -48,8 +48,8 @@ class ImagePublisherAudio(Node):
 
     self.aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_1000)
     self.aruco_params = aruco.DetectorParameters_create()
-    self.resolutionX = 1280
-    self.resolutionY = 720 # for recording, this is the only resolution that gives 60 fps outputs 
+    self.resolutionX = 1920
+    self.resolutionY = 1080 # for recording, this is the only resolution that gives 60 fps outputs 
     self.target = 9999
     self.prev_target = 9999
 
@@ -91,6 +91,7 @@ class ImagePublisherAudio(Node):
     self.format = 'int16'
     self.stream_started = False
     self.closed_wavefile = True
+    self.stream = None
 
     self.isRecording = Int32()
     self.target_spotted_time = time.time()
@@ -98,7 +99,6 @@ class ImagePublisherAudio(Node):
     self.recordingpub = self.create_publisher(Int32, "/recording", 1)
 
     ############## COMMENT OUT FOR DEMO DAY ##############
-    self.stream = sd.InputStream(samplerate=self.rate, channels=self.channels, dtype=self.format, callback=self.write_to_wav)
     capture_thread = threading.Thread(target=self.cv2_capture)
     capture_thread.daemon = True
     capture_thread.start()
@@ -138,11 +138,12 @@ class ImagePublisherAudio(Node):
   
   def get_pixel_pos(self,corners,ids):
     for (markerCorner, markerID) in zip(corners, ids):
-        corners = markerCorner.reshape((4, 2))
-        (topLeft, topRight, bottomRight, bottomLeft) = corners
-        cX = int((topLeft[0] + bottomRight[0]) / 2.0)
-        cY = int((topLeft[1] + bottomRight[1]) / 2.0)
-        self.marker_position.data = [float(cX-(self.resolutionX//2)),float(cY-(self.resolutionY/2))]
+        if(markerID == self.target):
+          corners = markerCorner.reshape((4, 2))
+          (topLeft, topRight, bottomRight, bottomLeft) = corners
+          cX = int((topLeft[0] + bottomRight[0]) / 2.0)
+          cY = int((topLeft[1] + bottomRight[1]) / 2.0)
+          self.marker_position.data = [float(cX-(self.resolutionX//2)),float(cY-(self.resolutionY/2))]
 
   def livestream_func(self): # for demo day
     while True:
@@ -193,6 +194,7 @@ class ImagePublisherAudio(Node):
           # start audio recording thread ONCE
           if not self.stream_started:
             self.get_logger().info('Starting audio recording')
+            self.stream = sd.InputStream(samplerate=self.rate, channels=self.channels, dtype=self.format, callback=self.write_to_wav)
             t1 = threading.Thread(target=self.start_stream)
             t1.start()
             # t1.join()
@@ -218,14 +220,13 @@ class ImagePublisherAudio(Node):
         if self.output and self.waveFile:
           self.get_logger().info('Pausing audio recording')
           self.stream_started = False
-          t4 = threading.Thread(target=self.close_stream)
-          t4.start()
+          self.stream.stop()
+          self.stream.close()
 
           self.get_logger().info('Releasing writers for target {}'.format(self.prev_target))
           self.output_released = True
-          # self.stream.close()
           self.output.release()
-          # self.waveFile.close()
+          self.waveFile.close()
 
           self.get_logger().info('Quick merging video and audio for target {}'.format(self.prev_target))
           cmd = "ffmpeg -ac 1 -i " + video_filename + " -i " + audio_filename + " -c:v copy -c:a aac -strict experimental " + merged_filename
@@ -254,10 +255,7 @@ class ImagePublisherAudio(Node):
 
   def stop_stream(self):
     self.stream.stop()
-  
-  def close_stream(self):
-    self.stream.stop()
-    self.waveFile.close()
+    self.stream.close()
 
   def cv2_show(self):
     pass
@@ -303,7 +301,7 @@ class ImagePublisherAudio(Node):
   def timer_callback(self):
     """
     Callback function.
-    This function gets called every 0.016 seconds.
+    This function gets called every 0.05 seconds = 20 Hz
     """   
     self.target_spotted.data = 0
 
@@ -312,7 +310,7 @@ class ImagePublisherAudio(Node):
       # self.get_logger().info("getting stuff")
       # cv2.imshow('camera', self.frame)
       if(corners is not None and ids is not None):
-        self.aruco_display(corners,ids)
+        # self.aruco_display(corners,ids)
         self.get_pixel_pos(corners,ids)
 
         for (markerCorner, markerID) in zip(corners, ids):
