@@ -25,7 +25,7 @@ class ImagePublisherAudio(Node):
     self.target_distance_publisher = self.create_publisher(Float32, "/target_distance", 1)
     self.target_spotted_publisher = self.create_publisher(Int32, "/target_spotted", 1)
 
-    timer_period = .5
+    timer_period = .1 # 2 Hz = 50% CPU, 10 Hz = 75% CPU, 20 Hz = 90+% CPU (nav does not work above 70% CPU usage as well)
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
 
