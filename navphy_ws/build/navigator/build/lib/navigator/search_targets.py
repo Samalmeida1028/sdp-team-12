@@ -136,6 +136,7 @@ class SearchTargets(Node):
     def set_nav2pose_goal(self, nav2posemsg: PoseStamped):
         self.existinggoal_orient = Rotation.from_quat([nav2posemsg.pose.orientation.x,nav2posemsg.pose.orientation.y,
                                                         nav2posemsg.pose.orientation.z,nav2posemsg.pose.orientation.w]).as_euler("xyz", degrees=False)[2]
+        self.d = math.hypot(nav2posemsg.pose.position.x, nav2posemsg.pose.position.y) + 1.5
         self.trials = 0
         
     # Given we have waited more than 10 seconds and navigation timer has expired and we are not redefining, 
@@ -148,7 +149,12 @@ class SearchTargets(Node):
             cpose_orient = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
                                           self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w]).as_euler("xyz", degrees=False)[2]
             
-            self.gpose_orient = cpose_orient + 1.57
+            if self.existinggoal_orient != 0.0 and self.trials > 1:
+                self.gpose_orient = self.existinggoal_orient
+            else:
+                self.gpose_orient = cpose_orient + 1.57
+                self.d = 1.25
+
             self.trials += 1
 
             if self.gpose_orient > math.pi: # sanity check to keep it within ROS bounds [-pi,pi]

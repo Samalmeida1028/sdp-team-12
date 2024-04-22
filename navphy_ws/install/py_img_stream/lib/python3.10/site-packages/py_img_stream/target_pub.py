@@ -64,8 +64,6 @@ class TargetPublisher(Node):
         self.numtargets = len(self.targets)
         self.publisher.publish(self.target_id)
         
-        
-
         # Clearing targets
         if self.numtargets < self.file_index: # to reset the list of targets
             self.file_index = 0

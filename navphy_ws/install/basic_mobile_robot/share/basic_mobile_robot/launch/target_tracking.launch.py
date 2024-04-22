@@ -20,12 +20,6 @@ def generate_launch_description():
         name='pub',
     )
 
-    start_nav2pose_cmd = Node(
-        package='navigator',
-        executable='nav2pose',
-        name='nav2pose'
-    ) 
-
     start_serial_cmd = Node(
         package='py_serial',
         executable='serial_handler',
@@ -48,9 +42,8 @@ def generate_launch_description():
 
     ld.add_action(start_target_pub_cmd)
     ld.add_action(start_image_pub_cmd)
-    # ld.add_action(start_nav2pose_cmd)
     ld.add_action(start_serial_cmd)
-    ld.add_action(start_camera_search_cmd)
+    # ld.add_action(start_camera_search_cmd)
     # ld.add_action(start_obs_updater_cmd)
 
     return ld
