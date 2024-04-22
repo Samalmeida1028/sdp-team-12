@@ -36,7 +36,7 @@ class Nav2Pose(Node):
         self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
         self.nav2posegoalpub = self.create_publisher(PoseStamped, "/nav2pose_goal", 10)
 
-        self.truncate_dist = 2.0
+        self.truncate_dist = 1.25
         self.angles = [0,0]
         self.distance = 0
         self.servo_values = None
@@ -45,7 +45,7 @@ class Nav2Pose(Node):
         self.spotted = 0
 
         self.timer = self.create_timer(0.5, self.nav2pose_callback)
-        self.goalpubtimer = self.create_timer(1.0, self.set_goal)
+        self.goalpubtimer = self.create_timer(5.0, self.set_goal)
 
         self.prev_goal_time = time.time()
 

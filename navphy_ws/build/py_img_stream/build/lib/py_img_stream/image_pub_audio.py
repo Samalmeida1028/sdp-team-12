@@ -53,7 +53,7 @@ class ImagePublisherAudio(Node):
     self.target = 9999
     self.prev_target = 9999
 
-    self.markerLength = 88.9 # mm
+    self.markerLength = 82 # mm
     self.marker_side = self.markerLength
 
     self.marker_ids_seen = set()
@@ -178,7 +178,7 @@ class ImagePublisherAudio(Node):
 
           # Create video and audio writer ONCE for new target
           if self.output_released:
-            fps = self.cam.get(cv2.CAP_PROP_FPS)
+            fps = self.cam.get(cv2.CAP_PROP_FPS) / 2
             self.output = cv2.VideoWriter(video_filename,cv2.VideoWriter_fourcc(*"XVID"),fps,(self.resolutionX,self.resolutionY))
             self.get_logger().info('Created video writer for target {} at {} FPS'.format(self.target, fps))
 

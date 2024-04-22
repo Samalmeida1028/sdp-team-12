@@ -48,8 +48,8 @@ class ImagePublisherAudio(Node):
 
     self.aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_1000)
     self.aruco_params = aruco.DetectorParameters_create()
-    self.resolutionX = 1280
-    self.resolutionY = 720 # for recording, this is the only resolution that gives 60 fps outputs 
+    self.resolutionX = 1920
+    self.resolutionY = 1080 # for recording, this is the only resolution that gives 60 fps outputs 
     self.target = 9999
     self.prev_target = 9999
 
@@ -178,7 +178,7 @@ class ImagePublisherAudio(Node):
 
           # Create video and audio writer ONCE for new target
           if self.output_released:
-            fps = self.cam.get(cv2.CAP_PROP_FPS)
+            fps = self.cam.get(cv2.CAP_PROP_FPS) / 2
             self.output = cv2.VideoWriter(video_filename,cv2.VideoWriter_fourcc(*"XVID"),fps,(self.resolutionX,self.resolutionY))
             self.get_logger().info('Created video writer for target {} at {} FPS'.format(self.target, fps))
 
