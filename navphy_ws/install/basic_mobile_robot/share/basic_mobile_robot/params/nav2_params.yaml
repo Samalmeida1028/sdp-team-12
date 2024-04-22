@@ -197,7 +197,7 @@ controller_server:
     general_goal_checker:
       stateful: True
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.3
+      xy_goal_tolerance: 0.1
       yaw_goal_tolerance: 0.2
       
     MPPI:
@@ -214,7 +214,7 @@ controller_server:
       ########################################################################
       iteration_count: 1
       enforce_path_inversion: false
-      prune_distance: 3.5
+      prune_distance: 1.5
       transform_tolerance: 1.5
       temperature: 0.3
       gamma: 0.015

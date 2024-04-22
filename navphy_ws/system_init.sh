@@ -10,6 +10,6 @@ ls -l /dev/video*
 ls -l *.py
 ls -l *.sh
 
-#./split_video.sh &
-#sleep 1
-#./start_cloned_streams.sh &
+# ./split_video.sh &
+# sleep 1
+# ./start_cloned_streams.sh &

@@ -14,6 +14,7 @@ navigator/filter_lidar.py
 navigator/nav2pose.py
 navigator/search_targets.py
 navigator/sens2odom.py
+navigator/teleop_joy.py
 resource/navigator
 test/test_copyright.py
 test/test_flake8.py

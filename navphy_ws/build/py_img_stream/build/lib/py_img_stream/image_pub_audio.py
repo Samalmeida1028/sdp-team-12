@@ -25,7 +25,7 @@ class ImagePublisherAudio(Node):
     self.target_distance_publisher = self.create_publisher(Float32, "/target_distance", 1)
     self.target_spotted_publisher = self.create_publisher(Int32, "/target_spotted", 1)
 
-    timer_period = .1
+    timer_period = .05 # 2 Hz = 20% CPU, 10 Hz = 30% CPU, 20 Hz = 90+% CPU (nav does not work above 70% CPU usage as well)
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
 
@@ -134,16 +134,16 @@ class ImagePublisherAudio(Node):
           self.translation.data = [float(tvec[0][0][0]),float(tvec[0][0][1]),float(tvec[0][0][2])]
           self.target_distance.data = float(tvec[0][0][2])
         #   self.translation_publisher.publish(self.translation)
-    return (corners,ids)
+          return (corners,ids)
+
   
   def get_pixel_pos(self,corners,ids):
     for (markerCorner, markerID) in zip(corners, ids):
-        if(markerID == self.target):
-          corners = markerCorner.reshape((4, 2))
-          (topLeft, topRight, bottomRight, bottomLeft) = corners
-          cX = int((topLeft[0] + bottomRight[0]) / 2.0)
-          cY = int((topLeft[1] + bottomRight[1]) / 2.0)
-          self.marker_position.data = [float(cX-(self.resolutionX//2)),float(cY-(self.resolutionY/2))]
+        corners = markerCorner.reshape((4, 2))
+        (topLeft, topRight, bottomRight, bottomLeft) = corners
+        cX = int((topLeft[0] + bottomRight[0]) / 2.0)
+        cY = int((topLeft[1] + bottomRight[1]) / 2.0)
+        self.marker_position.data = [float(cX-(self.resolutionX//2)),float(cY-(self.resolutionY/2))]
 
   def livestream_func(self): # for demo day
     while True:
@@ -306,24 +306,26 @@ class ImagePublisherAudio(Node):
     self.target_spotted.data = 0
 
     if self.ret == True:
-      (corners,ids) = self.get_pose()
+      exists = True
+      try: (corners,ids) = self.get_pose()
+      except TypeError as e:
+        print("No Targets found")
+        exists = False
       # self.get_logger().info("getting stuff")
       # cv2.imshow('camera', self.frame)
-      if(corners is not None and ids is not None):
+      
+      if(exists and corners is not None and ids is not None):
         # self.aruco_display(corners,ids)
-        self.get_pixel_pos(corners,ids)
+        self.get_pixel_pos(corners,ids)       
+        # self.get_logger().info("%s" % json.dumps(list(self.marker_position.data) + [self.translation.data[2]]))
+        global marker_information
+        marker_information.data =[self.marker_position.data[0],self.marker_position.data[1]]
 
-        for (markerCorner, markerID) in zip(corners, ids):
-          if(markerID == self.target):         
-            # self.get_logger().info("%s" % json.dumps(list(self.marker_position.data) + [self.translation.data[2]]))
-            global marker_information
-            marker_information.data =[self.marker_position.data[0],self.marker_position.data[1]]
-
-            self.marker_location_publisher.publish(marker_information)
-            self.target_distance_publisher.publish(self.target_distance) 
-            self.target_spotted.data = 1 
-          else:
-            self.target_spotted.data = 0
+        self.marker_location_publisher.publish(marker_information)
+        self.target_distance_publisher.publish(self.target_distance) 
+        self.target_spotted.data = 1 
+      else:
+        self.target_spotted.data = 0
 
     self.target_spotted_publisher.publish(self.target_spotted)
     self.recordingpub.publish(self.isRecording)

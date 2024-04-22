@@ -37,6 +37,11 @@ def generate_launch_description():
         executable='camerasearch',
         name='camerasearch',
     )
+    start_obs_updater_cmd = Node(
+        package='obs_nodes',
+        executable='obs_target_update',
+        name='obsupdatetarget',
+    )
 
     # Launch!
     ld = LaunchDescription()
@@ -46,5 +51,6 @@ def generate_launch_description():
     # ld.add_action(start_nav2pose_cmd)
     ld.add_action(start_serial_cmd)
     ld.add_action(start_camera_search_cmd)
+    # ld.add_action(start_obs_updater_cmd)
 
     return ld

@@ -1,0 +1,3 @@
+[console_scripts]
+obs_target_update = obs_nodes.update_target:main
+
