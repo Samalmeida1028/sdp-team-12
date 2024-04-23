@@ -37,7 +37,7 @@ class RosGUI(Node):
             self.update_recording_time,
         10)
         self.get_time_left = self.create_subscription(
-            Int32,
+            Float32,
             '/recording_max_time',
             self.update_max_recording_time,
         10)
@@ -111,7 +111,7 @@ class GUI:
         btn3 = ttk.Button(text="Launch Test", command=lambda:self.launch(2))
         btn3.grid(row=4,column=0)
 
-        inputL = ttk.Entry(textvariable="Enter list of targets like this => [1,59,2]",width=50)
+        inputL = ttk.Entry(textvariable="Enter list of targets,marker size (mm), and recording time(s) like this => [(1,100,10),(59,40,60),(2,10,10)]",width=50)
         inputL.grid(row=6,column=1,columnspan=2)
         # inputL.insert(0,string="Enter list of targets like this => [1,59,2]")
 
@@ -124,12 +124,8 @@ class GUI:
         btn5 = ttk.Button(text="Use Mic", command=lambda:self.launch(5))
         btn5.grid(row=10,column=0)
 
-        inputR = ttk.Entry(textvariable="Recording timeout",width=50)
-        inputR.grid(row=12,column=2,columnspan=3)
-        inputR.insert(0,string="10")
-
-        btn6 = ttk.Button(text="Update Recording Time", command=lambda:subprocess.Popen(['ros2','param','set','/target_pub','recording_timeout',str(inputR.get())]))
-        btn6.grid(row=12,column=0)
+        # btn6 = ttk.Button(text="Update Recording Time", command=lambda:subprocess.Popen(['ros2','param','set','/target_pub','recording_timeout',str(inputR.get())]))
+        # btn6.grid(row=12,column=0)
 
         self.progress_label_var = StringVar()
         self.progress_label = ttk.Label(textvariable=self.progress_label_var)
@@ -186,6 +182,7 @@ class GUI:
                 try: t_list = json.loads(target_list)
                 except json.decoder.JSONDecodeError as E:
                     print("Update failed: incorrect list format, please type in list notation. EX: [1,2]")
+                    print(target_list)
                 if type(t_list) == list:
                     if os.stat("targets.txt").st_size == 0:
                             try:

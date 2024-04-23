@@ -1,14 +1,12 @@
 '''
 Authors: Arjun Viswanathan, Samuel Almeida
-Date last modified: 4/8/24
+Date last modified: 4/23/24
 Target Publisher:
 - Gives equal amount of time before publishing new targets
 - Targets can be read in from a .txt file
 - .txt file can be updated without killing the node
 - Wait until within range of target and seeing target in camera frame to tick timer
 '''
-
-import time
 
 # Import ROS specific packages
 import rclpy
@@ -23,7 +21,8 @@ class TargetPublisher(Node):
 
         self.publisher = self.create_publisher(Int32, "/target_id", 10)
         self.recording_time_publisher = self.create_publisher(Float32,"/recording_time",10)
-        self.recording_max_time_publisher = self.create_publisher(Int32,"/recording_max_time",10)
+        self.recording_max_time_publisher = self.create_publisher(Float32,"/recording_max_time",10)
+        self.marker_side_pub = self.create_publisher(Int32, "/marker_side", 10)
 
         self.recordingsub = self.create_subscription(Int32, "/recording", self.set_recording, 10)
         self.spottedsub = self.create_subscription(Int32, "/target_spotted", self.set_spotted, 10)
@@ -38,16 +37,14 @@ class TargetPublisher(Node):
         self.start_padding_counter = False
 
         self.target_id = Int32()
-
-        self.declare_parameter('recording_timeout',10)
-        self.set_parameters([self.get_parameter('recording_timeout')])
-
         self.recording_time = Float32()
+        self.recording_time.data = 0.0
+        self.recording_max_time = Float32()
+        self.recording_max_time.data = -1.0
+        self.marker_side = Int32()
 
         self.fileupdater = self.create_timer(1, self.update)
         self.cycle = self.create_timer(0.5, self.cycle_targets)
-
-        self.recording_time.data = float(self.get_parameter('recording_timeout').get_parameter_value().integer_value)
 
         self.get_logger().info('Target Publisher node ready!')
 
@@ -60,32 +57,27 @@ class TargetPublisher(Node):
                     self.get_logger().info("File is incorrectly formatted")
         else:
             self.targets = []
+
         # print(self.targets)
         self.numtargets = len(self.targets)
-        self.publisher.publish(self.target_id)
         
         # Clearing targets
         if self.numtargets < self.file_index: # to reset the list of targets
             self.file_index = 0
             # self.padding_time = 5.0
-            self.recording_time.data = float(self.get_parameter('recording_timeout').get_parameter_value().integer_value)
+            self.recording_max_time.data = -1.0
+            self.recording_time.data = 0.0
             self.get_logger().info('Targets cleared. Resetting...')
 
         if self.target_id.data == 9999:
-            self.recording_time.data = float(self.get_parameter('recording_timeout').get_parameter_value().integer_value)
-            
-        # Parameter setting
-        my_param = self.get_parameter('recording_timeout')
-        # print(my_param.get_parameter_value().integer_value)
-        self.set_parameters([my_param])
+            self.recording_max_time.data = -1.0
+            self.recording_time.data = 0.0
 
         # Publishing
+        self.publisher.publish(self.target_id)
         self.recording_time_publisher.publish(self.recording_time)
-
-        # Debug
-        temp = Int32()
-        temp.data = self.get_parameter("recording_timeout").get_parameter_value().integer_value
-        self.recording_max_time_publisher.publish(temp)
+        self.recording_max_time_publisher.publish(self.recording_max_time)
+        self.marker_side_pub.publish(self.marker_side)
 
     def set_recording(self, msg : Int32):
         self.is_recording = msg.data
@@ -109,12 +101,15 @@ class TargetPublisher(Node):
         return self.file_index == self.numtargets
     
     def cycle_targets(self):
-        if self.recording_time.data >= self.get_parameter('recording_timeout').get_parameter_value().integer_value and not self.is_eof(): # after timeout, then change target
+        if self.recording_time.data >= self.recording_max_time.data and not self.is_eof(): # after timeout, then change target
             # self.start_padding_counter = True
-            self.target_id.data = int(self.targets[self.file_index])
-            self.get_logger().info('Got new target {}'.format(self.target_id.data))
+            self.target_id.data = int(self.targets[self.file_index][0])
+            self.marker_side.data = int(self.targets[self.file_index][1])
+            self.recording_max_time.data = float(self.targets[self.file_index][2])
+
+            self.get_logger().info('Got new target {} with time {} seconds'.format(self.target_id.data, self.recording_max_time.data))
             self.set_target()
-        elif self.recording_time.data < self.get_parameter('recording_timeout').get_parameter_value().integer_value:
+        elif self.recording_time.data < self.recording_max_time.data:
             if self.is_recording: # for recording or not
                 # self.get_logger().info('Recording target {} for {} seconds'.format(self.target_id.data, self.recording_time))
                 self.recording_time.data += 0.5
