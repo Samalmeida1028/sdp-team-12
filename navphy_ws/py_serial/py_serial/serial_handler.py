@@ -81,10 +81,13 @@ class SerHandler(Node):
         self.recording_state_subscriber = self.create_subscription(Int32, '/recording', self.update_recording_state,1)
         self.target_seen = self.create_subscription(Int32, "/target_spotted", self.check_target, 10)
         self.is_centered = False
+        self.current_servo_offset = None
+        self.target_spotted = 0
 
         timer_period = .02        
         self.timer = self.create_timer(timer_period, self.run_serial)
         self.timer2 = self.create_timer(timer_period, self.send_motor_commands)
+        self.timer3 = self.create_timer(timer_period,self.move_servos)
         self.last_time = time.time()
         self.current_time = time.time()
         self.teleop_time = time.time()
@@ -161,20 +164,30 @@ class SerHandler(Node):
             self.imu_publisher.publish(self.imu_data)
 
     def update_tracking(self,msg):
-        print(msg)
-        led_state = 0
-        print(self.recording_state)
+        self.current_servo_offset = list(msg.data)
+        # print(msg)
+        self.led_state = 0
+        # print(self.recording_state)
         if(self.recording_state == 1):
             print(self.recording_time/float(self.recording_max_time))
             if(self.recording_time/float(self.recording_max_time)) > .7:
-                led_state = 2
+                self.led_state = 2
             else:
                 # print("AAAAAAHHHHHHHHHHH")
-                led_state = 1
+                self.led_state = 1
 
-        self.target_serial.write(bytearray(json.dumps(list(msg.data)+[led_state]) + "\n",encoding="utf-8"))
-        # self.is_centered = False
-        self.publish_servo_angles()
+    def move_servos(self):
+        if(self.current_servo_offset!=0):
+            if(not self.target_spotted):
+                self.current_servo_offset[0] =round(self.current_servo_offset[0]*.1,2)
+                self.current_servo_offset[1] *=round(self.current_servo_offset[1]*.1,2)
+            self.target_serial.write(bytearray(json.dumps(self.current_servo_offset+[self.led_state]) + "\n",encoding="utf-8"))
+            self.is_centered = False
+            self.publish_servo_angles()
+            print(self.current_servo_offset)
+            # self.current_servo_offset[0] += round((self.angle[0]/180.0)*1920,3)*.01
+            # self.current_servo_offset[1] -= round((self.angle[1]/180.0)*1080,2)*.01
+            # self.get_logger().warn(str(self.current_servo_offset[0]/1920*180)+ ' ' + str(self.current_servo_offset[1]/1080*180) + ' ' + str(self.current_angle.data))
 
     def publish_servo_angles(self):
       serial_in = self.target_serial.readline()
@@ -190,16 +203,16 @@ class SerHandler(Node):
 
     def check_target(self,msg):
         self.current_time = time.time()
-        result = msg.data
-        # print("checking",result)
-        # self.get_logger().info("Center value: {}, Msg: {}".format(self.is_centered, result))
+        self.target_spotted = msg.data
+        # print("checking",self.target_spotted)
+        # self.get_logger().info("Center value: {}, Msg: {}".format(self.is_centered, self.target_spotted))
 
-        if(result == 0 and self.current_time-self.last_time > 5 and not self.is_centered):
+        if(self.target_spotted == 0 and self.current_time-self.last_time > 5 and not self.is_centered):
             self.get_logger().info("centering")
             self.target_serial.write(bytearray(json.dumps("center")+ "\n",encoding="utf-8"))
             self.last_time = self.current_time
             self.is_centered = True
-        elif(result == 1):
+        elif(self.target_spotted == 1):
             self.is_centered = False
             self.last_time = self.current_time
 

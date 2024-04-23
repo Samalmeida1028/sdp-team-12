@@ -16,7 +16,7 @@ from std_msgs.msg import Int32, Float32
 from std_msgs.msg import Float32MultiArray
 from std_msgs.msg import Int32MultiArray
 
-marker_information = Float32MultiArray()
+
 class ImagePublisherAudio(Node):
   def __init__(self):
     super().__init__('image_pub_audio')
@@ -25,8 +25,11 @@ class ImagePublisherAudio(Node):
     self.target_distance_publisher = self.create_publisher(Float32, "/target_distance", 1)
     self.target_spotted_publisher = self.create_publisher(Int32, "/target_spotted", 1)
 
+    timer_period = .2 # 2 Hz = 20% CPU, 10 Hz = 30% CPU, 20 Hz = 90+% CPU (nav does not work above 70% CPU usage as well)
+    self.timer = self.create_timer(timer_period, self.update_pose)
     timer_period = .05 # 2 Hz = 20% CPU, 10 Hz = 30% CPU, 20 Hz = 90+% CPU (nav does not work above 70% CPU usage as well)
-    self.timer = self.create_timer(timer_period, self.timer_callback)
+    self.timer = self.create_timer(timer_period, self.publish_results)
+
     self.get_logger().info('Initialized timer')
 
     self.camParams = sio.loadmat("./calibration/dopeCam_params.mat")
@@ -39,6 +42,8 @@ class ImagePublisherAudio(Node):
     self.target_distance = Float32()
     self.target_spotted = Int32()
     self.target_spotted.data = 0
+    self.marker_information = Float32MultiArray()
+    self.marker_information.data= [0.0,0.0]
 
     self.target_subscription = self.create_subscription(
       Int32, 
@@ -53,7 +58,7 @@ class ImagePublisherAudio(Node):
     self.target = 9999
     self.prev_target = 9999
 
-    self.markerLength = 82 # mm
+    self.markerLength = 100 # mm
     self.marker_side = self.markerLength
 
     self.marker_ids_seen = set()
@@ -109,7 +114,7 @@ class ImagePublisherAudio(Node):
     # livestream_thread.start()
 
   def target_acquire(self,msg):
-    print("target acquired")
+    # print("target acquired")
     self.target = msg.data
 
   def get_pose(self):
@@ -122,9 +127,16 @@ class ImagePublisherAudio(Node):
       ids_array = Int32MultiArray()
       for (marker_corner, marker_id) in zip(corners, ids):
         if(marker_id == self.target):
+
           self.currently_seen_ids.add(int(marker_id[0]))
           ids_array.data = self.currently_seen_ids
           marker_side = self.marker_side
+
+          corners = marker_corner.reshape((4, 2))
+          (topLeft, topRight, bottomRight, bottomLeft) = corners
+          cX = int((topLeft[0] + bottomRight[0]) / 2.0)
+          cY = int((topLeft[1] + bottomRight[1]) / 2.0)
+          self.marker_position.data = [float(cX-(self.resolutionX//2)),float(cY-(self.resolutionY/2))]
 
           rvec, tvec, _ = aruco.estimatePoseSingleMarkers(marker_corner, marker_side, 
             self.cameraMatrix,self.distCoeffs)
@@ -136,7 +148,6 @@ class ImagePublisherAudio(Node):
         #   self.translation_publisher.publish(self.translation)
           return (corners,ids)
 
-  
   def get_pixel_pos(self,corners,ids):
     for (markerCorner, markerID) in zip(corners, ids):
         corners = markerCorner.reshape((4, 2))
@@ -263,75 +274,97 @@ class ImagePublisherAudio(Node):
   def write_to_wav(self, indata, frames, time, status):
     self.waveFile.writeframes(indata.tobytes())
   
-  def aruco_display(self, corners, ids):
-    if len(corners) > 0:
-        # flatten the ArUco IDs list
-      ids = ids.flatten()
-      # self.frame_color = cv2.cvtColor(self.frame, cv2.COLOR_GRAY2BGR)
-      # loop over the detected ArUCo corners
-      for (markerCorner, markerID) in zip(corners, ids):
-        rvec, tvec, _ = aruco.estimatePoseSingleMarkers(markerCorner, self.marker_side, 
-            self.cameraMatrix, self.distCoeffs)
-        # Draw the axis on the aruco markers
-        aruco.drawAxis(self.frame, self.cameraMatrix, self.distCoeffs, rvec, tvec, 0.1)
-
-        # extract the marker corners (which are always returned in
-        # top-left, top-right, bottom-right, and bottom-left order)
-        corners = markerCorner.reshape((4, 2))
-        (topLeft, topRight, bottomRight, bottomLeft) = corners
-        # convert each of the (x, y)-co          # print(self.angle,"\n", tvec,"\n",rvec)ordinate pairs to integers
-        topRight = (int(topRight[0]), int(topRight[1]))
-        bottomRight = (int(bottomRight[0]), int(bottomRight[1]))
-        bottomLeft = (int(bottomLeft[0]), int(bottomLeft[1]))
-        topLeft = (int(topLeft[0]), int(topLeft[1]))
-        cv2.line(self.frame, topLeft, topRight, (0, 255, 0), 2)
-        cv2.line(self.frame, topRight, bottomRight, (0, 255, 0), 2)
-        cv2.line(self.frame, bottomRight, bottomLeft, (0, 255, 0), 2)
-        cv2.line(self.frame, bottomLeft, topLeft, (0, 255, 0), 2)
-
-        # compute and draw the center (x, y)-coordinates of the ArUco
-        # marker
-        cX = int((topLeft[0] + bottomRight[0]) / 2.0)
-        cY = int((topLeft[1] + bottomRight[1]) / 2.0)
-        cv2.circle(self.frame, (cX, cY), 4, (0, 0, 255), -1)
-        # draw the ArUco marker ID on the image          # self.publisher.publish(stri)
-        cv2.putText(self.frame, str(markerID),(topLeft[0], topLeft[1] - 10), cv2.FONT_HERSHEY_SIMPLEX,
-            0.5, (0, 255, 0), 2)
-        
-  def timer_callback(self):
-    """
-    Callback function.
-    This function gets called every 0.05 seconds = 20 Hz
-    """   
-    self.target_spotted.data = 0
-
+  def update_pose(self):
     if self.ret == True:
-      exists = True
-      try: (corners,ids) = self.get_pose()
-      except TypeError as e:
-        print("No Targets found")
-        exists = False
-      # self.get_logger().info("getting stuff")
-      # cv2.imshow('camera', self.frame)
-      
-      if(exists and corners is not None and ids is not None):
-        # self.aruco_display(corners,ids)
-        self.get_pixel_pos(corners,ids)       
-        # self.get_logger().info("%s" % json.dumps(list(self.marker_position.data) + [self.translation.data[2]]))
-        global marker_information
-        marker_information.data =[self.marker_position.data[0],self.marker_position.data[1]]
-
-        self.marker_location_publisher.publish(marker_information)
-        self.target_distance_publisher.publish(self.target_distance) 
-        self.target_spotted.data = 1 
-      else:
+      try: 
+        (corners,ids) = self.get_pose()
+        self.target_spotted.data = 1
+      except TypeError:
         self.target_spotted.data = 0
+    else:
+      self.target_spotted.data = 0
+      
+    if self.target_spotted.data == 1:
+      self.marker_location_publisher.publish(self.marker_information)
 
+  def publish_results(self):
+    self.marker_location_publisher.publish(self.marker_information)
+    if self.target_spotted.data == 1:
+      self.marker_information.data = [self.marker_position.data[0],self.marker_position.data[1]]
+
+      self.target_distance_publisher.publish(self.target_distance) 
     self.target_spotted_publisher.publish(self.target_spotted)
     self.recordingpub.publish(self.isRecording)
+    
+  # def aruco_display(self, corners, ids):
+  #   if len(corners) > 0:
+  #       # flatten the ArUco IDs list
+  #     ids = ids.flatten()
+  #     # self.frame_color = cv2.cvtColor(self.frame, cv2.COLOR_GRAY2BGR)
+  #     # loop over the detected ArUCo corners
+  #     for (markerCorner, markerID) in zip(corners, ids):
+  #       rvec, tvec, _ = aruco.estimatePoseSingleMarkers(markerCorner, self.marker_side, 
+  #           self.cameraMatrix, self.distCoeffs)
+  #       # Draw the axis on the aruco markers
+  #       aruco.drawAxis(self.frame, self.cameraMatrix, self.distCoeffs, rvec, tvec, 0.1)
 
-    # Display the message on the console
-    # self.get_logger().info('Publishing video frame')
+  #       # extract the marker corners (which are always returned in
+  #       # top-left, top-right, bottom-right, and bottom-left order)
+  #       corners = markerCorner.reshape((4, 2))
+  #       (topLeft, topRight, bottomRight, bottomLeft) = corners
+  #       # convert each of the (x, y)-co          # print(self.angle,"\n", tvec,"\n",rvec)ordinate pairs to integers
+  #       topRight = (int(topRight[0]), int(topRight[1]))
+  #       bottomRight = (int(bottomRight[0]), int(bottomRight[1]))
+  #       bottomLeft = (int(bottomLeft[0]), int(bottomLeft[1]))
+  #       topLeft = (int(topLeft[0]), int(topLeft[1]))
+  #       cv2.line(self.frame, topLeft, topRight, (0, 255, 0), 2)
+  #       cv2.line(self.frame, topRight, bottomRight, (0, 255, 0), 2)
+  #       cv2.line(self.frame, bottomRight, bottomLeft, (0, 255, 0), 2)
+  #       cv2.line(self.frame, bottomLeft, topLeft, (0, 255, 0), 2)
+
+  #       # compute and draw the center (x, y)-coordinates of the ArUco
+  #       # marker
+  #       cX = int((topLeft[0] + bottomRight[0]) / 2.0)
+  #       cY = int((topLeft[1] + bottomRight[1]) / 2.0)
+  #       cv2.circle(self.frame, (cX, cY), 4, (0, 0, 255), -1)
+  #       # draw the ArUco marker ID on the image          # self.publisher.publish(stri)
+  #       cv2.putText(self.frame, str(markerID),(topLeft[0], topLeft[1] - 10), cv2.FONT_HERSHEY_SIMPLEX,
+  #           0.5, (0, 255, 0), 2)
+
+  # def timer_callback(self):
+  #   """
+  #   Callback function.
+  #   This function gets called every 0.05 seconds = 20 Hz
+  #   """   
+  #   self.target_spotted.data = 0
+
+  #   if self.ret == True:
+  #     exists = True
+  #     try: (corners,ids) = self.get_pose()
+  #     except TypeError as e:
+      
+  #       exists = False
+  #     # self.get_logger().info("getting stuff")
+  #     # cv2.imshow('camera', self.frame)
+      
+  #     if(exists and corners is not None and ids is not None):
+  #       # self.aruco_display(corners,ids)
+  #       # self.get_pixel_pos(corners,ids)       
+  #       # self.get_logger().info("%s" % json.dumps(list(self.marker_position.data) + [self.translation.data[2]]))
+  #       global self.marker_information
+  #       self.marker_information.data =[self.marker_position.data[0],self.marker_position.data[1]]
+
+  #       self.marker_location_publisher.publish(self.marker_information)
+  #       self.target_distance_publisher.publish(self.target_distance) 
+  #       self.target_spotted.data = 1 
+  #     else:
+  #       self.target_spotted.data = 0
+
+  #   self.target_spotted_publisher.publish(self.target_spotted)
+  #   self.recordingpub.publish(self.isRecording)
+
+  #   # Display the message on the console
+  #   # self.get_logger().info('Publishing video frame')
   
 def main(args=None):
   
