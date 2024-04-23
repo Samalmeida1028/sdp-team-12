@@ -30,7 +30,7 @@ class CameraSearch(Node):
         self.actions = [0.75*1080, -0.75*1080, -0.75*1080, 0.75*1080] # left, center, right, center
         self.index = 0
 
-        self.timer = self.create_timer(0.05, self.send_pan_commands)
+        self.timer = self.create_timer(0.1, self.send_pan_commands)
 
         self.get_logger().info("Camera Search node ready!")
 
@@ -56,7 +56,7 @@ class CameraSearch(Node):
 
                 self.move_time = time.time()
 
-            self.vector.data[0] = round(self.vector.data[0]*0.95, 3)
+            self.vector.data[0] = round(self.vector.data[0]*0.9, 3)
             self.cam_pan_pub.publish(self.vector)
             # self.get_logger().info("Publishing new target {}".format(self.vector.data[0]))
 
