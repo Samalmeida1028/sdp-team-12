@@ -142,7 +142,7 @@ class GUI:
         
         # Start the GUI event loop
         print("Initializing system...")
-        # subprocess.run("./system_init.sh")
+        # subprocess.run("./scripts/system_init.sh")
         open("targets.txt", "w").close() # clear text file
 
         self.update_progress()
@@ -163,17 +163,17 @@ class GUI:
             case 0:
                 # global tracking_pid
                 # tracking_cmd_list = ["ros2", "launch", "basic_mobile_robot", "target_tracking.launch.py"]
-                tracking_pid = subprocess.Popen("./run_target_tracking.sh")
+                tracking_pid = subprocess.Popen("./scripts/run_target_tracking.sh")
                 print("Running target tracking")
                 # p2 = subprocess.run(["pgrep", "pub"])
             case 1:
                 # global nav_pid
-                nav_pid = subprocess.Popen("./run_navigation.sh")
+                nav_pid = subprocess.Popen("./scripts/run_navigation.sh")
                 print("Running nav")
                 # nav_pid = p.pid
             case 2:
                 # global test_pid
-                test_pid= subprocess.Popen("./run_test.sh")
+                test_pid= subprocess.Popen("./scripts/run_test.sh")
                 print("Running teleop testing with SLAM")
                 # test_pid = p.pid
             case 3:
@@ -210,5 +210,5 @@ class GUI:
                 print("Clearing all targets from log file...")
                 open("targets.txt", "w").close() # clear text file
             case 5:
-                p = subprocess.Popen("./mic.sh")
+                p = subprocess.Popen("./scripts/mic.sh")
                 print("Using microphone input")
