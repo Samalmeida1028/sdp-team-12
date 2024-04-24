@@ -27,7 +27,7 @@ class CameraSearch(Node):
         self.wait_time = 5.5
         self.time_passed = 0.0
 
-        self.actions = [0.75*1080, -0.75*1080, -0.75*1080, 0.75*1080] # left, center, right, center
+        self.actions = [0.37*1080, 0.37*1080, -0.37*1080, -0.37*1080, -0.37*1080, -0.37*1080, 0.37*1080, 0.37*1080] # left, center, right, center
         self.index = 0
 
         self.timer = self.create_timer(0.1, self.send_pan_commands)
@@ -47,18 +47,19 @@ class CameraSearch(Node):
 
     def send_pan_commands(self):
         if self.time_passed >= self.wait_time:
-            if time.time() - self.move_time > 5:
+            if time.time() - self.move_time > 3:
                 self.vector.data[0] = self.actions[self.index]
                 self.index += 1
 
-                if self.index == 4:
+                if self.index == 8:
                     self.index = 0
 
                 self.move_time = time.time()
+                self.get_logger().info("Going to next rotation")
 
             self.vector.data[0] = round(self.vector.data[0]*0.9, 3)
             self.cam_pan_pub.publish(self.vector)
-            # self.get_logger().info("Publishing new target {}".format(self.vector.data[0]))
+            self.get_logger().info("Publishing new target {}".format(self.vector.data[0]))
 
 def main(args=None):
     rclpy.init(args=args)
