@@ -25,6 +25,8 @@ class ImagePublisherAudio(Node):
     self.target_distance_publisher = self.create_publisher(Float32, "/target_distance", 1)
     self.target_spotted_publisher = self.create_publisher(Int32, "/target_spotted", 1)
 
+    self.markersidesub = self.create_subscription(Int32, "/marker_side", self.set_marker_length, 10)
+
     timer_period = .1 # 2 Hz = 20% CPU, 10 Hz = 30% CPU, 20 Hz = 90+% CPU (nav does not work above 70% CPU usage as well)
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
@@ -46,19 +48,17 @@ class ImagePublisherAudio(Node):
       self.target_acquire,
       10)
 
-    self.marker_length_sub = self.create_subscription(Int32, "/marker_length", self.set_marker_length, 10)
-
     self.aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_1000)
     self.aruco_params = aruco.DetectorParameters_create()
     self.aruco_params.errorCorrectionRate = 1.0
-    self.aruco_params.cornerRefinementMaxIterations = 10
+    self.aruco_params.cornerRefinementMaxIterations = 5
     print(dir(self.aruco_params))
     self.resolutionX = 1920
     self.resolutionY = 1080 # for recording, this is the only resolution that gives 60 fps outputs 
     self.target = 9999
     self.prev_target = 9999
 
-    self.marker_side = 100 # mm
+    self.marker_length = 100 # mm
 
     self.marker_ids_seen = set()
     self.custom_marker_sides = dict()
@@ -84,7 +84,7 @@ class ImagePublisherAudio(Node):
     # threadout2.start()
     # threadout2.join()
 
-    self.recording_path = "recordings/"
+    self.recording_path = "recordings/full_tests/"
     # self.recording_path = "/run/user/1000/gvfs/google-drive:host=yahoo.com,user=sdpteam12.2023/GVfsSharedWithMe/1vVJEmEOf5WBflh5dtDjcaZt9LaQs4gp1/"
 
     self.output = None
@@ -96,10 +96,6 @@ class ImagePublisherAudio(Node):
     self.stream_started = False
     self.closed_wavefile = True
     self.stream = None
-
-    self.video_filename = None # Initialization
-    self.audio_filename = None
-    self.merged_filename = None
 
     self.isRecording = Int32()
     self.target_spotted_time = time.time()
@@ -113,17 +109,25 @@ class ImagePublisherAudio(Node):
 
     self.capture_callback = self.create_timer(0.05, self.cv2_capture)
 
+    # New names for new video writer
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    self.video_filename = self.recording_path + f"video_{timestamp}.avi"
+    self.audio_filename = self.recording_path + f"audio_{timestamp}.wav"
+    self.merged_filename = self.recording_path + f"output_{timestamp}.avi"
+
     ############## COMMENT IN FOR DEMO DAY ##############
     # livestream_thread = threading.Thread(target=self.livestream_func)
     # livestream_thread.daemon = True
     # livestream_thread.start()
 
   def target_acquire(self,msg):
-    print("target acquired")
+    # self.get_logger().info("target acquired")
     self.target = msg.data
+    # print(self.target)
 
   def set_marker_length(self, msg : Int32):
-    self.marker_side = msg.data
+    self.marker_length = msg.data
+    # self.get_logger().info("Got new marker length {}".format(self.marker_length))
 
   def get_pose(self):
     img_gray = cv2.cvtColor(src=self.frame, code=cv2.COLOR_RGB2GRAY)
@@ -138,8 +142,10 @@ class ImagePublisherAudio(Node):
         if(marker_id == self.target):
           self.currently_seen_ids.add(int(marker_id[0]))
           ids_array.data = self.currently_seen_ids
+          marker_side = self.marker_length
+          # print(marker_length)
 
-          rvec, tvec, _ = aruco.estimatePoseSingleMarkers(marker_corner, self.marker_side, 
+          rvec, tvec, _ = aruco.estimatePoseSingleMarkers(marker_corner, marker_side, 
             self.cameraMatrix,self.distCoeffs)
           corners = marker_corner.reshape((4, 2))
           (topLeft, topRight, bottomRight, bottomLeft) = corners
@@ -176,12 +182,12 @@ class ImagePublisherAudio(Node):
         self.prev_target = self.target
         self.isRecording.data = 0
 
-  def cv2_capture(self): # our general product for FPR
+  def cv2_capture(self): # our general product for FP
     self.ret, self.frame = self.cam.read()
 
     #################################### RECORDING ####################################
     if self.target == self.prev_target and self.target != 9999:
-      if self.target_spotted.data and (self.target_distance.data / 1000.0) <= 3.0:
+      if self.target_spotted.data and (self.target_distance.data / 1000.0) <= 6.0:
         self.isRecording.data = 1
         self.target_spotted_time = time.time()
 
@@ -210,7 +216,7 @@ class ImagePublisherAudio(Node):
           self.stream_started = True
     #######################################################################################
 
-    if(time.time()-self.target_spotted_time) > 5 and self.isRecording.data:
+    if(time.time()-self.target_spotted_time) > 10 and self.isRecording.data:
       # self.get_logger().info('Stopping recording')
       self.isRecording.data = 0
       self.get_logger().info('Pausing audio recording')
@@ -222,14 +228,12 @@ class ImagePublisherAudio(Node):
     if self.target == self.prev_target:
       if self.isRecording.data:
         # self.get_logger().info('Recording...')
-        # t3 = threading.Thread(target=self.cv2_record)
-        # t3.start()
-        # t3.join()
-
-        self.output.write(self.frame)
+        t3 = threading.Thread(target=self.cv2_record)
+        t3.start()
+        t3.join()
     else:
-      if self.output and self.waveFile:
-        self.get_logger().info('Pausing audio recording')
+      if self.output and self.waveFile and self.target == 9999:
+        self.get_logger().info('Stopping audio recording')
         self.stream_started = False
         self.stream.stop()
         self.stream.close()
@@ -244,14 +248,12 @@ class ImagePublisherAudio(Node):
         subprocess.call(cmd, shell=True)
         # self.waveFile.close()
 
-      # New names for new video writer
-      timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-      self.video_filename = self.recording_path + f"video_{self.target}_{timestamp}.avi"
-      self.audio_filename = self.recording_path + f"audio_{self.target}_{timestamp}.wav"
-      self.merged_filename = self.recording_path + f"output_{self.target}_{timestamp}.avi"
-
       self.prev_target = self.target
       self.isRecording.data = 0
+
+    # threadout2 = threading.Thread(target=self.cv2_show)
+    # threadout2.start()
+    # threadout2.join()
         
   def cv2_record(self):
     # self.output.set(self.cam.get(cv2.CAP_PROP_FPS)) # keep fps in sync with capture and writer

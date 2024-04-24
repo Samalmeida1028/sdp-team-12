@@ -141,12 +141,12 @@ class ImagePublisher(Node):
     while True:
       self.ret, self.frame = self.cam.read()
 
-      if self.target_spotted.data and (self.target_distance.data / 1000.0) <= 3.0:
+      if self.target_spotted.data and (self.target_distance.data / 1000.0) <= 5.0:
         self.isRecording.data = 1
         self.target_spotted_time = time.time()
         self.output = cv2.VideoWriter(self.recording_loc,cv2.VideoWriter_fourcc(*"XVID"),60,(1280,720))
 
-      if(time.time()-self.target_spotted_time) > 5 and self.isRecording.data:
+      if(time.time()-self.target_spotted_time) > 7 and self.isRecording.data:
         # self.get_logger().info('Stopping recording')
         self.isRecording.data = 0
 

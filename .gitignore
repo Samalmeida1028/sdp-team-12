@@ -1,3 +1,5 @@
 *.log
 navphy_ws/recordings/*.avi
 navphy_ws/recordings/*.wav
+navphy_ws/recordings/full_tests/*.avi
+navphy_ws/recordings/full_tests/*.wav

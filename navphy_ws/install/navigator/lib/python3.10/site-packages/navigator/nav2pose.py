@@ -36,7 +36,7 @@ class Nav2Pose(Node):
         self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
         self.nav2posegoalpub = self.create_publisher(PoseStamped, "/nav2pose_goal", 10)
 
-        self.truncate_dist = 1.5
+        self.truncate_dist = 2.0
         self.angles = [0,0]
         self.distance = 0
         self.servo_values = None

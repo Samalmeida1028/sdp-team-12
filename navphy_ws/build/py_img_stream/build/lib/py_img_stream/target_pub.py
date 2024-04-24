@@ -72,12 +72,13 @@ class TargetPublisher(Node):
         if self.target_id.data == 9999:
             self.recording_max_time.data = -1.0
             self.recording_time.data = 0.0
+        else:
+            # Publishing
+            self.marker_side_pub.publish(self.marker_side)
 
-        # Publishing
         self.publisher.publish(self.target_id)
         self.recording_time_publisher.publish(self.recording_time)
         self.recording_max_time_publisher.publish(self.recording_max_time)
-        self.marker_side_pub.publish(self.marker_side)
 
     def set_recording(self, msg : Int32):
         self.is_recording = msg.data
