@@ -11,7 +11,7 @@ sleep 3
 #sleep 2
 #obs --startstreaming &
 
-ros2 run gui gui
+ros2 run gui gui 
 
 # `ros2 run gui gui` &
 # $SHELL
