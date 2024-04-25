@@ -20,14 +20,14 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'pub = '
-            'py_img_stream.image_pub:main',
-            'sub = '
-            'py_img_stream.image_test_sub:main',
+            'cv2record = '
+            'py_img_stream.cv2_record:main',
+            'ffmpegrecord = '
+            'py_img_stream.ffmpeg_record:main',
             'target_pub = '
             'py_img_stream.target_pub:main',
             'img_pub_audio = '
-            'py_img_stream.image_pub_audio:main'
+            'py_img_stream.image_pub:main'
         ],
     },
 )
