@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: SDP Team 12
 # Date created: 11/5/23
-# Date last modified: 4/22/24
+# Date last modified: 4/24/24
 # Description: Using Nav2 to navigate to a given pose
 
 from geometry_msgs.msg import PoseStamped
@@ -36,7 +36,7 @@ class Nav2Pose(Node):
         self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
         self.nav2posegoalpub = self.create_publisher(PoseStamped, "/nav2pose_goal", 10)
 
-        self.truncate_dist = 2.0
+        self.truncate_dist = 1.5
         self.angles = [0,0]
         self.distance = 0
         self.servo_values = None
@@ -45,13 +45,16 @@ class Nav2Pose(Node):
         self.prev_time_published = time.time()
         self.target_seen = 0
 
-        time_period = 0.5
+        time_period = 0.05
         self.timer = self.create_timer(time_period, self.nav2pose_callback)
 
         self.prev_goal_time = time.time()
 
         self.currentdebugpub = self.create_publisher(String, '/nav2pose_debug', 10)
         self.get_logger().info('Nav2Pose Node Ready!')
+
+        self.target_last_time = time.time()
+        self.target_vel = 0 
 
     def set_current_pose(self, odommsg : Odometry):
         self.current_pose.header.frame_id = 'odom'
@@ -67,17 +70,17 @@ class Nav2Pose(Node):
 
     def set_goal(self, check : Int32):
         # goalmsg = [dist, xangle, yangle]
-        # print("hi",check.data)
         self.target_seen = check.data
 
         if(check.data and self.servo_values):
-            # print("hello")
             self.goal.header.frame_id = 'odom'
             self.goal.header.stamp = self.get_clock().now().to_msg()
 
+            self.calculate_target_velocity()
             d = self.servo_values[0]*math.cos(math.radians(self.servo_values[2])) # true dist = seen dist * sin(yangle)
-            d = (d/1000) - self.truncate_dist
+            d = (d/1000) - (self.truncate_dist - self.target_vel)
             # print(self.servo_values)
+
             cpose_orient = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
                                           self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w]).as_euler("xyz",degrees=False)[2]
 
@@ -144,6 +147,25 @@ class Nav2Pose(Node):
             return False
         else:
             return True
+        
+    def calculate_target_velocity(self):
+        dt = time.time() - self.target_last_time
+        self.target_last_time = time.time()
+
+        x = self.goal.pose.position.x
+        y = self.goal.pose.position.y
+        z = self.goal.pose.position.z
+        prev_x = self.prev_goal.pose.position.x
+        prev_y = self.prev_goal.pose.position.y
+        prev_z = self.prev_goal.pose.position.z
+
+        x_vel = (x - prev_x)/dt
+        y_vel = (y - prev_y)/dt
+        z_vel = (z - prev_z)/dt
+
+        self.target_vel = -x_vel**2 if x < 0 else x_vel**2
+        self.target_vel = min(4,max(-4,self.target_vel))
+        self.get_logger().info(str(self.target_vel))
 
     def nav2pose_callback(self):
         if(self.angles and self.distance):
@@ -154,12 +176,12 @@ class Nav2Pose(Node):
         self.currentposepub.publish(self.current_pose)
 
         if self.target_seen:
-            if (not self.in_range(self.prev_goal, self.goal) and self.target_id != 9999) or (time.time() - self.prev_goal_time) > 5.0:
+            if (not self.in_range(self.prev_goal, self.goal) and self.target_id != 9999) or (time.time() - self.prev_goal_time) > 3.0:
                 self.correct_goal()
                 self.goalupdaterpub.publish(self.goal)
                 self.nav2posegoalpub.publish(self.goal)
                 self.prev_goal_time = time.time()
-
+        
 def main(args=None):
     rclpy.init(args=args)
 

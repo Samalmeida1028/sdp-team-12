@@ -77,9 +77,10 @@ class SerHandler(Node):
         self.servo_xy_publisher = self.create_publisher(Float32MultiArray, "/servoxy_angle", 1)
         self.marker_subscriber = self.create_subscription(Float32MultiArray, '/marker_position', self.update_tracking,10)
         self.recording_time_subscriber = self.create_subscription(Float32, '/recording_time', self.update_recording_time,1)
-        self.recording_max_time_subscriber = self.create_subscription(Int32, '/recording_max_time', self.update_max_recording_time,1)
+        self.recording_max_time_subscriber = self.create_subscription(Float32, '/recording_max_time', self.update_max_recording_time,1)
         self.recording_state_subscriber = self.create_subscription(Int32, '/recording', self.update_recording_state,1)
         self.target_seen = self.create_subscription(Int32, "/target_spotted", self.check_target, 10)
+        self.markersidesub = self.create_subscription(Int32, "/center_camera", self.center_camera, 10)
         self.is_centered = False
 
         timer_period = .02        
@@ -166,7 +167,7 @@ class SerHandler(Node):
         print(self.recording_state)
         if(self.recording_state == 1):
             print(self.recording_time/float(self.recording_max_time))
-            if(self.recording_time/float(self.recording_max_time)) > .7:
+            if((self.recording_time%self.recording_max_time)/float(self.recording_max_time)) > .7:
                 led_state = 2
             else:
                 # print("AAAAAAHHHHHHHHHHH")
@@ -202,6 +203,10 @@ class SerHandler(Node):
         elif(result == 1):
             self.is_centered = False
             self.last_time = self.current_time
+
+    def center_camera(self,msg):
+        self.target_serial.write(bytearray(json.dumps("center")+ "\n",encoding="utf-8"))
+        self.is_centered = True
 
 def main(args=None):
     rclpy.init(args=args)

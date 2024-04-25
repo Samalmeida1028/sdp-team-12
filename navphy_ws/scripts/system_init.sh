@@ -3,13 +3,13 @@
 colcon build
 sudo chmod ao+rwx /dev/ttyACM*
 sudo chmod ao+rwx /dev/video*
-sudo chmod ao+rwx *py
-sudo chmod ao+rwx *.sh
+sudo chmod ao+rwx scripts/*py
+sudo chmod ao+rwx scripts/*.sh
 ls -l /dev/ttyACM*
 ls -l /dev/video*
-ls -l *.py
-ls -l *.sh
+ls -l scripts/*.py
+ls -l scripts/*.sh
 
-# ./split_video.sh &
-# sleep 1
-# ./start_cloned_streams.sh &
+./scripts/split_video.sh &
+sleep 1
+./scripts/start_cloned_streams.sh &

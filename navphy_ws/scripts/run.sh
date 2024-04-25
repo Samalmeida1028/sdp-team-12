@@ -6,7 +6,7 @@ source /opt/ros/humble/setup.bash
 source install/setup.bash
 sleep 3
 
-./system_init.sh
+./scripts/system_init.sh
 
 #sleep 2
 #obs --startstreaming &

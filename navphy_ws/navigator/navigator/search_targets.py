@@ -149,8 +149,9 @@ class SearchTargets(Node):
             cpose_orient = Rotation.from_quat([self.current_pose.pose.orientation.x,self.current_pose.pose.orientation.y,
                                           self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w]).as_euler("xyz", degrees=False)[2]
             
-            if self.existinggoal_orient != 0.0 and self.trials > 1:
+            if self.existinggoal_orient != 0.0: # do it once
                 self.gpose_orient = self.existinggoal_orient
+                self.existing_orient = 0.0
             else:
                 self.gpose_orient = cpose_orient + 1.57
                 self.d = 1.25

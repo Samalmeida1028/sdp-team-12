@@ -1,6 +1,6 @@
-# Author: Arjun Viswanathan
+# Author: Arjun Viswanathan, Samuel Almeida
 # Date created: 4/17/24
-# Date last modified: 4/17/24
+# Date last modified: 4/24/24
 # Node that waits for search to come in and pans the camera slowly left to right
 
 import rclpy
@@ -17,25 +17,31 @@ class CameraSearch(Node):
         self.targetsub = self.create_subscription(Int32, "/target_id", self.set_target, 10)
         self.target_spotted_sub = self.create_subscription(Int32, "/target_spotted", self.update_wait_time, 10)
 
+        self.camcenterpub = self.create_subscription(Float32MultiArray, "/servoxy_angle", self.set_servo_angles, 10)
+
         self.target_id = 9999
 
         self.vector = Float32MultiArray()
+        self.servo_angles = [0.0, 0.0]
         self.vector.data = [0.0, 0.0]
 
         self.wait_start_time = time.time()
-        self.move_time = time.time()
         self.wait_time = 5.5
         self.time_passed = 0.0
 
-        self.actions = [0.37*1080, 0.37*1080, -0.37*1080, -0.37*1080, -0.37*1080, -0.37*1080, 0.37*1080, 0.37*1080] # left, center, right, center
-        self.index = 0
+        self.offset = 100.0
+        self.state = -1
 
-        self.timer = self.create_timer(0.1, self.send_pan_commands)
+        self.timer = self.create_timer(0.03, self.send_pan_commands)
 
         self.get_logger().info("Camera Search node ready!")
 
     def set_target(self, tmsg : Int32):
         self.target_id = tmsg.data
+
+    def set_servo_angles(self, anglemsg : Float32MultiArray):
+        self.servo_angles[0] = anglemsg.data[0]
+        self.servo_angles[1] = anglemsg.data[1]
 
     def update_wait_time(self, spotted_msg : Int32):
         time_now = time.time()
@@ -47,19 +53,20 @@ class CameraSearch(Node):
 
     def send_pan_commands(self):
         if self.time_passed >= self.wait_time:
-            if time.time() - self.move_time > 3:
-                self.vector.data[0] = self.actions[self.index]
-                self.index += 1
+            match self.state:
+                case -1:
+                    if self.servo_angles[0] >= 55: self.state = 1
+                    else: self.state = -1
+                    pass
+                case 1:
+                    if self.servo_angles[0] <= -80: self.state = -1
+                    else: self.state = 1
+                    pass
 
-                if self.index == 8:
-                    self.index = 0
+            # self.get_logger().info("Offset: {}".format(self.state * self.offset))
 
-                self.move_time = time.time()
-                self.get_logger().info("Going to next rotation")
-
-            self.vector.data[0] = round(self.vector.data[0]*0.9, 3)
+            self.vector.data[0] = self.state * self.offset
             self.cam_pan_pub.publish(self.vector)
-            self.get_logger().info("Publishing new target {}".format(self.vector.data[0]))
 
 def main(args=None):
     rclpy.init(args=args)
