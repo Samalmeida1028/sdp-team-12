@@ -227,7 +227,7 @@ def generate_launch_description():
     ld.add_action(start_image_pub_cmd)
     ld.add_action(start_nav2pose_cmd)
     ld.add_action(start_camera_control_cmd)
-    ld.add_action(start_cv2_record_cmd)
+    # ld.add_action(start_cv2_record_cmd)
     # ld.add_action(start_ffmpeg_record_cmd)
 
     ld.add_action(start_rviz_cmd)

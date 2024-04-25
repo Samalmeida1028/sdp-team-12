@@ -154,7 +154,7 @@ behavior_server:
     use_sim_time: False
     simulate_ahead_time: .5
     max_rotational_vel: 0.55
-    min_rotational_vel: 0.4
+    min_rotational_vel: -0.55
     rotational_acc_lim: 2.0
 
 behavior_server_rclcpp_node:

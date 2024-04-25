@@ -8,8 +8,8 @@ sleep 3
 
 ./scripts/system_init.sh
 
-#sleep 2
-#obs --startstreaming &
+sleep 2
+obs --startstreaming &
 
 ros2 run gui gui
 
