@@ -10,7 +10,8 @@ bt_navigator:
     groot_zmq_publisher_port: 1666
     groot_zmq_server_port: 1667
     # default_nav_through_poses_bt_xml: basic_mobile_robot/behavior_trees/search_for_goal.xml
-    default_nav_to_pose_bt_xml: basic_mobile_robot/behavior_trees/navigate_to_pose_w_replanning_and_recovery.xml
+    # default_nav_to_pose_bt_xml: basic_mobile_robot/behavior_trees/navigate_to_pose_w_replanning_and_recovery.xml
+    default_nav_to_pose_bt_xml: basic_mobile_robot/behavior_trees/navigate_to_pose_with_updates.xml
     plugin_lib_names:
     - nav2_compute_path_to_pose_action_bt_node
     - nav2_smooth_path_action_bt_node
@@ -153,9 +154,9 @@ behavior_server:
     transform_timeout: 0.1
     use_sim_time: False
     simulate_ahead_time: .5
-    max_rotational_vel: 0.55
-    min_rotational_vel: -0.55
-    rotational_acc_lim: 2.0
+    max_rotational_vel: 0.6
+    min_rotational_vel: 0.4
+    rotational_acc_lim: 3.2
 
 behavior_server_rclcpp_node:
   ros__parameters:
@@ -206,7 +207,7 @@ controller_server:
       wz_std: 0.3
       ########################### TUNING FOR SPEED ###########################
       vx_max: 2.0
-      vx_min: -0.75
+      vx_min: -1.25
       wz_max: 0.4
       ########################################################################
       iteration_count: 1
@@ -309,7 +310,7 @@ local_costmap:
       publish_frequency: 5.0
       global_frame: odom
       robot_base_frame: base_link
-      lethal_cost_threshold: 100
+      lethal_cost_threshold: 150
       use_sim_time: False
       rolling_window: true
       width: 5
@@ -329,7 +330,7 @@ local_costmap:
         footprint_clearing_enabled: true
         cost_scaling_factor: 1.0
         inflation_radius: 0.3
-        inflate_unknown: false
+        inflate_unknown: true
         inflate_around_unknown: true
       voxel_layer:
         plugin: "nav2_costmap_2d::VoxelLayer"
@@ -400,7 +401,7 @@ global_costmap:
         footprint_clearing_enabled: true
         cost_scaling_factor: 1.0
         inflation_radius: 0.3
-        inflate_unknown: false
+        inflate_unknown: true
         inflate_around_unknown: true
       always_send_full_costmap: True
   global_costmap_client:
