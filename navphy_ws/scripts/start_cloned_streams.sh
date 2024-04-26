@@ -5,3 +5,4 @@
 ffmpeg -f v4l2 -video_size 1920x1080 -input_format rawvideo -i /dev/video0 \
     -c:v copy -f v4l2 /dev/video2 \
     -c:v rawvideo -s 1280x720 -f v4l2 /dev/video3 
+    > /dev/null 2&>1

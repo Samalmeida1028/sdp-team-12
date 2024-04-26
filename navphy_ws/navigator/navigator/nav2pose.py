@@ -36,7 +36,7 @@ class Nav2Pose(Node):
         self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
         self.nav2posegoalpub = self.create_publisher(PoseStamped, "/nav2pose_goal", 10)
 
-        self.truncate_dist = 1.5
+        self.truncate_dist = 1.0
         self.angles = [0,0]
         self.distance = 0
         self.servo_values = None
@@ -47,6 +47,7 @@ class Nav2Pose(Node):
 
         time_period = 0.05
         self.timer = self.create_timer(time_period, self.nav2pose_callback)
+        self.veltimer = self.create_timer(0.5, self.calculate_target_velocity)
 
         self.prev_goal_time = time.time()
 
@@ -76,7 +77,7 @@ class Nav2Pose(Node):
             self.goal.header.frame_id = 'odom'
             self.goal.header.stamp = self.get_clock().now().to_msg()
 
-            self.calculate_target_velocity()
+            # self.calculate_target_velocity()
             d = self.servo_values[0]*math.cos(math.radians(self.servo_values[2])) # true dist = seen dist * sin(yangle)
             d = (d/1000) - (self.truncate_dist - self.target_vel)
             # print(self.servo_values)
@@ -163,9 +164,9 @@ class Nav2Pose(Node):
         y_vel = (y - prev_y)/dt
         z_vel = (z - prev_z)/dt
 
-        self.target_vel = -x_vel**2 if x < 0 else x_vel**2
+        self.target_vel = 1.5*-x_vel**2 if x < 0 else x_vel**2
         self.target_vel = min(4,max(-4,self.target_vel))
-        self.get_logger().info(str(self.target_vel))
+        # self.get_logger().info(str(self.target_vel))
 
     def nav2pose_callback(self):
         if(self.angles and self.distance):
