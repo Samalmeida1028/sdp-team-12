@@ -1,6 +1,6 @@
 '''
 Authors: Arjun Viswanathan, Samuel Almeida
-Date last modified: 4/23/24
+Date last modified: 4/26/24
 Target Publisher:
 - Gives equal amount of time before publishing new targets
 - Targets can be read in from a .txt file
@@ -32,7 +32,6 @@ class TargetPublisher(Node):
         self.numtargets = 0
         self.spotted = 0
         self.is_recording = 0
-        # self.padding_time = 5.0
         self.publish_dummy_once = True
         self.start_padding_counter = False
 
@@ -67,6 +66,7 @@ class TargetPublisher(Node):
             # self.padding_time = 5.0
             self.recording_max_time.data = -1.0
             self.recording_time.data = 0.0
+            self.target_id.data = 9999
             self.get_logger().info('Targets cleared. Resetting...')
 
         if self.target_id.data == 9999:
@@ -87,16 +87,8 @@ class TargetPublisher(Node):
         self.spotted = spottedmsg.data
 
     def set_target(self):
-        self.publisher.publish(self.target_id)
-
-        self.publish_dummy_once = True
-
         self.file_index += 1
         self.recording_time.data = 0.0
-
-    def set_dummy_target(self):
-        self.publisher.publish(self.target_id)
-        self.publish_dummy_once = False
 
     def is_eof(self):
         return self.file_index == self.numtargets
@@ -114,20 +106,9 @@ class TargetPublisher(Node):
             if self.is_recording: # for recording or not
                 # self.get_logger().info('Recording target {} for {} seconds'.format(self.target_id.data, self.recording_time))
                 self.recording_time.data += 0.5
-
-                # if not self.start_padding_counter:
-                #     self.recording_time.data += 0.5
-                # else:
-                #     self.padding_time += 0.5
-        else:
-            if self.publish_dummy_once: # only publish EOF target once so console is not bombarded with warn statements
-                self.target_id.data = 9999
-                self.get_logger().warn('Reached EOF! Waiting for new targets...')
-                self.set_dummy_target()
-
-        # if self.start_padding_counter and self.padding_time >= 5.0:
-        #     self.start_padding_counter = False
-        #     self.padding_time = 0.0
+        elif self.is_eof():
+            self.file_index = 0
+            # self.get_logger().warn('Reached EOF. Cycling to start of targets')
 
 def main():
     rclpy.init()
