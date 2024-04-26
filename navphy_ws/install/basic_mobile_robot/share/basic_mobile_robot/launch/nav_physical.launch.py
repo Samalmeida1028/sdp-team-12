@@ -187,6 +187,12 @@ def generate_launch_description():
         name='camerasearch',
     )
 
+    start_obs_updater_cmd = Node(
+        package='obs_nodes',
+        executable='obs_target_update',
+        name='obsupdatetarget',
+    )
+
     start_rviz_cmd = GroupAction(
         condition=IfCondition(PythonExpression([use_rviz])),
         actions = [rviz_node]
@@ -229,6 +235,7 @@ def generate_launch_description():
     ld.add_action(start_camera_control_cmd)
     # ld.add_action(start_cv2_record_cmd)
     # ld.add_action(start_ffmpeg_record_cmd)
+    # ld.add_action(start_obs_updater_cmd)
 
     ld.add_action(start_rviz_cmd)
 

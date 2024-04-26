@@ -2,7 +2,7 @@
 
 # since this file is sourced use either the provided AMENT_CURRENT_PREFIX
 # or fall back to the destination set at configure time
-: ${AMENT_CURRENT_PREFIX:="/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot"}
+: ${AMENT_CURRENT_PREFIX:="/home/adam/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot"}
 if [ ! -d "$AMENT_CURRENT_PREFIX" ]; then
   if [ -z "$COLCON_CURRENT_PREFIX" ]; then
     echo "The compile time prefix path '$AMENT_CURRENT_PREFIX' doesn't " \

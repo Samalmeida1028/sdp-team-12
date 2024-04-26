@@ -1,3 +1,2 @@
 [console_scripts]
 gui = gui.gui:main
-
