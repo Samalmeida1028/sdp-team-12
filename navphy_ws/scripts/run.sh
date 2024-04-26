@@ -9,7 +9,7 @@ sleep 3
 ./scripts/system_init.sh
 
 sleep 2
-obs --startstreaming &
+obs --startrecording &
 
 ros2 run gui gui
 

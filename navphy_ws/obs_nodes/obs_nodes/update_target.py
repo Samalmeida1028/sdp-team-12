@@ -15,9 +15,9 @@ class OBSTargetUpdater(Node):
 
     def __init__(self):
         super().__init__('obs_target_update')
-        self.host = "192.168.137.219"
+        self.host = "192.168.137.98"
         self.port = 4455
-        self.password = "94MdgMuBV6cD39aQ"  # Replace with your OBS WebSocket password
+        self.password = "MhusmcBKXLoWnJOX"  # Replace with your OBS WebSocket password
         self.ws = obsws(self.host, self.port, self.password)
         self.ws.connect()
         self.ws.call(requests.SetInputSettings(
@@ -34,7 +34,7 @@ class OBSTargetUpdater(Node):
     def target_acquire(self,msg):
         self.ws.call(requests.SetInputSettings(
         inputName='target_id',
-        inputSettings={"text": str(msg.data)}
+        inputSettings={"text": f"current target is: {msg.data}"}
         ))
         
 

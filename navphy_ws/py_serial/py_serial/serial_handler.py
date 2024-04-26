@@ -162,11 +162,11 @@ class SerHandler(Node):
             self.imu_publisher.publish(self.imu_data)
 
     def update_tracking(self,msg):
-        # print(msg)
+        print(msg)
         led_state = 0
-        # print(self.recording_state)
+        print(self.recording_state)
         if(self.recording_state == 1):
-            # print(self.recording_time/float(self.recording_max_time))
+            print(self.recording_time/float(self.recording_max_time))
             if((self.recording_time%self.recording_max_time)/float(self.recording_max_time)) > .7:
                 led_state = 2
             else:
