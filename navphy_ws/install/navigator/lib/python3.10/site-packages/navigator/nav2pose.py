@@ -32,6 +32,8 @@ class Nav2Pose(Node):
         self.scansub = self.create_subscription(LaserScan, "/scan_filtered", self.set_laser_scan, 10)
         self.idsub = self.create_subscription(Int32, "/target_id", self.set_target_id, 10)
 
+        self.can_navigate = self.create_subscription(Int32,'/can_navigate',self.update_nav,10)
+
         self.goalupdaterpub = self.create_publisher(PoseStamped, "/goal_pose", 10)
         self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
         self.nav2posegoalpub = self.create_publisher(PoseStamped, "/nav2pose_goal", 10)
@@ -56,12 +58,18 @@ class Nav2Pose(Node):
 
         self.target_last_time = time.time()
         self.target_vel = 0 
+        self.can_publish_goals = 0
 
     def set_current_pose(self, odommsg : Odometry):
         self.current_pose.header.frame_id = 'odom'
         self.current_pose.header.stamp = self.get_clock().now().to_msg()
         self.current_pose.pose.position = odommsg.pose.pose.position
         self.current_pose.pose.orientation = odommsg.pose.pose.orientation
+
+    def update_nav(self,msg):
+        # print("Updating nav")
+        self.can_publish_goals = msg.data
+        # self.get_logger().info(f"Publish goals = {self.can_publish_goals}")
 
     def set_laser_scan(self, scanmsg : LaserScan):
         self.scanmsg = scanmsg
@@ -177,7 +185,7 @@ class Nav2Pose(Node):
         self.currentposepub.publish(self.current_pose)
 
         if self.target_seen:
-            if (not self.in_range(self.prev_goal, self.goal) and self.target_id != 9999) or (time.time() - self.prev_goal_time) > 3.0:
+            if self.can_publish_goals == 1 and ((not self.in_range(self.prev_goal, self.goal) and self.target_id != 9999) or (time.time() - self.prev_goal_time) > 3.0) :
                 self.correct_goal()
                 self.goalupdaterpub.publish(self.goal)
                 self.nav2posegoalpub.publish(self.goal)

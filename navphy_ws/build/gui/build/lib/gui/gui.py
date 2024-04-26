@@ -23,6 +23,7 @@ import os
 import signal
 
 class RosGUI(Node):
+    navigate = 0
     def __init__(self):
         super().__init__('gui')
         # self.publisher_ = self.create_publisher(String, 'topic', 10)
@@ -46,8 +47,14 @@ class RosGUI(Node):
             '/target_id',
             self.update_target_id,
         10)
+
+        self.can_navigate_pub = self.create_publisher(Int32, "/can_navigate", 10)
+
         self.recording_time = 0
         self.max_recording_time = 10
+        self.navigate_ros = Int32()
+        self.navigate_ros.data = 0
+        self.create_timer(.6,self.can_navigate)
 
     def update_recording_time(self,msg):
         self.recording_time = msg.data
@@ -59,6 +66,10 @@ class RosGUI(Node):
     def update_target_id(self,msg):
         # print("hi")
         self.target_id = msg.data
+
+    def can_navigate(self):
+        self.navigate_ros.data = self.navigate
+        self.can_navigate_pub.publish(self.navigate_ros)
 
     # Add widgets here (e.g., labels, buttons, etc.)
 
@@ -100,7 +111,7 @@ class GUI:
     def __init__(self, node : Node):
         self.node = node
         self.window = tk.Tk()
-        self.window.geometry("650x250")
+        self.window.geometry("800x600")
 
         btn1 = ttk.Button(text="Launch Target Tracking", command=lambda:self.launch(0))
         btn1.grid(row=0,column=0)
@@ -124,16 +135,19 @@ class GUI:
         btn5 = ttk.Button(text="Use Mic", command=lambda:self.launch(5))
         btn5.grid(row=10,column=0)
 
+        btn5 = ttk.Button(text="Toggle Navigation", command=lambda:self.update_navigate())
+        btn5.grid(row=13,column=0)
+
         # btn6 = ttk.Button(text="Update Recording Time", command=lambda:subprocess.Popen(['ros2','param','set','/target_pub','recording_timeout',str(inputR.get())]))
         # btn6.grid(row=12,column=0)
 
         self.progress_label_var = StringVar()
         self.progress_label = ttk.Label(textvariable=self.progress_label_var)
         self.progress_label_var.set("Recording progress at 0.0%")
-        self.progress_label.grid(row=14,column=0)
+        self.progress_label.grid(row=16,column=0)
         self.progress_var = DoubleVar()
         self.progress = ttk.Progressbar(variable=self.progress_var,maximum=1)
-        self.progress.grid(row=14,column=1,columnspan=5)
+        self.progress.grid(row=16,column=1,columnspan=5)
 
         # btn6 = ttk.Button(text="Quit", command=lambda:os.kill(os.getpid(), signal.SIGINT))
         # btn6.grid(row=16,column=0)
@@ -157,7 +171,10 @@ class GUI:
         self.progress_var.set(float(self.node.recording_time)/float(self.node.max_recording_time))
         self.progress_label_var.set(f"Recording progress at: {progress*100}% for target: {self.node.target_id}",)
         self.window.after(1000, self.update_progress)
-
+    
+    def update_navigate(self):
+        self.node.navigate = 1 - self.node.navigate
+        
     def launch(self, arg: int, target_list = [9999]):
         match arg:
             case 0:

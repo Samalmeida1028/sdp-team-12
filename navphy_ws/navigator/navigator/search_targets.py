@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 2/13/24
-# Date last modified: 4/17/24
+# Date last modified: 4/26/24
 # Description: Searches for targets by publishing random goals 
 
 '''
@@ -47,6 +47,8 @@ class SearchTargets(Node):
         self.targetsub = self.create_subscription(Int32, "/target_id", self.set_target, 10)
         self.goalsub = self.create_subscription(PoseStamped, "/nav2pose_goal", self.set_nav2pose_goal, 10)
 
+        self.can_navigate = self.create_subscription(Int32,'/can_navigate',self.update_nav,10)
+
         self.goalupdaterpub = self.create_publisher(PoseStamped, "/goal_pose", 10)
         self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
 
@@ -55,12 +57,13 @@ class SearchTargets(Node):
         self.wait_start_time = time.time()
         self.nav_start_time = time.time()
         self.time_passed = time.time()
+        self.can_publish_goals = 0
 
         self.gpose_orient = 0.0
         self.existinggoal_orient = 0.0
         self.trials = 0
-        self.wait_time = 10.0
-        self.redefine_time = 20.0
+        self.wait_time = 6.0
+        self.redefine_time = 10.0
         self.d = 1.25
         self.move_search_area = False
         self.target_received = False
@@ -69,6 +72,11 @@ class SearchTargets(Node):
         self.timer1 = self.create_timer(time_period, self.set_search_goal)
 
         self.get_logger().info('Search Node Ready!')
+
+    def update_nav(self,msg):
+        # print("Updating nav")
+        self.can_publish_goals = msg.data
+        # self.get_logger().info(f"Publish goals = {self.can_publish_goals}")
 
     # Sets the current pose of the robot from fused odometry messages given by EKF
     def set_current_pose(self, odommsg : Odometry):
@@ -142,7 +150,7 @@ class SearchTargets(Node):
     # Given we have waited more than 10 seconds and navigation timer has expired and we are not redefining, 
     # publish new goal. Increment distance and pick a random angle to publish a goal in search area
     def set_search_goal(self):
-        if self.time_passed >= self.wait_time and self.nav_timed_out() and not self.move_search_area and self.target_received:
+        if self.time_passed >= self.wait_time and self.nav_timed_out() and not self.move_search_area and self.target_received and self.can_publish_goals:
             self.goal.header.frame_id = 'odom'
             self.goal.header.stamp = self.get_clock().now().to_msg()
 
@@ -224,7 +232,8 @@ class SearchTargets(Node):
             self.goal.pose.orientation.w = rot_quat[3]
 
             self.nav_start_time = time.time()
-            self.goalupdaterpub.publish(self.goal)
+            if(self.can_publish_goals == 1):
+                self.goalupdaterpub.publish(self.goal)
 
     def correct_goal(self):
         self.get_logger().info("Checking distance validity with LiDAR scans...")

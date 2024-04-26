@@ -7,4 +7,4 @@ sleep 2
 ./scripts/start_cloned_streams.sh &
 sleep 3
 
-obs --startrecording
+obs --startstreaming
