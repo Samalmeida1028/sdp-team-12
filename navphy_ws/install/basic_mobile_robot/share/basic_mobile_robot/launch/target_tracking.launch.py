@@ -16,20 +16,14 @@ def generate_launch_description():
 
     start_image_pub_cmd = Node(
         package='py_img_stream',
-        executable='img_pub_audio',
-        name='pub',
+        executable='img_pub',
+        name='img_pub',
     )
 
     start_cv2_record_cmd = Node(
         package='py_img_stream',
         executable='cv2record',
         name='cv2record',
-    )
-
-    start_ffmpeg_record_cmd = Node(
-        package='py_img_stream',
-        executable='ffmpegrecord',
-        name='ffmpegrecord',
     )
 
     start_serial_cmd = Node(
@@ -58,7 +52,6 @@ def generate_launch_description():
     ld.add_action(start_serial_cmd)
     ld.add_action(start_camera_search_cmd)
     # ld.add_action(start_cv2_record_cmd)
-    # ld.add_action(start_ffmpeg_record_cmd)
     ld.add_action(start_obs_updater_cmd)
 
     return ld

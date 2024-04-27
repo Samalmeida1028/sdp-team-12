@@ -149,16 +149,10 @@ def generate_launch_description():
         name='cv2record',
     )
 
-    start_ffmpeg_record_cmd = Node(
-        package='py_img_stream',
-        executable='ffmpegrecord',
-        name='ffmpegrecord',
-    )
-
     start_image_pub_cmd = Node(
         package='py_img_stream',
-        executable='img_pub_audio',
-        name='pub',
+        executable='img_pub',
+        name='img_pub',
     )
 
     start_nav2pose_cmd = Node(
@@ -234,7 +228,6 @@ def generate_launch_description():
     ld.add_action(start_nav2pose_cmd)
     ld.add_action(start_camera_control_cmd)
     # ld.add_action(start_cv2_record_cmd)
-    # ld.add_action(start_ffmpeg_record_cmd)
     ld.add_action(start_obs_updater_cmd)
 
     ld.add_action(start_rviz_cmd)

@@ -22,11 +22,9 @@ setup(
         'console_scripts': [
             'cv2record = '
             'py_img_stream.cv2_record:main',
-            'ffmpegrecord = '
-            'py_img_stream.ffmpeg_record:main',
             'target_pub = '
             'py_img_stream.target_pub:main',
-            'img_pub_audio = '
+            'img_pub = '
             'py_img_stream.image_pub:main'
         ],
     },

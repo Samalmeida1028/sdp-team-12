@@ -10,7 +10,6 @@ setup.py
 ../build/py_img_stream/py_img_stream.egg-info/zip-safe
 py_img_stream/__init__.py
 py_img_stream/cv2_record.py
-py_img_stream/ffmpeg_record.py
 py_img_stream/image_pub.py
 py_img_stream/target_pub.py
 resource/py_img_stream

@@ -15,7 +15,7 @@ marker_information = Float32MultiArray()
 capture_threads = []
 class ImagePublisher(Node):
   def __init__(self):
-    super().__init__('image_pub')
+    super().__init__('img_pub')
 
     self.marker_location_publisher = self.create_publisher(Float32MultiArray, "/marker_position", 1)
     self.target_distance_publisher = self.create_publisher(Float32, "/target_distance", 1)
@@ -63,7 +63,7 @@ class ImagePublisher(Node):
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')
 
-    self.cam = cv2.VideoCapture(2,cv2.CAP_V4L2)
+    self.cam = cv2.VideoCapture(0,cv2.CAP_V4L2)
     self.cam.set(cv2.CAP_PROP_MODE,0)
     self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolutionX)
     self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolutionY)
@@ -128,7 +128,7 @@ class ImagePublisher(Node):
     if (time.time()-self.target_spotted_time) > 5 and self.isRecording.data:
       self.isRecording.data = 0
 
-    if self.target != self.prev_target and (time.time()-self.target_spotted_time) > 2:
+    if self.target != self.prev_target:
       self.prev_target = self.target
       self.isRecording.data = 0
         

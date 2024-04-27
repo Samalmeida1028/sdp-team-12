@@ -33,9 +33,9 @@ class TargetPublisher(Node):
         self.spotted = 0
         self.is_recording = 0
         self.publish_dummy_once = True
-        self.start_padding_counter = False
 
         self.target_id = Int32()
+        self.target_id.data = 9999
         self.recording_time = Float32()
         self.recording_time.data = 0.0
         self.recording_max_time = Float32()
@@ -101,7 +101,9 @@ class TargetPublisher(Node):
             self.recording_max_time.data = float(self.targets[self.file_index][2])
 
             self.get_logger().info('Got new target {} with time {} seconds'.format(self.target_id.data, self.recording_max_time.data))
-            self.set_target()
+            # self.set_target()
+            self.file_index += 1
+            self.recording_time.data = 0.0
         elif self.recording_time.data < self.recording_max_time.data:
             if self.is_recording: # for recording or not
                 # self.get_logger().info('Recording target {} for {} seconds'.format(self.target_id.data, self.recording_time))
