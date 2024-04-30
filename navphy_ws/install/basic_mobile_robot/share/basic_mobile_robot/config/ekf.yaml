@@ -2,7 +2,7 @@
 ekf_filter_node:
     ros__parameters:
         use_sim_time: false
-        debug: true
+        # debug: false
 
         
 # The frequency, in Hz, at which the filter will output a position estimate. Note that the filter will not begin
@@ -127,7 +127,6 @@ ekf_filter_node:
         odom0_nodelay: false
         # odom1_nodelay: true
         # odom2_nodelay: true
-        imu0_nodelay: false
 
 # [ADVANCED] When measuring one pose variable with two sensors, a situation can arise in which both sensors under-
 # report their covariances. This can lead to the filter rapidly jumping back and forth between each measurement as they
