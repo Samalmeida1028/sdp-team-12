@@ -12,6 +12,7 @@ resource/robot_macros
 robot_macros/__init__.py
 robot_macros/camera_bop.py
 robot_macros/play_music.py
+robot_macros/rotate_dance.py
 test/test_copyright.py
 test/test_flake8.py
 test/test_pep257.py

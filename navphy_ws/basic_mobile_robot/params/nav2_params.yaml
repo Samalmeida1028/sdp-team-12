@@ -153,7 +153,7 @@ behavior_server:
     robot_base_frame: base_link
     transform_timeout: 0.1
     use_sim_time: False
-    simulate_ahead_time: .5
+    simulate_ahead_time: 2.0
     max_rotational_vel: 0.6
     min_rotational_vel: 0.4
     rotational_acc_lim: 3.2
@@ -179,10 +179,12 @@ waypoint_follower:
 controller_server:
   ros__parameters:
     use_sim_time: False
+    use_realtime_priority: True
     controller_frequency: 5.0
     min_x_velocity_threshold: 0.1
     min_theta_velocity_threshold: 0.25
     failure_tolerance: 0.1
+    odom_topic: "/odometry/filtered"
     progress_checker_plugin: "progress_checker"
     goal_checker_plugins: ["general_goal_checker"] # "precise_goal_checker"
     controller_plugins: ["MPPI"]
@@ -207,8 +209,8 @@ controller_server:
       wz_std: 0.3
       ########################### TUNING FOR SPEED ###########################
       vx_max: 2.0
-      vx_min: -1.25
-      wz_max: 0.4
+      vx_min: -0.65
+      wz_max: 0.45
       ########################################################################
       iteration_count: 1
       enforce_path_inversion: false
@@ -246,18 +248,21 @@ controller_server:
         enabled: true
         cost_power: 1
         cost_weight: 1.0
-        threshold_to_consider: 0.75
+        threshold_to_consider: 1.5
       ObstaclesCritic:
         enabled: true
         cost_power: 1
         repulsion_weight: 1.5
         critical_weight: 20.0
+        critical_cost: 200.0
         consider_footprint: true
         collision_cost: 10000.0
         collision_margin_distance: 0.1
         near_goal_distance: 0.5
-        inflation_radius: 0.3 # (only in Humble)
-        cost_scaling_factor: 10.0 # (only in Humble)
+        inflation_radius: 0.55 # (only in Humble)
+        cost_scaling_factor: 1.0 # (only in Humble)
+        collision_margin_distance: 0.05
+        inflation_layer_name: "local_inflation_layer"
       # CostCritic:
       #   enabled: true
       #   cost_power: 1
@@ -270,11 +275,12 @@ controller_server:
         enabled: true
         cost_power: 1
         cost_weight: 14.0
-        max_path_occupancy_ratio: 0.05
+        max_path_occupancy_ratio: 0.2
         trajectory_point_step: 3
         threshold_to_consider: 0.5
         offset_from_furthest: 20
         use_path_orientations: false
+        repulsion_weight: 1.0
       PathFollowCritic:
         enabled: true
         cost_power: 1
@@ -288,16 +294,12 @@ controller_server:
         offset_from_furthest: 4
         threshold_to_consider: 0.5
         max_angle_to_furthest: 1.0
-        mode: 0
-      # TwirlingCritic:
-      #   enabled: true
-      #   twirling_cost_power: 1
-      #   twirling_cost_weight: 10.0
-      # VelocityDeadbandCritic:
-      #   enabled: true
-      #   cost_power: 1
-      #   cost_weight: 35.0
-      #   deadband_velocities: [0.05, 0.05, 0.05]
+        mode: 1
+      VelocityDeadbandCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 35.0
+        deadband_velocities: [0.5, 0.0, 0.5]
 
 controller_server_rclcpp_node:
   ros__parameters:
@@ -310,7 +312,7 @@ local_costmap:
       publish_frequency: 5.0
       global_frame: odom
       robot_base_frame: base_link
-      lethal_cost_threshold: 150
+      lethal_cost_threshold: 100
       use_sim_time: False
       rolling_window: true
       width: 5
@@ -319,29 +321,16 @@ local_costmap:
       origin_y: 2.5
       footprint: "[ [0.28, 0.3048], [0.28, -0.3048], [-0.28, -0.3048], [-0.28, 0.3048] ]"
       resolution: 0.05
-      plugins: ["voxel_layer", "inflation_layer"]
+      plugins: ["local_static_layer", "local_obstacle_layer", "local_inflation_layer"]
       # denoise_layer:
       #   plugin: "nav2_costmap_2d::DenoiseLayer"
       #   enabled: true
       #   minimal_group_size: 4
       #   group_connectivity_type: 8
-      inflation_layer:
-        plugin: "nav2_costmap_2d::InflationLayer"
-        footprint_clearing_enabled: true
-        cost_scaling_factor: 1.0
-        inflation_radius: 0.3
-        inflate_unknown: true
-        inflate_around_unknown: true
-      voxel_layer:
-        plugin: "nav2_costmap_2d::VoxelLayer"
+      local_obstacle_layer:
+        plugin: "nav2_costmap_2d::ObstacleLayer"
         enabled: True
         footprint_clearing_enabled: true
-        publish_voxel_map: True
-        origin_z: 0.0
-        z_resolution: 0.05
-        z_voxels: 16
-        max_obstacle_height: 2.0
-        mark_threshold: 0
         observation_sources: scan
         scan:
           topic: /scan_filtered
@@ -353,8 +342,16 @@ local_costmap:
           raytrace_min_range: 0.0
           obstacle_max_range: 9.5
           obstacle_min_range: 0.0
-      static_layer:
+      local_static_layer:
+        plugin: "nav2_costmap_2d::StaticLayer"
         map_subscribe_transient_local: True
+      local_inflation_layer:
+        plugin: "nav2_costmap_2d::InflationLayer"
+        footprint_clearing_enabled: true
+        cost_scaling_factor: 1.0
+        inflation_radius: 0.55
+        inflate_unknown: true
+        inflate_around_unknown: true
       always_send_full_costmap: True
   local_costmap_client:
     ros__parameters:

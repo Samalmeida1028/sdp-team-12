@@ -161,7 +161,7 @@ class SearchTargets(Node):
                 self.gpose_orient = self.existinggoal_orient
                 self.existing_orient = 0.0
             else:
-                self.gpose_orient = cpose_orient + 1.57
+                self.gpose_orient = cpose_orient + 3.14159
                 self.d = 1.25
 
             self.trials += 1

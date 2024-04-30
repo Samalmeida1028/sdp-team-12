@@ -25,20 +25,18 @@ class Nav2Pose(Node):
         self.scanmsg = LaserScan()
 
         # print("Creating subscribers and callbacks...")
-        self.angsub = self.create_subscription(Float32MultiArray, '/servoxy_angle', self.update_angle, 10)
-        self.distancesub = self.create_subscription(Float32, '/target_distance', self.update_distance, 10)
-        self.odomsub = self.create_subscription(Odometry, '/odometry/filtered', self.set_current_pose, 10)
-        self.target_spotted_sub = self.create_subscription(Int32, '/target_spotted', self.set_goal, 10)
-        self.scansub = self.create_subscription(LaserScan, "/scan_filtered", self.set_laser_scan, 10)
-        self.idsub = self.create_subscription(Int32, "/target_id", self.set_target_id, 10)
-
-        self.can_navigate = self.create_subscription(Int32,'/can_navigate',self.update_nav,10)
+        self.create_subscription(Float32MultiArray, '/servoxy_angle', self.update_angle, 10)
+        self.create_subscription(Float32, '/target_distance', self.update_distance, 10)
+        self.create_subscription(Odometry, '/odometry/filtered', self.set_current_pose, 10)
+        self.create_subscription(Int32, '/target_spotted', self.set_goal, 10)
+        self.create_subscription(LaserScan, "/scan_filtered", self.set_laser_scan, 10)
+        self.create_subscription(Int32, "/target_id", self.set_target_id, 10)
+        self.create_subscription(Int32,'/can_navigate',self.update_nav,10)
 
         self.goalupdaterpub = self.create_publisher(PoseStamped, "/goal_pose", 10)
-        self.currentposepub = self.create_publisher(PoseStamped, "/current_pose", 10)
         self.nav2posegoalpub = self.create_publisher(PoseStamped, "/nav2pose_goal", 10)
 
-        self.truncate_dist = 1.0
+        self.truncate_dist = 1.5
         self.angles = [0,0]
         self.distance = 0
         self.servo_values = None
@@ -47,9 +45,9 @@ class Nav2Pose(Node):
         self.prev_time_published = time.time()
         self.target_seen = 0
 
-        time_period = 0.05
-        self.timer = self.create_timer(time_period, self.nav2pose_callback)
-        self.veltimer = self.create_timer(0.5, self.calculate_target_velocity)
+        self.create_timer(0.1, self.nav2pose_callback)
+        self.create_timer(0.05, self.update_servo_values)
+        self.create_timer(0.5, self.calculate_target_velocity)
 
         self.prev_goal_time = time.time()
 
@@ -172,20 +170,19 @@ class Nav2Pose(Node):
         y_vel = (y - prev_y)/dt
         z_vel = (z - prev_z)/dt
 
-        self.target_vel = 1.5*-x_vel**2 if x < 0 else x_vel**2
+        self.target_vel = 1.5*-(x_vel**2) if x < 0 else x_vel**2
         self.target_vel = min(4,max(-4,self.target_vel))
         # self.get_logger().info(str(self.target_vel))
 
-    def nav2pose_callback(self):
+    def update_servo_values(self):
         if(self.angles and self.distance):
             self.servo_values = [self.distance] + self.angles
             self.distance = None
             self.angles = None
-        
-        self.currentposepub.publish(self.current_pose)
 
-        if self.target_seen:
-            if self.can_publish_goals == 1 and ((not self.in_range(self.prev_goal, self.goal) and self.target_id != 9999) or (time.time() - self.prev_goal_time) > 3.0) :
+    def nav2pose_callback(self):
+        if self.target_seen and self.can_publish_goals == 1 and self.target_id != 9999:
+            if (not self.in_range(self.prev_goal, self.goal) or (time.time() - self.prev_goal_time) > 5.0):
                 self.correct_goal()
                 self.goalupdaterpub.publish(self.goal)
                 self.nav2posegoalpub.publish(self.goal)
