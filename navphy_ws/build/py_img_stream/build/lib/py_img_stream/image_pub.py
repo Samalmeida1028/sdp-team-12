@@ -63,7 +63,7 @@ class ImagePublisher(Node):
     if self.cameraMatrix is not None:
       self.get_logger().info('Starting capture')
 
-    self.cam = cv2.VideoCapture(0,cv2.CAP_V4L2)
+    self.cam = cv2.VideoCapture(2,cv2.CAP_V4L2)
     self.cam.set(cv2.CAP_PROP_MODE,0)
     self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolutionX)
     self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolutionY)

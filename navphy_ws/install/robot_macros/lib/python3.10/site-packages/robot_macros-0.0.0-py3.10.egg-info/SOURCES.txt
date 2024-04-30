@@ -1,0 +1,17 @@
+package.xml
+setup.cfg
+setup.py
+../build/robot_macros/robot_macros.egg-info/PKG-INFO
+../build/robot_macros/robot_macros.egg-info/SOURCES.txt
+../build/robot_macros/robot_macros.egg-info/dependency_links.txt
+../build/robot_macros/robot_macros.egg-info/entry_points.txt
+../build/robot_macros/robot_macros.egg-info/requires.txt
+../build/robot_macros/robot_macros.egg-info/top_level.txt
+../build/robot_macros/robot_macros.egg-info/zip-safe
+resource/robot_macros
+robot_macros/__init__.py
+robot_macros/camera_bop.py
+robot_macros/play_music.py
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py

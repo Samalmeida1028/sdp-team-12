@@ -24,6 +24,7 @@ import signal
 
 class RosGUI(Node):
     navigate = 0
+    start_macro = 0
     def __init__(self):
         super().__init__('gui')
         # self.publisher_ = self.create_publisher(String, 'topic', 10)
@@ -48,13 +49,16 @@ class RosGUI(Node):
             self.update_target_id,
         10)
 
-        self.can_navigate_pub = self.create_publisher(Int32, "/can_navigate", 10)
+        self.can_navigate_pub = self.create_publisher(Int32, "/can_navigate", 1)
+        self.start_macro_pub = self.create_publisher(Int32, "/can_start_macros", 1)
 
         self.recording_time = 0
         self.max_recording_time = 10
         self.navigate_ros = Int32()
+        self.start_macro_ros = Int32()
         self.navigate_ros.data = 0
         self.create_timer(.6,self.can_navigate)
+        self.create_timer(.6,self.can_start_macros)
 
     def update_recording_time(self,msg):
         self.recording_time = msg.data
@@ -70,6 +74,10 @@ class RosGUI(Node):
     def can_navigate(self):
         self.navigate_ros.data = self.navigate
         self.can_navigate_pub.publish(self.navigate_ros)
+
+    def can_start_macros(self):
+        self.start_macro_ros.data = self.start_macro
+        self.start_macro_pub.publish(self.start_macro_ros)
 
     # Add widgets here (e.g., labels, buttons, etc.)
 
@@ -138,16 +146,19 @@ class GUI:
         btn5 = ttk.Button(text="Toggle Navigation", command=lambda:self.update_navigate())
         btn5.grid(row=13,column=0)
 
+        btn6 = ttk.Button(text="Toggle Macros", command=lambda:self.update_macros())
+        btn6.grid(row=15,column=0)
+
         # btn6 = ttk.Button(text="Update Recording Time", command=lambda:subprocess.Popen(['ros2','param','set','/target_pub','recording_timeout',str(inputR.get())]))
         # btn6.grid(row=12,column=0)
 
         self.progress_label_var = StringVar()
         self.progress_label = ttk.Label(textvariable=self.progress_label_var)
         self.progress_label_var.set("Recording progress at 0.0%")
-        self.progress_label.grid(row=16,column=0)
+        self.progress_label.grid(row=18,column=0)
         self.progress_var = DoubleVar()
         self.progress = ttk.Progressbar(variable=self.progress_var,maximum=1)
-        self.progress.grid(row=16,column=1,columnspan=5)
+        self.progress.grid(row=18,column=1,columnspan=5)
 
         # btn6 = ttk.Button(text="Quit", command=lambda:os.kill(os.getpid(), signal.SIGINT))
         # btn6.grid(row=16,column=0)
@@ -174,6 +185,9 @@ class GUI:
     
     def update_navigate(self):
         self.node.navigate = 1 - self.node.navigate
+    
+    def update_macros(self):
+        self.node.start_macro = 1 - self.node.start_macro
         
     def launch(self, arg: int, target_list = [9999]):
         match arg:

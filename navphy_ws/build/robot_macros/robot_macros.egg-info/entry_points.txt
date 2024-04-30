@@ -1,0 +1,4 @@
+[console_scripts]
+cam_bop = robot_macros.camera_bop:main
+playmusic = robot_macros.play_music:main
+
