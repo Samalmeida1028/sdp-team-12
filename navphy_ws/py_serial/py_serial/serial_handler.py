@@ -162,18 +162,19 @@ class SerHandler(Node):
             self.imu_publisher.publish(self.imu_data)
 
     def update_tracking(self,msg):
-        print(msg)
+        # print(msg)
         led_state = 0
-        print(self.recording_state)
+        # print(self.recording_state)
+        percentage = abs(round(float(self.recording_time)/float(self.recording_max_time), 2))
+
         if(self.recording_state == 1):
-            print(self.recording_time/float(self.recording_max_time))
             if((self.recording_time%self.recording_max_time)/float(self.recording_max_time)) > .7:
                 led_state = 2
             else:
                 # print("AAAAAAHHHHHHHHHHH")
                 led_state = 1
 
-        self.target_serial.write(bytearray(json.dumps(list(msg.data)+[led_state]) + "\n",encoding="utf-8"))
+        self.target_serial.write(bytearray(json.dumps(list(msg.data)+[led_state]+[percentage]) + "\n",encoding="utf-8"))
         # self.is_centered = False
         self.publish_servo_angles()
 

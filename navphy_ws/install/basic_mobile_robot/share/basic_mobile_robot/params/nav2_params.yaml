@@ -197,7 +197,7 @@ controller_server:
     odom_topic: "/odometry/filtered"
     progress_checker_plugin: "progress_checker"
     goal_checker_plugins: ["general_goal_checker"] # "precise_goal_checker"
-    controller_plugins: ["MPPI", "GracefulController"]
+    controller_plugins: ["MPPI", "GracefulController"] #change behavior tree controller_id to match these names to use them
 
     # Progress checker parameters
     progress_checker:
@@ -218,9 +218,9 @@ controller_server:
       vx_std: 0.3
       wz_std: 0.3
       ########################### TUNING FOR SPEED ###########################
-      vx_max: 1.5
-      vx_min: -0.55
-      wz_max: 0.55
+      vx_max: 2.0
+      vx_min: -0.65
+      wz_max: 0.65
       ########################################################################
       iteration_count: 1
       enforce_path_inversion: false

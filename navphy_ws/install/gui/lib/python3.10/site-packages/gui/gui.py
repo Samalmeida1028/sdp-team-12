@@ -178,8 +178,8 @@ class GUI:
         # print("updating")
         # self.progress.value = 100
         # print(self.node.recording_time,self.node.max_recording_time)
-        progress = round(float(self.node.recording_time)/float(self.node.max_recording_time),2)
-        self.progress_var.set(float(self.node.recording_time)/float(self.node.max_recording_time))
+        progress = abs(round(float(self.node.recording_time)/float(self.node.max_recording_time),2))
+        self.progress_var.set(abs(float(self.node.recording_time)/float(self.node.max_recording_time)))
         self.progress_label_var.set(f"Recording progress at: {progress*100}% for target: {self.node.target_id}",)
         self.window.after(1000, self.update_progress)
     

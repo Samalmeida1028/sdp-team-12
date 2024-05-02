@@ -8,6 +8,7 @@ import digitalio
 import math
 
 import atexit
+import neopixel
 
 
 ################################################################
@@ -28,6 +29,9 @@ my_servox.angle = centerX
 
 led = digitalio.DigitalInOut(board.GP9)
 led.direction = digitalio.Direction.OUTPUT
+
+pixels = neopixel.NeoPixel(board.GP2, 16, brightness=0.05)
+pixels.fill((0, 0, 0))
 
 tempx = centerX
 tempy = centerY
@@ -70,8 +74,6 @@ while True:
     # print("Here")
     t = time.time() - prev_time
     ##################################################
-
-    
     if serial.in_waiting > 0:
         data_in = serial.readline()
         if data_in:
@@ -80,7 +82,6 @@ while True:
                 # print("Asking type")
                 serial.write(bytearray(json.dumps("tracking") + "\n"))
             else:
-
                 translation = json.loads(data_in.decode('utf-8'))
                 if translation == "center":
                     my_servox.angle = centerX
@@ -90,16 +91,21 @@ while True:
                     led.value = 0
 
                 else:
+                    n_leds = int(translation[3] * 16)
+                    for i in range(n_leds):
+                        pixels[i] = ((0, 255, 0))
+
                     dt = time.monotonic_ns()-dt_prev_time
                     # print(dt*1e-14)
                     if(dt > .5):
                         dt = .02
                     vel = (180*float(translation[0])/(1920),180*float(translation[1])/(1080)) # convert pixel offset to angle
+
                     led_state = int(translation[2]) # get state of led to blink or not
-                    # print(translation)
                     recording_led_state = led_state
                     if(led_state == 1 or led_state == 2):
                         target_last_seen = time.monotonic_ns()*1e-9
+
                     if math.fabs(vel[0]) + math.fabs(vel[1]) > 5:
                         offset_x_accel += (1.4*vel[0] + 30000*(d_x))*dt
                         offset_y_accel += (1.1*vel[1] + 2000*(d_y))*dt
