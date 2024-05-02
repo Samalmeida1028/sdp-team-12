@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/lidar_odometry_node" "TARGETS" "lidar_odometry_node" "DESTINATION" "lib/basic_mobile_robot")

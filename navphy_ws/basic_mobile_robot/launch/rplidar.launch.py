@@ -19,6 +19,21 @@ def generate_launch_description():
         }],
     )
 
+    start_better_lidar_cmd = Node(
+        package='sllidar_ros2',
+        executable='sllidar_node',
+        name='sllidar_node',
+        parameters=[{
+            'channel_type':'serial',
+            'serial_port': '/dev/ttyUSB0', 
+            'serial_baudrate': 1000000, 
+            'frame_id': 'lidar_link',
+            'inverted': False, 
+            'angle_compensate': True, 
+            'scan_mode': 'DenseBoost'
+        }],
+    )
+
     start_lidar_filter_cmd = Node(
         package='navigator',
         executable='filterlidar',
@@ -27,7 +42,7 @@ def generate_launch_description():
 
     ld = LaunchDescription()
 
-    ld.add_action(start_lidar_cmd)
+    ld.add_action(start_better_lidar_cmd)
     ld.add_action(start_lidar_filter_cmd)
 
     return ld
