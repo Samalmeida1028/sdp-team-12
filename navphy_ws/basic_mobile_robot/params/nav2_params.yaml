@@ -197,7 +197,7 @@ controller_server:
     odom_topic: "/odometry/filtered"
     progress_checker_plugin: "progress_checker"
     goal_checker_plugins: ["general_goal_checker"] # "precise_goal_checker"
-    controller_plugins: ["MPPI", "GracefulController"]
+    controller_plugins: ["MPPI", "GracefulController"] #change behavior tree controller_id to match these names to use them
 
     # Progress checker parameters
     progress_checker:
