@@ -87,15 +87,25 @@ smoother_server_rclcpp_node:
   ros__parameters:
     use_sim_time: False
 
+velocity_smoother:
+  ros__parameters:
+    smoothing_frequency: 50.0
+    scale_velocities: True
+    feedback: "CLOSED_LOOP"
+    max_velocity: [2.0, 0.0, 2.5]
+    min_velocity: [-2.0, 0.0, -2.5]
+    deadband_velocity: [2.0, 0.0, 1.0]
+    velocity_timeout: 1.0
+    max_accel: [2.5, 0.0, 3.2]
+    max_decel: [-0.25, 0.0, -1.2]
+    odom_topic: "/odometry/filtered"
+    odom_duration: 0.1
+    use_realtime_priority: false
+    enable_stamped_cmd_vel: false
+
 planner_server:
   ros__parameters:
-    planner_plugins: ["NavFn", "SmacHybrid"]
-
-    NavFn:
-      plugin: 'nav2_navfn_planner/NavfnPlanner'
-      use_astar: True
-      allow_unknown: True
-      tolerance: 0.5
+    planner_plugins: ["SmacHybrid"]
 
     SmacHybrid:
       plugin: "nav2_smac_planner/SmacPlannerHybrid"
@@ -301,16 +311,16 @@ controller_server:
         deadband_velocities: [0.5, 0.0, 0.5]
 
 ############ALTERNATE######################
+
 # controller_server:
 #   ros__parameters:
 #     use_sim_time: True
 #     controller_frequency: 20.0
-#     min_x_velocity_threshold: 0.001
-#     min_y_velocity_threshold: 0.5
-#     min_theta_velocity_threshold: 0.001
+#     min_x_velocity_threshold: 0.1
+#     min_theta_velocity_threshold: 0.25
 #     progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
 #     goal_checker_plugins: ["goal_checker"]
-#     controller_plugins: ["FollowPath"]
+#     controller_plugins: ["GracefulController"]
 
 #     progress_checker:
 #       plugin: "nav2_controller::SimpleProgressChecker"
@@ -318,24 +328,25 @@ controller_server:
 #       movement_time_allowance: 10.0
 #     goal_checker:
 #       plugin: "nav2_controller::SimpleGoalChecker"
-#       xy_goal_tolerance: 0.25
-#       yaw_goal_tolerance: 0.25
+#       xy_goal_tolerance: 0.1
+#       yaw_goal_tolerance: 0.3
 #       stateful: True
-#     FollowPath:
+
+#     GracefulController:
 #       plugin: nav2_graceful_controller::GracefulController
 #       transform_tolerance: 0.1
 #       motion_target_dist: 0.6
 #       initial_rotation: true
 #       initial_rotation_min_angle: 0.75
 #       final_rotation: true
-#       allow_backward: false
+#       allow_backward: true
 #       k_phi: 3.0
 #       k_delta: 2.0
 #       beta: 0.4
 #       lambda: 2.0
 #       v_linear_min: 0.1
-#       v_linear_max: 1.0
-#       v_angular_max: 5.0
+#       v_linear_max: 2.0
+#       v_angular_max: 1.0
 #       slowdown_radius: 1.5
 
 ##########################################
@@ -516,19 +527,3 @@ map_saver:
 # amcl_rclcpp_node:
 #   ros__parameters:
 #     use_sim_time: False
-
-velocity_smoother:
-  ros__parameters:
-    smoothing_frequency: 50.0
-    scale_velocities: True
-    feedback: "CLOSED_LOOP"
-    max_velocity: [2.0, 0.0, 2.5]
-    min_velocity: [-2.0, 0.0, -2.5]
-    deadband_velocity: [-2.0, 0.0, 0.0]
-    velocity_timeout: 1.0
-    max_accel: [2.5, 0.0, 3.2]
-    max_decel: [-0.25, -0.25, -1.2]
-    odom_topic: "/odometry/filtered"
-    odom_duration: 0.1
-    use_realtime_priority: false
-    enable_stamped_cmd_vel: false

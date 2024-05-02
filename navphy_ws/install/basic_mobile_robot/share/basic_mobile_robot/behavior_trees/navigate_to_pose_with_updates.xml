@@ -12,11 +12,8 @@
         <RateController hz="10.0">
           <RecoveryNode number_of_retries="1" name="ComputePathToPose">
             <Sequence name="ComputeAndSmoothPath">
-                <GoalUpdater input_goal="{goal}" output_goal="{updated_goal}">
-                    <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="SmacHybrid"/>
-                </GoalUpdater>
-                <SmoothPath unsmoothed_path="{path}" smoothed_path="{smoothed_path}"/>
-                <!-- <TruncatePath distance=".5" input_path="{path}" output_path="{truncated_path}"/> -->
+              <ComputePathToPose goal="{goal}" path="{path}" planner_id="SmacHybrid"/>  
+              <SmoothPath unsmoothed_path="{path}" smoothed_path="{smoothed_path}"/>
             </Sequence>
 
             <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
@@ -42,7 +39,6 @@
           <Spin spin_dist="1.57"/>
           <Wait wait_duration="5"/>
           <BackUp backup_dist="0.30" backup_speed="0.25"/>
-          <!-- <DriveOnHeading dist_to_travel="0.30" speed="0.5"/> -->
         </RoundRobin>
       </ReactiveFallback>
 

@@ -170,7 +170,7 @@ class Nav2Pose(Node):
         y_vel = (y - prev_y)/dt
         z_vel = (z - prev_z)/dt
 
-        self.target_vel = 1.5*-(x_vel**2) if x < 0 else x_vel**2
+        self.target_vel = -(x_vel**2) if (x - prev_x) < 0 else x_vel**2
         self.target_vel = min(4,max(-4,self.target_vel))
         # self.get_logger().info(str(self.target_vel))
 

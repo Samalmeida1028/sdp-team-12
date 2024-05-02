@@ -1,8 +1,8 @@
-# Install script for directory: /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot
+# Install script for directory: /home/adam/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot")
+  set(CMAKE_INSTALL_PREFIX "/home/adam/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,15 +44,15 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE DIRECTORY FILES
-    "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/behavior_trees"
-    "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/config"
-    "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/include"
-    "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/launch"
-    "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/maps"
-    "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/models"
-    "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/params"
-    "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/rviz"
-    "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/src"
+    "/home/adam/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/behavior_trees"
+    "/home/adam/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/config"
+    "/home/adam/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/include"
+    "/home/adam/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/launch"
+    "/home/adam/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/maps"
+    "/home/adam/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/models"
+    "/home/adam/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/params"
+    "/home/adam/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/rviz"
+    "/home/adam/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/src"
     )
 endif()
 
@@ -63,7 +63,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/basic_mobile_robot/lidar_odometry_node"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/basic_mobile_robot" TYPE EXECUTABLE FILES "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/lidar_odometry_node")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/basic_mobile_robot" TYPE EXECUTABLE FILES "/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/lidar_odometry_node")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/basic_mobile_robot/lidar_odometry_node" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/basic_mobile_robot/lidar_odometry_node")
     file(RPATH_CHANGE
@@ -77,11 +77,11 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/basic_mobile_robot")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/basic_mobile_robot")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/basic_mobile_robot")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/basic_mobile_robot")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -89,7 +89,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot/environment" TYPE FILE FILES "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_environment_hooks/ament_prefix_path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot/environment" TYPE FILE FILES "/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_environment_hooks/ament_prefix_path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -97,42 +97,42 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot/environment" TYPE FILE FILES "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_environment_hooks/path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot/environment" TYPE FILE FILES "/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_environment_hooks/path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_environment_hooks/local_setup.bash")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_environment_hooks/local_setup.bash")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_environment_hooks/local_setup.sh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_environment_hooks/local_setup.sh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_environment_hooks/local_setup.zsh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_environment_hooks/local_setup.zsh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_environment_hooks/local_setup.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_environment_hooks/local_setup.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_environment_hooks/package.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_environment_hooks/package.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_index/share/ament_index/resource_index/packages/basic_mobile_robot")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_index/share/ament_index/resource_index/packages/basic_mobile_robot")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot/cmake" TYPE FILE FILES
-    "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_core/basic_mobile_robotConfig.cmake"
-    "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_core/basic_mobile_robotConfig-version.cmake"
+    "/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_core/basic_mobile_robotConfig.cmake"
+    "/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_core/basic_mobile_robotConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/basic_mobile_robot" TYPE FILE FILES "/home/adam/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot/package.xml")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -143,5 +143,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

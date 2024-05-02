@@ -2,4 +2,3 @@
 cam_bop = robot_macros.camera_bop:main
 playmusic = robot_macros.play_music:main
 rot_dance = robot_macros.rotate_dance:main
-
