@@ -1,8 +1,8 @@
-# Install script for directory: /home/adam/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot
+# Install script for directory: /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/basic_mobile_robot
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/adam/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot")
+  set(CMAKE_INSTALL_PREFIX "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/install/basic_mobile_robot")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,7 +43,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  include("/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_symlink_install/ament_cmake_symlink_install.cmake")
+  include("/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/ament_cmake_symlink_install/ament_cmake_symlink_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -54,5 +54,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/adam/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/basic_mobile_robot/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

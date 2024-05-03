@@ -5,3 +5,4 @@ nav2pose = navigator.nav2pose:main
 searchtargets = navigator.search_targets:main
 sens2odom = navigator.sens2odom:main
 teleopjoy = navigator.teleop_joy:main
+

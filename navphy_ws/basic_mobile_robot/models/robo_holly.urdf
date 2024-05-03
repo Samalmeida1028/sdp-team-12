@@ -170,7 +170,7 @@
     <parent link="base_link"/>
     <child link="lidar_link"/>
     <!-- <origin xyz="0.2032 0 0.381" rpy="0 0 1.57"/> -->
-    <origin xyz="-0.0254 0 0.254" rpy="0 0 0"/>
+    <origin xyz="-0.0254 0 0.254" rpy="0 0 3.14"/>
   </joint>
 
   <link name="lidar_link">

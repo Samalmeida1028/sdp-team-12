@@ -1,8 +1,12 @@
 #!/bin/bash
 
-# ffmpeg -f v4l2 -i /dev/video0 -codec:v copy -f v4l2 /dev/video2 -codec:v copy -f v4l2 /dev/video3
+sudo rmmod v4l2loopback
+sleep 2
+sudo modprobe v4l2loopback devices=2
 
-ffmpeg -f v4l2 -video_size 1920x1080 -input_format rawvideo -i /dev/video0 \
+sudo chmod 777 /dev/video*
+
+ffmpeg -f v4l2 -video_size 1920x1080 -r 30 -input_format rawvideo -i /dev/video0 \
     -c:v copy -f v4l2 /dev/video2 \
-    -c:v rawvideo -s 1280x720 -f v4l2 /dev/video3 
+    -c:v copy -f v4l2 /dev/video3 
     > /dev/null 2&>1

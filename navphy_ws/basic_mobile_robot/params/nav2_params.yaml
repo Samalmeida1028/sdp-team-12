@@ -197,7 +197,7 @@ controller_server:
     odom_topic: "/odometry/filtered"
     progress_checker_plugin: "progress_checker"
     goal_checker_plugins: ["general_goal_checker"] # "precise_goal_checker"
-    controller_plugins: ["MPPI", "GracefulController"] #change behavior tree controller_id to match these names to use them
+    controller_plugins: ["MPPI"] #change behavior tree controller_id to match these names to use them
 
     # Progress checker parameters
     progress_checker:
@@ -215,17 +215,17 @@ controller_server:
       time_steps: 60
       model_dt: 0.25
       batch_size: 1000
-      vx_std: 0.3
+      vx_std: 0.6
       wz_std: 0.3
       ########################### TUNING FOR SPEED ###########################
-      vx_max: 2.0
+      vx_max: 2.5
       vx_min: -0.65
       wz_max: 0.65
       ########################################################################
       iteration_count: 1
       enforce_path_inversion: false
       prune_distance: 1.5
-      transform_tolerance: 0.3
+      transform_tolerance: 1.0
       temperature: 0.3
       gamma: 0.015
       motion_model: "DiffDrive"
@@ -269,7 +269,7 @@ controller_server:
         collision_cost: 10000.0
         collision_margin_distance: 0.05
         near_goal_distance: 0.5
-        inflation_radius: 0.2 # (only in Humble)
+        inflation_radius: 0.3 # (only in Humble)
         cost_scaling_factor: 1.0 # (only in Humble)
         inflation_layer_name: "local_inflation_layer"
       # CostCritic:
@@ -309,23 +309,6 @@ controller_server:
         cost_power: 1
         cost_weight: 35.0
         deadband_velocities: [0.5, 0.0, 0.5]
-    #################### ALTERNATE CONTROLLER #########################
-    GracefulController:
-      plugin: nav2_graceful_controller::GracefulController
-      transform_tolerance: 0.1
-      motion_target_dist: 0.6
-      initial_rotation: true
-      initial_rotation_min_angle: 0.75
-      final_rotation: true
-      allow_backward: true
-      k_phi: 3.0
-      k_delta: 2.0
-      beta: 0.4
-      lambda: 2.0
-      v_linear_min: 0.1
-      v_linear_max: 2.0
-      v_angular_max: 1.0
-      slowdown_radius: 1.5
 
 controller_server_rclcpp_node:
   ros__parameters:
@@ -338,13 +321,13 @@ local_costmap:
       publish_frequency: 5.0
       global_frame: odom
       robot_base_frame: base_link
-      lethal_cost_threshold: 100
+      lethal_cost_threshold: 150
       use_sim_time: False
       rolling_window: true
-      width: 5
-      height: 5
-      origin_x: 2.5
-      origin_y: 2.5
+      width: 7
+      height: 7
+      origin_x: 3.5
+      origin_y: 3.5
       footprint: "[ [0.28, 0.3048], [0.28, -0.3048], [-0.28, -0.3048], [-0.28, 0.3048] ]"
       resolution: 0.05
       plugins: ["local_static_layer", "local_obstacle_layer", "local_inflation_layer"]
@@ -364,7 +347,7 @@ local_costmap:
           clearing: True
           marking: True
           data_type: "LaserScan"
-          raytrace_max_range: 12.0
+          raytrace_max_range: 18.0
           raytrace_min_range: 0.0
           obstacle_max_range: 9.5
           obstacle_min_range: 0.0
@@ -375,7 +358,7 @@ local_costmap:
         plugin: "nav2_costmap_2d::InflationLayer"
         footprint_clearing_enabled: true
         cost_scaling_factor: 1.0
-        inflation_radius: 0.2
+        inflation_radius: 0.3
         inflate_unknown: true
         inflate_around_unknown: true
       always_send_full_costmap: True
@@ -412,7 +395,7 @@ global_costmap:
           clearing: True
           marking: True
           data_type: "LaserScan"
-          raytrace_max_range: 12.0
+          raytrace_max_range: 18.0
           raytrace_min_range: 0.0
           obstacle_max_range: 9.5
           obstacle_min_range: 0.0
@@ -423,7 +406,7 @@ global_costmap:
         plugin: "nav2_costmap_2d::InflationLayer"
         footprint_clearing_enabled: true
         cost_scaling_factor: 1.0
-        inflation_radius: 0.2
+        inflation_radius: 0.3
         inflate_unknown: true
         inflate_around_unknown: true
       always_send_full_costmap: True

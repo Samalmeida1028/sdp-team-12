@@ -23,7 +23,7 @@ class ImagePublisher(Node):
 
     self.markersidesub = self.create_subscription(Int32, "/marker_side", self.set_marker_length, 10)
 
-    timer_period = .05 # 2 Hz = 20% CPU, 10 Hz = 30% CPU, 20 Hz = 90+% CPU (nav does not work above 70% CPU usage as well)
+    timer_period = .03 # 2 Hz = 20% CPU, 10 Hz = 30% CPU, 20 Hz = 90+% CPU (nav does not work above 70% CPU usage as well)
     self.timer = self.create_timer(timer_period, self.timer_callback)
     self.get_logger().info('Initialized timer')
 

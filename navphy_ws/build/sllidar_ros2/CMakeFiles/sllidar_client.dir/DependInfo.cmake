@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/src/sllidar_client.cpp" "CMakeFiles/sllidar_client.dir/src/sllidar_client.cpp.o" "gcc" "CMakeFiles/sllidar_client.dir/src/sllidar_client.cpp.o.d"
+  "/home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/src/sllidar_client.cpp" "CMakeFiles/sllidar_client.dir/src/sllidar_client.cpp.o" "gcc" "CMakeFiles/sllidar_client.dir/src/sllidar_client.cpp.o.d"
   )
 
 # Targets to which this target links.

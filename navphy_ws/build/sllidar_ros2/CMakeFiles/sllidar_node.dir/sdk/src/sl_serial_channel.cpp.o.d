@@ -1,7 +1,7 @@
 CMakeFiles/sllidar_node.dir/sdk/src/sl_serial_channel.cpp.o: \
- /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/sdk/src/sl_serial_channel.cpp \
+ /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/sdk/src/sl_serial_channel.cpp \
  /usr/include/stdc-predef.h \
- /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_lidar_driver.h \
+ /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_lidar_driver.h \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -142,9 +142,9 @@ CMakeFiles/sllidar_node.dir/sdk/src/sl_serial_channel.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/11/bits/charconv.h \
  /usr/include/c++/11/bits/basic_string.tcc \
- /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_lidar_cmd.h \
- /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_lidar_protocol.h \
- /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_types.h \
- /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/sdk/src/hal/abs_rxtx.h \
- /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/src/hal/types.h \
- /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/sdk/src/hal/socket.h
+ /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_lidar_cmd.h \
+ /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_lidar_protocol.h \
+ /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_types.h \
+ /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/sdk/src/hal/abs_rxtx.h \
+ /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/src/hal/types.h \
+ /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/sdk/src/hal/socket.h

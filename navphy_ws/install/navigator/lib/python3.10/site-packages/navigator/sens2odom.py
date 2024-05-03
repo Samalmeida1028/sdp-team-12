@@ -30,7 +30,7 @@ class Sensor2Odom(Node):
         self.encoder_sub = self.create_subscription(Float32MultiArray, "/encoder_data", self.encoder_to_odom, 10)
         self.imu_sub = self.create_subscription(Float32MultiArray, "/imu_data", self.imu_to_odom, 10)
 
-        time_period = 0.016
+        time_period = 0.01
         self.timer = self.create_timer(time_period, self.timer_callback)
 
         self.encmsg = Odometry()

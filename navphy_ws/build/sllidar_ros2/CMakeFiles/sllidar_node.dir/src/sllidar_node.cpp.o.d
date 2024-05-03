@@ -1,5 +1,5 @@
 CMakeFiles/sllidar_node.dir/src/sllidar_node.cpp.o: \
- /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/src/sllidar_node.cpp \
+ /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/src/sllidar_node.cpp \
  /usr/include/stdc-predef.h \
  /opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp \
  /usr/include/c++/11/csignal \
@@ -609,9 +609,9 @@ CMakeFiles/sllidar_node.dir/src/sllidar_node.cpp.o: \
  /opt/ros/humble/include/std_srvs/std_srvs/srv/detail/empty__struct.hpp \
  /opt/ros/humble/include/std_srvs/std_srvs/srv/detail/empty__builder.hpp \
  /opt/ros/humble/include/std_srvs/std_srvs/srv/detail/empty__traits.hpp \
- /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_lidar.h \
- /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_lidar_driver.h \
- /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_lidar_cmd.h \
- /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_lidar_protocol.h \
- /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_types.h \
+ /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_lidar.h \
+ /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_lidar_driver.h \
+ /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_lidar_cmd.h \
+ /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_lidar_protocol.h \
+ /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2/./sdk/include/sl_types.h \
  /usr/include/c++/11/math.h

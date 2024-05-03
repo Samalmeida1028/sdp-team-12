@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2
+CMAKE_SOURCE_DIR = /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/adam/Desktop/sdp-team-12/navphy_ws/build/sllidar_ros2
+CMAKE_BINARY_DIR = /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/sllidar_ros2
 
 # Utility rule file for uninstall.
 
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/adam/Desktop/sdp-team-12/navphy_ws/build/sllidar_ros2 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2 /home/adam/Desktop/sdp-team-12/navphy_ws/sllidar_ros2 /home/adam/Desktop/sdp-team-12/navphy_ws/build/sllidar_ros2 /home/adam/Desktop/sdp-team-12/navphy_ws/build/sllidar_ros2 /home/adam/Desktop/sdp-team-12/navphy_ws/build/sllidar_ros2/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/sllidar_ros2 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2 /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/sllidar_ros2 /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/sllidar_ros2 /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/sllidar_ros2 /home/sdpteam12/Desktop/sdp-team-12/navphy_ws/build/sllidar_ros2/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 
