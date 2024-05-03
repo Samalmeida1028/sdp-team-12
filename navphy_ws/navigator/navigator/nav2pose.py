@@ -157,13 +157,12 @@ class Nav2Pose(Node):
     def calculate_target_velocity(self):
         dt = time.time() - self.target_last_time
         self.target_last_time = time.time()
+        
+        dx = self.goal.pose.position.x - self.prev_goal.pose.position.x
+        x_vel = dx/dt
 
-        dh = math.hypot(self.goal.pose.position.x, self.goal.pose.position.y) -  \
-            math.hypot(self.prev_goal.pose.position.x, self.prev_goal.pose.position.y)
-        d_vel = dh/dt
-
-        self.target_vel = -(d_vel**2) if dh < 0 else d_vel**2
-        self.target_vel = min(6,max(-6,self.target_vel))
+        self.target_vel = -1.5*(x_vel**2) if dx < 0 else 2.5*x_vel**2
+        self.target_vel = min(4,max(-4,self.target_vel))
         # self.get_logger().info(str(self.target_vel))
 
     def update_servo_values(self):

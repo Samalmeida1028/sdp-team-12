@@ -91,7 +91,7 @@ velocity_smoother:
   ros__parameters:
     smoothing_frequency: 100.0
     scale_velocities: True
-    feedback: "CLOSED_LOOP"
+    feedback: "OPEN_LOOP"
     max_velocity: [2.0, 0.0, 2.5]
     min_velocity: [-2.0, 0.0, -2.5]
     deadband_velocity: [2.0, 0.0, 1.0]
@@ -215,16 +215,16 @@ controller_server:
       time_steps: 60
       model_dt: 0.1
       batch_size: 1000
-      vx_std: 0.4
+      vx_std: 0.3
       wz_std: 0.3
       ########################### TUNING FOR SPEED ###########################
-      vx_max: 1.5
+      vx_max: 0.85
       vx_min: -0.55
-      wz_max: 0.45
+      wz_max: 0.40
       ########################################################################
       iteration_count: 1
       enforce_path_inversion: false
-      prune_distance: 1.5
+      prune_distance: 3.0
       transform_tolerance: 1.0
       temperature: 0.3
       gamma: 0.015
