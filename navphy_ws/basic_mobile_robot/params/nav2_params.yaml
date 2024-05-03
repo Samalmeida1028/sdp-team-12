@@ -215,12 +215,12 @@ controller_server:
       time_steps: 60
       model_dt: 0.1
       batch_size: 1000
-      vx_std: 0.3
+      vx_std: 0.35
       wz_std: 0.3
       ########################### TUNING FOR SPEED ###########################
-      vx_max: 0.85
+      vx_max: 1.0
       vx_min: -0.55
-      wz_max: 0.40
+      wz_max: 0.5
       ########################################################################
       iteration_count: 1
       enforce_path_inversion: false

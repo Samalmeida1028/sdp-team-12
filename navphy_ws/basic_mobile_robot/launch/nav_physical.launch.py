@@ -202,6 +202,12 @@ def generate_launch_description():
         name='obsupdatetarget',
     )
 
+    start_cam_bop_macro_cmd = Node(
+        package='robot_macros',
+        executable='cam_bop',
+        name='cam_bop',
+    )
+
     start_rviz_cmd = GroupAction(
         condition=IfCondition(PythonExpression([use_rviz])),
         actions = [rviz_node]
@@ -243,8 +249,8 @@ def generate_launch_description():
     ld.add_action(start_image_pub_cmd)
     ld.add_action(start_nav2pose_cmd)
     ld.add_action(start_camera_control_cmd)
-    # ld.add_action(start_cv2_record_cmd)
     ld.add_action(start_obs_updater_cmd)
+    ld.add_action(start_cam_bop_macro_cmd)
 
     ld.add_action(start_rviz_cmd)
 

@@ -121,7 +121,7 @@ class ImagePublisher(Node):
 
   def capture(self):
     if self.target == self.prev_target and self.target != 9999:
-      if self.target_spotted.data and (self.target_distance.data / 1000.0) <= 4.0:
+      if self.target_spotted.data and (self.target_distance.data / 1000.0) <= 1.6:
         self.isRecording.data = 1
         self.target_spotted_time = time.time()
 
