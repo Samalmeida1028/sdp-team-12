@@ -63,7 +63,8 @@ class SearchTargets(Node):
         self.existinggoal_orient = 0.0
         self.trials = 0
         self.wait_time = 6.0
-        self.redefine_time = 10.0
+        self.nav_time = 12.0
+        self.redefine_time = 15.0
         self.d = 1.25
         self.move_search_area = False
         self.target_received = False
@@ -129,7 +130,7 @@ class SearchTargets(Node):
         # self.get_logger().info("Navigated for {} seconds".format(nav_time))
 
         if not self.move_search_area:
-            if nav_time >= self.wait_time:
+            if nav_time >= self.nav_time:
                 # self.get_logger().info("Nav to search timed out!")
                 return True
         else:

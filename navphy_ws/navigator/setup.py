@@ -24,8 +24,7 @@ setup(
             'sens2odom = navigator.sens2odom:main',
             'searchtargets = navigator.search_targets:main',
             'filterlidar = navigator.filter_lidar:main',
-            'camerasearch = navigator.camera_search:main',
-            'teleopjoy = navigator.teleop_joy:main'
+            'camerasearch = navigator.camera_search:main'
         ],
     },
 )

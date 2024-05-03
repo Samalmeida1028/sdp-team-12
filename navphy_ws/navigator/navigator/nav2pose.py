@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 # Author: SDP Team 12
 # Date created: 11/5/23
-# Date last modified: 4/24/24
+# Date last modified: 5/3/24
 # Description: Using Nav2 to navigate to a given pose
 
 from geometry_msgs.msg import PoseStamped
-from tf2_msgs.msg import TFMessage
 from std_msgs.msg import Float32MultiArray,String,Float32,Int32
 from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import Odometry
@@ -36,7 +35,7 @@ class Nav2Pose(Node):
         self.goalupdaterpub = self.create_publisher(PoseStamped, "/goal_pose", 10)
         self.nav2posegoalpub = self.create_publisher(PoseStamped, "/nav2pose_goal", 10)
 
-        self.truncate_dist = 1.5
+        self.truncate_dist = 1.0
         self.angles = [0,0]
         self.distance = 0
         self.servo_values = None
@@ -159,19 +158,12 @@ class Nav2Pose(Node):
         dt = time.time() - self.target_last_time
         self.target_last_time = time.time()
 
-        x = self.goal.pose.position.x
-        y = self.goal.pose.position.y
-        z = self.goal.pose.position.z
-        prev_x = self.prev_goal.pose.position.x
-        prev_y = self.prev_goal.pose.position.y
-        prev_z = self.prev_goal.pose.position.z
+        dh = math.hypot(self.goal.pose.position.x, self.goal.pose.position.y) -  \
+            math.hypot(self.prev_goal.pose.position.x, self.prev_goal.pose.position.y)
+        d_vel = dh/dt
 
-        x_vel = (x - prev_x)/dt
-        y_vel = (y - prev_y)/dt
-        z_vel = (z - prev_z)/dt
-
-        self.target_vel = -(x_vel**2) if (x - prev_x) < 0 else x_vel**2
-        self.target_vel = min(4,max(-4,self.target_vel))
+        self.target_vel = -(d_vel**2) if dh < 0 else d_vel**2
+        self.target_vel = min(6,max(-6,self.target_vel))
         # self.get_logger().info(str(self.target_vel))
 
     def update_servo_values(self):
