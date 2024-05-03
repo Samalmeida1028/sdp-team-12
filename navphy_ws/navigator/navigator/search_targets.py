@@ -193,9 +193,9 @@ class SearchTargets(Node):
 
                 self.move_search_area = False
             else:
-                self.move_search_area = True
+                # self.move_search_area = True
                 self.trials = 0
-                self.redefine_search()
+                # self.redefine_search()
 
             test = String()
             test.data = "Dist: " + str(self.d) + ", Goal Orient: " + str(self.gpose_orient)
