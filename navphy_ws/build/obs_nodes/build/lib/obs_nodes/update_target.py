@@ -30,8 +30,10 @@ class OBSTargetUpdater(Node):
         '/target_id', 
         self.target_acquire,
         10)
+        self.get_logger().info("Initialized and connected")
 
     def target_acquire(self,msg):
+        self.get_logger().info("Updating target")
         self.ws.call(requests.SetInputSettings(
         inputName='target_id',
         inputSettings={"text": f"current target is: {msg.data}"}
