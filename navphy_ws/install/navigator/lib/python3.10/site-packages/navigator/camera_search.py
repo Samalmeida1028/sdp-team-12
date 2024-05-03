@@ -29,7 +29,7 @@ class CameraSearch(Node):
         self.wait_time = 5.5
         self.time_passed = 0.0
 
-        self.offset = 100.0
+        self.offset = 200.0
         self.state = -1
 
         self.timer = self.create_timer(0.03, self.send_pan_commands)
