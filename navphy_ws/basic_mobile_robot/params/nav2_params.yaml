@@ -58,8 +58,8 @@ smoother_server:
     SmoothPath:
       plugin: "nav2_constrained_smoother/ConstrainedSmoother"
       reversing_enabled: true       # whether to detect forward/reverse direction and cusps. Should be set to false for paths without orientations assigned
-      path_downsampling_factor: 3   # every n-th node of the path is taken. Useful for speed-up
-      path_upsampling_factor: 1     # 0 - path remains downsampled, 1 - path is upsampled back to original granularity using cubic bezier, 2... - more upsampling
+      path_downsampling_factor: 1  # every n-th node of the path is taken. Useful for speed-up
+      path_upsampling_factor: 2     # 0 - path remains downsampled, 1 - path is upsampled back to original granularity using cubic bezier, 2... - more upsampling
       keep_start_orientation: true  # whether to prevent the start orientation from being smoothed
       keep_goal_orientation: true   # whether to prevent the gpal orientation from being smoothed
       minimum_turning_radius: 0.00  # minimum turning radius the robot can perform. Can be set to 0.0 (or w_curve can be set to 0.0 with the same effect) for diff-drive/holonomic robots
@@ -89,7 +89,7 @@ smoother_server_rclcpp_node:
 
 velocity_smoother:
   ros__parameters:
-    smoothing_frequency: 50.0
+    smoothing_frequency: 100.0
     scale_velocities: True
     feedback: "CLOSED_LOOP"
     max_velocity: [2.0, 0.0, 2.5]
@@ -190,7 +190,7 @@ controller_server:
   ros__parameters:
     use_sim_time: False
     use_realtime_priority: True # True for MPPI, False for GracefulController
-    controller_frequency: 5.0 # 5.0 for MPPI, 20.0 for GracefulController
+    controller_frequency: 10.0 # 5.0 for MPPI, 20.0 for GracefulController
     min_x_velocity_threshold: 0.1
     min_theta_velocity_threshold: 0.25
     failure_tolerance: 0.1
@@ -213,14 +213,14 @@ controller_server:
     MPPI:
       plugin: "nav2_mppi_controller::MPPIController"
       time_steps: 60
-      model_dt: 0.25
+      model_dt: 0.1
       batch_size: 1000
-      vx_std: 0.6
-      wz_std: 0.4
+      vx_std: 0.4
+      wz_std: 0.3
       ########################### TUNING FOR SPEED ###########################
-      vx_max: 2.5
-      vx_min: -0.65
-      wz_max: 0.85
+      vx_max: 1.5
+      vx_min: -0.55
+      wz_max: 0.45
       ########################################################################
       iteration_count: 1
       enforce_path_inversion: false
@@ -233,7 +233,7 @@ controller_server:
       retry_attempt_limit: 2
       reset_period: 1.0 # (only in Humble)
       regenerate_noises: false
-      max_robot_pose_search_dist: 2.5
+      max_robot_pose_search_dist: 0.5
       TrajectoryVisualizer:
         trajectory_step: 5
         time_step: 3
@@ -317,8 +317,8 @@ controller_server_rclcpp_node:
 local_costmap:
   local_costmap:
     ros__parameters:
-      update_frequency: 10.0
-      publish_frequency: 5.0
+      update_frequency: 15.0
+      publish_frequency: 7.0
       global_frame: odom
       robot_base_frame: base_link
       lethal_cost_threshold: 150
@@ -372,8 +372,8 @@ local_costmap:
 global_costmap:
   global_costmap:
     ros__parameters:
-      update_frequency: 1.0
-      publish_frequency: 1.0
+      update_frequency: 3.0
+      publish_frequency: 2.0
       global_frame: map
       robot_base_frame: base_link
       use_sim_time: False
@@ -408,7 +408,7 @@ global_costmap:
         cost_scaling_factor: 1.0
         inflation_radius: 0.3
         inflate_unknown: true
-        inflate_around_unknown: true
+        inflate_around_unknown: True
       always_send_full_costmap: True
   global_costmap_client:
     ros__parameters:
