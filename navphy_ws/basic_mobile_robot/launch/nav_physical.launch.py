@@ -208,6 +208,12 @@ def generate_launch_description():
         name='cam_bop',
     )
 
+    start_rot_dance_macro_cmd = Node(
+        package='robot_macros',
+        executable='rot_dance',
+        name='rot_dance',
+    )
+
     start_rviz_cmd = GroupAction(
         condition=IfCondition(PythonExpression([use_rviz])),
         actions = [rviz_node]
@@ -251,6 +257,7 @@ def generate_launch_description():
     ld.add_action(start_camera_control_cmd)
     ld.add_action(start_obs_updater_cmd)
     ld.add_action(start_cam_bop_macro_cmd)
+    # ld.add_action(start_rot_dance_macro_cmd)
 
     ld.add_action(start_rviz_cmd)
 

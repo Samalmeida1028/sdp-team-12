@@ -20,7 +20,6 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'playmusic = robot_macros.play_music:main',
             'cam_bop = robot_macros.camera_bop:main',
             'rot_dance = robot_macros.rotate_dance:main'
         ],

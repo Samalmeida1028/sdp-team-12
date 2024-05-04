@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Arjun Viswanathan
 # Date created: 2/13/24
-# Date last modified: 4/26/24
+# Date last modified: 5/4/24
 # Description: Searches for targets by publishing random goals 
 
 '''
@@ -59,9 +59,10 @@ class SearchTargets(Node):
         self.time_passed = time.time()
         self.can_publish_goals = 0
 
+        self.prev_target = 9999
         self.gpose_orient = 0.0
         self.existinggoal_orient = 0.0
-        self.trials = 0
+        # self.trials = 0
         self.wait_time = 6.0
         self.nav_time = 12.0
         self.redefine_time = 15.0
@@ -88,24 +89,13 @@ class SearchTargets(Node):
 
         self.currentposepub.publish(self.current_pose)
 
-    # Sets the center of the search radius
-    def set_center(self):
-        # self.get_logger().info("Setting center of search radius")
-
-        self.center.pose.position.x = self.current_pose.pose.position.x
-        self.center.pose.position.y = self.current_pose.pose.position.y
-        self.center.pose.position.z = self.current_pose.pose.position.z
-
-        self.center.pose.orientation.x = self.current_pose.pose.orientation.x
-        self.center.pose.orientation.y = self.current_pose.pose.orientation.y
-        self.center.pose.orientation.z = self.current_pose.pose.orientation.z
-        self.center.pose.orientation.w = self.current_pose.pose.orientation.w
-
     def set_laser_scan(self, scanmsg : LaserScan):
         self.scanmsg = scanmsg
 
     def set_target(self, tmsg: Int32):
-        self.existinggoal_orient = 0.0
+        if tmsg.data != self.prev_target:
+            self.existinggoal_orient = 0.0
+            self.prev_target = tmsg.data
         
         if tmsg.data != 9999:
             self.target_received = True
@@ -146,7 +136,7 @@ class SearchTargets(Node):
         self.existinggoal_orient = Rotation.from_quat([nav2posemsg.pose.orientation.x,nav2posemsg.pose.orientation.y,
                                                         nav2posemsg.pose.orientation.z,nav2posemsg.pose.orientation.w]).as_euler("xyz", degrees=False)[2]
         self.d = math.hypot(nav2posemsg.pose.position.x, nav2posemsg.pose.position.y) + 1.5
-        self.trials = 0
+        # self.trials = 0
         
     # Given we have waited more than 10 seconds and navigation timer has expired and we are not redefining, 
     # publish new goal. Increment distance and pick a random angle to publish a goal in search area
@@ -159,21 +149,22 @@ class SearchTargets(Node):
                                           self.current_pose.pose.orientation.z,self.current_pose.pose.orientation.w]).as_euler("xyz", degrees=False)[2]
             
             if self.existinggoal_orient != 0.0: # do it once
+                self.get_logger().info("Going to last known target position area")
                 self.gpose_orient = self.existinggoal_orient
                 self.existing_orient = 0.0
             else:
                 self.gpose_orient = cpose_orient + 3.14159
                 self.d = 1.25
 
-            self.trials += 1
+                if self.gpose_orient > math.pi: # sanity check to keep it within ROS bounds [-pi,pi]
+                    self.gpose_orient -= (2*math.pi)
+                elif self.gpose_orient < -3.12: # min angle of LiDAR is not exactly -pi (-3.14159)
+                    self.gpose_orient += 6.26
 
-            if self.gpose_orient > math.pi: # sanity check to keep it within ROS bounds [-pi,pi]
-                self.gpose_orient -= (2*math.pi)
-            elif self.gpose_orient < -3.12: # min angle of LiDAR is not exactly -pi (-3.14159)
-                self.gpose_orient += 6.26
+            # self.trials += 1
 
-            self.goal.pose.position.x = self.center.pose.position.x + (self.d*math.cos(self.gpose_orient)) # xf = xc + dcos(phi)
-            self.goal.pose.position.y = self.center.pose.position.y + (self.d*math.sin(self.gpose_orient)) # yf = yc + dsin(phi)
+            self.goal.pose.position.x = self.current_pose.pose.position.x + (self.d*math.cos(self.gpose_orient)) # xf = xc + dcos(phi)
+            self.goal.pose.position.y = self.current_pose.pose.position.y + (self.d*math.sin(self.gpose_orient)) # yf = yc + dsin(phi)
             self.goal.pose.position.z = 0.0497
 
             rot = Rotation.from_euler('xyz', [0, 0, self.gpose_orient], degrees=False)
@@ -184,24 +175,22 @@ class SearchTargets(Node):
             self.goal.pose.orientation.z = rot_quat[2]
             self.goal.pose.orientation.w = rot_quat[3]
 
-            if self.trials < 4:
-                self.get_logger().info("Setting new goal to {} at angle {}".format(self.d, self.gpose_orient))
-                self.correct_goal()
+            # if self.trials < 4:
+            self.get_logger().info("Setting new goal to {} at angle {}".format(self.d, self.gpose_orient))
+            self.correct_goal()
 
-                self.nav_start_time = time.time()
-                self.goalupdaterpub.publish(self.goal)
+            self.nav_start_time = time.time()
+            self.goalupdaterpub.publish(self.goal)
 
-                self.move_search_area = False
-            else:
-                # self.move_search_area = True
-                self.trials = 0
-                # self.redefine_search()
+                # self.move_search_area = False
+            # else:
+            #     # self.move_search_area = True
+            #     self.trials = 0
+            #     # self.redefine_search()
 
             test = String()
             test.data = "Dist: " + str(self.d) + ", Goal Orient: " + str(self.gpose_orient)
             self.debug.publish(test)
-        elif self.time_passed < self.wait_time: # only go in when target is seen
-            self.set_center()
 
     # Publishes ONE goal when redefining search space using LiDAR data
     def redefine_search(self):
@@ -246,8 +235,8 @@ class SearchTargets(Node):
         if scanned_dist < initial_dist:
             self.get_logger().info("Invalid distance. Correcting {} to {}".format(initial_dist, corrected_dist))
 
-            self.goal.pose.position.x = self.center.pose.position.x + (corrected_dist*math.cos(self.gpose_orient)) # xf = xc + dcos(phi)
-            self.goal.pose.position.y = self.center.pose.position.y + (corrected_dist*math.sin(self.gpose_orient)) # yf = yc + dsin(phi)
+            self.goal.pose.position.x = self.current_pose.pose.position.x + (corrected_dist*math.cos(self.gpose_orient)) # xf = xc + dcos(phi)
+            self.goal.pose.position.y = self.current_pose.pose.position.y + (corrected_dist*math.sin(self.gpose_orient)) # yf = yc + dsin(phi)
         else:
             self.get_logger().info("Distance is valid")
     
