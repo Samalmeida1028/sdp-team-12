@@ -15,7 +15,7 @@ class OBSTargetUpdater(Node):
 
     def __init__(self):
         super().__init__('obs_target_update')
-        self.host = "192.168.1.10"
+        self.host = "192.168.137.13"
         self.port = 4455
         self.password = "MhusmcBKXLoWnJOX"  # Replace with your OBS WebSocket password
         self.ws = obsws(self.host, self.port, self.password)
