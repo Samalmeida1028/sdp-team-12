@@ -1,39 +1,41 @@
-# Senior Design Project 2023
-This is the repository for Team 12's Senior Design Project (SDP)
+# Physical Navigation Workspace
 
-Installation scripts for ROS2 Humble and Nav2 in ```rospkginstall``` directory.
+Installation scripts for ROS2 Humble and Nav2 in ```rospkginstall``` directory. Once in that directory, run the following to install ROS2 Humble and Nav2 on your computer:
+```
+./ros_humble_setup.sh
+./ros_humble_nav2_setup.sh
+```
 
 ## Physical Navigation using ROS2 Navigation Stack
 This branch contains a number of packages:
 - ```basic_mobile_robot``` : all the navigation necessities. Contains URDF file for the robot, SLAM and EKF configuration files, and navigation launch script
-- ```navigator```: to be finished. Will take goal pose and relay wheel velocity commands to motors
-- ```py_img_pub```: contains the target tracking code
-- ```serial_handler```: contains a node that handles all serial communication between ROS and our Pico
+- ```navigator```: navigation nodes to work with target tracking, search behaviors, and publishing odometry
+- ```py_img_stream```: performs our core computer vision to recognize targets and perform pose estimation on them
+- ```py_serial```: handles all serial communication between ROS2 and our hardware
+- ```gui```: an interactive Graphical User Interface (GUI) for the user
+- ```obs_nodes```: Open Broadcast Service (OBS) websocket node that launches with our navigation to live stream camera feed
+- ```rpi_pico```: backup code for our navigation and target tracking Picos
+- ```scripts```: contains Bash scripts to start our robot processes. Used by our GUI
 
-## Ports:
-RPLiDAR: ```/dev/ttyUSB0``` \
-Nav Pico: ```/dev/ACM1``` \
-Nav Pico REPL: ```/dev/ACM0``` \
-Tracking Pico: ```/dev/ACM3``` \
-Tracking Pico REPL: ```/dev/ACM2``` 
+## Starting the Robot
+After flipping the switch on and turning on the computer on Holly, you are able to Secure Shell (SSH) in using the command below:
+```
+ssh -Y sdpteam12@IPADDR
+```
+The ```IPADDR``` field is what shows up when the computer is connected to your private network (mobile hotspot or other private network). Note that this will not work on eduroam. 
 
-![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/433cd966-4cd0-4a59-bcd3-ea5257845dc6)
+Then, type the following into the terminal:
+```
+./run.sh
+```
+This script is located in the home directory of the on-board computer of the robot. This will launch the GUI. From here, clicking on ```Launch Navigation``` will launch all required nodes for navigation and tracking. You will be able to enter targets into the GUI as follows:
 
-## Running Navigation
-Once all the required ROS2 packages are installed, make sure the Nav Pico is connected to the computer and the correct port is verified. Then, open a REPL in VS Code to see any input coming from ROS. Then, run the ```nav_physical.launch.py``` script. This will fire up the Nav stack and open RViz showing the robot and SLAM output.
+```[[ID, side length, time in seconds], [ID, side length, time in seconds]]```
 
-When the launch file is executed, you will see that the REPL initially has a bunch of empty lists. This is because empty commands are coming through at the moment. Once you set the initial and goal poses in RViz, you will see a red path calculated and the REPL output will be filled with values for wheel velocities. The robot will also move. 
-
-Below is what your screen should look like when you have CircuitPython, the terminal, and RViz running. Now you are good to navigate!
-
-![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/46efbdc6-3981-4021-aec3-2ff08b0d1ace)
-
-As the robot navigates to the goal, you will see a lot of things printed on the terminal. These are just messages ROS is giving you as the navigation is performed. When it reaches the goal, you will see "Reached the goal!" in the terminal. 
-
-![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/63dbc724-b983-451d-a50d-063ce97bf8fe)
+This allows the user to specify a target ID of variable size for variable time of tracking. Larger targets can be seen from further away. 
 
 ## Behind the scenes: Navigation
-The navigation stack is the most complicated part of our design project. There is a lot going on behind the scenes, which I will break down for your understanding. The list of things involved, in order, goes as follows:
+The navigation stack is the most complicated part of our design project. The list of things involved, in order, goes as follows:
 - Robot Localisation
 - Simultaneous Localization And Mapping (SLAM)
 - Coordinate Transforms
@@ -51,6 +53,8 @@ Suppose you know the starting point of an object. You wish to know where the obj
 But, it is still possible to make an estimate of the object's location using probability and odometry measurements. This is what the Kalman Filter does. It uses the covariances associated with each source of odometry, and models the object's future locations using a probabilistic approach. This process does involve some level of noise, but will be accurate to a margin. 
 
 An extended Kalman filter is used when the measurements are noisy and there is uncertainty associated with the accuracy of each source of odometry. Since our wheel encoders do not account for wheel slippage, and our IMU can be noisy, and our LiDAR is not the best quality, it is possible that one or more of these readings are wrong. Our EKF node accounts for this error using covariances of each source and fuses all the odometry information together. 
+
+![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/ba99deaf-5d88-48d2-91d7-bec8f73e0685)
 
 Shown below is a connected tree showing the flow of information for our localization using EKF. 
 
@@ -89,3 +93,10 @@ Next, the certerpiece of the navigation system comes online. This is the ```bt_n
 
 ## Serial Communication
 On the serial side, the ```/cmd_vel_nav``` topic is subscribed to and the Twist messages are converted into a linear and linear-rotational vector. This vector is then sent to the Nav Pico, which will then communicate with the motors and set their velocities accordingly. It will then read the wheel and IMU odometry data, and send it back to ROS. And thus, we have navigation with the physical robot. 
+
+![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/f5d28e58-e7bc-4cf5-89b7-cca8e2596e42)
+
+For target tracking, we take the marker location, published in ```/marker_location``` topic, as an offset from the center, and send that to our target tracking Pico. This will then command the servos to center the camera at the center of the marker. We predict the motion of the marker using the offset's velocity and position to allow smooth camera movement. This allows us to perform target tracking when CPU resources are constrained, and we cannot calculate the pose of the marker fast (under 20 Hz). With our computer, however, we are able to calculate the pose at 30 Hz and above easily. 
+
+![image](https://github.com/Samalmeida1028/sdp-team-12/assets/41523488/ab3f6ce5-edd7-491d-afe9-5e546c6bcd06)
+
