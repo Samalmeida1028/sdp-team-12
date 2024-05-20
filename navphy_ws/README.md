@@ -1,21 +1,15 @@
-# Physical Navigation Workspace
-
-Installation scripts for ROS2 Humble and Nav2 in ```rospkginstall``` directory. Once in that directory, run the following to install ROS2 Humble and Nav2 on your computer:
-```
-./ros_humble_setup.sh
-./ros_humble_nav2_setup.sh
-```
-
-## Physical Navigation using ROS2 Navigation Stack
-This branch contains a number of packages:
-- ```basic_mobile_robot``` : all the navigation necessities. Contains URDF file for the robot, SLAM and EKF configuration files, and navigation launch script
-- ```navigator```: navigation nodes to work with target tracking, search behaviors, and publishing odometry
-- ```py_img_stream```: performs our core computer vision to recognize targets and perform pose estimation on them
-- ```py_serial```: handles all serial communication between ROS2 and our hardware
-- ```gui```: an interactive Graphical User Interface (GUI) for the user
-- ```obs_nodes```: Open Broadcast Service (OBS) websocket node that launches with our navigation to live stream camera feed
-- ```rpi_pico```: backup code for our navigation and target tracking Picos
-- ```scripts```: contains Bash scripts to start our robot processes. Used by our GUI
+# Physical Navigation using ROS2 Navigation Stack
+This branch contains a number of packages, listed below:
+| Package Name | Description |
+| ------------ | ----------- |
+| [```basic_mobile_robot```](https://github.com/Samalmeida1028/sdp-team-12/tree/nav_stable/navphy_ws/basic_mobile_robot) | all the navigation necessities. Contains URDF file for the robot, SLAM and EKF configuration files, and navigation launch script |
+| [```navigator```](https://github.com/Samalmeida1028/sdp-team-12/tree/nav_stable/navphy_ws/navigator) | navigation nodes to work with target tracking, search behaviors, and publishing odometry |
+| [```py_img_stream```](https://github.com/Samalmeida1028/sdp-team-12/tree/nav_stable/navphy_ws/py_img_stream) | performs our core computer vision to recognize targets and perform pose estimation on them |
+| [```py_serial```](https://github.com/Samalmeida1028/sdp-team-12/tree/nav_stable/navphy_ws/py_serial) | handles all serial communication between ROS2 and our hardware |
+| [```gui```](https://github.com/Samalmeida1028/sdp-team-12/tree/nav_stable/navphy_ws/gui) | an interactive Graphical User Interface (GUI) for the user |
+| [```obs_nodes```](https://github.com/Samalmeida1028/sdp-team-12/tree/nav_stable/navphy_ws/obs_nodes) | Open Broadcast Service (OBS) websocket node that launches with our navigation to live stream camera feed |
+| [```rpi_pico```](https://github.com/Samalmeida1028/sdp-team-12/tree/nav_stable/navphy_ws/rpi_pico) | backup code for our navigation and target tracking Picos |
+| [```scripts```](https://github.com/Samalmeida1028/sdp-team-12/tree/nav_stable/navphy_ws/scripts) | contains Bash scripts to start our robot processes. Used by our GUI |
 
 ## Starting the Robot
 After flipping the switch on and turning on the computer on Holly, you are able to Secure Shell (SSH) in using the command below:
