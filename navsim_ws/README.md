@@ -1,12 +1,9 @@
-# sdp-team-12
-This is the repository for Team 12's Senior Design Project (SDP)
-
-## Simulated Navigation using ROS2 Humble Navigation Stack
+# Simualated Navigation using the ROS2 Navigation Stack
 
 In this branch:
 - sim_bot
 
-Before running, make sure to run both ```ros_humble_setup.sh``` and ```ros_humble_nav2_setup.sh``` scripts in ```basic_mobile_robot/rospkginstall``` directory, if you do not have ROS2 Humble and/or Nav2 installed
+Before running, make sure to have ROS2 Humble and Nav2 installed on your computer. 
 
 ## sim_bot Package
 
