@@ -15,8 +15,9 @@ These workspaces contains code that uses ROS2 Control with our robot. ROS2 Contr
 These workspaces contain the core code to perform navigation and tracking. Note that we decided to go without using ROS2 Control. We configure the Navigation2 stack here, along with nodes to handle searching for targets, live streaming camera feed, and performing ArUco detection. Initial testing was done in the simulated workspace [```navsim_ws```](https://github.com/Samalmeida1028/sdp-team-12/blob/nav_stable/navsim_ws/README.md) and then updated with our physical robot in the [```navphy_ws```](https://github.com/Samalmeida1028/sdp-team-12/blob/nav_stable/navphy_ws/README.md)
 
 ## PCB Documentation 
-Documentation about the PCB for our project can be found at [```PCB```]() in the README.md file
+Documentation about the PCB for our project can be found at [```PCB```](https://github.com/Samalmeida1028/sdp-team-12/tree/nav_stable/PCB)
 
+## ROS2 Installation
 Installation scripts for ROS2 Humble and Nav2 in [```rospkginstall```](https://github.com/Samalmeida1028/sdp-team-12/tree/nav_stable/navphy_ws/rospkgsinstall) directory within the [```navphy_ws```](https://github.com/Samalmeida1028/sdp-team-12/blob/nav_stable/navphy_ws/README.md) workspace. Once in that directory, run the following to install ROS2 Humble and Nav2 on your computer:
 ```
 ./ros_humble_setup.sh
